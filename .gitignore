@@ -1,0 +1,33 @@
+*.xml
+*.log
+*.apk
+*.iml
+**/.vscode/
+**/.idea/
+*.pyc
+.DS_Store
+*.cfg
+*.sqlite3
+checkpoints/
+runs/
+__pycache__/
+*.npy
+*.so
+.rendered
+/owndata
+/datasets
+/experiments
+
+# Large data files
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Model checkpoints
+*.pth
+*.pkl
+*.h5
+*.ckpt
