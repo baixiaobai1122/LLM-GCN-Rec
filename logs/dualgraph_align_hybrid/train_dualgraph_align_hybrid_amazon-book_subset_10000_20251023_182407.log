@@ -1,0 +1,167 @@
+2025-10-23 18:24:07 - INFO - Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_align_hybrid/train_dualgraph_align_hybrid_amazon-book_subset_10000_20251023_182407.log
+2025-10-23 18:24:07 - INFO - 
+============================================================
+2025-10-23 18:24:07 - INFO - DUAL-GRAPH LIGHTGCN WITH CONTRASTIVE ALIGNMENT
+2025-10-23 18:24:07 - INFO - Features: CLIP + GPT Hybrid
+2025-10-23 18:24:07 - INFO - Semantic graph: hybrid_semantic_graph.npz
+2025-10-23 18:24:07 - INFO - Alignment enabled: True
+2025-10-23 18:24:07 - INFO - Alignment weight (λ): 0.1
+2025-10-23 18:24:07 - INFO - Temperature (τ): 0.07
+2025-10-23 18:24:07 - INFO - ============================================================
+2025-10-23 18:24:07 - INFO - 
+Training Hyperparameters:
+2025-10-23 18:24:07 - INFO -   - Epochs: 60
+2025-10-23 18:24:07 - INFO -   - Batch size: 2048
+2025-10-23 18:24:07 - INFO -   - Learning rate: 0.0005
+2025-10-23 18:24:07 - INFO -   - Weight decay: 0.001
+2025-10-23 18:24:07 - INFO -   - Dropout: True (keepprob=0.7)
+2025-10-23 18:24:07 - INFO -   - Seed: 2020
+2025-10-23 18:24:07 - INFO - ============================================================
+
+2025-10-23 18:24:07 - INFO - >>SEED: 2020
+2025-10-23 18:24:08 - INFO - >>DEVICE: cuda
+2025-10-23 18:24:08 - INFO - 
+============================================================
+2025-10-23 18:24:08 - INFO - Loading dataset: amazon-book_subset_10000
+2025-10-23 18:24:08 - INFO - ============================================================
+2025-10-23 18:24:17 - INFO - Dataset Statistics:
+2025-10-23 18:24:17 - INFO -   - Users: 19930
+2025-10-23 18:24:17 - INFO -   - Items: 10000
+2025-10-23 18:24:17 - INFO -   - Train interactions: 365328
+2025-10-23 18:24:17 - INFO -   - Test interactions: 65052
+2025-10-23 18:24:17 - INFO - ✓ Semantic graph loaded successfully
+2025-10-23 18:24:17 - INFO - 
+============================================================
+2025-10-23 18:24:17 - INFO - Building Dual-Graph LightGCN with Alignment
+2025-10-23 18:24:17 - INFO - ============================================================
+2025-10-23 18:24:18 - INFO - Model Architecture:
+2025-10-23 18:24:18 - INFO -   - Embedding dim: 64
+2025-10-23 18:24:18 - INFO -   - UI graph layers: 3
+2025-10-23 18:24:18 - INFO -   - Semantic layers: 2
+2025-10-23 18:24:18 - INFO -   - Semantic weight: 0.5
+2025-10-23 18:24:18 - INFO - 
+Optimization:
+2025-10-23 18:24:18 - INFO -   - Learning rate: 0.0005
+2025-10-23 18:24:18 - INFO -   - Weight decay: 0.001
+2025-10-23 18:24:18 - INFO -   - Dropout: True (keep_prob=0.7)
+2025-10-23 18:24:18 - INFO -   - Batch size: 2048
+2025-10-23 18:24:39 - INFO - 
+Model checkpoint: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../checkpoints/dualgraph_align_hybrid/dualgraph_align_hybrid-amazon-book_subset_10000-64.pth.tar
+2025-10-23 18:24:39 - INFO - Feature type: CLIP+GPT Hybrid
+2025-10-23 18:24:39 - INFO - Alignment: enabled (λ=0.1, τ=0.07)
+2025-10-23 18:24:39 - INFO - Tensorboard: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../runs/10-23-18h24m39s-dual-graph-align
+2025-10-23 18:24:39 - INFO - 
+============================================================
+2025-10-23 18:24:39 - INFO - Training for 60 epochs
+2025-10-23 18:24:39 - INFO - ============================================================
+
+2025-10-23 18:24:39 - INFO - 
+[TEST] Epoch 0
+2025-10-23 18:24:44 - INFO -   Recall@[20]: [0.00162869]
+2025-10-23 18:24:44 - INFO -   Precision@[20]: [0.00035826]
+2025-10-23 18:24:44 - INFO -   NDCG@[20]: [0.00087977]
+2025-10-23 18:24:44 - INFO - ✓ New best! Recall@20: 0.0016
+2025-10-23 18:24:56 - INFO - EPOCH[1/60] loss0.731[reg0.979+align0.3919]-|Sample:4.20| Time: 16.8s
+2025-10-23 18:25:05 - INFO - EPOCH[2/60] loss0.729[reg1.045+align0.3898]-|Sample:4.05| Time: 9.2s
+2025-10-23 18:25:15 - INFO - EPOCH[3/60] loss0.725[reg1.171+align0.3938]-|Sample:4.10| Time: 9.4s
+2025-10-23 18:25:24 - INFO - EPOCH[4/60] loss0.717[reg1.414+align0.4009]-|Sample:3.79| Time: 9.2s
+2025-10-23 18:25:33 - INFO - EPOCH[5/60] loss0.704[reg1.844+align0.4214]-|Sample:3.99| Time: 9.3s
+2025-10-23 18:25:43 - INFO - EPOCH[6/60] loss0.683[reg2.514+align0.4457]-|Sample:3.96| Time: 9.3s
+2025-10-23 18:25:52 - INFO - EPOCH[7/60] loss0.655[reg3.449+align0.4863]-|Sample:3.88| Time: 9.2s
+2025-10-23 18:26:02 - INFO - EPOCH[8/60] loss0.621[reg4.598+align0.5211]-|Sample:4.00| Time: 9.5s
+2025-10-23 18:26:11 - INFO - EPOCH[9/60] loss0.585[reg5.948+align0.5603]-|Sample:3.81| Time: 9.4s
+2025-10-23 18:26:21 - INFO - EPOCH[10/60] loss0.550[reg7.382+align0.5895]-|Sample:4.00| Time: 10.0s
+2025-10-23 18:26:21 - INFO - 
+[TEST] Epoch 10
+2025-10-23 18:26:24 - INFO -   Recall@[20]: [0.07560028]
+2025-10-23 18:26:24 - INFO -   Precision@[20]: [0.01323158]
+2025-10-23 18:26:24 - INFO -   NDCG@[20]: [0.04471583]
+2025-10-23 18:26:24 - INFO - ✓ New best! Recall@20: 0.0756
+2025-10-23 18:26:33 - INFO - EPOCH[11/60] loss0.515[reg8.927+align0.6160]-|Sample:3.90| Time: 11.8s
+2025-10-23 18:26:42 - INFO - EPOCH[12/60] loss0.484[reg10.460+align0.6324]-|Sample:3.79| Time: 8.9s
+2025-10-23 18:26:51 - INFO - EPOCH[13/60] loss0.455[reg11.996+align0.6437]-|Sample:3.89| Time: 9.2s
+2025-10-23 18:27:01 - INFO - EPOCH[14/60] loss0.429[reg13.519+align0.6541]-|Sample:3.74| Time: 9.4s
+2025-10-23 18:27:11 - INFO - EPOCH[15/60] loss0.408[reg14.977+align0.6557]-|Sample:4.03| Time: 10.2s
+2025-10-23 18:27:20 - INFO - EPOCH[16/60] loss0.387[reg16.407+align0.6554]-|Sample:3.80| Time: 9.1s
+2025-10-23 18:27:29 - INFO - EPOCH[17/60] loss0.370[reg17.803+align0.6539]-|Sample:3.93| Time: 9.3s
+2025-10-23 18:27:39 - INFO - EPOCH[18/60] loss0.355[reg19.111+align0.6489]-|Sample:3.94| Time: 9.7s
+2025-10-23 18:27:49 - INFO - EPOCH[19/60] loss0.340[reg20.362+align0.6418]-|Sample:3.77| Time: 9.7s
+2025-10-23 18:27:59 - INFO - EPOCH[20/60] loss0.328[reg21.606+align0.6366]-|Sample:4.08| Time: 10.2s
+2025-10-23 18:27:59 - INFO - 
+[TEST] Epoch 20
+2025-10-23 18:28:02 - INFO -   Recall@[20]: [0.08512391]
+2025-10-23 18:28:02 - INFO -   Precision@[20]: [0.01511922]
+2025-10-23 18:28:02 - INFO -   NDCG@[20]: [0.05043095]
+2025-10-23 18:28:02 - INFO - ✓ New best! Recall@20: 0.0851
+2025-10-23 18:28:11 - INFO - EPOCH[21/60] loss0.317[reg22.789+align0.6310]-|Sample:3.96| Time: 12.4s
+2025-10-23 18:28:21 - INFO - EPOCH[22/60] loss0.306[reg23.886+align0.6238]-|Sample:3.83| Time: 9.6s
+2025-10-23 18:28:31 - INFO - EPOCH[23/60] loss0.298[reg24.934+align0.6161]-|Sample:3.85| Time: 9.6s
+2025-10-23 18:28:40 - INFO - EPOCH[24/60] loss0.289[reg26.002+align0.6101]-|Sample:4.11| Time: 9.7s
+2025-10-23 18:28:50 - INFO - EPOCH[25/60] loss0.282[reg26.947+align0.6039]-|Sample:3.83| Time: 9.7s
+2025-10-23 18:29:00 - INFO - EPOCH[26/60] loss0.275[reg27.902+align0.5976]-|Sample:3.92| Time: 9.3s
+2025-10-23 18:29:09 - INFO - EPOCH[27/60] loss0.268[reg28.799+align0.5914]-|Sample:3.94| Time: 9.2s
+2025-10-23 18:29:18 - INFO - EPOCH[28/60] loss0.264[reg29.661+align0.5855]-|Sample:4.05| Time: 9.3s
+2025-10-23 18:29:28 - INFO - EPOCH[29/60] loss0.257[reg30.457+align0.5771]-|Sample:3.80| Time: 9.9s
+2025-10-23 18:29:37 - INFO - EPOCH[30/60] loss0.252[reg31.308+align0.5737]-|Sample:3.76| Time: 8.8s
+2025-10-23 18:29:37 - INFO - 
+[TEST] Epoch 30
+2025-10-23 18:29:40 - INFO -   Recall@[20]: [0.08777195]
+2025-10-23 18:29:40 - INFO -   Precision@[20]: [0.01576048]
+2025-10-23 18:29:40 - INFO -   NDCG@[20]: [0.05202287]
+2025-10-23 18:29:40 - INFO - ✓ New best! Recall@20: 0.0878
+2025-10-23 18:29:49 - INFO - EPOCH[31/60] loss0.248[reg32.099+align0.5686]-|Sample:3.99| Time: 12.5s
+2025-10-23 18:29:59 - INFO - EPOCH[32/60] loss0.243[reg32.801+align0.5637]-|Sample:3.78| Time: 9.1s
+2025-10-23 18:30:08 - INFO - EPOCH[33/60] loss0.239[reg33.522+align0.5579]-|Sample:3.93| Time: 9.4s
+2025-10-23 18:30:16 - INFO - EPOCH[34/60] loss0.236[reg34.263+align0.5534]-|Sample:3.78| Time: 8.4s
+2025-10-23 18:30:26 - INFO - EPOCH[35/60] loss0.232[reg34.881+align0.5500]-|Sample:3.85| Time: 9.1s
+2025-10-23 18:30:35 - INFO - EPOCH[36/60] loss0.228[reg35.575+align0.5436]-|Sample:4.06| Time: 9.7s
+2025-10-23 18:30:45 - INFO - EPOCH[37/60] loss0.226[reg36.202+align0.5440]-|Sample:3.90| Time: 9.7s
+2025-10-23 18:30:54 - INFO - EPOCH[38/60] loss0.221[reg36.766+align0.5377]-|Sample:4.17| Time: 9.3s
+2025-10-23 18:31:04 - INFO - EPOCH[39/60] loss0.220[reg37.391+align0.5350]-|Sample:4.06| Time: 9.4s
+2025-10-23 18:31:13 - INFO - EPOCH[40/60] loss0.217[reg37.921+align0.5308]-|Sample:3.88| Time: 8.8s
+2025-10-23 18:31:13 - INFO - 
+[TEST] Epoch 40
+2025-10-23 18:31:15 - INFO -   Recall@[20]: [0.08886219]
+2025-10-23 18:31:15 - INFO -   Precision@[20]: [0.01601939]
+2025-10-23 18:31:15 - INFO -   NDCG@[20]: [0.05242419]
+2025-10-23 18:31:15 - INFO - ✓ New best! Recall@20: 0.0889
+2025-10-23 18:31:24 - INFO - EPOCH[41/60] loss0.214[reg38.487+align0.5275]-|Sample:3.89| Time: 11.0s
+2025-10-23 18:31:33 - INFO - EPOCH[42/60] loss0.211[reg39.030+align0.5251]-|Sample:3.97| Time: 9.1s
+2025-10-23 18:31:43 - INFO - EPOCH[43/60] loss0.209[reg39.516+align0.5204]-|Sample:4.29| Time: 9.8s
+2025-10-23 18:31:51 - INFO - EPOCH[44/60] loss0.207[reg40.016+align0.5191]-|Sample:3.71| Time: 8.9s
+2025-10-23 18:32:00 - INFO - EPOCH[45/60] loss0.204[reg40.488+align0.5148]-|Sample:3.85| Time: 8.7s
+2025-10-23 18:32:10 - INFO - EPOCH[46/60] loss0.203[reg40.976+align0.5137]-|Sample:3.91| Time: 9.5s
+2025-10-23 18:32:19 - INFO - EPOCH[47/60] loss0.202[reg41.461+align0.5126]-|Sample:3.85| Time: 9.0s
+2025-10-23 18:32:28 - INFO - EPOCH[48/60] loss0.200[reg41.869+align0.5075]-|Sample:4.05| Time: 9.5s
+2025-10-23 18:32:37 - INFO - EPOCH[49/60] loss0.197[reg42.300+align0.5055]-|Sample:3.80| Time: 8.6s
+2025-10-23 18:32:46 - INFO - EPOCH[50/60] loss0.196[reg42.689+align0.5025]-|Sample:4.24| Time: 9.0s
+2025-10-23 18:32:46 - INFO - 
+[TEST] Epoch 50
+2025-10-23 18:32:49 - INFO -   Recall@[20]: [0.08897985]
+2025-10-23 18:32:49 - INFO -   Precision@[20]: [0.01604648]
+2025-10-23 18:32:49 - INFO -   NDCG@[20]: [0.05241773]
+2025-10-23 18:32:49 - INFO - ✓ New best! Recall@20: 0.0890
+2025-10-23 18:32:57 - INFO - EPOCH[51/60] loss0.194[reg43.110+align0.5014]-|Sample:3.84| Time: 11.4s
+2025-10-23 18:33:07 - INFO - EPOCH[52/60] loss0.193[reg43.524+align0.5002]-|Sample:3.80| Time: 9.3s
+2025-10-23 18:33:16 - INFO - EPOCH[53/60] loss0.191[reg43.871+align0.4965]-|Sample:4.00| Time: 9.3s
+2025-10-23 18:33:25 - INFO - EPOCH[54/60] loss0.189[reg44.281+align0.4961]-|Sample:3.92| Time: 9.0s
+2025-10-23 18:33:34 - INFO - EPOCH[55/60] loss0.188[reg44.611+align0.4951]-|Sample:4.04| Time: 9.3s
+2025-10-23 18:33:47 - INFO - EPOCH[56/60] loss0.186[reg44.992+align0.4920]-|Sample:4.09| Time: 9.7s
+2025-10-23 18:33:56 - INFO - EPOCH[57/60] loss0.185[reg45.331+align0.4901]-|Sample:3.86| Time: 9.5s
+2025-10-23 18:34:05 - INFO - EPOCH[58/60] loss0.185[reg45.681+align0.4915]-|Sample:3.83| Time: 9.1s
+2025-10-23 18:34:15 - INFO - EPOCH[59/60] loss0.184[reg46.002+align0.4908]-|Sample:3.94| Time: 9.7s
+2025-10-23 18:34:24 - INFO - EPOCH[60/60] loss0.182[reg46.293+align0.4879]-|Sample:3.86| Time: 9.3s
+2025-10-23 18:34:24 - INFO - 
+============================================================
+2025-10-23 18:34:24 - INFO - Final Evaluation
+2025-10-23 18:34:24 - INFO - ============================================================
+2025-10-23 18:34:27 - INFO - 
+Final Results:
+2025-10-23 18:34:27 - INFO -   Recall@[20]: [0.08877516]
+2025-10-23 18:34:27 - INFO -   Precision@[20]: [0.01607358]
+2025-10-23 18:34:27 - INFO -   NDCG@[20]: [0.0523344]
+2025-10-23 18:34:27 - INFO - 
+Best: Epoch 50, Recall@20: 0.0890
+2025-10-23 18:34:27 - INFO - 
+✓ Training completed!
+2025-10-23 18:34:27 - INFO - Log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_align_hybrid/train_dualgraph_align_hybrid_amazon-book_subset_10000_20251023_182407.log

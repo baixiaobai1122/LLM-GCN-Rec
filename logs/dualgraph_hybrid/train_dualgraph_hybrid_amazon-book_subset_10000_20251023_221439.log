@@ -1,0 +1,840 @@
+2025-10-23 22:14:39 - INFO - Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251023_221439.log
+2025-10-23 22:14:39 - INFO - 
+============================================================
+2025-10-23 22:14:39 - INFO -  HYBRID FEATURES MODE: CLIP + GPT
+2025-10-23 22:14:39 - INFO - Semantic graph file: hybrid_semantic_graph.npz
+2025-10-23 22:14:39 - INFO - ============================================================
+
+2025-10-23 22:14:40 - INFO - >>SEED: 2020
+2025-10-23 22:14:40 - INFO - >>DEVICE: cuda
+2025-10-23 22:14:40 - INFO - 
+============================================================
+2025-10-23 22:14:40 - INFO - Loading dataset: amazon-book_subset_10000
+2025-10-23 22:14:40 - INFO - ============================================================
+2025-10-23 22:14:49 - INFO - Dataset Statistics:
+2025-10-23 22:14:49 - INFO -   - Users: 19930
+2025-10-23 22:14:49 - INFO -   - Items: 10000
+2025-10-23 22:14:49 - INFO -   - Train interactions: 365328
+2025-10-23 22:14:49 - INFO -   - Test interactions: 65052
+2025-10-23 22:14:50 - INFO - ✓ Semantic graph loaded successfully
+2025-10-23 22:14:50 - INFO - 
+============================================================
+2025-10-23 22:14:50 - INFO - Building Dual-Graph LightGCN
+2025-10-23 22:14:50 - INFO - ============================================================
+2025-10-23 22:14:50 - INFO - 
+============================================================
+2025-10-23 22:14:50 - INFO - Model Configuration
+2025-10-23 22:14:50 - INFO - ============================================================
+2025-10-23 22:14:50 - INFO -   - Model: Dual-Graph LightGCN
+2025-10-23 22:14:50 - INFO -   - Embedding dim: 64
+2025-10-23 22:14:50 - INFO -   - UI graph layers: 3
+2025-10-23 22:14:50 - INFO -   - Semantic layers: 2
+2025-10-23 22:14:50 - INFO -   - Semantic weight: 0.5
+2025-10-23 22:14:50 - INFO - 
+Optimization:
+2025-10-23 22:14:50 - INFO -   - Learning rate: 0.001
+2025-10-23 22:14:50 - INFO -   - Weight decay: 0.0001
+2025-10-23 22:14:50 - INFO -   - Batch size: 2048
+2025-10-23 22:14:50 - INFO -   - Dropout: False (keep_prob=0.6)
+2025-10-23 22:14:50 - INFO -   - Seed: 2020
+2025-10-23 22:14:50 - INFO -   - Max epochs: 500
+2025-10-23 22:15:09 - INFO - 
+Model checkpoint: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../checkpoints/dualgraph_hybrid/dualgraph_hybrid-amazon-book_subset_10000-64.pth.tar
+2025-10-23 22:15:09 - INFO - Feature type: CLIP+GPT Hybrid
+2025-10-23 22:15:09 - INFO - Tensorboard: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../runs/10-23-22h15m09s-CLIP+GPT_hybrid
+2025-10-23 22:15:09 - INFO - 
+============================================================
+2025-10-23 22:15:09 - INFO - Training for 500 epochs
+2025-10-23 22:15:09 - INFO - ============================================================
+
+2025-10-23 22:15:09 - INFO - 
+[TEST] Epoch 0
+2025-10-23 22:15:13 - INFO -   Recall@[20]: [0.00162869]
+2025-10-23 22:15:13 - INFO -   Precision@[20]: [0.00035826]
+2025-10-23 22:15:13 - INFO -   NDCG@[20]: [0.00087977]
+2025-10-23 22:15:13 - INFO - ✓ New best! Recall@20: 0.0016
+2025-10-23 22:15:22 - INFO - EPOCH[1/500] loss0.689-|Sample:3.68| Time: 13.2s
+2025-10-23 22:15:28 - INFO - EPOCH[2/500] loss0.642-|Sample:3.77| Time: 6.6s
+2025-10-23 22:15:35 - INFO - EPOCH[3/500] loss0.509-|Sample:3.83| Time: 6.6s
+2025-10-23 22:15:42 - INFO - EPOCH[4/500] loss0.413-|Sample:3.65| Time: 6.5s
+2025-10-23 22:15:48 - INFO - EPOCH[5/500] loss0.352-|Sample:3.59| Time: 6.4s
+2025-10-23 22:15:55 - INFO - EPOCH[6/500] loss0.312-|Sample:3.76| Time: 6.6s
+2025-10-23 22:16:01 - INFO - EPOCH[7/500] loss0.284-|Sample:3.77| Time: 6.3s
+2025-10-23 22:16:06 - INFO - EPOCH[8/500] loss0.265-|Sample:3.14| Time: 5.4s
+2025-10-23 22:16:13 - INFO - EPOCH[9/500] loss0.247-|Sample:3.53| Time: 6.2s
+2025-10-23 22:16:19 - INFO - EPOCH[10/500] loss0.235-|Sample:3.80| Time: 6.6s
+2025-10-23 22:16:19 - INFO - 
+[TEST] Epoch 10
+2025-10-23 22:16:22 - INFO -   Recall@[20]: [0.0649936]
+2025-10-23 22:16:22 - INFO -   Precision@[20]: [0.01120243]
+2025-10-23 22:16:22 - INFO -   NDCG@[20]: [0.03741194]
+2025-10-23 22:16:22 - INFO - ✓ New best! Recall@20: 0.0650
+2025-10-23 22:16:28 - INFO - EPOCH[11/500] loss0.225-|Sample:3.61| Time: 8.7s
+2025-10-23 22:16:34 - INFO - EPOCH[12/500] loss0.215-|Sample:3.65| Time: 6.5s
+2025-10-23 22:16:41 - INFO - EPOCH[13/500] loss0.207-|Sample:3.78| Time: 6.6s
+2025-10-23 22:16:48 - INFO - EPOCH[14/500] loss0.198-|Sample:3.64| Time: 6.5s
+2025-10-23 22:16:54 - INFO - EPOCH[15/500] loss0.193-|Sample:3.98| Time: 6.8s
+2025-10-23 22:17:01 - INFO - EPOCH[16/500] loss0.186-|Sample:3.59| Time: 6.4s
+2025-10-23 22:17:07 - INFO - EPOCH[17/500] loss0.180-|Sample:3.67| Time: 6.4s
+2025-10-23 22:17:14 - INFO - EPOCH[18/500] loss0.176-|Sample:3.73| Time: 6.5s
+2025-10-23 22:17:20 - INFO - EPOCH[19/500] loss0.171-|Sample:3.68| Time: 6.5s
+2025-10-23 22:17:27 - INFO - EPOCH[20/500] loss0.166-|Sample:3.80| Time: 6.7s
+2025-10-23 22:17:27 - INFO - 
+[TEST] Epoch 20
+2025-10-23 22:17:30 - INFO -   Recall@[20]: [0.07204862]
+2025-10-23 22:17:30 - INFO -   Precision@[20]: [0.0127559]
+2025-10-23 22:17:30 - INFO -   NDCG@[20]: [0.04230786]
+2025-10-23 22:17:30 - INFO - ✓ New best! Recall@20: 0.0720
+2025-10-23 22:17:36 - INFO - EPOCH[21/500] loss0.163-|Sample:3.78| Time: 9.1s
+2025-10-23 22:17:43 - INFO - EPOCH[22/500] loss0.157-|Sample:3.62| Time: 6.5s
+2025-10-23 22:17:50 - INFO - EPOCH[23/500] loss0.153-|Sample:3.73| Time: 6.6s
+2025-10-23 22:17:56 - INFO - EPOCH[24/500] loss0.150-|Sample:3.80| Time: 6.7s
+2025-10-23 22:18:03 - INFO - EPOCH[25/500] loss0.146-|Sample:3.65| Time: 6.6s
+2025-10-23 22:18:10 - INFO - EPOCH[26/500] loss0.143-|Sample:3.69| Time: 6.6s
+2025-10-23 22:18:16 - INFO - EPOCH[27/500] loss0.140-|Sample:3.79| Time: 6.0s
+2025-10-23 22:18:22 - INFO - EPOCH[28/500] loss0.138-|Sample:3.67| Time: 6.6s
+2025-10-23 22:18:29 - INFO - EPOCH[29/500] loss0.134-|Sample:3.63| Time: 6.6s
+2025-10-23 22:18:36 - INFO - EPOCH[30/500] loss0.131-|Sample:3.75| Time: 6.6s
+2025-10-23 22:18:36 - INFO - 
+[TEST] Epoch 30
+2025-10-23 22:18:38 - INFO -   Recall@[20]: [0.07600299]
+2025-10-23 22:18:38 - INFO -   Precision@[20]: [0.01370123]
+2025-10-23 22:18:38 - INFO -   NDCG@[20]: [0.04455591]
+2025-10-23 22:18:38 - INFO - ✓ New best! Recall@20: 0.0760
+2025-10-23 22:18:45 - INFO - EPOCH[31/500] loss0.129-|Sample:3.69| Time: 9.1s
+2025-10-23 22:18:51 - INFO - EPOCH[32/500] loss0.125-|Sample:3.71| Time: 6.5s
+2025-10-23 22:18:58 - INFO - EPOCH[33/500] loss0.123-|Sample:3.76| Time: 6.6s
+2025-10-23 22:19:05 - INFO - EPOCH[34/500] loss0.121-|Sample:3.80| Time: 6.6s
+2025-10-23 22:19:11 - INFO - EPOCH[35/500] loss0.118-|Sample:3.62| Time: 6.6s
+2025-10-23 22:19:18 - INFO - EPOCH[36/500] loss0.117-|Sample:3.79| Time: 6.7s
+2025-10-23 22:19:25 - INFO - EPOCH[37/500] loss0.114-|Sample:3.68| Time: 6.6s
+2025-10-23 22:19:31 - INFO - EPOCH[38/500] loss0.111-|Sample:3.80| Time: 6.7s
+2025-10-23 22:19:38 - INFO - EPOCH[39/500] loss0.109-|Sample:3.80| Time: 6.7s
+2025-10-23 22:19:45 - INFO - EPOCH[40/500] loss0.107-|Sample:3.65| Time: 6.5s
+2025-10-23 22:19:45 - INFO - 
+[TEST] Epoch 40
+2025-10-23 22:19:47 - INFO -   Recall@[20]: [0.08006359]
+2025-10-23 22:19:47 - INFO -   Precision@[20]: [0.01445388]
+2025-10-23 22:19:47 - INFO -   NDCG@[20]: [0.046709]
+2025-10-23 22:19:47 - INFO - ✓ New best! Recall@20: 0.0801
+2025-10-23 22:19:53 - INFO - EPOCH[41/500] loss0.105-|Sample:3.81| Time: 8.4s
+2025-10-23 22:20:00 - INFO - EPOCH[42/500] loss0.103-|Sample:3.81| Time: 6.8s
+2025-10-23 22:20:07 - INFO - EPOCH[43/500] loss0.102-|Sample:3.97| Time: 7.0s
+2025-10-23 22:20:14 - INFO - EPOCH[44/500] loss0.100-|Sample:3.67| Time: 6.6s
+2025-10-23 22:20:20 - INFO - EPOCH[45/500] loss0.096-|Sample:3.70| Time: 6.6s
+2025-10-23 22:20:27 - INFO - EPOCH[46/500] loss0.096-|Sample:3.81| Time: 6.8s
+2025-10-23 22:20:34 - INFO - EPOCH[47/500] loss0.095-|Sample:3.62| Time: 6.6s
+2025-10-23 22:20:41 - INFO - EPOCH[48/500] loss0.093-|Sample:3.80| Time: 6.8s
+2025-10-23 22:20:47 - INFO - EPOCH[49/500] loss0.091-|Sample:3.68| Time: 6.7s
+2025-10-23 22:20:54 - INFO - EPOCH[50/500] loss0.090-|Sample:3.98| Time: 6.9s
+2025-10-23 22:20:54 - INFO - 
+[TEST] Epoch 50
+2025-10-23 22:20:57 - INFO -   Recall@[20]: [0.08190612]
+2025-10-23 22:20:57 - INFO -   Precision@[20]: [0.01486332]
+2025-10-23 22:20:57 - INFO -   NDCG@[20]: [0.0478894]
+2025-10-23 22:20:57 - INFO - ✓ New best! Recall@20: 0.0819
+2025-10-23 22:21:03 - INFO - EPOCH[51/500] loss0.088-|Sample:3.35| Time: 8.8s
+2025-10-23 22:21:09 - INFO - EPOCH[52/500] loss0.087-|Sample:3.66| Time: 5.9s
+2025-10-23 22:21:16 - INFO - EPOCH[53/500] loss0.086-|Sample:3.75| Time: 6.6s
+2025-10-23 22:21:22 - INFO - EPOCH[54/500] loss0.084-|Sample:3.52| Time: 6.3s
+2025-10-23 22:21:29 - INFO - EPOCH[55/500] loss0.083-|Sample:3.62| Time: 6.4s
+2025-10-23 22:21:35 - INFO - EPOCH[56/500] loss0.081-|Sample:3.70| Time: 6.6s
+2025-10-23 22:21:42 - INFO - EPOCH[57/500] loss0.080-|Sample:3.62| Time: 6.7s
+2025-10-23 22:21:48 - INFO - EPOCH[58/500] loss0.079-|Sample:3.62| Time: 6.4s
+2025-10-23 22:21:55 - INFO - EPOCH[59/500] loss0.078-|Sample:3.60| Time: 6.5s
+2025-10-23 22:22:00 - INFO - EPOCH[60/500] loss0.077-|Sample:3.39| Time: 5.3s
+2025-10-23 22:22:00 - INFO - 
+[TEST] Epoch 60
+2025-10-23 22:22:03 - INFO -   Recall@[20]: [0.0845776]
+2025-10-23 22:22:03 - INFO -   Precision@[20]: [0.01532996]
+2025-10-23 22:22:03 - INFO -   NDCG@[20]: [0.04958234]
+2025-10-23 22:22:03 - INFO - ✓ New best! Recall@20: 0.0846
+2025-10-23 22:22:08 - INFO - EPOCH[61/500] loss0.075-|Sample:3.48| Time: 8.3s
+2025-10-23 22:22:15 - INFO - EPOCH[62/500] loss0.074-|Sample:3.56| Time: 6.4s
+2025-10-23 22:22:21 - INFO - EPOCH[63/500] loss0.072-|Sample:3.50| Time: 6.3s
+2025-10-23 22:22:28 - INFO - EPOCH[64/500] loss0.073-|Sample:3.64| Time: 6.6s
+2025-10-23 22:22:35 - INFO - EPOCH[65/500] loss0.071-|Sample:3.87| Time: 6.9s
+2025-10-23 22:22:41 - INFO - EPOCH[66/500] loss0.070-|Sample:3.71| Time: 6.6s
+2025-10-23 22:22:48 - INFO - EPOCH[67/500] loss0.069-|Sample:3.61| Time: 6.4s
+2025-10-23 22:22:54 - INFO - EPOCH[68/500] loss0.068-|Sample:3.60| Time: 6.4s
+2025-10-23 22:23:01 - INFO - EPOCH[69/500] loss0.068-|Sample:3.49| Time: 6.3s
+2025-10-23 22:23:07 - INFO - EPOCH[70/500] loss0.067-|Sample:3.50| Time: 6.4s
+2025-10-23 22:23:07 - INFO - 
+[TEST] Epoch 70
+2025-10-23 22:23:09 - INFO -   Recall@[20]: [0.08635132]
+2025-10-23 22:23:09 - INFO -   Precision@[20]: [0.01561898]
+2025-10-23 22:23:09 - INFO -   NDCG@[20]: [0.05051815]
+2025-10-23 22:23:09 - INFO - ✓ New best! Recall@20: 0.0864
+2025-10-23 22:23:16 - INFO - EPOCH[71/500] loss0.066-|Sample:3.74| Time: 9.1s
+2025-10-23 22:23:23 - INFO - EPOCH[72/500] loss0.065-|Sample:3.89| Time: 7.0s
+2025-10-23 22:23:30 - INFO - EPOCH[73/500] loss0.065-|Sample:3.67| Time: 6.6s
+2025-10-23 22:23:36 - INFO - EPOCH[74/500] loss0.064-|Sample:3.76| Time: 6.6s
+2025-10-23 22:23:43 - INFO - EPOCH[75/500] loss0.063-|Sample:3.59| Time: 6.3s
+2025-10-23 22:23:49 - INFO - EPOCH[76/500] loss0.062-|Sample:3.09| Time: 6.0s
+2025-10-23 22:23:56 - INFO - EPOCH[77/500] loss0.062-|Sample:3.75| Time: 6.8s
+2025-10-23 22:24:02 - INFO - EPOCH[78/500] loss0.061-|Sample:3.60| Time: 6.5s
+2025-10-23 22:24:09 - INFO - EPOCH[79/500] loss0.060-|Sample:3.84| Time: 6.8s
+2025-10-23 22:24:16 - INFO - EPOCH[80/500] loss0.059-|Sample:3.78| Time: 6.6s
+2025-10-23 22:24:16 - INFO - 
+[TEST] Epoch 80
+2025-10-23 22:24:18 - INFO -   Recall@[20]: [0.08803569]
+2025-10-23 22:24:18 - INFO -   Precision@[20]: [0.01585079]
+2025-10-23 22:24:18 - INFO -   NDCG@[20]: [0.05113039]
+2025-10-23 22:24:18 - INFO - ✓ New best! Recall@20: 0.0880
+2025-10-23 22:24:25 - INFO - EPOCH[81/500] loss0.059-|Sample:3.41| Time: 8.7s
+2025-10-23 22:24:31 - INFO - EPOCH[82/500] loss0.058-|Sample:3.77| Time: 6.7s
+2025-10-23 22:24:38 - INFO - EPOCH[83/500] loss0.057-|Sample:3.73| Time: 6.7s
+2025-10-23 22:24:45 - INFO - EPOCH[84/500] loss0.057-|Sample:3.70| Time: 6.7s
+2025-10-23 22:24:51 - INFO - EPOCH[85/500] loss0.057-|Sample:3.78| Time: 6.5s
+2025-10-23 22:24:58 - INFO - EPOCH[86/500] loss0.055-|Sample:3.58| Time: 6.4s
+2025-10-23 22:25:04 - INFO - EPOCH[87/500] loss0.055-|Sample:3.74| Time: 6.4s
+2025-10-23 22:25:10 - INFO - EPOCH[88/500] loss0.054-|Sample:3.63| Time: 5.5s
+2025-10-23 22:25:16 - INFO - EPOCH[89/500] loss0.054-|Sample:3.66| Time: 6.5s
+2025-10-23 22:25:23 - INFO - EPOCH[90/500] loss0.053-|Sample:3.68| Time: 6.5s
+2025-10-23 22:25:23 - INFO - 
+[TEST] Epoch 90
+2025-10-23 22:25:25 - INFO -   Recall@[20]: [0.08965179]
+2025-10-23 22:25:25 - INFO -   Precision@[20]: [0.01608863]
+2025-10-23 22:25:25 - INFO -   NDCG@[20]: [0.05222469]
+2025-10-23 22:25:25 - INFO - ✓ New best! Recall@20: 0.0897
+2025-10-23 22:25:32 - INFO - EPOCH[91/500] loss0.052-|Sample:3.61| Time: 8.9s
+2025-10-23 22:25:38 - INFO - EPOCH[92/500] loss0.052-|Sample:3.78| Time: 6.7s
+2025-10-23 22:25:45 - INFO - EPOCH[93/500] loss0.052-|Sample:3.68| Time: 6.5s
+2025-10-23 22:25:51 - INFO - EPOCH[94/500] loss0.051-|Sample:3.84| Time: 6.7s
+2025-10-23 22:25:58 - INFO - EPOCH[95/500] loss0.050-|Sample:3.65| Time: 6.4s
+2025-10-23 22:26:04 - INFO - EPOCH[96/500] loss0.050-|Sample:3.56| Time: 6.4s
+2025-10-23 22:26:10 - INFO - EPOCH[97/500] loss0.050-|Sample:3.52| Time: 6.2s
+2025-10-23 22:26:16 - INFO - EPOCH[98/500] loss0.049-|Sample:3.71| Time: 5.6s
+2025-10-23 22:26:21 - INFO - EPOCH[99/500] loss0.048-|Sample:3.49| Time: 5.4s
+2025-10-23 22:26:28 - INFO - EPOCH[100/500] loss0.048-|Sample:3.66| Time: 6.4s
+2025-10-23 22:26:28 - INFO - 
+[TEST] Epoch 100
+2025-10-23 22:26:30 - INFO -   Recall@[20]: [0.08949598]
+2025-10-23 22:26:30 - INFO -   Precision@[20]: [0.01616089]
+2025-10-23 22:26:30 - INFO -   NDCG@[20]: [0.05260743]
+2025-10-23 22:26:37 - INFO - EPOCH[101/500] loss0.048-|Sample:3.47| Time: 8.6s
+2025-10-23 22:26:42 - INFO - EPOCH[102/500] loss0.048-|Sample:3.63| Time: 5.6s
+2025-10-23 22:26:48 - INFO - EPOCH[103/500] loss0.047-|Sample:3.65| Time: 5.7s
+2025-10-23 22:26:54 - INFO - EPOCH[104/500] loss0.046-|Sample:3.61| Time: 6.4s
+2025-10-23 22:27:01 - INFO - EPOCH[105/500] loss0.046-|Sample:3.60| Time: 6.5s
+2025-10-23 22:27:07 - INFO - EPOCH[106/500] loss0.046-|Sample:3.73| Time: 6.5s
+2025-10-23 22:27:14 - INFO - EPOCH[107/500] loss0.045-|Sample:3.68| Time: 6.4s
+2025-10-23 22:27:20 - INFO - EPOCH[108/500] loss0.045-|Sample:3.69| Time: 6.4s
+2025-10-23 22:27:26 - INFO - EPOCH[109/500] loss0.044-|Sample:3.63| Time: 6.3s
+2025-10-23 22:27:33 - INFO - EPOCH[110/500] loss0.044-|Sample:3.80| Time: 6.2s
+2025-10-23 22:27:33 - INFO - 
+[TEST] Epoch 110
+2025-10-23 22:27:35 - INFO -   Recall@[20]: [0.09008742]
+2025-10-23 22:27:35 - INFO -   Precision@[20]: [0.01623615]
+2025-10-23 22:27:35 - INFO -   NDCG@[20]: [0.05313817]
+2025-10-23 22:27:35 - INFO - ✓ New best! Recall@20: 0.0901
+2025-10-23 22:27:42 - INFO - EPOCH[111/500] loss0.045-|Sample:3.70| Time: 9.0s
+2025-10-23 22:27:49 - INFO - EPOCH[112/500] loss0.043-|Sample:3.93| Time: 6.9s
+2025-10-23 22:27:56 - INFO - EPOCH[113/500] loss0.043-|Sample:3.92| Time: 6.7s
+2025-10-23 22:28:03 - INFO - EPOCH[114/500] loss0.043-|Sample:3.58| Time: 6.5s
+2025-10-23 22:28:10 - INFO - EPOCH[115/500] loss0.043-|Sample:3.87| Time: 6.8s
+2025-10-23 22:28:17 - INFO - EPOCH[116/500] loss0.043-|Sample:3.61| Time: 6.5s
+2025-10-23 22:28:23 - INFO - EPOCH[117/500] loss0.042-|Sample:3.58| Time: 6.5s
+2025-10-23 22:28:30 - INFO - EPOCH[118/500] loss0.042-|Sample:3.63| Time: 6.4s
+2025-10-23 22:28:36 - INFO - EPOCH[119/500] loss0.041-|Sample:3.28| Time: 6.0s
+2025-10-23 22:28:42 - INFO - EPOCH[120/500] loss0.042-|Sample:3.34| Time: 6.1s
+2025-10-23 22:28:42 - INFO - 
+[TEST] Epoch 120
+2025-10-23 22:28:44 - INFO -   Recall@[20]: [0.09133979]
+2025-10-23 22:28:44 - INFO -   Precision@[20]: [0.01635959]
+2025-10-23 22:28:44 - INFO -   NDCG@[20]: [0.05365676]
+2025-10-23 22:28:44 - INFO - ✓ New best! Recall@20: 0.0913
+2025-10-23 22:28:50 - INFO - EPOCH[121/500] loss0.041-|Sample:3.15| Time: 8.1s
+2025-10-23 22:28:57 - INFO - EPOCH[122/500] loss0.041-|Sample:3.57| Time: 6.3s
+2025-10-23 22:29:03 - INFO - EPOCH[123/500] loss0.040-|Sample:3.47| Time: 6.2s
+2025-10-23 22:29:10 - INFO - EPOCH[124/500] loss0.041-|Sample:3.46| Time: 6.3s
+2025-10-23 22:29:17 - INFO - EPOCH[125/500] loss0.040-|Sample:3.95| Time: 7.0s
+2025-10-23 22:29:25 - INFO - EPOCH[126/500] loss0.039-|Sample:3.89| Time: 6.9s
+2025-10-23 22:29:31 - INFO - EPOCH[127/500] loss0.040-|Sample:3.79| Time: 6.6s
+2025-10-23 22:29:37 - INFO - EPOCH[128/500] loss0.039-|Sample:3.75| Time: 6.3s
+2025-10-23 22:29:44 - INFO - EPOCH[129/500] loss0.038-|Sample:3.71| Time: 6.7s
+2025-10-23 22:29:51 - INFO - EPOCH[130/500] loss0.038-|Sample:3.85| Time: 6.8s
+2025-10-23 22:29:51 - INFO - 
+[TEST] Epoch 130
+2025-10-23 22:29:54 - INFO -   Recall@[20]: [0.092183]
+2025-10-23 22:29:54 - INFO -   Precision@[20]: [0.01654323]
+2025-10-23 22:29:54 - INFO -   NDCG@[20]: [0.05427403]
+2025-10-23 22:29:54 - INFO - ✓ New best! Recall@20: 0.0922
+2025-10-23 22:30:00 - INFO - EPOCH[131/500] loss0.038-|Sample:3.57| Time: 8.9s
+2025-10-23 22:30:07 - INFO - EPOCH[132/500] loss0.038-|Sample:3.86| Time: 6.9s
+2025-10-23 22:30:14 - INFO - EPOCH[133/500] loss0.038-|Sample:3.71| Time: 6.8s
+2025-10-23 22:30:22 - INFO - EPOCH[134/500] loss0.038-|Sample:3.99| Time: 7.1s
+2025-10-23 22:30:28 - INFO - EPOCH[135/500] loss0.037-|Sample:3.70| Time: 6.6s
+2025-10-23 22:30:34 - INFO - EPOCH[136/500] loss0.037-|Sample:3.50| Time: 5.4s
+2025-10-23 22:30:40 - INFO - EPOCH[137/500] loss0.037-|Sample:3.58| Time: 6.3s
+2025-10-23 22:30:47 - INFO - EPOCH[138/500] loss0.036-|Sample:3.62| Time: 6.4s
+2025-10-23 22:30:53 - INFO - EPOCH[139/500] loss0.036-|Sample:3.47| Time: 5.7s
+2025-10-23 22:30:59 - INFO - EPOCH[140/500] loss0.036-|Sample:3.60| Time: 6.4s
+2025-10-23 22:31:00 - INFO - 
+[TEST] Epoch 140
+2025-10-23 22:31:02 - INFO -   Recall@[20]: [0.09173291]
+2025-10-23 22:31:02 - INFO -   Precision@[20]: [0.01653721]
+2025-10-23 22:31:02 - INFO -   NDCG@[20]: [0.05415873]
+2025-10-23 22:31:09 - INFO - EPOCH[141/500] loss0.036-|Sample:3.51| Time: 8.6s
+2025-10-23 22:31:15 - INFO - EPOCH[142/500] loss0.035-|Sample:3.48| Time: 6.1s
+2025-10-23 22:31:21 - INFO - EPOCH[143/500] loss0.036-|Sample:3.49| Time: 6.0s
+2025-10-23 22:31:27 - INFO - EPOCH[144/500] loss0.035-|Sample:3.57| Time: 5.8s
+2025-10-23 22:31:33 - INFO - EPOCH[145/500] loss0.035-|Sample:3.47| Time: 6.4s
+2025-10-23 22:31:40 - INFO - EPOCH[146/500] loss0.035-|Sample:3.56| Time: 6.3s
+2025-10-23 22:31:46 - INFO - EPOCH[147/500] loss0.035-|Sample:3.46| Time: 6.3s
+2025-10-23 22:31:53 - INFO - EPOCH[148/500] loss0.035-|Sample:3.67| Time: 6.4s
+2025-10-23 22:31:59 - INFO - EPOCH[149/500] loss0.035-|Sample:3.45| Time: 6.3s
+2025-10-23 22:32:05 - INFO - EPOCH[150/500] loss0.035-|Sample:3.47| Time: 6.2s
+2025-10-23 22:32:05 - INFO - 
+[TEST] Epoch 150
+2025-10-23 22:32:08 - INFO -   Recall@[20]: [0.09201987]
+2025-10-23 22:32:08 - INFO -   Precision@[20]: [0.0166185]
+2025-10-23 22:32:08 - INFO -   NDCG@[20]: [0.05443328]
+2025-10-23 22:32:14 - INFO - EPOCH[151/500] loss0.034-|Sample:3.68| Time: 8.7s
+2025-10-23 22:32:19 - INFO - EPOCH[152/500] loss0.034-|Sample:3.63| Time: 5.5s
+2025-10-23 22:32:25 - INFO - EPOCH[153/500] loss0.034-|Sample:3.74| Time: 5.7s
+2025-10-23 22:32:31 - INFO - EPOCH[154/500] loss0.034-|Sample:3.84| Time: 6.3s
+2025-10-23 22:32:38 - INFO - EPOCH[155/500] loss0.033-|Sample:3.57| Time: 6.2s
+2025-10-23 22:32:44 - INFO - EPOCH[156/500] loss0.033-|Sample:3.56| Time: 6.1s
+2025-10-23 22:32:50 - INFO - EPOCH[157/500] loss0.033-|Sample:3.47| Time: 5.9s
+2025-10-23 22:32:55 - INFO - EPOCH[158/500] loss0.033-|Sample:3.45| Time: 5.8s
+2025-10-23 22:33:02 - INFO - EPOCH[159/500] loss0.033-|Sample:3.56| Time: 6.4s
+2025-10-23 22:33:08 - INFO - EPOCH[160/500] loss0.033-|Sample:3.56| Time: 5.6s
+2025-10-23 22:33:08 - INFO - 
+[TEST] Epoch 160
+2025-10-23 22:33:10 - INFO -   Recall@[20]: [0.09209479]
+2025-10-23 22:33:10 - INFO -   Precision@[20]: [0.01666667]
+2025-10-23 22:33:10 - INFO -   NDCG@[20]: [0.05433883]
+2025-10-23 22:33:15 - INFO - EPOCH[161/500] loss0.033-|Sample:3.32| Time: 7.6s
+2025-10-23 22:33:21 - INFO - EPOCH[162/500] loss0.032-|Sample:3.13| Time: 5.6s
+2025-10-23 22:33:26 - INFO - EPOCH[163/500] loss0.032-|Sample:3.16| Time: 5.0s
+2025-10-23 22:33:31 - INFO - EPOCH[164/500] loss0.032-|Sample:3.44| Time: 5.3s
+2025-10-23 22:33:37 - INFO - EPOCH[165/500] loss0.032-|Sample:3.44| Time: 5.3s
+2025-10-23 22:33:42 - INFO - EPOCH[166/500] loss0.032-|Sample:3.61| Time: 5.5s
+2025-10-23 22:33:48 - INFO - EPOCH[167/500] loss0.032-|Sample:3.78| Time: 6.2s
+2025-10-23 22:33:55 - INFO - EPOCH[168/500] loss0.031-|Sample:3.84| Time: 6.6s
+2025-10-23 22:34:01 - INFO - EPOCH[169/500] loss0.031-|Sample:3.57| Time: 5.8s
+2025-10-23 22:34:07 - INFO - EPOCH[170/500] loss0.032-|Sample:3.51| Time: 6.4s
+2025-10-23 22:34:07 - INFO - 
+[TEST] Epoch 170
+2025-10-23 22:34:10 - INFO -   Recall@[20]: [0.0924366]
+2025-10-23 22:34:10 - INFO -   Precision@[20]: [0.01672387]
+2025-10-23 22:34:10 - INFO -   NDCG@[20]: [0.05459726]
+2025-10-23 22:34:10 - INFO - ✓ New best! Recall@20: 0.0924
+2025-10-23 22:34:16 - INFO - EPOCH[171/500] loss0.032-|Sample:3.61| Time: 8.9s
+2025-10-23 22:34:23 - INFO - EPOCH[172/500] loss0.031-|Sample:3.83| Time: 6.8s
+2025-10-23 22:34:30 - INFO - EPOCH[173/500] loss0.032-|Sample:3.46| Time: 6.4s
+2025-10-23 22:34:36 - INFO - EPOCH[174/500] loss0.030-|Sample:3.51| Time: 6.5s
+2025-10-23 22:34:43 - INFO - EPOCH[175/500] loss0.031-|Sample:3.81| Time: 6.9s
+2025-10-23 22:34:50 - INFO - EPOCH[176/500] loss0.031-|Sample:3.69| Time: 6.7s
+2025-10-23 22:34:56 - INFO - EPOCH[177/500] loss0.031-|Sample:3.46| Time: 6.4s
+2025-10-23 22:35:03 - INFO - EPOCH[178/500] loss0.031-|Sample:3.85| Time: 6.8s
+2025-10-23 22:35:10 - INFO - EPOCH[179/500] loss0.030-|Sample:3.64| Time: 6.6s
+2025-10-23 22:35:16 - INFO - EPOCH[180/500] loss0.030-|Sample:3.67| Time: 6.5s
+2025-10-23 22:35:17 - INFO - 
+[TEST] Epoch 180
+2025-10-23 22:35:19 - INFO -   Recall@[20]: [0.09255107]
+2025-10-23 22:35:19 - INFO -   Precision@[20]: [0.01667269]
+2025-10-23 22:35:19 - INFO -   NDCG@[20]: [0.05460542]
+2025-10-23 22:35:19 - INFO - ✓ New best! Recall@20: 0.0926
+2025-10-23 22:35:25 - INFO - EPOCH[181/500] loss0.030-|Sample:3.51| Time: 8.7s
+2025-10-23 22:35:31 - INFO - EPOCH[182/500] loss0.030-|Sample:3.18| Time: 6.0s
+2025-10-23 22:35:37 - INFO - EPOCH[183/500] loss0.030-|Sample:3.47| Time: 6.2s
+2025-10-23 22:35:44 - INFO - EPOCH[184/500] loss0.030-|Sample:3.45| Time: 6.3s
+2025-10-23 22:35:51 - INFO - EPOCH[185/500] loss0.030-|Sample:3.80| Time: 6.7s
+2025-10-23 22:35:57 - INFO - EPOCH[186/500] loss0.029-|Sample:3.77| Time: 6.8s
+2025-10-23 22:36:04 - INFO - EPOCH[187/500] loss0.030-|Sample:3.81| Time: 6.8s
+2025-10-23 22:36:11 - INFO - EPOCH[188/500] loss0.029-|Sample:3.79| Time: 6.5s
+2025-10-23 22:36:17 - INFO - EPOCH[189/500] loss0.029-|Sample:3.48| Time: 6.3s
+2025-10-23 22:36:24 - INFO - EPOCH[190/500] loss0.030-|Sample:3.55| Time: 6.3s
+2025-10-23 22:36:24 - INFO - 
+[TEST] Epoch 190
+2025-10-23 22:36:26 - INFO -   Recall@[20]: [0.0927539]
+2025-10-23 22:36:26 - INFO -   Precision@[20]: [0.01672989]
+2025-10-23 22:36:26 - INFO -   NDCG@[20]: [0.05483254]
+2025-10-23 22:36:26 - INFO - ✓ New best! Recall@20: 0.0928
+2025-10-23 22:36:32 - INFO - EPOCH[191/500] loss0.029-|Sample:3.55| Time: 8.8s
+2025-10-23 22:36:39 - INFO - EPOCH[192/500] loss0.029-|Sample:3.49| Time: 6.3s
+2025-10-23 22:36:45 - INFO - EPOCH[193/500] loss0.029-|Sample:3.48| Time: 6.5s
+2025-10-23 22:36:52 - INFO - EPOCH[194/500] loss0.029-|Sample:3.80| Time: 6.7s
+2025-10-23 22:36:58 - INFO - EPOCH[195/500] loss0.029-|Sample:3.53| Time: 6.3s
+2025-10-23 22:37:04 - INFO - EPOCH[196/500] loss0.029-|Sample:3.46| Time: 6.2s
+2025-10-23 22:37:11 - INFO - EPOCH[197/500] loss0.029-|Sample:3.59| Time: 6.3s
+2025-10-23 22:37:18 - INFO - EPOCH[198/500] loss0.028-|Sample:3.71| Time: 6.7s
+2025-10-23 22:37:24 - INFO - EPOCH[199/500] loss0.028-|Sample:3.61| Time: 6.6s
+2025-10-23 22:37:31 - INFO - EPOCH[200/500] loss0.028-|Sample:3.78| Time: 6.5s
+2025-10-23 22:37:31 - INFO - 
+[TEST] Epoch 200
+2025-10-23 22:37:33 - INFO -   Recall@[20]: [0.0928318]
+2025-10-23 22:37:33 - INFO -   Precision@[20]: [0.01676903]
+2025-10-23 22:37:33 - INFO -   NDCG@[20]: [0.05464667]
+2025-10-23 22:37:33 - INFO - ✓ New best! Recall@20: 0.0928
+2025-10-23 22:37:38 - INFO - EPOCH[201/500] loss0.028-|Sample:3.36| Time: 7.7s
+2025-10-23 22:37:43 - INFO - EPOCH[202/500] loss0.028-|Sample:3.08| Time: 4.9s
+2025-10-23 22:37:50 - INFO - EPOCH[203/500] loss0.028-|Sample:3.44| Time: 6.2s
+2025-10-23 22:37:56 - INFO - EPOCH[204/500] loss0.028-|Sample:3.58| Time: 6.4s
+2025-10-23 22:38:02 - INFO - EPOCH[205/500] loss0.028-|Sample:3.46| Time: 6.3s
+2025-10-23 22:38:09 - INFO - EPOCH[206/500] loss0.028-|Sample:3.57| Time: 6.4s
+2025-10-23 22:38:15 - INFO - EPOCH[207/500] loss0.028-|Sample:3.44| Time: 6.2s
+2025-10-23 22:38:22 - INFO - EPOCH[208/500] loss0.028-|Sample:3.70| Time: 6.7s
+2025-10-23 22:38:28 - INFO - EPOCH[209/500] loss0.028-|Sample:3.57| Time: 6.5s
+2025-10-23 22:38:35 - INFO - EPOCH[210/500] loss0.027-|Sample:3.49| Time: 6.2s
+2025-10-23 22:38:35 - INFO - 
+[TEST] Epoch 210
+2025-10-23 22:38:38 - INFO -   Recall@[20]: [0.09336997]
+2025-10-23 22:38:38 - INFO -   Precision@[20]: [0.01682021]
+2025-10-23 22:38:38 - INFO -   NDCG@[20]: [0.05469477]
+2025-10-23 22:38:38 - INFO - ✓ New best! Recall@20: 0.0934
+2025-10-23 22:38:45 - INFO - EPOCH[211/500] loss0.027-|Sample:3.52| Time: 9.3s
+2025-10-23 22:38:51 - INFO - EPOCH[212/500] loss0.027-|Sample:3.62| Time: 6.4s
+2025-10-23 22:38:58 - INFO - EPOCH[213/500] loss0.027-|Sample:3.54| Time: 6.4s
+2025-10-23 22:39:04 - INFO - EPOCH[214/500] loss0.027-|Sample:3.56| Time: 6.4s
+2025-10-23 22:39:11 - INFO - EPOCH[215/500] loss0.027-|Sample:3.46| Time: 6.2s
+2025-10-23 22:39:17 - INFO - EPOCH[216/500] loss0.027-|Sample:3.56| Time: 6.4s
+2025-10-23 22:39:23 - INFO - EPOCH[217/500] loss0.027-|Sample:3.40| Time: 5.6s
+2025-10-23 22:39:29 - INFO - EPOCH[218/500] loss0.027-|Sample:3.44| Time: 6.2s
+2025-10-23 22:39:36 - INFO - EPOCH[219/500] loss0.027-|Sample:3.54| Time: 6.4s
+2025-10-23 22:39:42 - INFO - EPOCH[220/500] loss0.027-|Sample:3.55| Time: 6.4s
+2025-10-23 22:39:42 - INFO - 
+[TEST] Epoch 220
+2025-10-23 22:39:44 - INFO -   Recall@[20]: [0.09351354]
+2025-10-23 22:39:44 - INFO -   Precision@[20]: [0.0168473]
+2025-10-23 22:39:44 - INFO -   NDCG@[20]: [0.05460264]
+2025-10-23 22:39:44 - INFO - ✓ New best! Recall@20: 0.0935
+2025-10-23 22:39:51 - INFO - EPOCH[221/500] loss0.027-|Sample:3.41| Time: 8.7s
+2025-10-23 22:39:57 - INFO - EPOCH[222/500] loss0.026-|Sample:3.57| Time: 6.4s
+2025-10-23 22:40:03 - INFO - EPOCH[223/500] loss0.027-|Sample:3.58| Time: 6.4s
+2025-10-23 22:40:10 - INFO - EPOCH[224/500] loss0.026-|Sample:3.48| Time: 6.3s
+2025-10-23 22:40:16 - INFO - EPOCH[225/500] loss0.026-|Sample:3.49| Time: 6.2s
+2025-10-23 22:40:22 - INFO - EPOCH[226/500] loss0.026-|Sample:3.57| Time: 6.4s
+2025-10-23 22:40:29 - INFO - EPOCH[227/500] loss0.026-|Sample:3.55| Time: 6.3s
+2025-10-23 22:40:34 - INFO - EPOCH[228/500] loss0.026-|Sample:3.55| Time: 5.5s
+2025-10-23 22:40:40 - INFO - EPOCH[229/500] loss0.026-|Sample:3.53| Time: 5.4s
+2025-10-23 22:40:46 - INFO - EPOCH[230/500] loss0.026-|Sample:3.43| Time: 5.7s
+2025-10-23 22:40:47 - INFO - 
+[TEST] Epoch 230
+2025-10-23 22:40:49 - INFO -   Recall@[20]: [0.09281051]
+2025-10-23 22:40:49 - INFO -   Precision@[20]: [0.01679612]
+2025-10-23 22:40:49 - INFO -   NDCG@[20]: [0.05448475]
+2025-10-23 22:40:55 - INFO - EPOCH[231/500] loss0.026-|Sample:3.39| Time: 8.1s
+2025-10-23 22:41:01 - INFO - EPOCH[232/500] loss0.026-|Sample:3.53| Time: 6.3s
+2025-10-23 22:41:08 - INFO - EPOCH[233/500] loss0.026-|Sample:3.79| Time: 6.7s
+2025-10-23 22:41:14 - INFO - EPOCH[234/500] loss0.026-|Sample:3.64| Time: 6.5s
+2025-10-23 22:41:21 - INFO - EPOCH[235/500] loss0.026-|Sample:3.80| Time: 6.7s
+2025-10-23 22:41:28 - INFO - EPOCH[236/500] loss0.026-|Sample:3.69| Time: 6.6s
+2025-10-23 22:41:34 - INFO - EPOCH[237/500] loss0.026-|Sample:3.61| Time: 6.6s
+2025-10-23 22:41:41 - INFO - EPOCH[238/500] loss0.026-|Sample:3.78| Time: 6.7s
+2025-10-23 22:41:47 - INFO - EPOCH[239/500] loss0.026-|Sample:3.51| Time: 6.3s
+2025-10-23 22:41:54 - INFO - EPOCH[240/500] loss0.026-|Sample:3.59| Time: 6.5s
+2025-10-23 22:41:54 - INFO - 
+[TEST] Epoch 240
+2025-10-23 22:41:56 - INFO -   Recall@[20]: [0.09355647]
+2025-10-23 22:41:56 - INFO -   Precision@[20]: [0.01682322]
+2025-10-23 22:41:56 - INFO -   NDCG@[20]: [0.05468857]
+2025-10-23 22:41:56 - INFO - ✓ New best! Recall@20: 0.0936
+2025-10-23 22:42:03 - INFO - EPOCH[241/500] loss0.026-|Sample:3.73| Time: 9.1s
+2025-10-23 22:42:10 - INFO - EPOCH[242/500] loss0.025-|Sample:3.82| Time: 6.8s
+2025-10-23 22:42:16 - INFO - EPOCH[243/500] loss0.025-|Sample:3.61| Time: 6.4s
+2025-10-23 22:42:23 - INFO - EPOCH[244/500] loss0.025-|Sample:3.51| Time: 6.3s
+2025-10-23 22:42:29 - INFO - EPOCH[245/500] loss0.026-|Sample:3.56| Time: 6.4s
+2025-10-23 22:42:35 - INFO - EPOCH[246/500] loss0.025-|Sample:3.56| Time: 6.4s
+2025-10-23 22:42:42 - INFO - EPOCH[247/500] loss0.025-|Sample:3.79| Time: 6.8s
+2025-10-23 22:42:49 - INFO - EPOCH[248/500] loss0.025-|Sample:3.85| Time: 6.8s
+2025-10-23 22:42:55 - INFO - EPOCH[249/500] loss0.025-|Sample:3.31| Time: 5.8s
+2025-10-23 22:43:01 - INFO - EPOCH[250/500] loss0.025-|Sample:3.63| Time: 6.3s
+2025-10-23 22:43:01 - INFO - 
+[TEST] Epoch 250
+2025-10-23 22:43:04 - INFO -   Recall@[20]: [0.09289529]
+2025-10-23 22:43:04 - INFO -   Precision@[20]: [0.01671484]
+2025-10-23 22:43:04 - INFO -   NDCG@[20]: [0.05454905]
+2025-10-23 22:43:10 - INFO - EPOCH[251/500] loss0.025-|Sample:3.53| Time: 8.7s
+2025-10-23 22:43:16 - INFO - EPOCH[252/500] loss0.025-|Sample:3.57| Time: 6.4s
+2025-10-23 22:43:23 - INFO - EPOCH[253/500] loss0.025-|Sample:3.67| Time: 6.6s
+2025-10-23 22:43:30 - INFO - EPOCH[254/500] loss0.025-|Sample:3.76| Time: 6.6s
+2025-10-23 22:43:36 - INFO - EPOCH[255/500] loss0.025-|Sample:3.75| Time: 6.7s
+2025-10-23 22:43:43 - INFO - EPOCH[256/500] loss0.025-|Sample:3.68| Time: 6.7s
+2025-10-23 22:43:50 - INFO - EPOCH[257/500] loss0.025-|Sample:3.63| Time: 6.4s
+2025-10-23 22:43:56 - INFO - EPOCH[258/500] loss0.025-|Sample:3.78| Time: 6.7s
+2025-10-23 22:44:03 - INFO - EPOCH[259/500] loss0.025-|Sample:3.70| Time: 6.6s
+2025-10-23 22:44:10 - INFO - EPOCH[260/500] loss0.025-|Sample:3.75| Time: 6.5s
+2025-10-23 22:44:10 - INFO - 
+[TEST] Epoch 260
+2025-10-23 22:44:12 - INFO -   Recall@[20]: [0.09343479]
+2025-10-23 22:44:12 - INFO -   Precision@[20]: [0.01685633]
+2025-10-23 22:44:12 - INFO -   NDCG@[20]: [0.05463924]
+2025-10-23 22:44:19 - INFO - EPOCH[261/500] loss0.025-|Sample:3.80| Time: 9.0s
+2025-10-23 22:44:24 - INFO - EPOCH[262/500] loss0.024-|Sample:3.72| Time: 5.6s
+2025-10-23 22:44:30 - INFO - EPOCH[263/500] loss0.024-|Sample:3.54| Time: 5.4s
+2025-10-23 22:44:35 - INFO - EPOCH[264/500] loss0.024-|Sample:3.69| Time: 5.6s
+2025-10-23 22:44:42 - INFO - EPOCH[265/500] loss0.025-|Sample:3.62| Time: 6.4s
+2025-10-23 22:44:48 - INFO - EPOCH[266/500] loss0.024-|Sample:3.85| Time: 6.5s
+2025-10-23 22:44:55 - INFO - EPOCH[267/500] loss0.024-|Sample:3.57| Time: 6.3s
+2025-10-23 22:45:01 - INFO - EPOCH[268/500] loss0.024-|Sample:3.76| Time: 6.6s
+2025-10-23 22:45:08 - INFO - EPOCH[269/500] loss0.024-|Sample:3.58| Time: 6.2s
+2025-10-23 22:45:13 - INFO - EPOCH[270/500] loss0.024-|Sample:3.58| Time: 5.5s
+2025-10-23 22:45:13 - INFO - 
+[TEST] Epoch 270
+2025-10-23 22:45:16 - INFO -   Recall@[20]: [0.09382648]
+2025-10-23 22:45:16 - INFO -   Precision@[20]: [0.01686838]
+2025-10-23 22:45:16 - INFO -   NDCG@[20]: [0.05489364]
+2025-10-23 22:45:16 - INFO - ✓ New best! Recall@20: 0.0938
+2025-10-23 22:45:22 - INFO - EPOCH[271/500] loss0.024-|Sample:3.75| Time: 9.2s
+2025-10-23 22:45:29 - INFO - EPOCH[272/500] loss0.024-|Sample:3.63| Time: 6.5s
+2025-10-23 22:45:35 - INFO - EPOCH[273/500] loss0.024-|Sample:3.64| Time: 6.3s
+2025-10-23 22:45:42 - INFO - EPOCH[274/500] loss0.024-|Sample:3.67| Time: 6.5s
+2025-10-23 22:45:48 - INFO - EPOCH[275/500] loss0.024-|Sample:3.49| Time: 6.3s
+2025-10-23 22:45:55 - INFO - EPOCH[276/500] loss0.024-|Sample:3.76| Time: 6.5s
+2025-10-23 22:46:01 - INFO - EPOCH[277/500] loss0.024-|Sample:3.55| Time: 6.2s
+2025-10-23 22:46:08 - INFO - EPOCH[278/500] loss0.024-|Sample:3.68| Time: 6.6s
+2025-10-23 22:46:14 - INFO - EPOCH[279/500] loss0.024-|Sample:3.92| Time: 6.4s
+2025-10-23 22:46:21 - INFO - EPOCH[280/500] loss0.024-|Sample:3.97| Time: 6.8s
+2025-10-23 22:46:21 - INFO - 
+[TEST] Epoch 280
+2025-10-23 22:46:24 - INFO -   Recall@[20]: [0.09366401]
+2025-10-23 22:46:24 - INFO -   Precision@[20]: [0.0168172]
+2025-10-23 22:46:24 - INFO -   NDCG@[20]: [0.05482631]
+2025-10-23 22:46:30 - INFO - EPOCH[281/500] loss0.024-|Sample:3.31| Time: 8.7s
+2025-10-23 22:46:36 - INFO - EPOCH[282/500] loss0.024-|Sample:3.14| Time: 6.1s
+2025-10-23 22:46:42 - INFO - EPOCH[283/500] loss0.024-|Sample:3.85| Time: 6.1s
+2025-10-23 22:46:49 - INFO - EPOCH[284/500] loss0.023-|Sample:3.48| Time: 6.3s
+2025-10-23 22:46:55 - INFO - EPOCH[285/500] loss0.024-|Sample:3.51| Time: 5.8s
+2025-10-23 22:47:01 - INFO - EPOCH[286/500] loss0.024-|Sample:3.56| Time: 5.5s
+2025-10-23 22:47:06 - INFO - EPOCH[287/500] loss0.023-|Sample:3.54| Time: 5.4s
+2025-10-23 22:47:12 - INFO - EPOCH[288/500] loss0.023-|Sample:3.65| Time: 5.6s
+2025-10-23 22:47:18 - INFO - EPOCH[289/500] loss0.023-|Sample:3.59| Time: 5.8s
+2025-10-23 22:47:25 - INFO - EPOCH[290/500] loss0.023-|Sample:3.54| Time: 5.6s
+2025-10-23 22:47:25 - INFO - 
+[TEST] Epoch 290
+2025-10-23 22:47:27 - INFO -   Recall@[20]: [0.09351563]
+2025-10-23 22:47:27 - INFO -   Precision@[20]: [0.01677806]
+2025-10-23 22:47:27 - INFO -   NDCG@[20]: [0.05475463]
+2025-10-23 22:47:33 - INFO - EPOCH[291/500] loss0.023-|Sample:3.58| Time: 8.2s
+2025-10-23 22:47:40 - INFO - EPOCH[292/500] loss0.023-|Sample:3.87| Time: 6.9s
+2025-10-23 22:47:47 - INFO - EPOCH[293/500] loss0.023-|Sample:3.76| Time: 6.7s
+2025-10-23 22:47:54 - INFO - EPOCH[294/500] loss0.023-|Sample:3.61| Time: 6.4s
+2025-10-23 22:48:01 - INFO - EPOCH[295/500] loss0.024-|Sample:3.83| Time: 6.8s
+2025-10-23 22:48:08 - INFO - EPOCH[296/500] loss0.023-|Sample:3.67| Time: 6.7s
+2025-10-23 22:48:15 - INFO - EPOCH[297/500] loss0.023-|Sample:3.63| Time: 6.7s
+2025-10-23 22:48:21 - INFO - EPOCH[298/500] loss0.023-|Sample:3.69| Time: 6.4s
+2025-10-23 22:48:26 - INFO - EPOCH[299/500] loss0.023-|Sample:3.46| Time: 5.3s
+2025-10-23 22:48:32 - INFO - EPOCH[300/500] loss0.023-|Sample:3.63| Time: 5.6s
+2025-10-23 22:48:32 - INFO - 
+[TEST] Epoch 300
+2025-10-23 22:48:35 - INFO -   Recall@[20]: [0.09283219]
+2025-10-23 22:48:35 - INFO -   Precision@[20]: [0.01669075]
+2025-10-23 22:48:35 - INFO -   NDCG@[20]: [0.05442818]
+2025-10-23 22:48:40 - INFO - EPOCH[301/500] loss0.023-|Sample:3.57| Time: 7.9s
+2025-10-23 22:48:45 - INFO - EPOCH[302/500] loss0.023-|Sample:3.15| Time: 5.0s
+2025-10-23 22:48:51 - INFO - EPOCH[303/500] loss0.023-|Sample:3.06| Time: 5.8s
+2025-10-23 22:48:57 - INFO - EPOCH[304/500] loss0.023-|Sample:3.62| Time: 6.6s
+2025-10-23 22:49:04 - INFO - EPOCH[305/500] loss0.023-|Sample:3.81| Time: 6.8s
+2025-10-23 22:49:11 - INFO - EPOCH[306/500] loss0.023-|Sample:3.83| Time: 6.8s
+2025-10-23 22:49:18 - INFO - EPOCH[307/500] loss0.023-|Sample:3.85| Time: 6.8s
+2025-10-23 22:49:25 - INFO - EPOCH[308/500] loss0.023-|Sample:3.72| Time: 6.4s
+2025-10-23 22:49:31 - INFO - EPOCH[309/500] loss0.023-|Sample:3.45| Time: 6.1s
+2025-10-23 22:49:37 - INFO - EPOCH[310/500] loss0.023-|Sample:3.57| Time: 6.4s
+2025-10-23 22:49:37 - INFO - 
+[TEST] Epoch 310
+2025-10-23 22:49:40 - INFO -   Recall@[20]: [0.09324135]
+2025-10-23 22:49:40 - INFO -   Precision@[20]: [0.01679612]
+2025-10-23 22:49:40 - INFO -   NDCG@[20]: [0.05451192]
+2025-10-23 22:49:46 - INFO - EPOCH[311/500] loss0.023-|Sample:3.49| Time: 8.6s
+2025-10-23 22:49:52 - INFO - EPOCH[312/500] loss0.023-|Sample:3.57| Time: 6.3s
+2025-10-23 22:49:58 - INFO - EPOCH[313/500] loss0.023-|Sample:3.31| Time: 6.0s
+2025-10-23 22:50:05 - INFO - EPOCH[314/500] loss0.022-|Sample:3.57| Time: 6.3s
+2025-10-23 22:50:11 - INFO - EPOCH[315/500] loss0.023-|Sample:3.46| Time: 6.2s
+2025-10-23 22:50:17 - INFO - EPOCH[316/500] loss0.023-|Sample:3.45| Time: 6.3s
+2025-10-23 22:50:24 - INFO - EPOCH[317/500] loss0.022-|Sample:3.57| Time: 6.4s
+2025-10-23 22:50:30 - INFO - EPOCH[318/500] loss0.022-|Sample:3.83| Time: 6.7s
+2025-10-23 22:50:37 - INFO - EPOCH[319/500] loss0.023-|Sample:3.69| Time: 6.6s
+2025-10-23 22:50:44 - INFO - EPOCH[320/500] loss0.023-|Sample:3.81| Time: 6.6s
+2025-10-23 22:50:44 - INFO - 
+[TEST] Epoch 320
+2025-10-23 22:50:46 - INFO -   Recall@[20]: [0.09347329]
+2025-10-23 22:50:46 - INFO -   Precision@[20]: [0.01688945]
+2025-10-23 22:50:46 - INFO -   NDCG@[20]: [0.05470658]
+2025-10-23 22:50:52 - INFO - EPOCH[321/500] loss0.023-|Sample:3.50| Time: 8.6s
+2025-10-23 22:50:59 - INFO - EPOCH[322/500] loss0.023-|Sample:3.62| Time: 6.5s
+2025-10-23 22:51:06 - INFO - EPOCH[323/500] loss0.022-|Sample:3.74| Time: 6.6s
+2025-10-23 22:51:13 - INFO - EPOCH[324/500] loss0.022-|Sample:3.85| Time: 6.8s
+2025-10-23 22:51:19 - INFO - EPOCH[325/500] loss0.023-|Sample:3.64| Time: 6.5s
+2025-10-23 22:51:26 - INFO - EPOCH[326/500] loss0.022-|Sample:3.53| Time: 6.4s
+2025-10-23 22:51:32 - INFO - EPOCH[327/500] loss0.022-|Sample:3.65| Time: 6.6s
+2025-10-23 22:51:39 - INFO - EPOCH[328/500] loss0.022-|Sample:3.99| Time: 6.9s
+2025-10-23 22:51:46 - INFO - EPOCH[329/500] loss0.022-|Sample:3.61| Time: 6.5s
+2025-10-23 22:51:52 - INFO - EPOCH[330/500] loss0.022-|Sample:3.64| Time: 6.3s
+2025-10-23 22:51:52 - INFO - 
+[TEST] Epoch 330
+2025-10-23 22:51:54 - INFO -   Recall@[20]: [0.09290923]
+2025-10-23 22:51:54 - INFO -   Precision@[20]: [0.01670882]
+2025-10-23 22:51:54 - INFO -   NDCG@[20]: [0.05440364]
+2025-10-23 22:52:01 - INFO - EPOCH[331/500] loss0.022-|Sample:3.49| Time: 8.7s
+2025-10-23 22:52:07 - INFO - EPOCH[332/500] loss0.022-|Sample:3.67| Time: 6.6s
+2025-10-23 22:52:14 - INFO - EPOCH[333/500] loss0.022-|Sample:3.76| Time: 6.7s
+2025-10-23 22:52:20 - INFO - EPOCH[334/500] loss0.022-|Sample:3.82| Time: 5.7s
+2025-10-23 22:52:26 - INFO - EPOCH[335/500] loss0.022-|Sample:3.40| Time: 6.1s
+2025-10-23 22:52:32 - INFO - EPOCH[336/500] loss0.022-|Sample:3.59| Time: 6.3s
+2025-10-23 22:52:39 - INFO - EPOCH[337/500] loss0.022-|Sample:3.45| Time: 6.1s
+2025-10-23 22:52:45 - INFO - EPOCH[338/500] loss0.022-|Sample:3.43| Time: 6.1s
+2025-10-23 22:52:51 - INFO - EPOCH[339/500] loss0.022-|Sample:3.58| Time: 6.2s
+2025-10-23 22:52:57 - INFO - EPOCH[340/500] loss0.022-|Sample:3.56| Time: 6.2s
+2025-10-23 22:52:57 - INFO - 
+[TEST] Epoch 340
+2025-10-23 22:53:00 - INFO -   Recall@[20]: [0.09303019]
+2025-10-23 22:53:00 - INFO -   Precision@[20]: [0.01676]
+2025-10-23 22:53:00 - INFO -   NDCG@[20]: [0.05462856]
+2025-10-23 22:53:06 - INFO - EPOCH[341/500] loss0.022-|Sample:3.32| Time: 8.5s
+2025-10-23 22:53:12 - INFO - EPOCH[342/500] loss0.022-|Sample:3.63| Time: 6.3s
+2025-10-23 22:53:18 - INFO - EPOCH[343/500] loss0.022-|Sample:3.62| Time: 6.3s
+2025-10-23 22:53:25 - INFO - EPOCH[344/500] loss0.022-|Sample:3.42| Time: 6.1s
+2025-10-23 22:53:31 - INFO - EPOCH[345/500] loss0.022-|Sample:3.56| Time: 6.2s
+2025-10-23 22:53:37 - INFO - EPOCH[346/500] loss0.022-|Sample:3.68| Time: 6.2s
+2025-10-23 22:53:43 - INFO - EPOCH[347/500] loss0.022-|Sample:3.43| Time: 6.2s
+2025-10-23 22:53:50 - INFO - EPOCH[348/500] loss0.022-|Sample:3.60| Time: 6.4s
+2025-10-23 22:53:56 - INFO - EPOCH[349/500] loss0.022-|Sample:3.61| Time: 6.4s
+2025-10-23 22:54:02 - INFO - EPOCH[350/500] loss0.022-|Sample:3.49| Time: 6.2s
+2025-10-23 22:54:02 - INFO - 
+[TEST] Epoch 350
+2025-10-23 22:54:05 - INFO -   Recall@[20]: [0.09226034]
+2025-10-23 22:54:05 - INFO -   Precision@[20]: [0.01661248]
+2025-10-23 22:54:05 - INFO -   NDCG@[20]: [0.05416991]
+2025-10-23 22:54:10 - INFO - EPOCH[351/500] loss0.022-|Sample:3.50| Time: 7.7s
+2025-10-23 22:54:16 - INFO - EPOCH[352/500] loss0.022-|Sample:3.12| Time: 5.5s
+2025-10-23 22:54:22 - INFO - EPOCH[353/500] loss0.021-|Sample:3.13| Time: 5.8s
+2025-10-23 22:54:28 - INFO - EPOCH[354/500] loss0.022-|Sample:3.43| Time: 6.1s
+2025-10-23 22:54:34 - INFO - EPOCH[355/500] loss0.022-|Sample:3.54| Time: 6.2s
+2025-10-23 22:54:40 - INFO - EPOCH[356/500] loss0.022-|Sample:3.55| Time: 6.2s
+2025-10-23 22:54:46 - INFO - EPOCH[357/500] loss0.022-|Sample:3.43| Time: 6.1s
+2025-10-23 22:54:53 - INFO - EPOCH[358/500] loss0.022-|Sample:3.64| Time: 6.3s
+2025-10-23 22:54:59 - INFO - EPOCH[359/500] loss0.021-|Sample:3.64| Time: 6.3s
+2025-10-23 22:55:05 - INFO - EPOCH[360/500] loss0.021-|Sample:3.47| Time: 6.2s
+2025-10-23 22:55:05 - INFO - 
+[TEST] Epoch 360
+2025-10-23 22:55:08 - INFO -   Recall@[20]: [0.09307551]
+2025-10-23 22:55:08 - INFO -   Precision@[20]: [0.01672086]
+2025-10-23 22:55:08 - INFO -   NDCG@[20]: [0.0544765]
+2025-10-23 22:55:13 - INFO - EPOCH[361/500] loss0.021-|Sample:3.23| Time: 8.2s
+2025-10-23 22:55:20 - INFO - EPOCH[362/500] loss0.022-|Sample:3.66| Time: 6.4s
+2025-10-23 22:55:26 - INFO - EPOCH[363/500] loss0.022-|Sample:3.49| Time: 6.2s
+2025-10-23 22:55:32 - INFO - EPOCH[364/500] loss0.022-|Sample:3.43| Time: 6.1s
+2025-10-23 22:55:39 - INFO - EPOCH[365/500] loss0.022-|Sample:3.72| Time: 6.5s
+2025-10-23 22:55:44 - INFO - EPOCH[366/500] loss0.022-|Sample:3.58| Time: 5.5s
+2025-10-23 22:55:50 - INFO - EPOCH[367/500] loss0.021-|Sample:3.58| Time: 5.9s
+2025-10-23 22:55:57 - INFO - EPOCH[368/500] loss0.021-|Sample:3.68| Time: 6.4s
+2025-10-23 22:56:03 - INFO - EPOCH[369/500] loss0.021-|Sample:3.57| Time: 5.9s
+2025-10-23 22:56:09 - INFO - EPOCH[370/500] loss0.021-|Sample:3.70| Time: 6.3s
+2025-10-23 22:56:09 - INFO - 
+[TEST] Epoch 370
+2025-10-23 22:56:12 - INFO -   Recall@[20]: [0.09292739]
+2025-10-23 22:56:12 - INFO -   Precision@[20]: [0.01672688]
+2025-10-23 22:56:12 - INFO -   NDCG@[20]: [0.05443029]
+2025-10-23 22:56:18 - INFO - EPOCH[371/500] loss0.021-|Sample:3.54| Time: 8.5s
+2025-10-23 22:56:24 - INFO - EPOCH[372/500] loss0.022-|Sample:3.89| Time: 6.3s
+2025-10-23 22:56:30 - INFO - EPOCH[373/500] loss0.021-|Sample:3.76| Time: 6.2s
+2025-10-23 22:56:37 - INFO - EPOCH[374/500] loss0.021-|Sample:3.99| Time: 6.4s
+2025-10-23 22:56:43 - INFO - EPOCH[375/500] loss0.021-|Sample:3.81| Time: 6.3s
+2025-10-23 22:56:49 - INFO - EPOCH[376/500] loss0.021-|Sample:3.68| Time: 6.0s
+2025-10-23 22:56:55 - INFO - EPOCH[377/500] loss0.021-|Sample:3.66| Time: 6.1s
+2025-10-23 22:57:01 - INFO - EPOCH[378/500] loss0.021-|Sample:3.88| Time: 6.2s
+2025-10-23 22:57:08 - INFO - EPOCH[379/500] loss0.021-|Sample:3.63| Time: 6.1s
+2025-10-23 22:57:14 - INFO - EPOCH[380/500] loss0.021-|Sample:3.63| Time: 6.3s
+2025-10-23 22:57:14 - INFO - 
+[TEST] Epoch 380
+2025-10-23 22:57:17 - INFO -   Recall@[20]: [0.09242441]
+2025-10-23 22:57:17 - INFO -   Precision@[20]: [0.01669376]
+2025-10-23 22:57:17 - INFO -   NDCG@[20]: [0.05448791]
+2025-10-23 22:57:23 - INFO - EPOCH[381/500] loss0.021-|Sample:3.71| Time: 8.6s
+2025-10-23 22:57:29 - INFO - EPOCH[382/500] loss0.021-|Sample:3.76| Time: 6.3s
+2025-10-23 22:57:36 - INFO - EPOCH[383/500] loss0.021-|Sample:3.75| Time: 6.5s
+2025-10-23 22:57:42 - INFO - EPOCH[384/500] loss0.021-|Sample:3.81| Time: 6.3s
+2025-10-23 22:57:48 - INFO - EPOCH[385/500] loss0.021-|Sample:3.57| Time: 6.2s
+2025-10-23 22:57:54 - INFO - EPOCH[386/500] loss0.021-|Sample:3.69| Time: 6.2s
+2025-10-23 22:58:01 - INFO - EPOCH[387/500] loss0.021-|Sample:3.56| Time: 6.2s
+2025-10-23 22:58:07 - INFO - EPOCH[388/500] loss0.021-|Sample:3.79| Time: 6.4s
+2025-10-23 22:58:13 - INFO - EPOCH[389/500] loss0.021-|Sample:3.45| Time: 5.5s
+2025-10-23 22:58:19 - INFO - EPOCH[390/500] loss0.021-|Sample:3.55| Time: 6.2s
+2025-10-23 22:58:19 - INFO - 
+[TEST] Epoch 390
+2025-10-23 22:58:21 - INFO -   Recall@[20]: [0.09181137]
+2025-10-23 22:58:21 - INFO -   Precision@[20]: [0.01665462]
+2025-10-23 22:58:21 - INFO -   NDCG@[20]: [0.05400722]
+2025-10-23 22:58:28 - INFO - EPOCH[391/500] loss0.021-|Sample:3.61| Time: 8.7s
+2025-10-23 22:58:34 - INFO - EPOCH[392/500] loss0.021-|Sample:3.56| Time: 6.3s
+2025-10-23 22:58:40 - INFO - EPOCH[393/500] loss0.021-|Sample:3.79| Time: 6.5s
+2025-10-23 22:58:46 - INFO - EPOCH[394/500] loss0.021-|Sample:3.61| Time: 5.7s
+2025-10-23 22:58:52 - INFO - EPOCH[395/500] loss0.021-|Sample:3.53| Time: 6.1s
+2025-10-23 22:58:59 - INFO - EPOCH[396/500] loss0.021-|Sample:3.67| Time: 6.3s
+2025-10-23 22:59:05 - INFO - EPOCH[397/500] loss0.020-|Sample:3.52| Time: 6.1s
+2025-10-23 22:59:10 - INFO - EPOCH[398/500] loss0.021-|Sample:3.52| Time: 5.7s
+2025-10-23 22:59:17 - INFO - EPOCH[399/500] loss0.021-|Sample:3.62| Time: 6.2s
+2025-10-23 22:59:23 - INFO - EPOCH[400/500] loss0.021-|Sample:3.71| Time: 6.2s
+2025-10-23 22:59:23 - INFO - 
+[TEST] Epoch 400
+2025-10-23 22:59:25 - INFO -   Recall@[20]: [0.0930344]
+2025-10-23 22:59:25 - INFO -   Precision@[20]: [0.01681419]
+2025-10-23 22:59:25 - INFO -   NDCG@[20]: [0.05467447]
+2025-10-23 22:59:32 - INFO - EPOCH[401/500] loss0.020-|Sample:3.42| Time: 8.5s
+2025-10-23 22:59:38 - INFO - EPOCH[402/500] loss0.021-|Sample:3.60| Time: 6.3s
+2025-10-23 22:59:44 - INFO - EPOCH[403/500] loss0.021-|Sample:3.56| Time: 6.2s
+2025-10-23 22:59:51 - INFO - EPOCH[404/500] loss0.021-|Sample:3.59| Time: 6.3s
+2025-10-23 22:59:57 - INFO - EPOCH[405/500] loss0.021-|Sample:3.59| Time: 6.2s
+2025-10-23 23:00:03 - INFO - EPOCH[406/500] loss0.021-|Sample:3.84| Time: 6.5s
+2025-10-23 23:00:09 - INFO - EPOCH[407/500] loss0.020-|Sample:3.66| Time: 6.1s
+2025-10-23 23:00:15 - INFO - EPOCH[408/500] loss0.020-|Sample:3.24| Time: 5.8s
+2025-10-23 23:00:22 - INFO - EPOCH[409/500] loss0.021-|Sample:3.66| Time: 6.2s
+2025-10-23 23:00:28 - INFO - EPOCH[410/500] loss0.021-|Sample:3.63| Time: 6.4s
+2025-10-23 23:00:28 - INFO - 
+[TEST] Epoch 410
+2025-10-23 23:00:31 - INFO -   Recall@[20]: [0.09275651]
+2025-10-23 23:00:31 - INFO -   Precision@[20]: [0.01677806]
+2025-10-23 23:00:31 - INFO -   NDCG@[20]: [0.05454456]
+2025-10-23 23:00:37 - INFO - EPOCH[411/500] loss0.021-|Sample:3.55| Time: 8.7s
+2025-10-23 23:00:43 - INFO - EPOCH[412/500] loss0.021-|Sample:3.69| Time: 6.4s
+2025-10-23 23:00:50 - INFO - EPOCH[413/500] loss0.021-|Sample:3.55| Time: 6.2s
+2025-10-23 23:00:56 - INFO - EPOCH[414/500] loss0.020-|Sample:3.44| Time: 6.1s
+2025-10-23 23:01:02 - INFO - EPOCH[415/500] loss0.020-|Sample:3.67| Time: 6.3s
+2025-10-23 23:01:08 - INFO - EPOCH[416/500] loss0.021-|Sample:3.55| Time: 6.2s
+2025-10-23 23:01:15 - INFO - EPOCH[417/500] loss0.020-|Sample:3.66| Time: 6.3s
+2025-10-23 23:01:21 - INFO - EPOCH[418/500] loss0.020-|Sample:3.76| Time: 6.0s
+2025-10-23 23:01:27 - INFO - EPOCH[419/500] loss0.020-|Sample:3.70| Time: 6.3s
+2025-10-23 23:01:34 - INFO - EPOCH[420/500] loss0.021-|Sample:3.66| Time: 6.5s
+2025-10-23 23:01:34 - INFO - 
+[TEST] Epoch 420
+2025-10-23 23:01:36 - INFO -   Recall@[20]: [0.09234243]
+2025-10-23 23:01:36 - INFO -   Precision@[20]: [0.01663656]
+2025-10-23 23:01:36 - INFO -   NDCG@[20]: [0.0541671]
+2025-10-23 23:01:42 - INFO - EPOCH[421/500] loss0.020-|Sample:3.48| Time: 8.6s
+2025-10-23 23:01:49 - INFO - EPOCH[422/500] loss0.020-|Sample:3.73| Time: 6.4s
+2025-10-23 23:01:55 - INFO - EPOCH[423/500] loss0.020-|Sample:3.46| Time: 6.1s
+2025-10-23 23:02:01 - INFO - EPOCH[424/500] loss0.020-|Sample:3.54| Time: 6.2s
+2025-10-23 23:02:08 - INFO - EPOCH[425/500] loss0.020-|Sample:3.66| Time: 6.4s
+2025-10-23 23:02:14 - INFO - EPOCH[426/500] loss0.020-|Sample:3.45| Time: 6.2s
+2025-10-23 23:02:20 - INFO - EPOCH[427/500] loss0.020-|Sample:3.56| Time: 6.2s
+2025-10-23 23:02:26 - INFO - EPOCH[428/500] loss0.020-|Sample:3.43| Time: 6.1s
+2025-10-23 23:02:33 - INFO - EPOCH[429/500] loss0.020-|Sample:3.65| Time: 6.4s
+2025-10-23 23:02:39 - INFO - EPOCH[430/500] loss0.020-|Sample:3.45| Time: 6.2s
+2025-10-23 23:02:39 - INFO - 
+[TEST] Epoch 430
+2025-10-23 23:02:41 - INFO -   Recall@[20]: [0.09284371]
+2025-10-23 23:02:41 - INFO -   Precision@[20]: [0.01672387]
+2025-10-23 23:02:41 - INFO -   NDCG@[20]: [0.05447858]
+2025-10-23 23:02:47 - INFO - EPOCH[431/500] loss0.020-|Sample:3.40| Time: 8.5s
+2025-10-23 23:02:54 - INFO - EPOCH[432/500] loss0.020-|Sample:3.59| Time: 6.2s
+2025-10-23 23:03:00 - INFO - EPOCH[433/500] loss0.020-|Sample:3.71| Time: 6.3s
+2025-10-23 23:03:06 - INFO - EPOCH[434/500] loss0.020-|Sample:3.65| Time: 6.3s
+2025-10-23 23:03:13 - INFO - EPOCH[435/500] loss0.020-|Sample:3.74| Time: 6.4s
+2025-10-23 23:03:19 - INFO - EPOCH[436/500] loss0.020-|Sample:3.45| Time: 5.6s
+2025-10-23 23:03:24 - INFO - EPOCH[437/500] loss0.020-|Sample:3.62| Time: 5.8s
+2025-10-23 23:03:31 - INFO - EPOCH[438/500] loss0.020-|Sample:3.70| Time: 6.1s
+2025-10-23 23:03:37 - INFO - EPOCH[439/500] loss0.020-|Sample:3.55| Time: 6.0s
+2025-10-23 23:03:43 - INFO - EPOCH[440/500] loss0.020-|Sample:3.69| Time: 5.9s
+2025-10-23 23:03:43 - INFO - 
+[TEST] Epoch 440
+2025-10-23 23:03:45 - INFO -   Recall@[20]: [0.09241795]
+2025-10-23 23:03:45 - INFO -   Precision@[20]: [0.01670279]
+2025-10-23 23:03:45 - INFO -   NDCG@[20]: [0.05411245]
+2025-10-23 23:03:52 - INFO - EPOCH[441/500] loss0.020-|Sample:3.75| Time: 8.9s
+2025-10-23 23:03:58 - INFO - EPOCH[442/500] loss0.020-|Sample:3.56| Time: 6.2s
+2025-10-23 23:04:04 - INFO - EPOCH[443/500] loss0.020-|Sample:3.89| Time: 6.1s
+2025-10-23 23:04:11 - INFO - EPOCH[444/500] loss0.020-|Sample:3.87| Time: 6.5s
+2025-10-23 23:04:17 - INFO - EPOCH[445/500] loss0.020-|Sample:3.65| Time: 5.8s
+2025-10-23 23:04:23 - INFO - EPOCH[446/500] loss0.020-|Sample:3.82| Time: 6.0s
+2025-10-23 23:04:29 - INFO - EPOCH[447/500] loss0.020-|Sample:4.05| Time: 6.4s
+2025-10-23 23:04:35 - INFO - EPOCH[448/500] loss0.020-|Sample:3.48| Time: 5.9s
+2025-10-23 23:04:41 - INFO - EPOCH[449/500] loss0.020-|Sample:3.77| Time: 6.2s
+2025-10-23 23:04:47 - INFO - EPOCH[450/500] loss0.020-|Sample:3.68| Time: 5.9s
+2025-10-23 23:04:47 - INFO - 
+[TEST] Epoch 450
+2025-10-23 23:04:50 - INFO -   Recall@[20]: [0.09286146]
+2025-10-23 23:04:50 - INFO -   Precision@[20]: [0.01681419]
+2025-10-23 23:04:50 - INFO -   NDCG@[20]: [0.05434295]
+2025-10-23 23:04:56 - INFO - EPOCH[451/500] loss0.020-|Sample:3.89| Time: 8.6s
+2025-10-23 23:05:02 - INFO - EPOCH[452/500] loss0.020-|Sample:3.74| Time: 6.1s
+2025-10-23 23:05:08 - INFO - EPOCH[453/500] loss0.020-|Sample:3.85| Time: 6.2s
+2025-10-23 23:05:15 - INFO - EPOCH[454/500] loss0.020-|Sample:3.84| Time: 6.4s
+2025-10-23 23:05:21 - INFO - EPOCH[455/500] loss0.020-|Sample:3.64| Time: 6.2s
+2025-10-23 23:05:27 - INFO - EPOCH[456/500] loss0.020-|Sample:3.72| Time: 6.4s
+2025-10-23 23:05:34 - INFO - EPOCH[457/500] loss0.020-|Sample:3.80| Time: 6.5s
+2025-10-23 23:05:40 - INFO - EPOCH[458/500] loss0.020-|Sample:3.99| Time: 6.4s
+2025-10-23 23:05:47 - INFO - EPOCH[459/500] loss0.020-|Sample:3.88| Time: 6.4s
+2025-10-23 23:05:53 - INFO - EPOCH[460/500] loss0.020-|Sample:3.61| Time: 6.5s
+2025-10-23 23:05:53 - INFO - 
+[TEST] Epoch 460
+2025-10-23 23:05:56 - INFO -   Recall@[20]: [0.09246839]
+2025-10-23 23:05:56 - INFO -   Precision@[20]: [0.0167901]
+2025-10-23 23:05:56 - INFO -   NDCG@[20]: [0.0542568]
+2025-10-23 23:06:03 - INFO - EPOCH[461/500] loss0.020-|Sample:3.78| Time: 9.1s
+2025-10-23 23:06:09 - INFO - EPOCH[462/500] loss0.020-|Sample:3.59| Time: 6.4s
+2025-10-23 23:06:16 - INFO - EPOCH[463/500] loss0.020-|Sample:3.84| Time: 6.7s
+2025-10-23 23:06:22 - INFO - EPOCH[464/500] loss0.020-|Sample:3.59| Time: 6.4s
+2025-10-23 23:06:29 - INFO - EPOCH[465/500] loss0.020-|Sample:3.54| Time: 6.3s
+2025-10-23 23:06:35 - INFO - EPOCH[466/500] loss0.020-|Sample:3.74| Time: 6.5s
+2025-10-23 23:06:41 - INFO - EPOCH[467/500] loss0.020-|Sample:3.51| Time: 5.6s
+2025-10-23 23:06:47 - INFO - EPOCH[468/500] loss0.020-|Sample:3.69| Time: 6.3s
+2025-10-23 23:06:54 - INFO - EPOCH[469/500] loss0.020-|Sample:3.58| Time: 6.4s
+2025-10-23 23:07:00 - INFO - EPOCH[470/500] loss0.020-|Sample:3.85| Time: 6.5s
+2025-10-23 23:07:00 - INFO - 
+[TEST] Epoch 470
+2025-10-23 23:07:03 - INFO -   Recall@[20]: [0.09158924]
+2025-10-23 23:07:03 - INFO -   Precision@[20]: [0.01663656]
+2025-10-23 23:07:03 - INFO -   NDCG@[20]: [0.05393989]
+2025-10-23 23:07:09 - INFO - EPOCH[471/500] loss0.020-|Sample:3.53| Time: 8.6s
+2025-10-23 23:07:14 - INFO - EPOCH[472/500] loss0.020-|Sample:3.11| Time: 5.6s
+2025-10-23 23:07:21 - INFO - EPOCH[473/500] loss0.020-|Sample:3.67| Time: 6.4s
+2025-10-23 23:07:27 - INFO - EPOCH[474/500] loss0.020-|Sample:3.59| Time: 6.3s
+2025-10-23 23:07:34 - INFO - EPOCH[475/500] loss0.020-|Sample:3.72| Time: 6.4s
+2025-10-23 23:07:40 - INFO - EPOCH[476/500] loss0.020-|Sample:3.71| Time: 6.5s
+2025-10-23 23:07:47 - INFO - EPOCH[477/500] loss0.020-|Sample:3.57| Time: 6.4s
+2025-10-23 23:07:53 - INFO - EPOCH[478/500] loss0.020-|Sample:3.73| Time: 6.5s
+2025-10-23 23:08:00 - INFO - EPOCH[479/500] loss0.020-|Sample:3.55| Time: 6.3s
+2025-10-23 23:08:06 - INFO - EPOCH[480/500] loss0.020-|Sample:3.54| Time: 6.3s
+2025-10-23 23:08:06 - INFO - 
+[TEST] Epoch 480
+2025-10-23 23:08:08 - INFO -   Recall@[20]: [0.09231119]
+2025-10-23 23:08:08 - INFO -   Precision@[20]: [0.01670882]
+2025-10-23 23:08:08 - INFO -   NDCG@[20]: [0.05403699]
+2025-10-23 23:08:15 - INFO - EPOCH[481/500] loss0.020-|Sample:3.53| Time: 8.6s
+2025-10-23 23:08:21 - INFO - EPOCH[482/500] loss0.020-|Sample:3.66| Time: 6.4s
+2025-10-23 23:08:27 - INFO - EPOCH[483/500] loss0.020-|Sample:3.63| Time: 6.3s
+2025-10-23 23:08:34 - INFO - EPOCH[484/500] loss0.020-|Sample:3.75| Time: 6.5s
+2025-10-23 23:08:40 - INFO - EPOCH[485/500] loss0.020-|Sample:3.76| Time: 6.4s
+2025-10-23 23:08:47 - INFO - EPOCH[486/500] loss0.020-|Sample:3.57| Time: 6.2s
+2025-10-23 23:08:53 - INFO - EPOCH[487/500] loss0.020-|Sample:3.76| Time: 6.5s
+2025-10-23 23:09:00 - INFO - EPOCH[488/500] loss0.020-|Sample:3.70| Time: 6.3s
+2025-10-23 23:09:06 - INFO - EPOCH[489/500] loss0.020-|Sample:3.53| Time: 6.0s
+2025-10-23 23:09:12 - INFO - EPOCH[490/500] loss0.019-|Sample:3.58| Time: 5.9s
+2025-10-23 23:09:12 - INFO - 
+[TEST] Epoch 490
+2025-10-23 23:09:14 - INFO -   Recall@[20]: [0.09221354]
+2025-10-23 23:09:14 - INFO -   Precision@[20]: [0.0167058]
+2025-10-23 23:09:14 - INFO -   NDCG@[20]: [0.05422051]
+2025-10-23 23:09:20 - INFO - EPOCH[491/500] loss0.020-|Sample:3.56| Time: 8.6s
+2025-10-23 23:09:27 - INFO - EPOCH[492/500] loss0.019-|Sample:3.76| Time: 6.4s
+2025-10-23 23:09:33 - INFO - EPOCH[493/500] loss0.020-|Sample:3.65| Time: 6.3s
+2025-10-23 23:09:39 - INFO - EPOCH[494/500] loss0.020-|Sample:3.72| Time: 6.3s
+2025-10-23 23:09:46 - INFO - EPOCH[495/500] loss0.020-|Sample:3.76| Time: 6.3s
+2025-10-23 23:09:51 - INFO - EPOCH[496/500] loss0.019-|Sample:3.61| Time: 5.6s
+2025-10-23 23:09:57 - INFO - EPOCH[497/500] loss0.019-|Sample:3.59| Time: 6.2s
+2025-10-23 23:10:04 - INFO - EPOCH[498/500] loss0.019-|Sample:3.66| Time: 6.3s
+2025-10-23 23:10:10 - INFO - EPOCH[499/500] loss0.020-|Sample:3.68| Time: 5.6s
+2025-10-23 23:10:15 - INFO - EPOCH[500/500] loss0.020-|Sample:3.72| Time: 5.9s
+2025-10-23 23:10:15 - INFO - 
+============================================================
+2025-10-23 23:10:15 - INFO - Final Evaluation
+2025-10-23 23:10:15 - INFO - ============================================================
+2025-10-23 23:10:18 - INFO - 
+Final Results:
+2025-10-23 23:10:18 - INFO -   Recall@[20]: [0.09213906]
+2025-10-23 23:10:18 - INFO -   Precision@[20]: [0.01668172]
+2025-10-23 23:10:18 - INFO -   NDCG@[20]: [0.05416896]
+2025-10-23 23:10:18 - INFO - 
+============================================================
+2025-10-23 23:10:18 - INFO - Best Epoch Results
+2025-10-23 23:10:18 - INFO - ============================================================
+2025-10-23 23:10:18 - INFO - Best Epoch: 270
+2025-10-23 23:10:18 - INFO -   Recall@[20]: [0.09382648]
+2025-10-23 23:10:18 - INFO -   Precision@[20]: [0.01686838]
+2025-10-23 23:10:18 - INFO -   NDCG@[20]: [0.05489364]
+2025-10-23 23:10:18 - INFO - 
+✓ Training completed!
+2025-10-23 23:10:18 - INFO - Log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251023_221439.log

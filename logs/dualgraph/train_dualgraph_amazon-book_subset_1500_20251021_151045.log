@@ -1,0 +1,56 @@
+2025-10-21 15:10:45 - INFO - Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph/train_dualgraph_amazon-book_subset_1500_20251021_151045.log
+2025-10-21 15:10:45 - INFO - >>SEED: 2020
+2025-10-21 15:10:46 - INFO - >>DEVICE: cuda
+2025-10-21 15:10:46 - INFO - 
+============================================================
+2025-10-21 15:10:46 - INFO - Loading dataset: amazon-book_subset_1500
+2025-10-21 15:10:46 - INFO - ============================================================
+2025-10-21 15:10:47 - INFO - Dataset Statistics:
+2025-10-21 15:10:47 - INFO -   - Users: 5024
+2025-10-21 15:10:47 - INFO -   - Items: 1500
+2025-10-21 15:10:47 - INFO -   - Train interactions: 56426
+2025-10-21 15:10:47 - INFO -   - Test interactions: 9242
+2025-10-21 15:10:48 - INFO - ✓ Semantic graph loaded successfully
+2025-10-21 15:10:48 - INFO - 
+============================================================
+2025-10-21 15:10:48 - INFO - Building Dual-Graph LightGCN
+2025-10-21 15:10:48 - INFO - ============================================================
+2025-10-21 15:10:48 - INFO - Model parameters:
+2025-10-21 15:10:48 - INFO -   - Embedding dim: 64
+2025-10-21 15:10:48 - INFO -   - UI graph layers: 3
+2025-10-21 15:10:48 - INFO -   - Semantic layers: 2
+2025-10-21 15:10:48 - INFO -   - Semantic weight: 0.3
+2025-10-21 15:10:48 - INFO -   - Learning rate: 0.001
+2025-10-21 15:11:07 - INFO - 
+Model checkpoint: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../checkpoints/dualgraph/dualgraph-amazon-book_subset_1500-64.pth.tar
+2025-10-21 15:11:07 - INFO - Tensorboard: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../runs/10-21-15h11m07s-dual-graph
+2025-10-21 15:11:07 - INFO - 
+============================================================
+2025-10-21 15:11:07 - INFO - Training for 5 epochs
+2025-10-21 15:11:07 - INFO - ============================================================
+
+2025-10-21 15:11:07 - INFO - 
+[TEST] Epoch 0
+2025-10-21 15:11:09 - INFO -   Recall@[20]: [0.01256931]
+2025-10-21 15:11:09 - INFO -   Precision@[20]: [0.00180539]
+2025-10-21 15:11:09 - INFO -   NDCG@[20]: [0.00615542]
+2025-10-21 15:11:09 - INFO - ✓ New best! Recall@20: 0.0126
+2025-10-21 15:11:12 - INFO - EPOCH[1/5] loss0.690-|Sample:0.53| Time: 5.6s
+2025-10-21 15:11:14 - INFO - EPOCH[2/5] loss0.687-|Sample:0.69| Time: 1.1s
+2025-10-21 15:11:15 - INFO - EPOCH[3/5] loss0.679-|Sample:0.53| Time: 0.9s
+2025-10-21 15:11:16 - INFO - EPOCH[4/5] loss0.656-|Sample:0.66| Time: 1.0s
+2025-10-21 15:11:17 - INFO - EPOCH[5/5] loss0.615-|Sample:0.65| Time: 1.0s
+2025-10-21 15:11:17 - INFO - 
+============================================================
+2025-10-21 15:11:17 - INFO - Final Evaluation
+2025-10-21 15:11:17 - INFO - ============================================================
+2025-10-21 15:11:17 - INFO - 
+Final Results:
+2025-10-21 15:11:17 - INFO -   Recall@[20]: [0.11988279]
+2025-10-21 15:11:17 - INFO -   Precision@[20]: [0.01511628]
+2025-10-21 15:11:17 - INFO -   NDCG@[20]: [0.06417313]
+2025-10-21 15:11:17 - INFO - 
+Best: Epoch 0, Recall@20: 0.0126
+2025-10-21 15:11:17 - INFO - 
+✓ Training completed!
+2025-10-21 15:11:17 - INFO - Log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph/train_dualgraph_amazon-book_subset_1500_20251021_151045.log
