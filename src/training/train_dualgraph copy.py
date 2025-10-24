@@ -187,22 +187,12 @@ def main():
     from src.models.dual_graph_model import DualGraphLightGCN
     model = DualGraphLightGCN(config, dataset).to(device)
 
-    logger.info(f"\n{'='*60}")
-    logger.info(f"Model Configuration")
-    logger.info(f"{'='*60}")
-    logger.info(f"  - Model: Dual-Graph LightGCN")
+    logger.info(f"Model parameters:")
     logger.info(f"  - Embedding dim: {config['latent_dim_rec']}")
     logger.info(f"  - UI graph layers: {config['lightGCN_n_layers']}")
     logger.info(f"  - Semantic layers: {config['semantic_layers']}")
     logger.info(f"  - Semantic weight: {config['semantic_weight']}")
-
-    logger.info(f"\nOptimization:")
     logger.info(f"  - Learning rate: {config['lr']}")
-    logger.info(f"  - Weight decay: {config['decay']}")
-    logger.info(f"  - Batch size: {config['bpr_batch_size']}")
-    logger.info(f"  - Dropout: {bool(config['dropout'])} (keep_prob={config['keep_prob']})")
-    logger.info(f"  - Seed: {args.seed}")
-    logger.info(f"  - Max epochs: {args.epochs}")
 
     # Setup optimizer
     from src.baseline.utils import BPRLoss
@@ -245,7 +235,6 @@ def main():
     topks = eval(args.topks)
     best_recall = 0.0
     best_epoch = 0
-    best_results = None
 
     try:
         for epoch in range(args.epochs):
@@ -266,7 +255,6 @@ def main():
                     if current_recall > best_recall:
                         best_recall = current_recall
                         best_epoch = epoch
-                        best_results = results.copy()
                         best_file = weight_file.replace('.pth.tar', '_best.pth.tar')
                         torch.save(model.state_dict(), best_file)
                         logger.info(f"✓ New best! Recall@{topks[0]}: {best_recall:.4f}")
@@ -291,16 +279,7 @@ def main():
         logger.info(f"  Recall@{topks}: {final_results['recall']}")
         logger.info(f"  Precision@{topks}: {final_results['precision']}")
         logger.info(f"  NDCG@{topks}: {final_results['ndcg']}")
-
-        # Log best epoch results
-        logger.info(f"\n{'='*60}")
-        logger.info(f"Best Epoch Results")
-        logger.info(f"{'='*60}")
-        logger.info(f"Best Epoch: {best_epoch}")
-        if best_results is not None:
-            logger.info(f"  Recall@{topks}: {best_results['recall']}")
-            logger.info(f"  Precision@{topks}: {best_results['precision']}")
-            logger.info(f"  NDCG@{topks}: {best_results['ndcg']}")
+        logger.info(f"\nBest: Epoch {best_epoch}, Recall@{topks[0]}: {best_recall:.4f}")
 
     except Exception as e:
         logger.error(f"Training error: {e}", exc_info=True)

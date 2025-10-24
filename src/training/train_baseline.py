@@ -56,6 +56,13 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '../..')
 LOG_DIR = join(PROJECT_ROOT, 'logs/baseline')
 logger, log_file = setup_logger(LOG_DIR, world.dataset)
 
+# Log full configuration (similar to RLMRec format)
+logger.info("\n" + "="*60)
+logger.info("LIGHTGCN BASELINE TRAINING")
+logger.info("="*60)
+logger.info(f"Configuration: {world.config}")
+logger.info("="*60 + "\n")
+
 # ==============================
 utils.set_seed(world.seed)
 logger.info(f">>SEED: {world.seed}")
@@ -84,9 +91,14 @@ logger.info(f"{'='*60}")
 logger.info(f"  - Model: {world.model_name}")
 logger.info(f"  - Embedding dim: {world.config['latent_dim_rec']}")
 logger.info(f"  - GCN layers: {world.config['lightGCN_n_layers']}")
+
+logger.info(f"\nOptimization:")
 logger.info(f"  - Learning rate: {world.config['lr']}")
 logger.info(f"  - Weight decay: {world.config['decay']}")
 logger.info(f"  - Batch size: {world.config['bpr_batch_size']}")
+logger.info(f"  - Dropout: {bool(world.config['dropout'])} (keep_prob={world.config['keep_prob']})")
+logger.info(f"  - Seed: {world.seed}")
+logger.info(f"  - Max epochs: {world.TRAIN_epochs}")
 
 weight_file = utils.getFileName()
 logger.info(f"\nModel checkpoint: {weight_file}")
@@ -114,6 +126,7 @@ logger.info(f"{'='*60}\n")
 
 best_recall = 0.0
 best_epoch = 0
+best_results = None
 
 try:
     for epoch in range(world.TRAIN_epochs):
@@ -132,6 +145,7 @@ try:
                 if current_recall > best_recall:
                     best_recall = current_recall
                     best_epoch = epoch
+                    best_results = results.copy()
                     logger.info(f"✓ New best! Recall@{world.topks[0]}: {best_recall:.4f}")
 
         output_information = Procedure.BPR_train_original(dataset, Recmodel, bpr, epoch, neg_k=Neg_k,w=w)
@@ -146,11 +160,23 @@ try:
     final_results = Procedure.Test(dataset, Recmodel, world.TRAIN_epochs, w, world.config['multicore'])
 
     # Log final results
-    logger.info(f"\nFinal Results:")
+    logger.info(f"\nFinal Results (Last Epoch):")
     logger.info(f"  Recall@{world.topks}: {final_results['recall']}")
     logger.info(f"  Precision@{world.topks}: {final_results['precision']}")
     logger.info(f"  NDCG@{world.topks}: {final_results['ndcg']}")
-    logger.info(f"\nBest: Epoch {best_epoch}, Recall@{world.topks[0]}: {best_recall:.4f}")
+
+    # Log best results
+    logger.info(f"\n{'='*60}")
+    logger.info(f"Best Epoch Results")
+    logger.info(f"{'='*60}")
+    logger.info(f"Best Epoch: {best_epoch}")
+    if best_results is not None:
+        logger.info(f"  Recall@{world.topks}: {best_results['recall']}")
+        logger.info(f"  Precision@{world.topks}: {best_results['precision']}")
+        logger.info(f"  NDCG@{world.topks}: {best_results['ndcg']}")
+    else:
+        logger.info(f"  Recall@{world.topks[0]}: {best_recall:.4f}")
+    logger.info(f"{'='*60}")
 
 except Exception as e:
     logger.error(f"Training error: {e}", exc_info=True)

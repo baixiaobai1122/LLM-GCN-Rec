@@ -8,10 +8,12 @@ import os
 _PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '../..')
 _DATASETS_PATH = os.path.join(_PROJECT_ROOT, 'datasets')
 
-if world.dataset in ['gowalla', 'yelp2018', 'amazon-book', 'amazon-book_subset_1500', 'amazon-book_subset_10000']:
+if world.dataset in ['gowalla', 'yelp2018', 'amazon-book', 'amazon-book_subset_1500', 'amazon-book_subset_10000', 'amazon-book-2023']:
     dataset = dataloader.Loader(path=os.path.join(_DATASETS_PATH, world.dataset))
 elif world.dataset == 'lastfm':
     dataset = dataloader.LastFM()
+else:
+    raise ValueError(f"Unknown dataset: {world.dataset}")
 
 print('===========config================')
 pprint(world.config)
