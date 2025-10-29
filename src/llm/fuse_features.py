@@ -113,7 +113,11 @@ def main():
     data_path = Path(args.data_path)
     clip_path = data_path / args.clip_features
     gpt_path = data_path / args.gpt_features
-    output_path = data_path / args.output
+
+    # Create fuse_embedding directory
+    fuse_dir = data_path / "fuse_embedding"
+    fuse_dir.mkdir(exist_ok=True)
+    output_path = fuse_dir / args.output
 
     # Load features
     clip_features = load_features(clip_path)

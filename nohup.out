@@ -1,0 +1,3433 @@
+Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251028_174719.log
+
+============================================================
+ HYBRID FEATURES MODE: CLIP + GPT
+Semantic graph file: semantic_graph/hybrid_graph_structured.npz
+============================================================
+
+>>SEED: 2020
+>>DEVICE: cuda
+
+============================================================
+Loading dataset: amazon-book_subset_10000
+============================================================
+[0;30;43mloading [datasets/amazon-book_subset_10000][0m
+365328 interactions for training
+65052 interactions for testing
+amazon-book_subset_10000 Sparsity : 0.002159458103361766
+amazon-book_subset_10000 is ready to go
+Dual-graph loader initialized
+  - Semantic graph file: semantic_graph/hybrid_graph_structured.npz
+Dataset Statistics:
+  - Users: 19930
+  - Items: 10000
+  - Train interactions: 365328
+  - Test interactions: 65052
+/home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../src/baseline/dataloader.py:332: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:654.)
+  return torch.sparse.FloatTensor(index, data, torch.Size(coo.shape))
+Loading semantic graph
+Successfully loaded semantic graph from datasets/amazon-book_subset_10000/semantic_graph/hybrid_graph_structured.npz
+  - Shape: (10000, 10000)
+  - Edges: 158328
+  - Sparsity: 0.001583
+Semantic graph loaded as single tensor
+✓ Semantic graph loaded successfully
+
+============================================================
+Building Dual-Graph LightGCN
+============================================================
+[0;30;43muse NORMAL distribution initilizer[0m
+loading adjacency matrix
+successfully loaded...
+don't split the matrix
+Loading semantic graph
+Dual-graph LightGCN initialized:
+  - User-Item graph loaded
+  - Semantic graph loaded
+  - Semantic weight: 0.5
+  - Semantic layers: 2
+
+============================================================
+Model Configuration
+============================================================
+  - Model: Dual-Graph LightGCN
+  - Embedding dim: 64
+  - UI graph layers: 3
+  - Semantic layers: 2
+  - Semantic weight: 0.5
+
+Optimization:
+  - Learning rate: 0.001
+  - Weight decay: 0.0001
+  - Batch size: 2048
+  - Dropout: False (keep_prob=0.6)
+  - Seed: 2020
+  - Max epochs: 1000
+[0;30;43mCpp extension not loaded[0m
+
+Model checkpoint: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../checkpoints/dualgraph_hybrid/dualgraph_hybrid-amazon-book_subset_10000-64.pth.tar
+Feature type: CLIP+GPT Hybrid
+Tensorboard: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../runs/10-28-17h53m59s-CLIP +GPT_structured
+
+============================================================
+Training for 1000 epochs
+============================================================
+
+
+[TEST] Epoch 0
+{'precision': array([0.00034622]), 'recall': array([0.00149014]), 'ndcg': array([0.00083907])}
+  Recall@[20]: [0.00149014]
+  Precision@[20]: [0.00034622]
+  NDCG@[20]: [0.00083907]
+✓ New best! Recall@20: 0.0015
+EPOCH[1/1000] loss0.688-|Sample:4.02| Time: 13.0s
+EPOCH[2/1000] loss0.639-|Sample:3.96| Time: 7.7s
+EPOCH[3/1000] loss0.503-|Sample:3.97| Time: 7.7s
+EPOCH[4/1000] loss0.406-|Sample:3.84| Time: 7.9s
+EPOCH[5/1000] loss0.344-|Sample:4.03| Time: 7.8s
+EPOCH[6/1000] loss0.305-|Sample:3.77| Time: 7.5s
+EPOCH[7/1000] loss0.277-|Sample:3.87| Time: 6.3s
+EPOCH[8/1000] loss0.259-|Sample:3.96| Time: 7.4s
+EPOCH[9/1000] loss0.241-|Sample:3.75| Time: 6.7s
+EPOCH[10/1000] loss0.230-|Sample:4.08| Time: 7.3s
+
+[TEST] Epoch 10
+{'precision': array([0.01107599]), 'recall': array([0.06374066]), 'ndcg': array([0.03695627])}
+  Recall@[20]: [0.06374066]
+  Precision@[20]: [0.01107599]
+  NDCG@[20]: [0.03695627]
+✓ New best! Recall@20: 0.0637
+EPOCH[11/1000] loss0.220-|Sample:3.74| Time: 10.5s
+EPOCH[12/1000] loss0.210-|Sample:3.78| Time: 8.4s
+EPOCH[13/1000] loss0.203-|Sample:3.72| Time: 8.5s
+EPOCH[14/1000] loss0.194-|Sample:3.91| Time: 8.5s
+EPOCH[15/1000] loss0.189-|Sample:3.81| Time: 9.4s
+EPOCH[16/1000] loss0.183-|Sample:3.91| Time: 9.3s
+EPOCH[17/1000] loss0.177-|Sample:3.83| Time: 8.8s
+EPOCH[18/1000] loss0.173-|Sample:3.76| Time: 9.3s
+EPOCH[19/1000] loss0.168-|Sample:3.75| Time: 9.3s
+EPOCH[20/1000] loss0.163-|Sample:3.79| Time: 9.2s
+
+[TEST] Epoch 20
+{'precision': array([0.01253914]), 'recall': array([0.07088783]), 'ndcg': array([0.04140888])}
+  Recall@[20]: [0.07088783]
+  Precision@[20]: [0.01253914]
+  NDCG@[20]: [0.04140888]
+✓ New best! Recall@20: 0.0709
+EPOCH[21/1000] loss0.160-|Sample:3.61| Time: 11.2s
+EPOCH[22/1000] loss0.155-|Sample:3.80| Time: 9.3s
+EPOCH[23/1000] loss0.151-|Sample:3.80| Time: 9.3s
+EPOCH[24/1000] loss0.148-|Sample:3.67| Time: 9.1s
+EPOCH[25/1000] loss0.144-|Sample:3.68| Time: 9.3s
+EPOCH[26/1000] loss0.141-|Sample:3.86| Time: 8.7s
+EPOCH[27/1000] loss0.138-|Sample:3.76| Time: 9.3s
+EPOCH[28/1000] loss0.136-|Sample:3.83| Time: 9.3s
+EPOCH[29/1000] loss0.132-|Sample:3.77| Time: 9.2s
+EPOCH[30/1000] loss0.129-|Sample:3.56| Time: 8.8s
+
+[TEST] Epoch 30
+{'precision': array([0.01365607]), 'recall': array([0.07545445]), 'ndcg': array([0.04428438])}
+  Recall@[20]: [0.07545445]
+  Precision@[20]: [0.01365607]
+  NDCG@[20]: [0.04428438]
+✓ New best! Recall@20: 0.0755
+EPOCH[31/1000] loss0.127-|Sample:3.70| Time: 11.0s
+EPOCH[32/1000] loss0.124-|Sample:3.89| Time: 9.2s
+EPOCH[33/1000] loss0.121-|Sample:3.85| Time: 8.8s
+EPOCH[34/1000] loss0.120-|Sample:3.65| Time: 8.2s
+EPOCH[35/1000] loss0.117-|Sample:3.80| Time: 8.1s
+EPOCH[36/1000] loss0.116-|Sample:3.67| Time: 7.6s
+EPOCH[37/1000] loss0.113-|Sample:3.71| Time: 7.5s
+EPOCH[38/1000] loss0.110-|Sample:3.86| Time: 7.8s
+EPOCH[39/1000] loss0.108-|Sample:3.86| Time: 7.9s
+EPOCH[40/1000] loss0.106-|Sample:3.73| Time: 8.2s
+
+[TEST] Epoch 40
+{'precision': array([0.01439668]), 'recall': array([0.079055]), 'ndcg': array([0.04639933])}
+  Recall@[20]: [0.079055]
+  Precision@[20]: [0.01439668]
+  NDCG@[20]: [0.04639933]
+✓ New best! Recall@20: 0.0791
+EPOCH[41/1000] loss0.105-|Sample:3.60| Time: 12.4s
+EPOCH[42/1000] loss0.102-|Sample:3.82| Time: 7.6s
+EPOCH[43/1000] loss0.101-|Sample:3.73| Time: 7.6s
+EPOCH[44/1000] loss0.099-|Sample:3.67| Time: 7.5s
+EPOCH[45/1000] loss0.096-|Sample:3.83| Time: 7.6s
+EPOCH[46/1000] loss0.096-|Sample:3.83| Time: 7.4s
+EPOCH[47/1000] loss0.095-|Sample:3.79| Time: 6.2s
+EPOCH[48/1000] loss0.092-|Sample:3.75| Time: 7.0s
+EPOCH[49/1000] loss0.090-|Sample:3.72| Time: 7.6s
+EPOCH[50/1000] loss0.089-|Sample:3.83| Time: 7.8s
+
+[TEST] Epoch 50
+{'precision': array([0.01495966]), 'recall': array([0.08257914]), 'ndcg': array([0.04802325])}
+  Recall@[20]: [0.08257914]
+  Precision@[20]: [0.01495966]
+  NDCG@[20]: [0.04802325]
+✓ New best! Recall@20: 0.0826
+EPOCH[51/1000] loss0.087-|Sample:3.64| Time: 9.4s
+EPOCH[52/1000] loss0.086-|Sample:3.67| Time: 7.7s
+EPOCH[53/1000] loss0.085-|Sample:3.76| Time: 8.5s
+EPOCH[54/1000] loss0.083-|Sample:3.84| Time: 8.5s
+EPOCH[55/1000] loss0.082-|Sample:3.70| Time: 8.5s
+EPOCH[56/1000] loss0.080-|Sample:3.67| Time: 8.2s
+EPOCH[57/1000] loss0.079-|Sample:3.82| Time: 8.5s
+EPOCH[58/1000] loss0.079-|Sample:3.71| Time: 8.4s
+EPOCH[59/1000] loss0.077-|Sample:3.72| Time: 7.9s
+EPOCH[60/1000] loss0.076-|Sample:3.80| Time: 6.7s
+
+[TEST] Epoch 60
+{'precision': array([0.01539921]), 'recall': array([0.08496356]), 'ndcg': array([0.04958775])}
+  Recall@[20]: [0.08496356]
+  Precision@[20]: [0.01539921]
+  NDCG@[20]: [0.04958775]
+✓ New best! Recall@20: 0.0850
+EPOCH[61/1000] loss0.075-|Sample:3.53| Time: 12.4s
+EPOCH[62/1000] loss0.074-|Sample:3.67| Time: 8.9s
+EPOCH[63/1000] loss0.072-|Sample:3.65| Time: 7.0s
+EPOCH[64/1000] loss0.072-|Sample:3.83| Time: 7.4s
+EPOCH[65/1000] loss0.071-|Sample:3.66| Time: 7.8s
+EPOCH[66/1000] loss0.070-|Sample:3.85| Time: 8.0s
+EPOCH[67/1000] loss0.069-|Sample:3.64| Time: 7.8s
+EPOCH[68/1000] loss0.068-|Sample:3.96| Time: 8.0s
+EPOCH[69/1000] loss0.067-|Sample:3.74| Time: 7.9s
+EPOCH[70/1000] loss0.067-|Sample:3.72| Time: 8.0s
+
+[TEST] Epoch 70
+{'precision': array([0.01560995]), 'recall': array([0.08637038]), 'ndcg': array([0.05029445])}
+  Recall@[20]: [0.08637038]
+  Precision@[20]: [0.01560995]
+  NDCG@[20]: [0.05029445]
+✓ New best! Recall@20: 0.0864
+EPOCH[71/1000] loss0.066-|Sample:3.66| Time: 10.5s
+EPOCH[72/1000] loss0.064-|Sample:3.70| Time: 7.0s
+EPOCH[73/1000] loss0.065-|Sample:3.87| Time: 7.7s
+EPOCH[74/1000] loss0.064-|Sample:3.83| Time: 9.2s
+EPOCH[75/1000] loss0.063-|Sample:3.70| Time: 9.2s
+EPOCH[76/1000] loss0.061-|Sample:3.79| Time: 9.2s
+EPOCH[77/1000] loss0.061-|Sample:3.70| Time: 8.7s
+EPOCH[78/1000] loss0.060-|Sample:3.63| Time: 8.9s
+EPOCH[79/1000] loss0.060-|Sample:3.86| Time: 9.1s
+EPOCH[80/1000] loss0.059-|Sample:3.79| Time: 8.7s
+
+[TEST] Epoch 80
+{'precision': array([0.01586284]), 'recall': array([0.08811504]), 'ndcg': array([0.05080712])}
+  Recall@[20]: [0.08811504]
+  Precision@[20]: [0.01586284]
+  NDCG@[20]: [0.05080712]
+✓ New best! Recall@20: 0.0881
+EPOCH[81/1000] loss0.059-|Sample:3.51| Time: 11.9s
+EPOCH[82/1000] loss0.057-|Sample:3.87| Time: 8.5s
+EPOCH[83/1000] loss0.057-|Sample:3.82| Time: 8.3s
+EPOCH[84/1000] loss0.057-|Sample:3.69| Time: 7.7s
+EPOCH[85/1000] loss0.056-|Sample:3.67| Time: 7.7s
+EPOCH[86/1000] loss0.055-|Sample:3.94| Time: 7.5s
+EPOCH[87/1000] loss0.055-|Sample:3.87| Time: 7.2s
+EPOCH[88/1000] loss0.053-|Sample:3.86| Time: 6.7s
+EPOCH[89/1000] loss0.053-|Sample:3.93| Time: 7.5s
+EPOCH[90/1000] loss0.053-|Sample:3.74| Time: 7.7s
+
+[TEST] Epoch 90
+{'precision': array([0.01609465]), 'recall': array([0.08922379]), 'ndcg': array([0.05187269])}
+  Recall@[20]: [0.08922379]
+  Precision@[20]: [0.01609465]
+  NDCG@[20]: [0.05187269]
+✓ New best! Recall@20: 0.0892
+EPOCH[91/1000] loss0.052-|Sample:3.72| Time: 12.0s
+EPOCH[92/1000] loss0.052-|Sample:3.83| Time: 8.2s
+EPOCH[93/1000] loss0.052-|Sample:3.80| Time: 8.6s
+EPOCH[94/1000] loss0.050-|Sample:3.76| Time: 7.5s
+EPOCH[95/1000] loss0.050-|Sample:3.86| Time: 7.9s
+EPOCH[96/1000] loss0.050-|Sample:3.72| Time: 7.7s
+EPOCH[97/1000] loss0.050-|Sample:3.67| Time: 8.3s
+EPOCH[98/1000] loss0.049-|Sample:3.77| Time: 8.9s
+EPOCH[99/1000] loss0.048-|Sample:3.79| Time: 8.9s
+EPOCH[100/1000] loss0.048-|Sample:3.68| Time: 8.9s
+
+[TEST] Epoch 100
+{'precision': array([0.01612777]), 'recall': array([0.08948679]), 'ndcg': array([0.05227524])}
+  Recall@[20]: [0.08948679]
+  Precision@[20]: [0.01612777]
+  NDCG@[20]: [0.05227524]
+✓ New best! Recall@20: 0.0895
+EPOCH[101/1000] loss0.048-|Sample:3.20| Time: 9.7s
+EPOCH[102/1000] loss0.048-|Sample:3.50| Time: 7.8s
+EPOCH[103/1000] loss0.047-|Sample:3.97| Time: 7.7s
+EPOCH[104/1000] loss0.046-|Sample:4.34| Time: 8.2s
+EPOCH[105/1000] loss0.046-|Sample:3.94| Time: 9.0s
+EPOCH[106/1000] loss0.046-|Sample:3.98| Time: 8.7s
+EPOCH[107/1000] loss0.046-|Sample:4.16| Time: 9.3s
+EPOCH[108/1000] loss0.045-|Sample:4.43| Time: 9.9s
+EPOCH[109/1000] loss0.044-|Sample:3.70| Time: 8.2s
+EPOCH[110/1000] loss0.044-|Sample:3.82| Time: 7.6s
+
+[TEST] Epoch 110
+{'precision': array([0.01632346]), 'recall': array([0.09033746]), 'ndcg': array([0.05286917])}
+  Recall@[20]: [0.09033746]
+  Precision@[20]: [0.01632346]
+  NDCG@[20]: [0.05286917]
+✓ New best! Recall@20: 0.0903
+EPOCH[111/1000] loss0.045-|Sample:3.88| Time: 12.5s
+EPOCH[112/1000] loss0.043-|Sample:3.82| Time: 8.6s
+EPOCH[113/1000] loss0.043-|Sample:3.75| Time: 9.0s
+EPOCH[114/1000] loss0.043-|Sample:3.93| Time: 9.1s
+EPOCH[115/1000] loss0.043-|Sample:3.77| Time: 7.1s
+EPOCH[116/1000] loss0.043-|Sample:3.81| Time: 7.4s
+EPOCH[117/1000] loss0.042-|Sample:3.83| Time: 7.0s
+EPOCH[118/1000] loss0.042-|Sample:3.84| Time: 7.3s
+EPOCH[119/1000] loss0.042-|Sample:3.86| Time: 7.5s
+EPOCH[120/1000] loss0.042-|Sample:3.85| Time: 9.0s
+
+[TEST] Epoch 120
+{'precision': array([0.01633851]), 'recall': array([0.09050448]), 'ndcg': array([0.05312624])}
+  Recall@[20]: [0.09050448]
+  Precision@[20]: [0.01633851]
+  NDCG@[20]: [0.05312624]
+✓ New best! Recall@20: 0.0905
+EPOCH[121/1000] loss0.041-|Sample:3.91| Time: 10.1s
+EPOCH[122/1000] loss0.041-|Sample:3.70| Time: 7.3s
+EPOCH[123/1000] loss0.040-|Sample:3.85| Time: 7.8s
+EPOCH[124/1000] loss0.041-|Sample:3.85| Time: 7.4s
+EPOCH[125/1000] loss0.040-|Sample:4.13| Time: 7.8s
+EPOCH[126/1000] loss0.039-|Sample:4.22| Time: 8.0s
+EPOCH[127/1000] loss0.040-|Sample:3.74| Time: 7.5s
+EPOCH[128/1000] loss0.039-|Sample:4.02| Time: 7.6s
+EPOCH[129/1000] loss0.039-|Sample:3.72| Time: 8.4s
+EPOCH[130/1000] loss0.038-|Sample:3.71| Time: 8.3s
+
+[TEST] Epoch 130
+{'precision': array([0.01633851]), 'recall': array([0.08998004]), 'ndcg': array([0.05327035])}
+  Recall@[20]: [0.08998004]
+  Precision@[20]: [0.01633851]
+  NDCG@[20]: [0.05327035]
+EPOCH[131/1000] loss0.039-|Sample:3.37| Time: 9.0s
+EPOCH[132/1000] loss0.038-|Sample:3.68| Time: 7.2s
+EPOCH[133/1000] loss0.038-|Sample:3.83| Time: 7.4s
+EPOCH[134/1000] loss0.038-|Sample:3.83| Time: 7.3s
+EPOCH[135/1000] loss0.038-|Sample:3.67| Time: 7.6s
+EPOCH[136/1000] loss0.037-|Sample:3.89| Time: 9.1s
+EPOCH[137/1000] loss0.037-|Sample:3.63| Time: 9.0s
+EPOCH[138/1000] loss0.037-|Sample:3.52| Time: 8.8s
+EPOCH[139/1000] loss0.037-|Sample:3.80| Time: 9.0s
+EPOCH[140/1000] loss0.037-|Sample:3.88| Time: 8.9s
+
+[TEST] Epoch 140
+{'precision': array([0.01647399]), 'recall': array([0.09111595]), 'ndcg': array([0.05374612])}
+  Recall@[20]: [0.09111595]
+  Precision@[20]: [0.01647399]
+  NDCG@[20]: [0.05374612]
+✓ New best! Recall@20: 0.0911
+EPOCH[141/1000] loss0.036-|Sample:3.57| Time: 10.0s
+EPOCH[142/1000] loss0.035-|Sample:3.84| Time: 7.3s
+EPOCH[143/1000] loss0.036-|Sample:3.65| Time: 7.1s
+EPOCH[144/1000] loss0.035-|Sample:3.73| Time: 7.0s
+EPOCH[145/1000] loss0.036-|Sample:3.72| Time: 7.6s
+EPOCH[146/1000] loss0.035-|Sample:3.81| Time: 9.1s
+EPOCH[147/1000] loss0.035-|Sample:3.82| Time: 9.1s
+EPOCH[148/1000] loss0.035-|Sample:3.81| Time: 9.0s
+EPOCH[149/1000] loss0.035-|Sample:3.81| Time: 8.2s
+EPOCH[150/1000] loss0.035-|Sample:3.64| Time: 8.6s
+
+[TEST] Epoch 150
+{'precision': array([0.01651915]), 'recall': array([0.09153255]), 'ndcg': array([0.05391636])}
+  Recall@[20]: [0.09153255]
+  Precision@[20]: [0.01651915]
+  NDCG@[20]: [0.05391636]
+✓ New best! Recall@20: 0.0915
+EPOCH[151/1000] loss0.035-|Sample:3.56| Time: 10.6s
+EPOCH[152/1000] loss0.035-|Sample:3.80| Time: 7.9s
+EPOCH[153/1000] loss0.034-|Sample:3.77| Time: 7.6s
+EPOCH[154/1000] loss0.034-|Sample:3.66| Time: 7.0s
+EPOCH[155/1000] loss0.034-|Sample:3.56| Time: 7.3s
+EPOCH[156/1000] loss0.033-|Sample:3.65| Time: 8.5s
+EPOCH[157/1000] loss0.033-|Sample:3.64| Time: 8.7s
+EPOCH[158/1000] loss0.033-|Sample:3.79| Time: 8.9s
+EPOCH[159/1000] loss0.033-|Sample:3.76| Time: 9.1s
+EPOCH[160/1000] loss0.033-|Sample:3.62| Time: 8.8s
+
+[TEST] Epoch 160
+{'precision': array([0.01652818]), 'recall': array([0.09131309]), 'ndcg': array([0.05406005])}
+  Recall@[20]: [0.09131309]
+  Precision@[20]: [0.01652818]
+  NDCG@[20]: [0.05406005]
+EPOCH[161/1000] loss0.033-|Sample:3.53| Time: 10.1s
+EPOCH[162/1000] loss0.032-|Sample:3.66| Time: 6.4s
+EPOCH[163/1000] loss0.032-|Sample:3.66| Time: 7.9s
+EPOCH[164/1000] loss0.032-|Sample:3.71| Time: 7.9s
+EPOCH[165/1000] loss0.032-|Sample:3.83| Time: 7.8s
+EPOCH[166/1000] loss0.032-|Sample:3.72| Time: 9.3s
+EPOCH[167/1000] loss0.032-|Sample:3.85| Time: 9.2s
+EPOCH[168/1000] loss0.032-|Sample:3.79| Time: 8.9s
+EPOCH[169/1000] loss0.032-|Sample:3.64| Time: 9.0s
+EPOCH[170/1000] loss0.032-|Sample:3.80| Time: 8.9s
+
+[TEST] Epoch 170
+{'precision': array([0.01659441]), 'recall': array([0.09198561]), 'ndcg': array([0.0543832])}
+  Recall@[20]: [0.09198561]
+  Precision@[20]: [0.01659441]
+  NDCG@[20]: [0.0543832]
+✓ New best! Recall@20: 0.0920
+EPOCH[171/1000] loss0.032-|Sample:3.68| Time: 10.3s
+EPOCH[172/1000] loss0.031-|Sample:3.85| Time: 7.2s
+EPOCH[173/1000] loss0.032-|Sample:3.67| Time: 7.3s
+EPOCH[174/1000] loss0.031-|Sample:3.78| Time: 6.2s
+EPOCH[175/1000] loss0.031-|Sample:3.65| Time: 7.5s
+EPOCH[176/1000] loss0.031-|Sample:3.63| Time: 8.9s
+EPOCH[177/1000] loss0.031-|Sample:3.59| Time: 9.1s
+EPOCH[178/1000] loss0.031-|Sample:3.71| Time: 9.2s
+EPOCH[179/1000] loss0.031-|Sample:3.65| Time: 9.2s
+EPOCH[180/1000] loss0.031-|Sample:3.83| Time: 9.2s
+
+[TEST] Epoch 180
+{'precision': array([0.01657033]), 'recall': array([0.09165506]), 'ndcg': array([0.05434661])}
+  Recall@[20]: [0.09165506]
+  Precision@[20]: [0.01657033]
+  NDCG@[20]: [0.05434661]
+EPOCH[181/1000] loss0.030-|Sample:3.47| Time: 10.1s
+EPOCH[182/1000] loss0.030-|Sample:3.71| Time: 7.6s
+EPOCH[183/1000] loss0.030-|Sample:3.71| Time: 7.7s
+EPOCH[184/1000] loss0.030-|Sample:3.86| Time: 7.8s
+EPOCH[185/1000] loss0.030-|Sample:3.67| Time: 8.0s
+EPOCH[186/1000] loss0.030-|Sample:3.75| Time: 8.8s
+EPOCH[187/1000] loss0.030-|Sample:3.65| Time: 8.8s
+EPOCH[188/1000] loss0.030-|Sample:3.94| Time: 9.2s
+EPOCH[189/1000] loss0.029-|Sample:3.60| Time: 8.7s
+EPOCH[190/1000] loss0.030-|Sample:3.67| Time: 8.6s
+
+[TEST] Epoch 190
+{'precision': array([0.01663054]), 'recall': array([0.09231129]), 'ndcg': array([0.05458092])}
+  Recall@[20]: [0.09231129]
+  Precision@[20]: [0.01663054]
+  NDCG@[20]: [0.05458092]
+✓ New best! Recall@20: 0.0923
+EPOCH[191/1000] loss0.029-|Sample:3.68| Time: 11.4s
+EPOCH[192/1000] loss0.029-|Sample:3.71| Time: 8.2s
+EPOCH[193/1000] loss0.029-|Sample:3.80| Time: 8.2s
+EPOCH[194/1000] loss0.029-|Sample:4.33| Time: 8.0s
+EPOCH[195/1000] loss0.029-|Sample:4.09| Time: 8.0s
+EPOCH[196/1000] loss0.029-|Sample:4.51| Time: 9.8s
+EPOCH[197/1000] loss0.029-|Sample:4.44| Time: 9.4s
+EPOCH[198/1000] loss0.029-|Sample:4.17| Time: 9.1s
+EPOCH[199/1000] loss0.029-|Sample:3.88| Time: 8.3s
+EPOCH[200/1000] loss0.028-|Sample:3.81| Time: 8.3s
+
+[TEST] Epoch 200
+{'precision': array([0.01660645]), 'recall': array([0.09178423]), 'ndcg': array([0.05409119])}
+  Recall@[20]: [0.09178423]
+  Precision@[20]: [0.01660645]
+  NDCG@[20]: [0.05409119]
+EPOCH[201/1000] loss0.028-|Sample:3.18| Time: 9.8s
+EPOCH[202/1000] loss0.028-|Sample:3.82| Time: 7.5s
+EPOCH[203/1000] loss0.028-|Sample:3.80| Time: 7.5s
+EPOCH[204/1000] loss0.028-|Sample:3.66| Time: 7.4s
+EPOCH[205/1000] loss0.028-|Sample:3.66| Time: 7.7s
+EPOCH[206/1000] loss0.028-|Sample:3.76| Time: 8.6s
+EPOCH[207/1000] loss0.028-|Sample:3.83| Time: 8.7s
+EPOCH[208/1000] loss0.028-|Sample:3.91| Time: 8.6s
+EPOCH[209/1000] loss0.028-|Sample:3.84| Time: 8.6s
+EPOCH[210/1000] loss0.028-|Sample:3.65| Time: 7.9s
+
+[TEST] Epoch 210
+{'precision': array([0.01660344]), 'recall': array([0.091576]), 'ndcg': array([0.05432996])}
+  Recall@[20]: [0.091576]
+  Precision@[20]: [0.01660344]
+  NDCG@[20]: [0.05432996]
+EPOCH[211/1000] loss0.028-|Sample:3.59| Time: 10.0s
+EPOCH[212/1000] loss0.027-|Sample:3.84| Time: 7.3s
+EPOCH[213/1000] loss0.027-|Sample:3.82| Time: 7.5s
+EPOCH[214/1000] loss0.027-|Sample:3.73| Time: 7.4s
+EPOCH[215/1000] loss0.027-|Sample:3.88| Time: 7.5s
+EPOCH[216/1000] loss0.027-|Sample:3.61| Time: 8.5s
+EPOCH[217/1000] loss0.027-|Sample:3.85| Time: 8.9s
+EPOCH[218/1000] loss0.027-|Sample:4.14| Time: 8.9s
+EPOCH[219/1000] loss0.027-|Sample:4.01| Time: 8.2s
+EPOCH[220/1000] loss0.027-|Sample:4.11| Time: 8.0s
+
+[TEST] Epoch 220
+{'precision': array([0.01663355]), 'recall': array([0.09205172]), 'ndcg': array([0.05427574])}
+  Recall@[20]: [0.09205172]
+  Precision@[20]: [0.01663355]
+  NDCG@[20]: [0.05427574]
+EPOCH[221/1000] loss0.027-|Sample:3.42| Time: 10.6s
+EPOCH[222/1000] loss0.027-|Sample:3.85| Time: 8.0s
+EPOCH[223/1000] loss0.027-|Sample:3.74| Time: 7.9s
+EPOCH[224/1000] loss0.027-|Sample:3.76| Time: 8.0s
+EPOCH[225/1000] loss0.026-|Sample:3.75| Time: 7.6s
+EPOCH[226/1000] loss0.026-|Sample:3.70| Time: 8.3s
+EPOCH[227/1000] loss0.027-|Sample:3.82| Time: 8.3s
+EPOCH[228/1000] loss0.026-|Sample:3.83| Time: 8.3s
+EPOCH[229/1000] loss0.026-|Sample:3.72| Time: 8.2s
+EPOCH[230/1000] loss0.026-|Sample:3.78| Time: 8.4s
+
+[TEST] Epoch 230
+{'precision': array([0.01658839]), 'recall': array([0.09215761]), 'ndcg': array([0.05433496])}
+  Recall@[20]: [0.09215761]
+  Precision@[20]: [0.01658839]
+  NDCG@[20]: [0.05433496]
+EPOCH[231/1000] loss0.026-|Sample:3.31| Time: 10.6s
+EPOCH[232/1000] loss0.026-|Sample:3.85| Time: 7.8s
+EPOCH[233/1000] loss0.026-|Sample:3.75| Time: 7.6s
+EPOCH[234/1000] loss0.026-|Sample:3.89| Time: 7.9s
+EPOCH[235/1000] loss0.026-|Sample:3.73| Time: 7.2s
+EPOCH[236/1000] loss0.026-|Sample:3.59| Time: 7.5s
+EPOCH[237/1000] loss0.026-|Sample:3.86| Time: 8.0s
+EPOCH[238/1000] loss0.026-|Sample:3.93| Time: 7.8s
+EPOCH[239/1000] loss0.026-|Sample:3.75| Time: 7.7s
+EPOCH[240/1000] loss0.026-|Sample:3.86| Time: 8.0s
+
+[TEST] Epoch 240
+{'precision': array([0.01672989]), 'recall': array([0.09215821]), 'ndcg': array([0.05443631])}
+  Recall@[20]: [0.09215821]
+  Precision@[20]: [0.01672989]
+  NDCG@[20]: [0.05443631]
+EPOCH[241/1000] loss0.026-|Sample:3.59| Time: 11.1s
+EPOCH[242/1000] loss0.025-|Sample:3.65| Time: 7.9s
+EPOCH[243/1000] loss0.026-|Sample:3.72| Time: 8.0s
+EPOCH[244/1000] loss0.025-|Sample:3.90| Time: 7.9s
+EPOCH[245/1000] loss0.026-|Sample:3.75| Time: 7.7s
+EPOCH[246/1000] loss0.025-|Sample:3.83| Time: 8.2s
+EPOCH[247/1000] loss0.025-|Sample:3.64| Time: 7.6s
+EPOCH[248/1000] loss0.025-|Sample:4.03| Time: 8.2s
+EPOCH[249/1000] loss0.025-|Sample:3.75| Time: 7.9s
+EPOCH[250/1000] loss0.025-|Sample:3.84| Time: 8.0s
+
+[TEST] Epoch 250
+{'precision': array([0.01671785]), 'recall': array([0.09232784]), 'ndcg': array([0.0545792])}
+  Recall@[20]: [0.09232784]
+  Precision@[20]: [0.01671785]
+  NDCG@[20]: [0.0545792]
+✓ New best! Recall@20: 0.0923
+EPOCH[251/1000] loss0.025-|Sample:3.69| Time: 11.2s
+EPOCH[252/1000] loss0.025-|Sample:3.65| Time: 7.5s
+EPOCH[253/1000] loss0.025-|Sample:3.85| Time: 7.9s
+EPOCH[254/1000] loss0.025-|Sample:3.86| Time: 8.0s
+EPOCH[255/1000] loss0.025-|Sample:3.67| Time: 7.5s
+EPOCH[256/1000] loss0.025-|Sample:3.87| Time: 8.1s
+EPOCH[257/1000] loss0.025-|Sample:3.72| Time: 7.8s
+EPOCH[258/1000] loss0.025-|Sample:3.70| Time: 8.0s
+EPOCH[259/1000] loss0.025-|Sample:3.80| Time: 8.4s
+EPOCH[260/1000] loss0.025-|Sample:3.79| Time: 8.0s
+
+[TEST] Epoch 260
+{'precision': array([0.01666667]), 'recall': array([0.09127691]), 'ndcg': array([0.05407019])}
+  Recall@[20]: [0.09127691]
+  Precision@[20]: [0.01666667]
+  NDCG@[20]: [0.05407019]
+EPOCH[261/1000] loss0.025-|Sample:3.33| Time: 10.7s
+EPOCH[262/1000] loss0.025-|Sample:3.75| Time: 6.5s
+EPOCH[263/1000] loss0.024-|Sample:3.80| Time: 7.4s
+EPOCH[264/1000] loss0.024-|Sample:3.65| Time: 6.5s
+EPOCH[265/1000] loss0.025-|Sample:3.69| Time: 7.5s
+EPOCH[266/1000] loss0.024-|Sample:3.78| Time: 9.2s
+EPOCH[267/1000] loss0.024-|Sample:3.77| Time: 9.3s
+EPOCH[268/1000] loss0.024-|Sample:3.75| Time: 8.6s
+EPOCH[269/1000] loss0.024-|Sample:3.81| Time: 9.0s
+EPOCH[270/1000] loss0.024-|Sample:3.72| Time: 9.1s
+
+[TEST] Epoch 270
+{'precision': array([0.01668172]), 'recall': array([0.09157639]), 'ndcg': array([0.0542677])}
+  Recall@[20]: [0.09157639]
+  Precision@[20]: [0.01668172]
+  NDCG@[20]: [0.0542677]
+EPOCH[271/1000] loss0.024-|Sample:3.47| Time: 9.7s
+EPOCH[272/1000] loss0.024-|Sample:3.82| Time: 7.5s
+EPOCH[273/1000] loss0.024-|Sample:3.81| Time: 8.2s
+EPOCH[274/1000] loss0.024-|Sample:3.56| Time: 7.9s
+EPOCH[275/1000] loss0.024-|Sample:3.20| Time: 8.0s
+EPOCH[276/1000] loss0.024-|Sample:3.65| Time: 7.7s
+EPOCH[277/1000] loss0.024-|Sample:3.63| Time: 7.5s
+EPOCH[278/1000] loss0.024-|Sample:3.76| Time: 6.8s
+EPOCH[279/1000] loss0.024-|Sample:3.22| Time: 5.8s
+EPOCH[280/1000] loss0.024-|Sample:3.09| Time: 7.0s
+
+[TEST] Epoch 280
+{'precision': array([0.01673892]), 'recall': array([0.09167909]), 'ndcg': array([0.05440869])}
+  Recall@[20]: [0.09167909]
+  Precision@[20]: [0.01673892]
+  NDCG@[20]: [0.05440869]
+EPOCH[281/1000] loss0.024-|Sample:3.20| Time: 8.5s
+EPOCH[282/1000] loss0.024-|Sample:3.82| Time: 7.5s
+EPOCH[283/1000] loss0.024-|Sample:3.73| Time: 8.0s
+EPOCH[284/1000] loss0.024-|Sample:3.72| Time: 7.6s
+EPOCH[285/1000] loss0.024-|Sample:3.77| Time: 8.6s
+EPOCH[286/1000] loss0.024-|Sample:3.64| Time: 8.6s
+EPOCH[287/1000] loss0.023-|Sample:3.80| Time: 8.3s
+EPOCH[288/1000] loss0.023-|Sample:3.64| Time: 8.3s
+EPOCH[289/1000] loss0.024-|Sample:3.91| Time: 8.9s
+EPOCH[290/1000] loss0.023-|Sample:3.71| Time: 8.9s
+
+[TEST] Epoch 290
+{'precision': array([0.0166486]), 'recall': array([0.09164716]), 'ndcg': array([0.054177])}
+  Recall@[20]: [0.09164716]
+  Precision@[20]: [0.0166486]
+  NDCG@[20]: [0.054177]
+EPOCH[291/1000] loss0.023-|Sample:3.24| Time: 10.5s
+EPOCH[292/1000] loss0.023-|Sample:3.79| Time: 8.4s
+EPOCH[293/1000] loss0.024-|Sample:3.65| Time: 8.5s
+EPOCH[294/1000] loss0.023-|Sample:3.78| Time: 8.5s
+EPOCH[295/1000] loss0.024-|Sample:3.79| Time: 8.6s
+EPOCH[296/1000] loss0.023-|Sample:3.64| Time: 8.6s
+EPOCH[297/1000] loss0.023-|Sample:3.82| Time: 8.3s
+EPOCH[298/1000] loss0.023-|Sample:3.63| Time: 8.3s
+EPOCH[299/1000] loss0.023-|Sample:3.81| Time: 8.8s
+EPOCH[300/1000] loss0.023-|Sample:3.73| Time: 8.7s
+
+[TEST] Epoch 300
+{'precision': array([0.01663355]), 'recall': array([0.09188442]), 'ndcg': array([0.05423355])}
+  Recall@[20]: [0.09188442]
+  Precision@[20]: [0.01663355]
+  NDCG@[20]: [0.05423355]
+EPOCH[301/1000] loss0.023-|Sample:3.31| Time: 10.8s
+EPOCH[302/1000] loss0.023-|Sample:3.76| Time: 8.4s
+EPOCH[303/1000] loss0.023-|Sample:3.59| Time: 8.5s
+EPOCH[304/1000] loss0.023-|Sample:3.61| Time: 8.6s
+EPOCH[305/1000] loss0.023-|Sample:3.78| Time: 8.9s
+EPOCH[306/1000] loss0.023-|Sample:3.73| Time: 8.9s
+EPOCH[307/1000] loss0.023-|Sample:3.64| Time: 8.0s
+EPOCH[308/1000] loss0.023-|Sample:3.69| Time: 8.1s
+EPOCH[309/1000] loss0.023-|Sample:3.72| Time: 8.1s
+EPOCH[310/1000] loss0.023-|Sample:3.68| Time: 7.9s
+
+[TEST] Epoch 310
+{'precision': array([0.01669677]), 'recall': array([0.09163645]), 'ndcg': array([0.05429177])}
+  Recall@[20]: [0.09163645]
+  Precision@[20]: [0.01669677]
+  NDCG@[20]: [0.05429177]
+EPOCH[311/1000] loss0.023-|Sample:3.43| Time: 11.7s
+EPOCH[312/1000] loss0.023-|Sample:3.69| Time: 8.6s
+EPOCH[313/1000] loss0.023-|Sample:3.61| Time: 8.5s
+EPOCH[314/1000] loss0.023-|Sample:3.80| Time: 8.6s
+EPOCH[315/1000] loss0.023-|Sample:3.53| Time: 8.3s
+EPOCH[316/1000] loss0.023-|Sample:3.65| Time: 8.5s
+EPOCH[317/1000] loss0.022-|Sample:3.76| Time: 8.9s
+EPOCH[318/1000] loss0.022-|Sample:3.74| Time: 8.8s
+EPOCH[319/1000] loss0.023-|Sample:3.65| Time: 8.5s
+EPOCH[320/1000] loss0.023-|Sample:3.74| Time: 8.9s
+
+[TEST] Epoch 320
+{'precision': array([0.01665161]), 'recall': array([0.09170906]), 'ndcg': array([0.05434393])}
+  Recall@[20]: [0.09170906]
+  Precision@[20]: [0.01665161]
+  NDCG@[20]: [0.05434393]
+EPOCH[321/1000] loss0.023-|Sample:3.29| Time: 10.4s
+EPOCH[322/1000] loss0.023-|Sample:3.84| Time: 7.6s
+EPOCH[323/1000] loss0.022-|Sample:3.81| Time: 7.8s
+EPOCH[324/1000] loss0.022-|Sample:3.53| Time: 7.6s
+EPOCH[325/1000] loss0.023-|Sample:3.66| Time: 6.8s
+EPOCH[326/1000] loss0.022-|Sample:3.17| Time: 7.7s
+EPOCH[327/1000] loss0.022-|Sample:3.16| Time: 6.5s
+EPOCH[328/1000] loss0.022-|Sample:3.80| Time: 7.3s
+EPOCH[329/1000] loss0.022-|Sample:3.79| Time: 7.4s
+EPOCH[330/1000] loss0.022-|Sample:3.58| Time: 7.2s
+
+[TEST] Epoch 330
+{'precision': array([0.01665763]), 'recall': array([0.0916023]), 'ndcg': array([0.05381313])}
+  Recall@[20]: [0.0916023]
+  Precision@[20]: [0.01665763]
+  NDCG@[20]: [0.05381313]
+EPOCH[331/1000] loss0.023-|Sample:3.40| Time: 11.9s
+EPOCH[332/1000] loss0.022-|Sample:3.80| Time: 9.0s
+EPOCH[333/1000] loss0.022-|Sample:3.78| Time: 9.0s
+EPOCH[334/1000] loss0.022-|Sample:3.68| Time: 9.1s
+EPOCH[335/1000] loss0.022-|Sample:3.83| Time: 8.6s
+EPOCH[336/1000] loss0.022-|Sample:3.69| Time: 9.0s
+EPOCH[337/1000] loss0.022-|Sample:3.69| Time: 7.2s
+EPOCH[338/1000] loss0.022-|Sample:3.76| Time: 7.6s
+EPOCH[339/1000] loss0.022-|Sample:3.87| Time: 7.6s
+EPOCH[340/1000] loss0.022-|Sample:3.71| Time: 7.7s
+
+[TEST] Epoch 340
+{'precision': array([0.01665763]), 'recall': array([0.09127038]), 'ndcg': array([0.05379])}
+  Recall@[20]: [0.09127038]
+  Precision@[20]: [0.01665763]
+  NDCG@[20]: [0.05379]
+EPOCH[341/1000] loss0.022-|Sample:3.51| Time: 11.9s
+EPOCH[342/1000] loss0.022-|Sample:3.78| Time: 9.3s
+EPOCH[343/1000] loss0.022-|Sample:3.62| Time: 9.1s
+EPOCH[344/1000] loss0.022-|Sample:3.59| Time: 9.1s
+EPOCH[345/1000] loss0.022-|Sample:3.75| Time: 8.7s
+EPOCH[346/1000] loss0.022-|Sample:3.62| Time: 9.3s
+EPOCH[347/1000] loss0.022-|Sample:3.78| Time: 7.6s
+EPOCH[348/1000] loss0.022-|Sample:3.57| Time: 7.1s
+EPOCH[349/1000] loss0.022-|Sample:3.95| Time: 7.5s
+EPOCH[350/1000] loss0.022-|Sample:3.71| Time: 7.5s
+
+[TEST] Epoch 350
+{'precision': array([0.01657635]), 'recall': array([0.09082267]), 'ndcg': array([0.05369613])}
+  Recall@[20]: [0.09082267]
+  Precision@[20]: [0.01657635]
+  NDCG@[20]: [0.05369613]
+EPOCH[351/1000] loss0.022-|Sample:3.40| Time: 12.0s
+EPOCH[352/1000] loss0.022-|Sample:3.78| Time: 9.3s
+EPOCH[353/1000] loss0.022-|Sample:3.66| Time: 9.1s
+EPOCH[354/1000] loss0.022-|Sample:3.78| Time: 9.0s
+EPOCH[355/1000] loss0.022-|Sample:3.77| Time: 8.8s
+EPOCH[356/1000] loss0.022-|Sample:3.65| Time: 8.7s
+EPOCH[357/1000] loss0.022-|Sample:3.81| Time: 7.2s
+EPOCH[358/1000] loss0.022-|Sample:3.69| Time: 7.1s
+EPOCH[359/1000] loss0.021-|Sample:3.65| Time: 7.3s
+EPOCH[360/1000] loss0.021-|Sample:3.74| Time: 7.4s
+
+[TEST] Epoch 360
+{'precision': array([0.01649807]), 'recall': array([0.09076212]), 'ndcg': array([0.05367189])}
+  Recall@[20]: [0.09076212]
+  Precision@[20]: [0.01649807]
+  NDCG@[20]: [0.05367189]
+EPOCH[361/1000] loss0.022-|Sample:3.19| Time: 11.2s
+EPOCH[362/1000] loss0.022-|Sample:3.59| Time: 8.6s
+EPOCH[363/1000] loss0.022-|Sample:3.77| Time: 8.7s
+EPOCH[364/1000] loss0.022-|Sample:3.76| Time: 9.1s
+EPOCH[365/1000] loss0.022-|Sample:3.65| Time: 8.4s
+EPOCH[366/1000] loss0.021-|Sample:3.79| Time: 8.8s
+EPOCH[367/1000] loss0.021-|Sample:3.84| Time: 7.4s
+EPOCH[368/1000] loss0.022-|Sample:3.55| Time: 5.9s
+EPOCH[369/1000] loss0.021-|Sample:3.68| Time: 7.5s
+EPOCH[370/1000] loss0.021-|Sample:3.78| Time: 8.1s
+
+[TEST] Epoch 370
+{'precision': array([0.01658237]), 'recall': array([0.09090519]), 'ndcg': array([0.05382121])}
+  Recall@[20]: [0.09090519]
+  Precision@[20]: [0.01658237]
+  NDCG@[20]: [0.05382121]
+EPOCH[371/1000] loss0.021-|Sample:3.35| Time: 11.0s
+EPOCH[372/1000] loss0.022-|Sample:3.66| Time: 8.0s
+EPOCH[373/1000] loss0.021-|Sample:3.59| Time: 7.8s
+EPOCH[374/1000] loss0.021-|Sample:3.66| Time: 7.6s
+EPOCH[375/1000] loss0.021-|Sample:3.63| Time: 7.7s
+EPOCH[376/1000] loss0.021-|Sample:3.83| Time: 6.3s
+EPOCH[377/1000] loss0.021-|Sample:3.62| Time: 7.3s
+EPOCH[378/1000] loss0.021-|Sample:3.74| Time: 9.0s
+EPOCH[379/1000] loss0.021-|Sample:3.82| Time: 9.0s
+EPOCH[380/1000] loss0.021-|Sample:3.63| Time: 9.1s
+
+[TEST] Epoch 380
+{'precision': array([0.01665161]), 'recall': array([0.09108497]), 'ndcg': array([0.05394166])}
+  Recall@[20]: [0.09108497]
+  Precision@[20]: [0.01665161]
+  NDCG@[20]: [0.05394166]
+EPOCH[381/1000] loss0.021-|Sample:3.46| Time: 9.9s
+EPOCH[382/1000] loss0.021-|Sample:3.60| Time: 7.8s
+EPOCH[383/1000] loss0.021-|Sample:3.90| Time: 8.0s
+EPOCH[384/1000] loss0.021-|Sample:3.67| Time: 7.6s
+EPOCH[385/1000] loss0.021-|Sample:3.66| Time: 7.4s
+EPOCH[386/1000] loss0.021-|Sample:3.79| Time: 7.9s
+EPOCH[387/1000] loss0.021-|Sample:3.65| Time: 8.2s
+EPOCH[388/1000] loss0.021-|Sample:3.75| Time: 9.3s
+EPOCH[389/1000] loss0.021-|Sample:3.64| Time: 9.0s
+EPOCH[390/1000] loss0.021-|Sample:3.83| Time: 9.1s
+
+[TEST] Epoch 390
+{'precision': array([0.01657334]), 'recall': array([0.09042741]), 'ndcg': array([0.05357541])}
+  Recall@[20]: [0.09042741]
+  Precision@[20]: [0.01657334]
+  NDCG@[20]: [0.05357541]
+EPOCH[391/1000] loss0.021-|Sample:3.19| Time: 10.1s
+EPOCH[392/1000] loss0.021-|Sample:3.54| Time: 8.1s
+EPOCH[393/1000] loss0.021-|Sample:3.78| Time: 8.3s
+EPOCH[394/1000] loss0.021-|Sample:3.69| Time: 8.2s
+EPOCH[395/1000] loss0.021-|Sample:3.77| Time: 7.9s
+EPOCH[396/1000] loss0.021-|Sample:3.79| Time: 8.2s
+EPOCH[397/1000] loss0.020-|Sample:3.62| Time: 8.2s
+EPOCH[398/1000] loss0.021-|Sample:3.75| Time: 9.3s
+EPOCH[399/1000] loss0.021-|Sample:3.61| Time: 8.8s
+EPOCH[400/1000] loss0.021-|Sample:3.61| Time: 8.9s
+
+[TEST] Epoch 400
+{'precision': array([0.0166185]), 'recall': array([0.09076722]), 'ndcg': array([0.05396669])}
+  Recall@[20]: [0.09076722]
+  Precision@[20]: [0.0166185]
+  NDCG@[20]: [0.05396669]
+EPOCH[401/1000] loss0.020-|Sample:3.46| Time: 10.8s
+EPOCH[402/1000] loss0.021-|Sample:3.79| Time: 8.2s
+EPOCH[403/1000] loss0.021-|Sample:3.64| Time: 8.1s
+EPOCH[404/1000] loss0.021-|Sample:3.74| Time: 8.0s
+EPOCH[405/1000] loss0.021-|Sample:3.73| Time: 8.6s
+EPOCH[406/1000] loss0.021-|Sample:3.56| Time: 8.5s
+EPOCH[407/1000] loss0.021-|Sample:3.73| Time: 8.6s
+EPOCH[408/1000] loss0.020-|Sample:3.78| Time: 8.0s
+EPOCH[409/1000] loss0.021-|Sample:3.73| Time: 8.0s
+EPOCH[410/1000] loss0.021-|Sample:3.70| Time: 7.8s
+
+[TEST] Epoch 410
+{'precision': array([0.01669677]), 'recall': array([0.09135494]), 'ndcg': array([0.0541395])}
+  Recall@[20]: [0.09135494]
+  Precision@[20]: [0.01669677]
+  NDCG@[20]: [0.0541395]
+EPOCH[411/1000] loss0.021-|Sample:3.33| Time: 12.1s
+EPOCH[412/1000] loss0.021-|Sample:3.80| Time: 9.1s
+EPOCH[413/1000] loss0.021-|Sample:3.69| Time: 9.2s
+EPOCH[414/1000] loss0.020-|Sample:3.79| Time: 9.3s
+EPOCH[415/1000] loss0.020-|Sample:3.85| Time: 8.9s
+EPOCH[416/1000] loss0.021-|Sample:3.68| Time: 8.9s
+EPOCH[417/1000] loss0.020-|Sample:3.80| Time: 8.9s
+EPOCH[418/1000] loss0.020-|Sample:3.68| Time: 6.7s
+EPOCH[419/1000] loss0.020-|Sample:3.73| Time: 6.7s
+EPOCH[420/1000] loss0.021-|Sample:3.79| Time: 6.2s
+
+[TEST] Epoch 420
+{'precision': array([0.01662452]), 'recall': array([0.09052989]), 'ndcg': array([0.05357579])}
+  Recall@[20]: [0.09052989]
+  Precision@[20]: [0.01662452]
+  NDCG@[20]: [0.05357579]
+EPOCH[421/1000] loss0.020-|Sample:3.27| Time: 11.2s
+EPOCH[422/1000] loss0.020-|Sample:3.74| Time: 7.8s
+EPOCH[423/1000] loss0.020-|Sample:3.76| Time: 7.0s
+EPOCH[424/1000] loss0.020-|Sample:3.09| Time: 6.4s
+EPOCH[425/1000] loss0.020-|Sample:3.82| Time: 6.4s
+EPOCH[426/1000] loss0.020-|Sample:3.64| Time: 7.0s
+EPOCH[427/1000] loss0.020-|Sample:3.71| Time: 7.6s
+EPOCH[428/1000] loss0.020-|Sample:3.84| Time: 7.7s
+EPOCH[429/1000] loss0.020-|Sample:3.73| Time: 9.1s
+EPOCH[430/1000] loss0.020-|Sample:3.67| Time: 9.2s
+
+[TEST] Epoch 430
+{'precision': array([0.01666065]), 'recall': array([0.09121828]), 'ndcg': array([0.05392027])}
+  Recall@[20]: [0.09121828]
+  Precision@[20]: [0.01666065]
+  NDCG@[20]: [0.05392027]
+EPOCH[431/1000] loss0.020-|Sample:3.61| Time: 10.7s
+EPOCH[432/1000] loss0.020-|Sample:3.85| Time: 8.2s
+EPOCH[433/1000] loss0.020-|Sample:3.66| Time: 7.9s
+EPOCH[434/1000] loss0.020-|Sample:3.85| Time: 7.9s
+EPOCH[435/1000] loss0.020-|Sample:3.63| Time: 7.8s
+EPOCH[436/1000] loss0.020-|Sample:3.65| Time: 7.9s
+EPOCH[437/1000] loss0.020-|Sample:3.74| Time: 8.0s
+EPOCH[438/1000] loss0.020-|Sample:3.76| Time: 8.0s
+EPOCH[439/1000] loss0.020-|Sample:3.62| Time: 7.8s
+EPOCH[440/1000] loss0.020-|Sample:3.78| Time: 8.5s
+
+[TEST] Epoch 440
+{'precision': array([0.01655527]), 'recall': array([0.09078668]), 'ndcg': array([0.0536306])}
+  Recall@[20]: [0.09078668]
+  Precision@[20]: [0.01655527]
+  NDCG@[20]: [0.0536306]
+EPOCH[441/1000] loss0.020-|Sample:3.15| Time: 11.0s
+EPOCH[442/1000] loss0.020-|Sample:3.75| Time: 8.5s
+EPOCH[443/1000] loss0.020-|Sample:3.78| Time: 8.5s
+EPOCH[444/1000] loss0.020-|Sample:3.68| Time: 8.6s
+EPOCH[445/1000] loss0.020-|Sample:3.61| Time: 8.6s
+EPOCH[446/1000] loss0.020-|Sample:3.75| Time: 8.4s
+EPOCH[447/1000] loss0.020-|Sample:3.78| Time: 8.3s
+EPOCH[448/1000] loss0.020-|Sample:3.17| Time: 8.3s
+EPOCH[449/1000] loss0.020-|Sample:3.19| Time: 5.5s
+EPOCH[450/1000] loss0.020-|Sample:3.54| Time: 6.9s
+
+[TEST] Epoch 450
+{'precision': array([0.01657334]), 'recall': array([0.09095399]), 'ndcg': array([0.05367069])}
+  Recall@[20]: [0.09095399]
+  Precision@[20]: [0.01657334]
+  NDCG@[20]: [0.05367069]
+EPOCH[451/1000] loss0.020-|Sample:3.24| Time: 11.9s
+EPOCH[452/1000] loss0.020-|Sample:3.81| Time: 7.6s
+EPOCH[453/1000] loss0.020-|Sample:3.78| Time: 7.0s
+EPOCH[454/1000] loss0.020-|Sample:3.59| Time: 7.4s
+EPOCH[455/1000] loss0.020-|Sample:3.61| Time: 7.6s
+EPOCH[456/1000] loss0.020-|Sample:3.60| Time: 6.0s
+EPOCH[457/1000] loss0.020-|Sample:3.64| Time: 6.3s
+EPOCH[458/1000] loss0.020-|Sample:3.87| Time: 7.0s
+EPOCH[459/1000] loss0.020-|Sample:3.79| Time: 7.1s
+EPOCH[460/1000] loss0.020-|Sample:3.65| Time: 9.2s
+
+[TEST] Epoch 460
+{'precision': array([0.01658538]), 'recall': array([0.09122118]), 'ndcg': array([0.05376609])}
+  Recall@[20]: [0.09122118]
+  Precision@[20]: [0.01658538]
+  NDCG@[20]: [0.05376609]
+EPOCH[461/1000] loss0.020-|Sample:3.45| Time: 10.3s
+EPOCH[462/1000] loss0.020-|Sample:3.82| Time: 7.6s
+EPOCH[463/1000] loss0.020-|Sample:3.67| Time: 7.5s
+EPOCH[464/1000] loss0.020-|Sample:3.64| Time: 7.5s
+EPOCH[465/1000] loss0.020-|Sample:3.78| Time: 7.3s
+EPOCH[466/1000] loss0.020-|Sample:3.72| Time: 7.2s
+EPOCH[467/1000] loss0.020-|Sample:3.82| Time: 7.2s
+EPOCH[468/1000] loss0.020-|Sample:3.68| Time: 7.0s
+EPOCH[469/1000] loss0.020-|Sample:3.93| Time: 8.1s
+EPOCH[470/1000] loss0.020-|Sample:3.63| Time: 9.1s
+
+[TEST] Epoch 470
+{'precision': array([0.01646195]), 'recall': array([0.09017806]), 'ndcg': array([0.05341898])}
+  Recall@[20]: [0.09017806]
+  Precision@[20]: [0.01646195]
+  NDCG@[20]: [0.05341898]
+EPOCH[471/1000] loss0.020-|Sample:3.42| Time: 10.1s
+EPOCH[472/1000] loss0.020-|Sample:3.79| Time: 7.3s
+EPOCH[473/1000] loss0.020-|Sample:3.64| Time: 7.3s
+EPOCH[474/1000] loss0.020-|Sample:3.79| Time: 7.1s
+EPOCH[475/1000] loss0.020-|Sample:3.20| Time: 7.4s
+EPOCH[476/1000] loss0.020-|Sample:3.61| Time: 8.1s
+EPOCH[477/1000] loss0.020-|Sample:3.68| Time: 8.1s
+EPOCH[478/1000] loss0.020-|Sample:3.68| Time: 8.2s
+EPOCH[479/1000] loss0.020-|Sample:3.66| Time: 8.7s
+EPOCH[480/1000] loss0.020-|Sample:3.78| Time: 7.9s
+
+[TEST] Epoch 480
+{'precision': array([0.01636561]), 'recall': array([0.08981553]), 'ndcg': array([0.05327672])}
+  Recall@[20]: [0.08981553]
+  Precision@[20]: [0.01636561]
+  NDCG@[20]: [0.05327672]
+EPOCH[481/1000] loss0.020-|Sample:3.45| Time: 11.7s
+EPOCH[482/1000] loss0.020-|Sample:3.62| Time: 8.7s
+EPOCH[483/1000] loss0.020-|Sample:3.18| Time: 8.7s
+EPOCH[484/1000] loss0.020-|Sample:3.77| Time: 9.2s
+EPOCH[485/1000] loss0.020-|Sample:3.11| Time: 8.3s
+EPOCH[486/1000] loss0.020-|Sample:3.83| Time: 9.2s
+EPOCH[487/1000] loss0.020-|Sample:3.79| Time: 9.1s
+EPOCH[488/1000] loss0.020-|Sample:3.67| Time: 9.0s
+EPOCH[489/1000] loss0.020-|Sample:3.69| Time: 9.1s
+EPOCH[490/1000] loss0.019-|Sample:3.81| Time: 7.5s
+
+[TEST] Epoch 490
+{'precision': array([0.01638066]), 'recall': array([0.08976523]), 'ndcg': array([0.05330802])}
+  Recall@[20]: [0.08976523]
+  Precision@[20]: [0.01638066]
+  NDCG@[20]: [0.05330802]
+EPOCH[491/1000] loss0.020-|Sample:3.46| Time: 12.0s
+EPOCH[492/1000] loss0.019-|Sample:3.55| Time: 9.0s
+EPOCH[493/1000] loss0.020-|Sample:3.66| Time: 9.2s
+EPOCH[494/1000] loss0.020-|Sample:3.75| Time: 9.2s
+EPOCH[495/1000] loss0.020-|Sample:3.62| Time: 8.4s
+EPOCH[496/1000] loss0.019-|Sample:3.73| Time: 9.2s
+EPOCH[497/1000] loss0.019-|Sample:3.67| Time: 9.2s
+EPOCH[498/1000] loss0.019-|Sample:3.54| Time: 8.9s
+EPOCH[499/1000] loss0.020-|Sample:3.54| Time: 8.9s
+EPOCH[500/1000] loss0.019-|Sample:3.65| Time: 7.1s
+
+[TEST] Epoch 500
+{'precision': array([0.01646195]), 'recall': array([0.09002154]), 'ndcg': array([0.05358605])}
+  Recall@[20]: [0.09002154]
+  Precision@[20]: [0.01646195]
+  NDCG@[20]: [0.05358605]
+EPOCH[501/1000] loss0.019-|Sample:3.49| Time: 11.8s
+EPOCH[502/1000] loss0.019-|Sample:3.66| Time: 8.2s
+EPOCH[503/1000] loss0.019-|Sample:4.03| Time: 8.7s
+EPOCH[504/1000] loss0.019-|Sample:3.68| Time: 8.1s
+EPOCH[505/1000] loss0.019-|Sample:3.70| Time: 8.4s
+EPOCH[506/1000] loss0.019-|Sample:3.80| Time: 8.5s
+EPOCH[507/1000] loss0.020-|Sample:3.51| Time: 8.1s
+EPOCH[508/1000] loss0.019-|Sample:3.82| Time: 8.0s
+EPOCH[509/1000] loss0.019-|Sample:3.64| Time: 6.1s
+EPOCH[510/1000] loss0.019-|Sample:3.94| Time: 7.0s
+
+[TEST] Epoch 510
+{'precision': array([0.01654022]), 'recall': array([0.09042404]), 'ndcg': array([0.05376734])}
+  Recall@[20]: [0.09042404]
+  Precision@[20]: [0.01654022]
+  NDCG@[20]: [0.05376734]
+EPOCH[511/1000] loss0.019-|Sample:3.24| Time: 9.1s
+EPOCH[512/1000] loss0.019-|Sample:3.68| Time: 6.8s
+EPOCH[513/1000] loss0.020-|Sample:3.81| Time: 6.8s
+EPOCH[514/1000] loss0.020-|Sample:3.67| Time: 6.7s
+EPOCH[515/1000] loss0.019-|Sample:3.85| Time: 6.2s
+EPOCH[516/1000] loss0.020-|Sample:3.83| Time: 6.4s
+EPOCH[517/1000] loss0.019-|Sample:3.70| Time: 6.9s
+EPOCH[518/1000] loss0.019-|Sample:3.78| Time: 7.3s
+EPOCH[519/1000] loss0.020-|Sample:3.54| Time: 7.2s
+EPOCH[520/1000] loss0.019-|Sample:3.68| Time: 7.3s
+
+[TEST] Epoch 520
+{'precision': array([0.01649205]), 'recall': array([0.09057938]), 'ndcg': array([0.0537086])}
+  Recall@[20]: [0.09057938]
+  Precision@[20]: [0.01649205]
+  NDCG@[20]: [0.0537086]
+EPOCH[521/1000] loss0.019-|Sample:3.39| Time: 10.2s
+EPOCH[522/1000] loss0.019-|Sample:3.89| Time: 7.9s
+EPOCH[523/1000] loss0.020-|Sample:3.72| Time: 7.8s
+EPOCH[524/1000] loss0.020-|Sample:3.78| Time: 7.6s
+EPOCH[525/1000] loss0.019-|Sample:3.93| Time: 7.8s
+EPOCH[526/1000] loss0.019-|Sample:3.69| Time: 7.7s
+EPOCH[527/1000] loss0.019-|Sample:3.83| Time: 7.5s
+EPOCH[528/1000] loss0.019-|Sample:3.75| Time: 7.3s
+EPOCH[529/1000] loss0.019-|Sample:3.69| Time: 7.3s
+EPOCH[530/1000] loss0.019-|Sample:3.69| Time: 7.3s
+
+[TEST] Epoch 530
+{'precision': array([0.01647399]), 'recall': array([0.09045973]), 'ndcg': array([0.05362304])}
+  Recall@[20]: [0.09045973]
+  Precision@[20]: [0.01647399]
+  NDCG@[20]: [0.05362304]
+EPOCH[531/1000] loss0.019-|Sample:3.53| Time: 10.0s
+EPOCH[532/1000] loss0.019-|Sample:3.87| Time: 7.6s
+EPOCH[533/1000] loss0.019-|Sample:3.70| Time: 7.4s
+EPOCH[534/1000] loss0.019-|Sample:3.73| Time: 7.3s
+EPOCH[535/1000] loss0.019-|Sample:3.85| Time: 7.6s
+EPOCH[536/1000] loss0.019-|Sample:3.69| Time: 7.3s
+EPOCH[537/1000] loss0.019-|Sample:3.85| Time: 7.4s
+EPOCH[538/1000] loss0.019-|Sample:3.71| Time: 6.4s
+EPOCH[539/1000] loss0.019-|Sample:3.88| Time: 5.9s
+EPOCH[540/1000] loss0.019-|Sample:3.83| Time: 6.8s
+
+[TEST] Epoch 540
+{'precision': array([0.01652818]), 'recall': array([0.09089062]), 'ndcg': array([0.05369115])}
+  Recall@[20]: [0.09089062]
+  Precision@[20]: [0.01652818]
+  NDCG@[20]: [0.05369115]
+EPOCH[541/1000] loss0.019-|Sample:3.21| Time: 9.1s
+EPOCH[542/1000] loss0.019-|Sample:3.86| Time: 6.9s
+EPOCH[543/1000] loss0.019-|Sample:3.86| Time: 6.8s
+EPOCH[544/1000] loss0.019-|Sample:3.71| Time: 6.6s
+EPOCH[545/1000] loss0.019-|Sample:3.82| Time: 6.8s
+EPOCH[546/1000] loss0.019-|Sample:3.84| Time: 6.8s
+EPOCH[547/1000] loss0.019-|Sample:3.68| Time: 6.7s
+EPOCH[548/1000] loss0.019-|Sample:3.80| Time: 6.8s
+EPOCH[549/1000] loss0.019-|Sample:3.86| Time: 6.8s
+EPOCH[550/1000] loss0.019-|Sample:3.72| Time: 6.7s
+
+[TEST] Epoch 550
+{'precision': array([0.01660344]), 'recall': array([0.0911726]), 'ndcg': array([0.05399222])}
+  Recall@[20]: [0.0911726]
+  Precision@[20]: [0.01660344]
+  NDCG@[20]: [0.05399222]
+EPOCH[551/1000] loss0.019-|Sample:3.55| Time: 9.4s
+EPOCH[552/1000] loss0.019-|Sample:3.79| Time: 6.8s
+EPOCH[553/1000] loss0.019-|Sample:3.71| Time: 6.6s
+EPOCH[554/1000] loss0.019-|Sample:3.87| Time: 6.8s
+EPOCH[555/1000] loss0.019-|Sample:3.90| Time: 6.9s
+EPOCH[556/1000] loss0.019-|Sample:3.74| Time: 6.7s
+EPOCH[557/1000] loss0.019-|Sample:3.75| Time: 6.6s
+EPOCH[558/1000] loss0.019-|Sample:3.81| Time: 6.7s
+EPOCH[559/1000] loss0.019-|Sample:3.75| Time: 6.8s
+EPOCH[560/1000] loss0.019-|Sample:3.82| Time: 6.8s
+
+[TEST] Epoch 560
+{'precision': array([0.01650108]), 'recall': array([0.09088993]), 'ndcg': array([0.05382619])}
+  Recall@[20]: [0.09088993]
+  Precision@[20]: [0.01650108]
+  NDCG@[20]: [0.05382619]
+EPOCH[561/1000] loss0.019-|Sample:3.39| Time: 9.2s
+EPOCH[562/1000] loss0.019-|Sample:3.72| Time: 6.6s
+EPOCH[563/1000] loss0.019-|Sample:3.82| Time: 7.0s
+EPOCH[564/1000] loss0.019-|Sample:3.72| Time: 6.9s
+EPOCH[565/1000] loss0.019-|Sample:3.68| Time: 6.6s
+EPOCH[566/1000] loss0.019-|Sample:3.83| Time: 6.8s
+EPOCH[567/1000] loss0.019-|Sample:3.83| Time: 6.7s
+EPOCH[568/1000] loss0.019-|Sample:3.83| Time: 6.4s
+EPOCH[569/1000] loss0.019-|Sample:3.82| Time: 6.8s
+EPOCH[570/1000] loss0.019-|Sample:3.62| Time: 5.7s
+
+[TEST] Epoch 570
+{'precision': array([0.01658237]), 'recall': array([0.0910022]), 'ndcg': array([0.0539522])}
+  Recall@[20]: [0.0910022]
+  Precision@[20]: [0.01658237]
+  NDCG@[20]: [0.0539522]
+EPOCH[571/1000] loss0.019-|Sample:3.38| Time: 8.8s
+EPOCH[572/1000] loss0.019-|Sample:3.88| Time: 7.0s
+EPOCH[573/1000] loss0.019-|Sample:3.85| Time: 7.0s
+EPOCH[574/1000] loss0.019-|Sample:3.69| Time: 6.6s
+EPOCH[575/1000] loss0.019-|Sample:3.83| Time: 6.9s
+EPOCH[576/1000] loss0.019-|Sample:3.65| Time: 6.8s
+EPOCH[577/1000] loss0.019-|Sample:3.70| Time: 6.7s
+EPOCH[578/1000] loss0.019-|Sample:3.83| Time: 6.9s
+EPOCH[579/1000] loss0.019-|Sample:3.59| Time: 6.8s
+EPOCH[580/1000] loss0.019-|Sample:3.63| Time: 6.8s
+
+[TEST] Epoch 580
+{'precision': array([0.01657635]), 'recall': array([0.09135746]), 'ndcg': array([0.05399328])}
+  Recall@[20]: [0.09135746]
+  Precision@[20]: [0.01657635]
+  NDCG@[20]: [0.05399328]
+EPOCH[581/1000] loss0.019-|Sample:3.50| Time: 9.0s
+EPOCH[582/1000] loss0.019-|Sample:3.77| Time: 6.6s
+EPOCH[583/1000] loss0.019-|Sample:3.62| Time: 7.4s
+EPOCH[584/1000] loss0.019-|Sample:3.08| Time: 6.6s
+EPOCH[585/1000] loss0.019-|Sample:3.74| Time: 7.2s
+EPOCH[586/1000] loss0.019-|Sample:3.63| Time: 6.4s
+EPOCH[587/1000] loss0.019-|Sample:3.79| Time: 6.1s
+EPOCH[588/1000] loss0.019-|Sample:3.63| Time: 5.5s
+EPOCH[589/1000] loss0.019-|Sample:3.28| Time: 5.3s
+EPOCH[590/1000] loss0.019-|Sample:3.08| Time: 6.1s
+
+[TEST] Epoch 590
+{'precision': array([0.016477]), 'recall': array([0.09111599]), 'ndcg': array([0.05392813])}
+  Recall@[20]: [0.09111599]
+  Precision@[20]: [0.016477]
+  NDCG@[20]: [0.05392813]
+EPOCH[591/1000] loss0.019-|Sample:3.09| Time: 8.2s
+EPOCH[592/1000] loss0.019-|Sample:3.43| Time: 6.5s
+EPOCH[593/1000] loss0.019-|Sample:3.64| Time: 7.8s
+EPOCH[594/1000] loss0.019-|Sample:3.78| Time: 7.8s
+EPOCH[595/1000] loss0.019-|Sample:3.83| Time: 7.3s
+EPOCH[596/1000] loss0.019-|Sample:3.66| Time: 7.4s
+EPOCH[597/1000] loss0.018-|Sample:3.76| Time: 7.4s
+EPOCH[598/1000] loss0.019-|Sample:3.61| Time: 7.1s
+EPOCH[599/1000] loss0.019-|Sample:3.64| Time: 7.3s
+EPOCH[600/1000] loss0.018-|Sample:3.59| Time: 7.2s
+
+[TEST] Epoch 600
+{'precision': array([0.01645291]), 'recall': array([0.09043068]), 'ndcg': array([0.0536742])}
+  Recall@[20]: [0.09043068]
+  Precision@[20]: [0.01645291]
+  NDCG@[20]: [0.0536742]
+EPOCH[601/1000] loss0.019-|Sample:3.25| Time: 9.6s
+EPOCH[602/1000] loss0.019-|Sample:3.65| Time: 7.4s
+EPOCH[603/1000] loss0.019-|Sample:3.81| Time: 7.2s
+EPOCH[604/1000] loss0.019-|Sample:3.72| Time: 7.3s
+EPOCH[605/1000] loss0.019-|Sample:3.62| Time: 7.3s
+EPOCH[606/1000] loss0.019-|Sample:3.79| Time: 7.4s
+EPOCH[607/1000] loss0.019-|Sample:3.79| Time: 7.4s
+EPOCH[608/1000] loss0.019-|Sample:3.57| Time: 7.0s
+EPOCH[609/1000] loss0.019-|Sample:3.69| Time: 7.1s
+EPOCH[610/1000] loss0.019-|Sample:3.82| Time: 7.1s
+
+[TEST] Epoch 610
+{'precision': array([0.01636862]), 'recall': array([0.08990732]), 'ndcg': array([0.05349663])}
+  Recall@[20]: [0.08990732]
+  Precision@[20]: [0.01636862]
+  NDCG@[20]: [0.05349663]
+EPOCH[611/1000] loss0.019-|Sample:3.53| Time: 10.2s
+EPOCH[612/1000] loss0.019-|Sample:3.64| Time: 7.6s
+EPOCH[613/1000] loss0.019-|Sample:3.83| Time: 7.1s
+EPOCH[614/1000] loss0.019-|Sample:3.74| Time: 6.9s
+EPOCH[615/1000] loss0.019-|Sample:3.65| Time: 6.5s
+EPOCH[616/1000] loss0.019-|Sample:3.76| Time: 6.8s
+EPOCH[617/1000] loss0.019-|Sample:3.72| Time: 6.6s
+EPOCH[618/1000] loss0.019-|Sample:3.87| Time: 6.2s
+EPOCH[619/1000] loss0.019-|Sample:3.86| Time: 6.2s
+EPOCH[620/1000] loss0.019-|Sample:3.73| Time: 6.8s
+
+[TEST] Epoch 620
+{'precision': array([0.01647098]), 'recall': array([0.0904817]), 'ndcg': array([0.05407163])}
+  Recall@[20]: [0.0904817]
+  Precision@[20]: [0.01647098]
+  NDCG@[20]: [0.05407163]
+EPOCH[621/1000] loss0.019-|Sample:3.35| Time: 9.3s
+EPOCH[622/1000] loss0.019-|Sample:3.65| Time: 6.8s
+EPOCH[623/1000] loss0.018-|Sample:3.94| Time: 7.0s
+EPOCH[624/1000] loss0.018-|Sample:3.70| Time: 6.9s
+EPOCH[625/1000] loss0.018-|Sample:3.75| Time: 7.0s
+EPOCH[626/1000] loss0.018-|Sample:3.85| Time: 7.1s
+EPOCH[627/1000] loss0.019-|Sample:3.73| Time: 6.8s
+EPOCH[628/1000] loss0.019-|Sample:3.86| Time: 7.0s
+EPOCH[629/1000] loss0.019-|Sample:3.67| Time: 6.8s
+EPOCH[630/1000] loss0.018-|Sample:3.97| Time: 7.0s
+
+[TEST] Epoch 630
+{'precision': array([0.01648904]), 'recall': array([0.09070364]), 'ndcg': array([0.05392444])}
+  Recall@[20]: [0.09070364]
+  Precision@[20]: [0.01648904]
+  NDCG@[20]: [0.05392444]
+EPOCH[631/1000] loss0.019-|Sample:3.41| Time: 10.0s
+EPOCH[632/1000] loss0.019-|Sample:3.64| Time: 7.2s
+EPOCH[633/1000] loss0.018-|Sample:3.72| Time: 6.5s
+EPOCH[634/1000] loss0.018-|Sample:3.68| Time: 6.0s
+EPOCH[635/1000] loss0.018-|Sample:3.81| Time: 6.8s
+EPOCH[636/1000] loss0.019-|Sample:3.51| Time: 7.1s
+EPOCH[637/1000] loss0.018-|Sample:3.76| Time: 7.4s
+EPOCH[638/1000] loss0.018-|Sample:3.84| Time: 7.6s
+EPOCH[639/1000] loss0.018-|Sample:3.74| Time: 7.7s
+EPOCH[640/1000] loss0.019-|Sample:3.82| Time: 7.5s
+
+[TEST] Epoch 640
+{'precision': array([0.01641077]), 'recall': array([0.09014489]), 'ndcg': array([0.05356413])}
+  Recall@[20]: [0.09014489]
+  Precision@[20]: [0.01641077]
+  NDCG@[20]: [0.05356413]
+EPOCH[641/1000] loss0.019-|Sample:3.58| Time: 9.0s
+EPOCH[642/1000] loss0.018-|Sample:3.86| Time: 6.8s
+EPOCH[643/1000] loss0.018-|Sample:3.67| Time: 6.8s
+EPOCH[644/1000] loss0.019-|Sample:3.87| Time: 8.0s
+EPOCH[645/1000] loss0.018-|Sample:3.82| Time: 8.0s
+EPOCH[646/1000] loss0.019-|Sample:3.73| Time: 7.8s
+EPOCH[647/1000] loss0.019-|Sample:3.83| Time: 8.1s
+EPOCH[648/1000] loss0.019-|Sample:4.03| Time: 7.8s
+EPOCH[649/1000] loss0.018-|Sample:3.70| Time: 7.7s
+EPOCH[650/1000] loss0.018-|Sample:3.69| Time: 7.8s
+
+[TEST] Epoch 650
+{'precision': array([0.01645291]), 'recall': array([0.09047053]), 'ndcg': array([0.05355661])}
+  Recall@[20]: [0.09047053]
+  Precision@[20]: [0.01645291]
+  NDCG@[20]: [0.05355661]
+EPOCH[651/1000] loss0.018-|Sample:3.64| Time: 9.2s
+EPOCH[652/1000] loss0.018-|Sample:3.88| Time: 6.9s
+EPOCH[653/1000] loss0.018-|Sample:3.66| Time: 6.8s
+EPOCH[654/1000] loss0.018-|Sample:3.84| Time: 7.5s
+EPOCH[655/1000] loss0.018-|Sample:3.83| Time: 7.6s
+EPOCH[656/1000] loss0.018-|Sample:3.68| Time: 7.4s
+EPOCH[657/1000] loss0.018-|Sample:3.84| Time: 7.6s
+EPOCH[658/1000] loss0.018-|Sample:3.67| Time: 7.3s
+EPOCH[659/1000] loss0.018-|Sample:3.82| Time: 7.4s
+EPOCH[660/1000] loss0.018-|Sample:3.81| Time: 7.5s
+
+[TEST] Epoch 660
+{'precision': array([0.01651313]), 'recall': array([0.09070244]), 'ndcg': array([0.05377275])}
+  Recall@[20]: [0.09070244]
+  Precision@[20]: [0.01651313]
+  NDCG@[20]: [0.05377275]
+EPOCH[661/1000] loss0.018-|Sample:3.36| Time: 9.5s
+EPOCH[662/1000] loss0.018-|Sample:3.80| Time: 7.3s
+EPOCH[663/1000] loss0.018-|Sample:3.84| Time: 7.2s
+EPOCH[664/1000] loss0.018-|Sample:3.61| Time: 7.5s
+EPOCH[665/1000] loss0.019-|Sample:3.64| Time: 7.8s
+EPOCH[666/1000] loss0.018-|Sample:3.72| Time: 7.6s
+EPOCH[667/1000] loss0.018-|Sample:3.64| Time: 7.6s
+EPOCH[668/1000] loss0.018-|Sample:3.92| Time: 7.9s
+EPOCH[669/1000] loss0.018-|Sample:3.85| Time: 7.9s
+EPOCH[670/1000] loss0.018-|Sample:3.67| Time: 7.6s
+
+[TEST] Epoch 670
+{'precision': array([0.01650711]), 'recall': array([0.09067943]), 'ndcg': array([0.05389486])}
+  Recall@[20]: [0.09067943]
+  Precision@[20]: [0.01650711]
+  NDCG@[20]: [0.05389486]
+EPOCH[671/1000] loss0.018-|Sample:3.16| Time: 8.1s
+EPOCH[672/1000] loss0.018-|Sample:3.18| Time: 6.6s
+EPOCH[673/1000] loss0.018-|Sample:3.66| Time: 7.5s
+EPOCH[674/1000] loss0.018-|Sample:3.88| Time: 7.1s
+EPOCH[675/1000] loss0.018-|Sample:3.89| Time: 7.2s
+EPOCH[676/1000] loss0.018-|Sample:3.74| Time: 6.9s
+EPOCH[677/1000] loss0.018-|Sample:3.87| Time: 7.0s
+EPOCH[678/1000] loss0.018-|Sample:3.90| Time: 7.4s
+EPOCH[679/1000] loss0.018-|Sample:3.59| Time: 6.8s
+EPOCH[680/1000] loss0.018-|Sample:3.80| Time: 7.0s
+
+[TEST] Epoch 680
+{'precision': array([0.01651313]), 'recall': array([0.09070532]), 'ndcg': array([0.05364886])}
+  Recall@[20]: [0.09070532]
+  Precision@[20]: [0.01651313]
+  NDCG@[20]: [0.05364886]
+EPOCH[681/1000] loss0.018-|Sample:3.53| Time: 9.9s
+EPOCH[682/1000] loss0.018-|Sample:3.70| Time: 7.7s
+EPOCH[683/1000] loss0.018-|Sample:3.84| Time: 7.6s
+EPOCH[684/1000] loss0.018-|Sample:3.72| Time: 6.6s
+EPOCH[685/1000] loss0.018-|Sample:3.47| Time: 6.4s
+EPOCH[686/1000] loss0.018-|Sample:3.94| Time: 6.8s
+EPOCH[687/1000] loss0.018-|Sample:3.78| Time: 7.0s
+EPOCH[688/1000] loss0.018-|Sample:3.88| Time: 7.1s
+EPOCH[689/1000] loss0.018-|Sample:3.83| Time: 7.1s
+EPOCH[690/1000] loss0.018-|Sample:3.66| Time: 7.2s
+
+[TEST] Epoch 690
+{'precision': array([0.01652216]), 'recall': array([0.0911106]), 'ndcg': array([0.05388506])}
+  Recall@[20]: [0.0911106]
+  Precision@[20]: [0.01652216]
+  NDCG@[20]: [0.05388506]
+EPOCH[691/1000] loss0.018-|Sample:3.47| Time: 8.8s
+EPOCH[692/1000] loss0.018-|Sample:3.79| Time: 6.7s
+EPOCH[693/1000] loss0.018-|Sample:3.90| Time: 6.8s
+EPOCH[694/1000] loss0.018-|Sample:3.67| Time: 6.6s
+EPOCH[695/1000] loss0.018-|Sample:3.84| Time: 7.4s
+EPOCH[696/1000] loss0.018-|Sample:3.66| Time: 7.4s
+EPOCH[697/1000] loss0.018-|Sample:3.66| Time: 7.2s
+EPOCH[698/1000] loss0.018-|Sample:4.18| Time: 6.9s
+EPOCH[699/1000] loss0.018-|Sample:3.64| Time: 7.0s
+EPOCH[700/1000] loss0.018-|Sample:3.26| Time: 7.3s
+
+[TEST] Epoch 700
+{'precision': array([0.016477]), 'recall': array([0.09084413]), 'ndcg': array([0.05394617])}
+  Recall@[20]: [0.09084413]
+  Precision@[20]: [0.016477]
+  NDCG@[20]: [0.05394617]
+EPOCH[701/1000] loss0.018-|Sample:3.45| Time: 8.2s
+EPOCH[702/1000] loss0.018-|Sample:3.97| Time: 5.9s
+EPOCH[703/1000] loss0.018-|Sample:3.54| Time: 5.5s
+EPOCH[704/1000] loss0.018-|Sample:3.38| Time: 6.3s
+EPOCH[705/1000] loss0.018-|Sample:3.35| Time: 5.8s
+EPOCH[706/1000] loss0.018-|Sample:3.34| Time: 5.3s
+EPOCH[707/1000] loss0.018-|Sample:3.38| Time: 5.3s
+EPOCH[708/1000] loss0.018-|Sample:3.35| Time: 5.4s
+EPOCH[709/1000] loss0.018-|Sample:3.75| Time: 6.3s
+EPOCH[710/1000] loss0.018-|Sample:3.45| Time: 5.9s
+
+[TEST] Epoch 710
+{'precision': array([0.01649205]), 'recall': array([0.09121121]), 'ndcg': array([0.05400553])}
+  Recall@[20]: [0.09121121]
+  Precision@[20]: [0.01649205]
+  NDCG@[20]: [0.05400553]
+EPOCH[711/1000] loss0.018-|Sample:3.25| Time: 7.5s
+EPOCH[712/1000] loss0.018-|Sample:3.41| Time: 5.4s
+EPOCH[713/1000] loss0.018-|Sample:3.91| Time: 5.8s
+EPOCH[714/1000] loss0.018-|Sample:4.22| Time: 6.2s
+EPOCH[715/1000] loss0.018-|Sample:4.02| Time: 6.4s
+EPOCH[716/1000] loss0.018-|Sample:3.73| Time: 7.8s
+EPOCH[717/1000] loss0.018-|Sample:3.62| Time: 7.3s
+EPOCH[718/1000] loss0.018-|Sample:3.54| Time: 6.7s
+EPOCH[719/1000] loss0.018-|Sample:3.26| Time: 5.8s
+EPOCH[720/1000] loss0.018-|Sample:3.40| Time: 5.4s
+
+[TEST] Epoch 720
+{'precision': array([0.01644689]), 'recall': array([0.0904104]), 'ndcg': array([0.05383952])}
+  Recall@[20]: [0.0904104]
+  Precision@[20]: [0.01644689]
+  NDCG@[20]: [0.05383952]
+EPOCH[721/1000] loss0.018-|Sample:3.37| Time: 9.7s
+EPOCH[722/1000] loss0.018-|Sample:3.28| Time: 6.0s
+EPOCH[723/1000] loss0.018-|Sample:3.32| Time: 5.2s
+EPOCH[724/1000] loss0.018-|Sample:4.09| Time: 6.0s
+EPOCH[725/1000] loss0.018-|Sample:3.87| Time: 6.3s
+EPOCH[726/1000] loss0.018-|Sample:3.61| Time: 6.9s
+EPOCH[727/1000] loss0.018-|Sample:4.68| Time: 9.5s
+EPOCH[728/1000] loss0.018-|Sample:3.76| Time: 8.3s
+EPOCH[729/1000] loss0.018-|Sample:4.06| Time: 8.7s
+EPOCH[730/1000] loss0.018-|Sample:4.57| Time: 8.5s
+
+[TEST] Epoch 730
+{'precision': array([0.01654022]), 'recall': array([0.09062549]), 'ndcg': array([0.05385136])}
+  Recall@[20]: [0.09062549]
+  Precision@[20]: [0.01654022]
+  NDCG@[20]: [0.05385136]
+EPOCH[731/1000] loss0.018-|Sample:3.76| Time: 9.1s
+EPOCH[732/1000] loss0.018-|Sample:3.69| Time: 6.4s
+EPOCH[733/1000] loss0.018-|Sample:3.74| Time: 6.3s
+EPOCH[734/1000] loss0.018-|Sample:3.37| Time: 5.8s
+EPOCH[735/1000] loss0.018-|Sample:3.71| Time: 6.4s
+EPOCH[736/1000] loss0.018-|Sample:3.86| Time: 6.7s
+EPOCH[737/1000] loss0.018-|Sample:3.25| Time: 5.7s
+EPOCH[738/1000] loss0.018-|Sample:4.18| Time: 6.9s
+EPOCH[739/1000] loss0.018-|Sample:3.70| Time: 6.3s
+EPOCH[740/1000] loss0.018-|Sample:3.67| Time: 6.1s
+
+[TEST] Epoch 740
+{'precision': array([0.01651614]), 'recall': array([0.09101316]), 'ndcg': array([0.05401172])}
+  Recall@[20]: [0.09101316]
+  Precision@[20]: [0.01651614]
+  NDCG@[20]: [0.05401172]
+EPOCH[741/1000] loss0.018-|Sample:3.16| Time: 10.8s
+EPOCH[742/1000] loss0.018-|Sample:3.61| Time: 8.1s
+EPOCH[743/1000] loss0.018-|Sample:3.75| Time: 8.4s
+EPOCH[744/1000] loss0.018-|Sample:3.73| Time: 8.7s
+EPOCH[745/1000] loss0.018-|Sample:3.66| Time: 8.5s
+EPOCH[746/1000] loss0.018-|Sample:3.63| Time: 8.6s
+EPOCH[747/1000] loss0.018-|Sample:3.86| Time: 7.0s
+EPOCH[748/1000] loss0.018-|Sample:3.77| Time: 7.0s
+EPOCH[749/1000] loss0.018-|Sample:3.68| Time: 6.9s
+EPOCH[750/1000] loss0.018-|Sample:3.95| Time: 7.3s
+
+[TEST] Epoch 750
+{'precision': array([0.01654022]), 'recall': array([0.09132987]), 'ndcg': array([0.05380394])}
+  Recall@[20]: [0.09132987]
+  Precision@[20]: [0.01654022]
+  NDCG@[20]: [0.05380394]
+EPOCH[751/1000] loss0.018-|Sample:3.45| Time: 11.6s
+EPOCH[752/1000] loss0.018-|Sample:3.82| Time: 8.5s
+EPOCH[753/1000] loss0.018-|Sample:4.34| Time: 9.1s
+EPOCH[754/1000] loss0.018-|Sample:3.35| Time: 7.4s
+EPOCH[755/1000] loss0.018-|Sample:3.40| Time: 6.9s
+EPOCH[756/1000] loss0.018-|Sample:3.63| Time: 6.6s
+EPOCH[757/1000] loss0.018-|Sample:4.06| Time: 6.9s
+EPOCH[758/1000] loss0.018-|Sample:4.49| Time: 8.1s
+EPOCH[759/1000] loss0.018-|Sample:3.37| Time: 7.5s
+EPOCH[760/1000] loss0.018-|Sample:3.44| Time: 7.9s
+
+[TEST] Epoch 760
+{'precision': array([0.01654624]), 'recall': array([0.09115674]), 'ndcg': array([0.05408174])}
+  Recall@[20]: [0.09115674]
+  Precision@[20]: [0.01654624]
+  NDCG@[20]: [0.05408174]
+EPOCH[761/1000] loss0.018-|Sample:4.61| Time: 10.1s
+EPOCH[762/1000] loss0.018-|Sample:3.78| Time: 6.2s
+EPOCH[763/1000] loss0.018-|Sample:4.14| Time: 6.7s
+EPOCH[764/1000] loss0.018-|Sample:3.45| Time: 6.7s
+EPOCH[765/1000] loss0.018-|Sample:3.88| Time: 7.5s
+EPOCH[766/1000] loss0.018-|Sample:3.35| Time: 8.4s
+EPOCH[767/1000] loss0.018-|Sample:4.00| Time: 9.0s
+EPOCH[768/1000] loss0.018-|Sample:3.34| Time: 6.0s
+EPOCH[769/1000] loss0.018-|Sample:4.36| Time: 7.2s
+EPOCH[770/1000] loss0.018-|Sample:3.97| Time: 7.2s
+
+[TEST] Epoch 770
+{'precision': array([0.01656732]), 'recall': array([0.09119009]), 'ndcg': array([0.05402856])}
+  Recall@[20]: [0.09119009]
+  Precision@[20]: [0.01656732]
+  NDCG@[20]: [0.05402856]
+EPOCH[771/1000] loss0.018-|Sample:3.53| Time: 11.1s
+EPOCH[772/1000] loss0.018-|Sample:3.77| Time: 7.8s
+EPOCH[773/1000] loss0.018-|Sample:3.57| Time: 6.9s
+EPOCH[774/1000] loss0.018-|Sample:3.73| Time: 7.9s
+EPOCH[775/1000] loss0.018-|Sample:3.81| Time: 8.0s
+EPOCH[776/1000] loss0.018-|Sample:3.68| Time: 7.7s
+EPOCH[777/1000] loss0.018-|Sample:4.46| Time: 7.8s
+EPOCH[778/1000] loss0.018-|Sample:3.72| Time: 7.8s
+EPOCH[779/1000] loss0.018-|Sample:3.45| Time: 6.8s
+EPOCH[780/1000] loss0.018-|Sample:3.51| Time: 6.2s
+
+[TEST] Epoch 780
+{'precision': array([0.01650409]), 'recall': array([0.09100942]), 'ndcg': array([0.05385364])}
+  Recall@[20]: [0.09100942]
+  Precision@[20]: [0.01650409]
+  NDCG@[20]: [0.05385364]
+EPOCH[781/1000] loss0.018-|Sample:3.24| Time: 10.3s
+EPOCH[782/1000] loss0.018-|Sample:3.56| Time: 7.0s
+EPOCH[783/1000] loss0.018-|Sample:4.02| Time: 7.3s
+EPOCH[784/1000] loss0.018-|Sample:3.22| Time: 5.7s
+EPOCH[785/1000] loss0.018-|Sample:3.67| Time: 6.3s
+EPOCH[786/1000] loss0.018-|Sample:3.44| Time: 6.0s
+EPOCH[787/1000] loss0.018-|Sample:3.31| Time: 6.5s
+EPOCH[788/1000] loss0.018-|Sample:3.43| Time: 7.9s
+EPOCH[789/1000] loss0.018-|Sample:3.75| Time: 6.1s
+EPOCH[790/1000] loss0.018-|Sample:3.38| Time: 5.8s
+
+[TEST] Epoch 790
+{'precision': array([0.01645894]), 'recall': array([0.09049201]), 'ndcg': array([0.05375188])}
+  Recall@[20]: [0.09049201]
+  Precision@[20]: [0.01645894]
+  NDCG@[20]: [0.05375188]
+EPOCH[791/1000] loss0.018-|Sample:3.46| Time: 10.5s
+EPOCH[792/1000] loss0.018-|Sample:4.56| Time: 9.6s
+EPOCH[793/1000] loss0.018-|Sample:3.69| Time: 8.7s
+EPOCH[794/1000] loss0.018-|Sample:3.63| Time: 8.0s
+EPOCH[795/1000] loss0.018-|Sample:4.38| Time: 9.2s
+EPOCH[796/1000] loss0.018-|Sample:3.57| Time: 7.7s
+EPOCH[797/1000] loss0.018-|Sample:4.31| Time: 8.5s
+EPOCH[798/1000] loss0.018-|Sample:3.43| Time: 7.3s
+EPOCH[799/1000] loss0.018-|Sample:3.53| Time: 6.1s
+EPOCH[800/1000] loss0.018-|Sample:3.48| Time: 7.4s
+
+[TEST] Epoch 800
+{'precision': array([0.01660947]), 'recall': array([0.0914273]), 'ndcg': array([0.05411166])}
+  Recall@[20]: [0.0914273]
+  Precision@[20]: [0.01660947]
+  NDCG@[20]: [0.05411166]
+EPOCH[801/1000] loss0.018-|Sample:3.43| Time: 8.4s
+EPOCH[802/1000] loss0.018-|Sample:3.66| Time: 7.0s
+EPOCH[803/1000] loss0.018-|Sample:3.51| Time: 7.5s
+EPOCH[804/1000] loss0.018-|Sample:3.38| Time: 7.3s
+EPOCH[805/1000] loss0.018-|Sample:3.65| Time: 7.6s
+EPOCH[806/1000] loss0.018-|Sample:3.85| Time: 8.2s
+EPOCH[807/1000] loss0.017-|Sample:3.36| Time: 8.3s
+EPOCH[808/1000] loss0.018-|Sample:3.31| Time: 8.3s
+EPOCH[809/1000] loss0.018-|Sample:3.83| Time: 8.6s
+EPOCH[810/1000] loss0.018-|Sample:3.75| Time: 7.8s
+
+[TEST] Epoch 810
+{'precision': array([0.01658839]), 'recall': array([0.09134688]), 'ndcg': array([0.05400241])}
+  Recall@[20]: [0.09134688]
+  Precision@[20]: [0.01658839]
+  NDCG@[20]: [0.05400241]
+EPOCH[811/1000] loss0.018-|Sample:3.46| Time: 11.4s
+EPOCH[812/1000] loss0.018-|Sample:3.84| Time: 7.8s
+EPOCH[813/1000] loss0.018-|Sample:3.79| Time: 8.1s
+EPOCH[814/1000] loss0.018-|Sample:3.76| Time: 8.0s
+EPOCH[815/1000] loss0.018-|Sample:3.80| Time: 7.4s
+EPOCH[816/1000] loss0.018-|Sample:3.72| Time: 7.2s
+EPOCH[817/1000] loss0.018-|Sample:3.69| Time: 7.5s
+EPOCH[818/1000] loss0.018-|Sample:3.83| Time: 7.5s
+EPOCH[819/1000] loss0.018-|Sample:3.81| Time: 7.5s
+EPOCH[820/1000] loss0.018-|Sample:3.69| Time: 6.8s
+
+[TEST] Epoch 820
+{'precision': array([0.0164499]), 'recall': array([0.0910079]), 'ndcg': array([0.05375407])}
+  Recall@[20]: [0.0910079]
+  Precision@[20]: [0.0164499]
+  NDCG@[20]: [0.05375407]
+EPOCH[821/1000] loss0.018-|Sample:3.55| Time: 10.4s
+EPOCH[822/1000] loss0.018-|Sample:3.87| Time: 8.0s
+EPOCH[823/1000] loss0.018-|Sample:3.71| Time: 7.8s
+EPOCH[824/1000] loss0.018-|Sample:3.70| Time: 7.8s
+EPOCH[825/1000] loss0.018-|Sample:3.86| Time: 8.0s
+EPOCH[826/1000] loss0.018-|Sample:3.67| Time: 7.7s
+EPOCH[827/1000] loss0.018-|Sample:3.83| Time: 7.5s
+EPOCH[828/1000] loss0.018-|Sample:3.70| Time: 6.8s
+EPOCH[829/1000] loss0.018-|Sample:4.05| Time: 6.5s
+EPOCH[830/1000] loss0.018-|Sample:3.68| Time: 5.9s
+
+[TEST] Epoch 830
+{'precision': array([0.01650108]), 'recall': array([0.09084561]), 'ndcg': array([0.05379807])}
+  Recall@[20]: [0.09084561]
+  Precision@[20]: [0.01650108]
+  NDCG@[20]: [0.05379807]
+EPOCH[831/1000] loss0.018-|Sample:3.39| Time: 7.8s
+EPOCH[832/1000] loss0.018-|Sample:3.22| Time: 6.1s
+EPOCH[833/1000] loss0.018-|Sample:3.65| Time: 6.3s
+EPOCH[834/1000] loss0.017-|Sample:3.80| Time: 7.1s
+EPOCH[835/1000] loss0.018-|Sample:3.23| Time: 7.2s
+EPOCH[836/1000] loss0.018-|Sample:3.09| Time: 6.7s
+EPOCH[837/1000] loss0.018-|Sample:3.19| Time: 5.9s
+EPOCH[838/1000] loss0.018-|Sample:3.69| Time: 5.7s
+EPOCH[839/1000] loss0.018-|Sample:3.65| Time: 6.2s
+EPOCH[840/1000] loss0.018-|Sample:3.81| Time: 5.7s
+
+[TEST] Epoch 840
+{'precision': array([0.01652818]), 'recall': array([0.09129756]), 'ndcg': array([0.05396268])}
+  Recall@[20]: [0.09129756]
+  Precision@[20]: [0.01652818]
+  NDCG@[20]: [0.05396268]
+EPOCH[841/1000] loss0.018-|Sample:3.94| Time: 8.8s
+EPOCH[842/1000] loss0.017-|Sample:3.81| Time: 6.0s
+EPOCH[843/1000] loss0.018-|Sample:3.32| Time: 5.9s
+EPOCH[844/1000] loss0.018-|Sample:3.44| Time: 6.8s
+EPOCH[845/1000] loss0.018-|Sample:3.25| Time: 7.2s
+EPOCH[846/1000] loss0.017-|Sample:3.59| Time: 7.4s
+EPOCH[847/1000] loss0.018-|Sample:3.47| Time: 7.0s
+EPOCH[848/1000] loss0.018-|Sample:3.77| Time: 7.0s
+EPOCH[849/1000] loss0.018-|Sample:3.47| Time: 6.1s
+EPOCH[850/1000] loss0.018-|Sample:3.35| Time: 5.3s
+
+[TEST] Epoch 850
+{'precision': array([0.01657936]), 'recall': array([0.0913676]), 'ndcg': array([0.05377254])}
+  Recall@[20]: [0.0913676]
+  Precision@[20]: [0.01657936]
+  NDCG@[20]: [0.05377254]
+EPOCH[851/1000] loss0.018-|Sample:3.32| Time: 9.1s
+EPOCH[852/1000] loss0.018-|Sample:3.46| Time: 5.5s
+EPOCH[853/1000] loss0.017-|Sample:3.45| Time: 5.5s
+EPOCH[854/1000] loss0.018-|Sample:3.51| Time: 5.9s
+EPOCH[855/1000] loss0.017-|Sample:3.60| Time: 6.1s
+EPOCH[856/1000] loss0.018-|Sample:3.51| Time: 6.5s
+EPOCH[857/1000] loss0.018-|Sample:3.26| Time: 7.0s
+EPOCH[858/1000] loss0.018-|Sample:3.36| Time: 7.2s
+EPOCH[859/1000] loss0.018-|Sample:3.72| Time: 7.5s
+EPOCH[860/1000] loss0.018-|Sample:3.33| Time: 5.6s
+
+[TEST] Epoch 860
+{'precision': array([0.01655829]), 'recall': array([0.09128682]), 'ndcg': array([0.05403358])}
+  Recall@[20]: [0.09128682]
+  Precision@[20]: [0.01655829]
+  NDCG@[20]: [0.05403358]
+EPOCH[861/1000] loss0.018-|Sample:3.32| Time: 9.8s
+EPOCH[862/1000] loss0.017-|Sample:3.33| Time: 7.1s
+EPOCH[863/1000] loss0.017-|Sample:4.22| Time: 6.2s
+EPOCH[864/1000] loss0.018-|Sample:3.50| Time: 5.4s
+EPOCH[865/1000] loss0.018-|Sample:3.10| Time: 6.2s
+EPOCH[866/1000] loss0.017-|Sample:3.49| Time: 6.8s
+EPOCH[867/1000] loss0.017-|Sample:3.56| Time: 7.0s
+EPOCH[868/1000] loss0.017-|Sample:3.66| Time: 7.2s
+EPOCH[869/1000] loss0.018-|Sample:3.64| Time: 7.3s
+EPOCH[870/1000] loss0.018-|Sample:4.04| Time: 7.8s
+
+[TEST] Epoch 870
+{'precision': array([0.01654323]), 'recall': array([0.09135336]), 'ndcg': array([0.05386251])}
+  Recall@[20]: [0.09135336]
+  Precision@[20]: [0.01654323]
+  NDCG@[20]: [0.05386251]
+EPOCH[871/1000] loss0.017-|Sample:3.56| Time: 9.1s
+EPOCH[872/1000] loss0.017-|Sample:3.74| Time: 7.0s
+EPOCH[873/1000] loss0.017-|Sample:3.85| Time: 7.0s
+EPOCH[874/1000] loss0.017-|Sample:3.74| Time: 6.6s
+EPOCH[875/1000] loss0.018-|Sample:3.78| Time: 6.7s
+EPOCH[876/1000] loss0.018-|Sample:3.80| Time: 6.6s
+EPOCH[877/1000] loss0.017-|Sample:3.66| Time: 6.5s
+EPOCH[878/1000] loss0.018-|Sample:3.82| Time: 6.7s
+EPOCH[879/1000] loss0.018-|Sample:3.64| Time: 6.5s
+EPOCH[880/1000] loss0.017-|Sample:3.63| Time: 6.5s
+
+[TEST] Epoch 880
+{'precision': array([0.01663957]), 'recall': array([0.09185225]), 'ndcg': array([0.05411827])}
+  Recall@[20]: [0.09185225]
+  Precision@[20]: [0.01663957]
+  NDCG@[20]: [0.05411827]
+EPOCH[881/1000] loss0.017-|Sample:3.64| Time: 9.1s
+EPOCH[882/1000] loss0.018-|Sample:3.83| Time: 5.8s
+EPOCH[883/1000] loss0.018-|Sample:3.95| Time: 6.0s
+EPOCH[884/1000] loss0.017-|Sample:3.40| Time: 5.6s
+EPOCH[885/1000] loss0.018-|Sample:3.58| Time: 6.2s
+EPOCH[886/1000] loss0.018-|Sample:3.46| Time: 5.9s
+EPOCH[887/1000] loss0.018-|Sample:4.12| Time: 6.6s
+EPOCH[888/1000] loss0.017-|Sample:4.44| Time: 6.8s
+EPOCH[889/1000] loss0.017-|Sample:3.40| Time: 6.0s
+EPOCH[890/1000] loss0.018-|Sample:3.47| Time: 5.7s
+
+[TEST] Epoch 890
+{'precision': array([0.01665763]), 'recall': array([0.0923103]), 'ndcg': array([0.05398435])}
+  Recall@[20]: [0.0923103]
+  Precision@[20]: [0.01665763]
+  NDCG@[20]: [0.05398435]
+EPOCH[891/1000] loss0.017-|Sample:3.46| Time: 8.8s
+EPOCH[892/1000] loss0.017-|Sample:3.84| Time: 6.1s
+EPOCH[893/1000] loss0.017-|Sample:3.58| Time: 6.3s
+EPOCH[894/1000] loss0.018-|Sample:3.41| Time: 5.7s
+EPOCH[895/1000] loss0.017-|Sample:3.38| Time: 5.9s
+EPOCH[896/1000] loss0.017-|Sample:3.78| Time: 6.5s
+EPOCH[897/1000] loss0.017-|Sample:3.38| Time: 5.8s
+EPOCH[898/1000] loss0.017-|Sample:3.55| Time: 6.1s
+EPOCH[899/1000] loss0.018-|Sample:3.91| Time: 6.8s
+EPOCH[900/1000] loss0.018-|Sample:3.95| Time: 6.5s
+
+[TEST] Epoch 900
+{'precision': array([0.01669075]), 'recall': array([0.09232752]), 'ndcg': array([0.05416948])}
+  Recall@[20]: [0.09232752]
+  Precision@[20]: [0.01669075]
+  NDCG@[20]: [0.05416948]
+EPOCH[901/1000] loss0.017-|Sample:3.48| Time: 9.1s
+EPOCH[902/1000] loss0.017-|Sample:3.83| Time: 6.3s
+EPOCH[903/1000] loss0.018-|Sample:3.69| Time: 6.3s
+EPOCH[904/1000] loss0.018-|Sample:3.84| Time: 6.2s
+EPOCH[905/1000] loss0.018-|Sample:3.68| Time: 5.7s
+EPOCH[906/1000] loss0.018-|Sample:3.59| Time: 6.0s
+EPOCH[907/1000] loss0.017-|Sample:3.76| Time: 6.3s
+EPOCH[908/1000] loss0.017-|Sample:3.59| Time: 6.4s
+EPOCH[909/1000] loss0.017-|Sample:3.97| Time: 6.5s
+EPOCH[910/1000] loss0.018-|Sample:3.48| Time: 6.0s
+
+[TEST] Epoch 910
+{'precision': array([0.01660645]), 'recall': array([0.09133934]), 'ndcg': array([0.05370116])}
+  Recall@[20]: [0.09133934]
+  Precision@[20]: [0.01660645]
+  NDCG@[20]: [0.05370116]
+EPOCH[911/1000] loss0.018-|Sample:3.92| Time: 9.1s
+EPOCH[912/1000] loss0.017-|Sample:3.67| Time: 6.2s
+EPOCH[913/1000] loss0.017-|Sample:3.46| Time: 6.1s
+EPOCH[914/1000] loss0.017-|Sample:3.69| Time: 6.2s
+EPOCH[915/1000] loss0.017-|Sample:3.75| Time: 6.2s
+EPOCH[916/1000] loss0.017-|Sample:3.70| Time: 6.3s
+EPOCH[917/1000] loss0.017-|Sample:3.69| Time: 6.0s
+EPOCH[918/1000] loss0.017-|Sample:3.47| Time: 6.0s
+EPOCH[919/1000] loss0.017-|Sample:3.35| Time: 5.8s
+EPOCH[920/1000] loss0.018-|Sample:3.36| Time: 5.9s
+
+[TEST] Epoch 920
+{'precision': array([0.01651614]), 'recall': array([0.09122546]), 'ndcg': array([0.0537209])}
+  Recall@[20]: [0.09122546]
+  Precision@[20]: [0.01651614]
+  NDCG@[20]: [0.0537209]
+EPOCH[921/1000] loss0.017-|Sample:3.39| Time: 8.7s
+EPOCH[922/1000] loss0.017-|Sample:3.50| Time: 6.2s
+EPOCH[923/1000] loss0.017-|Sample:3.69| Time: 6.1s
+EPOCH[924/1000] loss0.018-|Sample:3.31| Time: 5.8s
+EPOCH[925/1000] loss0.017-|Sample:3.63| Time: 6.2s
+EPOCH[926/1000] loss0.017-|Sample:3.23| Time: 6.2s
+EPOCH[927/1000] loss0.017-|Sample:3.67| Time: 7.9s
+EPOCH[928/1000] loss0.017-|Sample:3.90| Time: 8.2s
+EPOCH[929/1000] loss0.017-|Sample:3.76| Time: 6.8s
+EPOCH[930/1000] loss0.018-|Sample:3.60| Time: 6.7s
+
+[TEST] Epoch 930
+{'precision': array([0.01657334]), 'recall': array([0.09110431]), 'ndcg': array([0.05355678])}
+  Recall@[20]: [0.09110431]
+  Precision@[20]: [0.01657334]
+  NDCG@[20]: [0.05355678]
+EPOCH[931/1000] loss0.017-|Sample:3.57| Time: 9.6s
+EPOCH[932/1000] loss0.017-|Sample:3.79| Time: 7.1s
+EPOCH[933/1000] loss0.018-|Sample:3.85| Time: 6.6s
+EPOCH[934/1000] loss0.018-|Sample:3.63| Time: 6.1s
+EPOCH[935/1000] loss0.017-|Sample:3.79| Time: 6.8s
+EPOCH[936/1000] loss0.017-|Sample:3.64| Time: 6.8s
+EPOCH[937/1000] loss0.017-|Sample:3.68| Time: 6.9s
+EPOCH[938/1000] loss0.017-|Sample:3.70| Time: 6.8s
+EPOCH[939/1000] loss0.017-|Sample:3.79| Time: 6.9s
+EPOCH[940/1000] loss0.017-|Sample:3.47| Time: 6.5s
+
+[TEST] Epoch 940
+{'precision': array([0.01655527]), 'recall': array([0.09145092]), 'ndcg': array([0.05396741])}
+  Recall@[20]: [0.09145092]
+  Precision@[20]: [0.01655527]
+  NDCG@[20]: [0.05396741]
+EPOCH[941/1000] loss0.017-|Sample:3.38| Time: 8.7s
+EPOCH[942/1000] loss0.017-|Sample:3.22| Time: 5.9s
+EPOCH[943/1000] loss0.017-|Sample:3.09| Time: 6.3s
+EPOCH[944/1000] loss0.018-|Sample:3.63| Time: 6.8s
+EPOCH[945/1000] loss0.017-|Sample:3.81| Time: 7.0s
+EPOCH[946/1000] loss0.017-|Sample:3.61| Time: 6.8s
+EPOCH[947/1000] loss0.017-|Sample:3.70| Time: 6.9s
+EPOCH[948/1000] loss0.017-|Sample:3.62| Time: 6.8s
+EPOCH[949/1000] loss0.017-|Sample:3.84| Time: 7.0s
+EPOCH[950/1000] loss0.017-|Sample:3.66| Time: 6.9s
+
+[TEST] Epoch 950
+{'precision': array([0.01655226]), 'recall': array([0.09114258]), 'ndcg': array([0.05386663])}
+  Recall@[20]: [0.09114258]
+  Precision@[20]: [0.01655226]
+  NDCG@[20]: [0.05386663]
+EPOCH[951/1000] loss0.017-|Sample:3.51| Time: 9.5s
+EPOCH[952/1000] loss0.017-|Sample:3.82| Time: 7.0s
+EPOCH[953/1000] loss0.017-|Sample:3.61| Time: 6.8s
+EPOCH[954/1000] loss0.017-|Sample:3.77| Time: 7.0s
+EPOCH[955/1000] loss0.018-|Sample:3.82| Time: 7.1s
+EPOCH[956/1000] loss0.017-|Sample:3.67| Time: 6.9s
+EPOCH[957/1000] loss0.017-|Sample:3.78| Time: 6.9s
+EPOCH[958/1000] loss0.017-|Sample:3.62| Time: 6.8s
+EPOCH[959/1000] loss0.017-|Sample:3.48| Time: 6.7s
+EPOCH[960/1000] loss0.017-|Sample:3.82| Time: 7.0s
+
+[TEST] Epoch 960
+{'precision': array([0.01655829]), 'recall': array([0.09081766]), 'ndcg': array([0.05362703])}
+  Recall@[20]: [0.09081766]
+  Precision@[20]: [0.01655829]
+  NDCG@[20]: [0.05362703]
+EPOCH[961/1000] loss0.018-|Sample:3.60| Time: 9.2s
+EPOCH[962/1000] loss0.017-|Sample:3.67| Time: 6.9s
+EPOCH[963/1000] loss0.018-|Sample:3.75| Time: 6.9s
+EPOCH[964/1000] loss0.017-|Sample:3.79| Time: 6.8s
+EPOCH[965/1000] loss0.017-|Sample:3.64| Time: 6.5s
+EPOCH[966/1000] loss0.017-|Sample:3.84| Time: 6.7s
+EPOCH[967/1000] loss0.017-|Sample:3.86| Time: 6.7s
+EPOCH[968/1000] loss0.017-|Sample:3.65| Time: 6.4s
+EPOCH[969/1000] loss0.017-|Sample:3.65| Time: 6.3s
+EPOCH[970/1000] loss0.017-|Sample:3.77| Time: 6.7s
+
+[TEST] Epoch 970
+{'precision': array([0.01669075]), 'recall': array([0.09147603]), 'ndcg': array([0.0540903])}
+  Recall@[20]: [0.09147603]
+  Precision@[20]: [0.01669075]
+  NDCG@[20]: [0.0540903]
+EPOCH[971/1000] loss0.017-|Sample:3.46| Time: 8.7s
+EPOCH[972/1000] loss0.017-|Sample:3.61| Time: 5.8s
+EPOCH[973/1000] loss0.017-|Sample:3.75| Time: 5.7s
+EPOCH[974/1000] loss0.017-|Sample:3.79| Time: 6.1s
+EPOCH[975/1000] loss0.017-|Sample:3.15| Time: 5.0s
+EPOCH[976/1000] loss0.018-|Sample:3.20| Time: 5.9s
+EPOCH[977/1000] loss0.017-|Sample:3.66| Time: 5.8s
+EPOCH[978/1000] loss0.017-|Sample:3.82| Time: 5.7s
+EPOCH[979/1000] loss0.017-|Sample:3.80| Time: 5.7s
+EPOCH[980/1000] loss0.017-|Sample:3.61| Time: 6.4s
+
+[TEST] Epoch 980
+{'precision': array([0.01664258]), 'recall': array([0.09129393]), 'ndcg': array([0.05398701])}
+  Recall@[20]: [0.09129393]
+  Precision@[20]: [0.01664258]
+  NDCG@[20]: [0.05398701]
+EPOCH[981/1000] loss0.017-|Sample:3.68| Time: 8.9s
+EPOCH[982/1000] loss0.017-|Sample:3.65| Time: 6.6s
+EPOCH[983/1000] loss0.017-|Sample:3.99| Time: 6.9s
+EPOCH[984/1000] loss0.017-|Sample:3.71| Time: 6.5s
+EPOCH[985/1000] loss0.017-|Sample:3.63| Time: 5.6s
+EPOCH[986/1000] loss0.017-|Sample:3.87| Time: 5.7s
+EPOCH[987/1000] loss0.017-|Sample:3.13| Time: 5.5s
+EPOCH[988/1000] loss0.018-|Sample:3.86| Time: 6.6s
+EPOCH[989/1000] loss0.017-|Sample:3.76| Time: 5.8s
+EPOCH[990/1000] loss0.017-|Sample:3.99| Time: 6.9s
+
+[TEST] Epoch 990
+{'precision': array([0.01655226]), 'recall': array([0.09092432]), 'ndcg': array([0.05371693])}
+  Recall@[20]: [0.09092432]
+  Precision@[20]: [0.01655226]
+  NDCG@[20]: [0.05371693]
+EPOCH[991/1000] loss0.017-|Sample:3.44| Time: 8.9s
+EPOCH[992/1000] loss0.017-|Sample:3.58| Time: 6.4s
+EPOCH[993/1000] loss0.017-|Sample:3.89| Time: 6.8s
+EPOCH[994/1000] loss0.017-|Sample:3.92| Time: 7.4s
+EPOCH[995/1000] loss0.017-|Sample:4.23| Time: 7.6s
+EPOCH[996/1000] loss0.017-|Sample:3.86| Time: 6.8s
+EPOCH[997/1000] loss0.017-|Sample:3.81| Time: 6.7s
+EPOCH[998/1000] loss0.017-|Sample:3.79| Time: 6.7s
+EPOCH[999/1000] loss0.017-|Sample:3.75| Time: 6.7s
+EPOCH[1000/1000] loss0.017-|Sample:3.71| Time: 6.6s
+
+============================================================
+Final Evaluation
+============================================================
+{'precision': array([0.01648904]), 'recall': array([0.09093027]), 'ndcg': array([0.05366033])}
+
+Final Results:
+  Recall@[20]: [0.09093027]
+  Precision@[20]: [0.01648904]
+  NDCG@[20]: [0.05366033]
+
+============================================================
+Best Epoch Results
+============================================================
+Best Epoch: 250
+  Recall@[20]: [0.09232784]
+  Precision@[20]: [0.01671785]
+  NDCG@[20]: [0.0545792]
+
+✓ Training completed!
+Log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251028_174719.log
+Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251028_201551.log
+
+============================================================
+ HYBRID FEATURES MODE: CLIP + GPT
+Semantic graph file: semantic_graph/hybrid_graph_structured_minilm.npz
+============================================================
+
+>>SEED: 2020
+>>DEVICE: cuda
+
+============================================================
+Loading dataset: amazon-book_subset_10000
+============================================================
+[0;30;43mloading [datasets/amazon-book_subset_10000][0m
+365328 interactions for training
+65052 interactions for testing
+amazon-book_subset_10000 Sparsity : 0.002159458103361766
+amazon-book_subset_10000 is ready to go
+Dual-graph loader initialized
+  - Semantic graph file: semantic_graph/hybrid_graph_structured_minilm.npz
+Dataset Statistics:
+  - Users: 19930
+  - Items: 10000
+  - Train interactions: 365328
+  - Test interactions: 65052
+/home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../src/baseline/dataloader.py:332: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:654.)
+  return torch.sparse.FloatTensor(index, data, torch.Size(coo.shape))
+Loading semantic graph
+Successfully loaded semantic graph from datasets/amazon-book_subset_10000/semantic_graph/hybrid_graph_structured_minilm.npz
+  - Shape: (10000, 10000)
+  - Edges: 158216
+  - Sparsity: 0.001582
+Semantic graph loaded as single tensor
+✓ Semantic graph loaded successfully
+
+============================================================
+Building Dual-Graph LightGCN
+============================================================
+[0;30;43muse NORMAL distribution initilizer[0m
+loading adjacency matrix
+successfully loaded...
+don't split the matrix
+Loading semantic graph
+Dual-graph LightGCN initialized:
+  - User-Item graph loaded
+  - Semantic graph loaded
+  - Semantic weight: 0.5
+  - Semantic layers: 2
+
+============================================================
+Model Configuration
+============================================================
+  - Model: Dual-Graph LightGCN
+  - Embedding dim: 64
+  - UI graph layers: 3
+  - Semantic layers: 2
+  - Semantic weight: 0.5
+
+Optimization:
+  - Learning rate: 0.001
+  - Weight decay: 0.0001
+  - Batch size: 2048
+  - Dropout: False (keep_prob=0.6)
+  - Seed: 2020
+  - Max epochs: 1000
+[0;30;43mCpp extension not loaded[0m
+
+Model checkpoint: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../checkpoints/dualgraph_hybrid/dualgraph_hybrid-amazon-book_subset_10000-64.pth.tar
+Feature type: CLIP+GPT Hybrid
+Tensorboard: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../runs/10-28-20h17m28s-CLIP +GPT_structured_minilm
+
+============================================================
+Training for 1000 epochs
+============================================================
+
+
+[TEST] Epoch 0
+{'precision': array([0.00029203]), 'recall': array([0.00122555]), 'ndcg': array([0.00071539])}
+  Recall@[20]: [0.00122555]
+  Precision@[20]: [0.00029203]
+  NDCG@[20]: [0.00071539]
+✓ New best! Recall@20: 0.0012
+EPOCH[1/1000] loss0.688-|Sample:3.82| Time: 11.3s
+EPOCH[2/1000] loss0.639-|Sample:3.66| Time: 6.9s
+EPOCH[3/1000] loss0.503-|Sample:3.73| Time: 6.9s
+EPOCH[4/1000] loss0.407-|Sample:3.65| Time: 6.9s
+EPOCH[5/1000] loss0.345-|Sample:3.91| Time: 6.7s
+EPOCH[6/1000] loss0.306-|Sample:3.31| Time: 6.6s
+EPOCH[7/1000] loss0.279-|Sample:3.64| Time: 6.8s
+EPOCH[8/1000] loss0.260-|Sample:3.83| Time: 6.6s
+EPOCH[9/1000] loss0.243-|Sample:3.06| Time: 6.4s
+EPOCH[10/1000] loss0.231-|Sample:3.86| Time: 7.3s
+
+[TEST] Epoch 10
+{'precision': array([0.01106395]), 'recall': array([0.06357648]), 'ndcg': array([0.03687376])}
+  Recall@[20]: [0.06357648]
+  Precision@[20]: [0.01106395]
+  NDCG@[20]: [0.03687376]
+✓ New best! Recall@20: 0.0636
+EPOCH[11/1000] loss0.221-|Sample:3.87| Time: 10.1s
+EPOCH[12/1000] loss0.211-|Sample:3.67| Time: 6.4s
+EPOCH[13/1000] loss0.204-|Sample:3.65| Time: 6.9s
+EPOCH[14/1000] loss0.194-|Sample:3.75| Time: 6.9s
+EPOCH[15/1000] loss0.190-|Sample:3.61| Time: 6.9s
+EPOCH[16/1000] loss0.183-|Sample:3.73| Time: 6.7s
+EPOCH[17/1000] loss0.177-|Sample:3.82| Time: 7.1s
+EPOCH[18/1000] loss0.173-|Sample:3.61| Time: 6.9s
+EPOCH[19/1000] loss0.169-|Sample:3.64| Time: 6.9s
+EPOCH[20/1000] loss0.164-|Sample:3.73| Time: 6.5s
+
+[TEST] Epoch 20
+{'precision': array([0.01257526]), 'recall': array([0.07103427]), 'ndcg': array([0.04155654])}
+  Recall@[20]: [0.07103427]
+  Precision@[20]: [0.01257526]
+  NDCG@[20]: [0.04155654]
+✓ New best! Recall@20: 0.0710
+EPOCH[21/1000] loss0.160-|Sample:3.53| Time: 9.5s
+EPOCH[22/1000] loss0.155-|Sample:3.60| Time: 7.0s
+EPOCH[23/1000] loss0.151-|Sample:3.75| Time: 7.2s
+EPOCH[24/1000] loss0.148-|Sample:3.79| Time: 7.1s
+EPOCH[25/1000] loss0.144-|Sample:3.60| Time: 7.0s
+EPOCH[26/1000] loss0.141-|Sample:3.73| Time: 7.1s
+EPOCH[27/1000] loss0.138-|Sample:3.63| Time: 7.0s
+EPOCH[28/1000] loss0.136-|Sample:3.83| Time: 7.2s
+EPOCH[29/1000] loss0.132-|Sample:3.79| Time: 6.4s
+EPOCH[30/1000] loss0.129-|Sample:3.57| Time: 6.2s
+
+[TEST] Epoch 30
+{'precision': array([0.01360489]), 'recall': array([0.07507278]), 'ndcg': array([0.0442539])}
+  Recall@[20]: [0.07507278]
+  Precision@[20]: [0.01360489]
+  NDCG@[20]: [0.0442539]
+✓ New best! Recall@20: 0.0751
+EPOCH[31/1000] loss0.128-|Sample:3.63| Time: 9.6s
+EPOCH[32/1000] loss0.124-|Sample:3.02| Time: 6.3s
+EPOCH[33/1000] loss0.121-|Sample:3.86| Time: 7.1s
+EPOCH[34/1000] loss0.120-|Sample:3.59| Time: 5.9s
+EPOCH[35/1000] loss0.117-|Sample:3.64| Time: 6.7s
+EPOCH[36/1000] loss0.116-|Sample:3.66| Time: 6.9s
+EPOCH[37/1000] loss0.113-|Sample:3.64| Time: 6.9s
+EPOCH[38/1000] loss0.110-|Sample:3.74| Time: 7.1s
+EPOCH[39/1000] loss0.108-|Sample:3.60| Time: 6.7s
+EPOCH[40/1000] loss0.106-|Sample:3.81| Time: 7.1s
+
+[TEST] Epoch 40
+{'precision': array([0.01442377]), 'recall': array([0.0794106]), 'ndcg': array([0.04661892])}
+  Recall@[20]: [0.0794106]
+  Precision@[20]: [0.01442377]
+  NDCG@[20]: [0.04661892]
+✓ New best! Recall@20: 0.0794
+EPOCH[41/1000] loss0.105-|Sample:3.42| Time: 9.3s
+EPOCH[42/1000] loss0.103-|Sample:3.58| Time: 6.3s
+EPOCH[43/1000] loss0.101-|Sample:3.83| Time: 7.2s
+EPOCH[44/1000] loss0.099-|Sample:3.66| Time: 6.8s
+EPOCH[45/1000] loss0.096-|Sample:3.71| Time: 7.0s
+EPOCH[46/1000] loss0.096-|Sample:3.71| Time: 7.0s
+EPOCH[47/1000] loss0.095-|Sample:3.60| Time: 6.8s
+EPOCH[48/1000] loss0.092-|Sample:3.81| Time: 7.1s
+EPOCH[49/1000] loss0.090-|Sample:3.58| Time: 6.8s
+EPOCH[50/1000] loss0.089-|Sample:3.69| Time: 6.0s
+
+[TEST] Epoch 50
+{'precision': array([0.0148874]), 'recall': array([0.08228472]), 'ndcg': array([0.04784937])}
+  Recall@[20]: [0.08228472]
+  Precision@[20]: [0.0148874]
+  NDCG@[20]: [0.04784937]
+✓ New best! Recall@20: 0.0823
+EPOCH[51/1000] loss0.087-|Sample:3.56| Time: 9.3s
+EPOCH[52/1000] loss0.086-|Sample:3.74| Time: 7.0s
+EPOCH[53/1000] loss0.085-|Sample:3.60| Time: 6.8s
+EPOCH[54/1000] loss0.083-|Sample:3.70| Time: 6.8s
+EPOCH[55/1000] loss0.082-|Sample:3.76| Time: 6.4s
+EPOCH[56/1000] loss0.080-|Sample:4.17| Time: 7.6s
+EPOCH[57/1000] loss0.079-|Sample:3.76| Time: 7.0s
+EPOCH[58/1000] loss0.079-|Sample:3.74| Time: 6.8s
+EPOCH[59/1000] loss0.078-|Sample:3.53| Time: 6.1s
+EPOCH[60/1000] loss0.076-|Sample:3.57| Time: 6.6s
+
+[TEST] Epoch 60
+{'precision': array([0.01532093]), 'recall': array([0.0839272]), 'ndcg': array([0.04927338])}
+  Recall@[20]: [0.0839272]
+  Precision@[20]: [0.01532093]
+  NDCG@[20]: [0.04927338]
+✓ New best! Recall@20: 0.0839
+EPOCH[61/1000] loss0.075-|Sample:3.61| Time: 10.0s
+EPOCH[62/1000] loss0.074-|Sample:3.73| Time: 6.7s
+EPOCH[63/1000] loss0.072-|Sample:3.55| Time: 7.0s
+EPOCH[64/1000] loss0.072-|Sample:3.82| Time: 7.2s
+EPOCH[65/1000] loss0.071-|Sample:3.75| Time: 7.1s
+EPOCH[66/1000] loss0.070-|Sample:3.64| Time: 6.9s
+EPOCH[67/1000] loss0.069-|Sample:3.62| Time: 6.3s
+EPOCH[68/1000] loss0.068-|Sample:3.60| Time: 7.0s
+EPOCH[69/1000] loss0.067-|Sample:3.75| Time: 7.0s
+EPOCH[70/1000] loss0.067-|Sample:3.77| Time: 7.0s
+
+[TEST] Epoch 70
+{'precision': array([0.01557382]), 'recall': array([0.08565107]), 'ndcg': array([0.04993821])}
+  Recall@[20]: [0.08565107]
+  Precision@[20]: [0.01557382]
+  NDCG@[20]: [0.04993821]
+✓ New best! Recall@20: 0.0857
+EPOCH[71/1000] loss0.066-|Sample:3.44| Time: 9.3s
+EPOCH[72/1000] loss0.064-|Sample:3.66| Time: 6.5s
+EPOCH[73/1000] loss0.065-|Sample:3.72| Time: 7.0s
+EPOCH[74/1000] loss0.064-|Sample:3.60| Time: 6.8s
+EPOCH[75/1000] loss0.063-|Sample:3.79| Time: 7.0s
+EPOCH[76/1000] loss0.061-|Sample:3.81| Time: 7.1s
+EPOCH[77/1000] loss0.062-|Sample:3.61| Time: 6.6s
+EPOCH[78/1000] loss0.061-|Sample:3.75| Time: 6.4s
+EPOCH[79/1000] loss0.060-|Sample:3.78| Time: 7.1s
+EPOCH[80/1000] loss0.059-|Sample:3.60| Time: 6.8s
+
+[TEST] Epoch 80
+{'precision': array([0.0157966]), 'recall': array([0.08680424]), 'ndcg': array([0.05047738])}
+  Recall@[20]: [0.08680424]
+  Precision@[20]: [0.0157966]
+  NDCG@[20]: [0.05047738]
+✓ New best! Recall@20: 0.0868
+EPOCH[81/1000] loss0.059-|Sample:3.84| Time: 9.2s
+EPOCH[82/1000] loss0.057-|Sample:3.93| Time: 7.0s
+EPOCH[83/1000] loss0.057-|Sample:3.78| Time: 7.0s
+EPOCH[84/1000] loss0.057-|Sample:3.85| Time: 7.1s
+EPOCH[85/1000] loss0.056-|Sample:3.76| Time: 7.0s
+EPOCH[86/1000] loss0.055-|Sample:3.64| Time: 7.1s
+EPOCH[87/1000] loss0.055-|Sample:4.12| Time: 7.9s
+EPOCH[88/1000] loss0.054-|Sample:3.83| Time: 7.5s
+EPOCH[89/1000] loss0.053-|Sample:3.77| Time: 7.4s
+EPOCH[90/1000] loss0.053-|Sample:3.91| Time: 7.9s
+
+[TEST] Epoch 90
+{'precision': array([0.01604648]), 'recall': array([0.08837935]), 'ndcg': array([0.05173571])}
+  Recall@[20]: [0.08837935]
+  Precision@[20]: [0.01604648]
+  NDCG@[20]: [0.05173571]
+✓ New best! Recall@20: 0.0884
+EPOCH[91/1000] loss0.052-|Sample:3.81| Time: 11.4s
+EPOCH[92/1000] loss0.052-|Sample:3.91| Time: 8.3s
+EPOCH[93/1000] loss0.052-|Sample:3.79| Time: 8.1s
+EPOCH[94/1000] loss0.050-|Sample:3.76| Time: 7.5s
+EPOCH[95/1000] loss0.050-|Sample:3.63| Time: 7.9s
+EPOCH[96/1000] loss0.050-|Sample:3.78| Time: 8.0s
+EPOCH[97/1000] loss0.050-|Sample:3.89| Time: 7.9s
+EPOCH[98/1000] loss0.049-|Sample:3.98| Time: 7.7s
+EPOCH[99/1000] loss0.048-|Sample:3.81| Time: 7.7s
+EPOCH[100/1000] loss0.048-|Sample:3.85| Time: 7.6s
+
+[TEST] Epoch 100
+{'precision': array([0.01613078]), 'recall': array([0.08876756]), 'ndcg': array([0.05203445])}
+  Recall@[20]: [0.08876756]
+  Precision@[20]: [0.01613078]
+  NDCG@[20]: [0.05203445]
+✓ New best! Recall@20: 0.0888
+EPOCH[101/1000] loss0.048-|Sample:3.63| Time: 11.5s
+EPOCH[102/1000] loss0.048-|Sample:3.22| Time: 6.9s
+EPOCH[103/1000] loss0.047-|Sample:3.90| Time: 8.4s
+EPOCH[104/1000] loss0.046-|Sample:3.78| Time: 8.2s
+EPOCH[105/1000] loss0.046-|Sample:3.90| Time: 8.4s
+EPOCH[106/1000] loss0.046-|Sample:3.77| Time: 7.8s
+EPOCH[107/1000] loss0.045-|Sample:3.64| Time: 7.8s
+EPOCH[108/1000] loss0.045-|Sample:3.76| Time: 7.6s
+EPOCH[109/1000] loss0.044-|Sample:3.86| Time: 7.7s
+EPOCH[110/1000] loss0.044-|Sample:3.78| Time: 7.7s
+
+[TEST] Epoch 110
+{'precision': array([0.01630841]), 'recall': array([0.08960106]), 'ndcg': array([0.05265599])}
+  Recall@[20]: [0.08960106]
+  Precision@[20]: [0.01630841]
+  NDCG@[20]: [0.05265599]
+✓ New best! Recall@20: 0.0896
+EPOCH[111/1000] loss0.045-|Sample:3.78| Time: 11.8s
+EPOCH[112/1000] loss0.043-|Sample:3.96| Time: 8.3s
+EPOCH[113/1000] loss0.043-|Sample:3.71| Time: 8.0s
+EPOCH[114/1000] loss0.043-|Sample:3.69| Time: 8.2s
+EPOCH[115/1000] loss0.043-|Sample:3.75| Time: 8.3s
+EPOCH[116/1000] loss0.043-|Sample:3.81| Time: 7.8s
+EPOCH[117/1000] loss0.042-|Sample:4.08| Time: 8.1s
+EPOCH[118/1000] loss0.042-|Sample:4.10| Time: 8.2s
+EPOCH[119/1000] loss0.042-|Sample:3.85| Time: 7.8s
+EPOCH[120/1000] loss0.042-|Sample:4.17| Time: 8.1s
+
+[TEST] Epoch 120
+{'precision': array([0.01631142]), 'recall': array([0.09019423]), 'ndcg': array([0.05310728])}
+  Recall@[20]: [0.09019423]
+  Precision@[20]: [0.01631142]
+  NDCG@[20]: [0.05310728]
+✓ New best! Recall@20: 0.0902
+EPOCH[121/1000] loss0.041-|Sample:4.29| Time: 11.3s
+EPOCH[122/1000] loss0.041-|Sample:4.21| Time: 7.8s
+EPOCH[123/1000] loss0.040-|Sample:4.11| Time: 7.6s
+EPOCH[124/1000] loss0.041-|Sample:4.02| Time: 7.7s
+EPOCH[125/1000] loss0.040-|Sample:4.05| Time: 7.6s
+EPOCH[126/1000] loss0.039-|Sample:4.04| Time: 7.6s
+EPOCH[127/1000] loss0.040-|Sample:4.14| Time: 7.1s
+EPOCH[128/1000] loss0.039-|Sample:4.27| Time: 7.8s
+EPOCH[129/1000] loss0.039-|Sample:4.01| Time: 7.5s
+EPOCH[130/1000] loss0.038-|Sample:4.16| Time: 7.6s
+
+[TEST] Epoch 130
+{'precision': array([0.01632647]), 'recall': array([0.09046205]), 'ndcg': array([0.05321841])}
+  Recall@[20]: [0.09046205]
+  Precision@[20]: [0.01632647]
+  NDCG@[20]: [0.05321841]
+✓ New best! Recall@20: 0.0905
+EPOCH[131/1000] loss0.039-|Sample:4.30| Time: 11.9s
+EPOCH[132/1000] loss0.038-|Sample:3.82| Time: 7.9s
+EPOCH[133/1000] loss0.038-|Sample:4.02| Time: 8.5s
+EPOCH[134/1000] loss0.038-|Sample:4.13| Time: 8.4s
+EPOCH[135/1000] loss0.038-|Sample:3.90| Time: 7.0s
+EPOCH[136/1000] loss0.037-|Sample:4.09| Time: 7.4s
+EPOCH[137/1000] loss0.037-|Sample:3.72| Time: 6.6s
+EPOCH[138/1000] loss0.037-|Sample:4.07| Time: 7.0s
+EPOCH[139/1000] loss0.037-|Sample:3.76| Time: 7.0s
+EPOCH[140/1000] loss0.037-|Sample:3.71| Time: 6.8s
+
+[TEST] Epoch 140
+{'precision': array([0.01647399]), 'recall': array([0.09083435]), 'ndcg': array([0.05338635])}
+  Recall@[20]: [0.09083435]
+  Precision@[20]: [0.01647399]
+  NDCG@[20]: [0.05338635]
+✓ New best! Recall@20: 0.0908
+EPOCH[141/1000] loss0.036-|Sample:3.77| Time: 9.0s
+EPOCH[142/1000] loss0.035-|Sample:3.62| Time: 6.8s
+EPOCH[143/1000] loss0.036-|Sample:3.97| Time: 7.2s
+EPOCH[144/1000] loss0.035-|Sample:3.88| Time: 6.9s
+EPOCH[145/1000] loss0.036-|Sample:3.77| Time: 7.0s
+EPOCH[146/1000] loss0.035-|Sample:3.86| Time: 7.2s
+EPOCH[147/1000] loss0.035-|Sample:3.70| Time: 6.7s
+EPOCH[148/1000] loss0.035-|Sample:3.84| Time: 6.5s
+EPOCH[149/1000] loss0.035-|Sample:3.80| Time: 7.0s
+EPOCH[150/1000] loss0.035-|Sample:4.00| Time: 7.4s
+
+[TEST] Epoch 150
+{'precision': array([0.01642883]), 'recall': array([0.09065492]), 'ndcg': array([0.05347448])}
+  Recall@[20]: [0.09065492]
+  Precision@[20]: [0.01642883]
+  NDCG@[20]: [0.05347448]
+EPOCH[151/1000] loss0.035-|Sample:3.55| Time: 9.3s
+EPOCH[152/1000] loss0.035-|Sample:3.20| Time: 6.3s
+EPOCH[153/1000] loss0.034-|Sample:3.96| Time: 7.2s
+EPOCH[154/1000] loss0.034-|Sample:3.69| Time: 6.9s
+EPOCH[155/1000] loss0.034-|Sample:3.73| Time: 7.0s
+EPOCH[156/1000] loss0.033-|Sample:3.79| Time: 6.9s
+EPOCH[157/1000] loss0.033-|Sample:3.97| Time: 6.8s
+EPOCH[158/1000] loss0.033-|Sample:3.89| Time: 7.0s
+EPOCH[159/1000] loss0.033-|Sample:3.84| Time: 6.9s
+EPOCH[160/1000] loss0.033-|Sample:3.75| Time: 6.9s
+
+[TEST] Epoch 160
+{'precision': array([0.01657033]), 'recall': array([0.09128536]), 'ndcg': array([0.05371048])}
+  Recall@[20]: [0.09128536]
+  Precision@[20]: [0.01657033]
+  NDCG@[20]: [0.05371048]
+✓ New best! Recall@20: 0.0913
+EPOCH[161/1000] loss0.033-|Sample:3.67| Time: 9.9s
+EPOCH[162/1000] loss0.032-|Sample:3.81| Time: 6.2s
+EPOCH[163/1000] loss0.032-|Sample:3.78| Time: 6.8s
+EPOCH[164/1000] loss0.032-|Sample:3.72| Time: 6.7s
+EPOCH[165/1000] loss0.032-|Sample:3.76| Time: 7.0s
+EPOCH[166/1000] loss0.032-|Sample:3.68| Time: 6.3s
+EPOCH[167/1000] loss0.032-|Sample:3.62| Time: 6.6s
+EPOCH[168/1000] loss0.032-|Sample:3.90| Time: 7.0s
+EPOCH[169/1000] loss0.032-|Sample:3.93| Time: 7.2s
+EPOCH[170/1000] loss0.032-|Sample:3.83| Time: 6.0s
+
+[TEST] Epoch 170
+{'precision': array([0.01658538]), 'recall': array([0.09142434]), 'ndcg': array([0.05388676])}
+  Recall@[20]: [0.09142434]
+  Precision@[20]: [0.01658538]
+  NDCG@[20]: [0.05388676]
+✓ New best! Recall@20: 0.0914
+EPOCH[171/1000] loss0.032-|Sample:3.84| Time: 9.6s
+EPOCH[172/1000] loss0.031-|Sample:3.80| Time: 7.1s
+EPOCH[173/1000] loss0.032-|Sample:3.45| Time: 6.7s
+EPOCH[174/1000] loss0.030-|Sample:3.58| Time: 6.8s
+EPOCH[175/1000] loss0.031-|Sample:3.65| Time: 6.2s
+EPOCH[176/1000] loss0.031-|Sample:3.70| Time: 6.8s
+EPOCH[177/1000] loss0.031-|Sample:3.77| Time: 6.6s
+EPOCH[178/1000] loss0.031-|Sample:3.87| Time: 7.0s
+EPOCH[179/1000] loss0.031-|Sample:3.73| Time: 6.5s
+EPOCH[180/1000] loss0.031-|Sample:4.05| Time: 6.6s
+
+[TEST] Epoch 180
+{'precision': array([0.01662151]), 'recall': array([0.09151012]), 'ndcg': array([0.05410929])}
+  Recall@[20]: [0.09151012]
+  Precision@[20]: [0.01662151]
+  NDCG@[20]: [0.05410929]
+✓ New best! Recall@20: 0.0915
+EPOCH[181/1000] loss0.030-|Sample:3.51| Time: 9.2s
+EPOCH[182/1000] loss0.030-|Sample:3.80| Time: 6.7s
+EPOCH[183/1000] loss0.030-|Sample:3.76| Time: 6.7s
+EPOCH[184/1000] loss0.030-|Sample:4.32| Time: 7.2s
+EPOCH[185/1000] loss0.030-|Sample:4.13| Time: 6.9s
+EPOCH[186/1000] loss0.030-|Sample:3.99| Time: 6.8s
+EPOCH[187/1000] loss0.030-|Sample:4.36| Time: 7.3s
+EPOCH[188/1000] loss0.030-|Sample:3.79| Time: 6.4s
+EPOCH[189/1000] loss0.029-|Sample:3.96| Time: 6.8s
+EPOCH[190/1000] loss0.030-|Sample:3.83| Time: 6.4s
+
+[TEST] Epoch 190
+{'precision': array([0.0165613]), 'recall': array([0.09146843]), 'ndcg': array([0.05409854])}
+  Recall@[20]: [0.09146843]
+  Precision@[20]: [0.0165613]
+  NDCG@[20]: [0.05409854]
+EPOCH[191/1000] loss0.029-|Sample:3.67| Time: 9.3s
+EPOCH[192/1000] loss0.029-|Sample:4.70| Time: 7.6s
+EPOCH[193/1000] loss0.029-|Sample:3.76| Time: 6.4s
+EPOCH[194/1000] loss0.029-|Sample:3.91| Time: 6.4s
+EPOCH[195/1000] loss0.029-|Sample:3.97| Time: 6.8s
+EPOCH[196/1000] loss0.029-|Sample:3.84| Time: 6.6s
+EPOCH[197/1000] loss0.029-|Sample:4.24| Time: 7.1s
+EPOCH[198/1000] loss0.029-|Sample:4.13| Time: 6.8s
+EPOCH[199/1000] loss0.029-|Sample:4.51| Time: 7.1s
+EPOCH[200/1000] loss0.028-|Sample:4.44| Time: 7.2s
+
+[TEST] Epoch 200
+{'precision': array([0.01656431]), 'recall': array([0.0915703]), 'ndcg': array([0.05398456])}
+  Recall@[20]: [0.0915703]
+  Precision@[20]: [0.01656431]
+  NDCG@[20]: [0.05398456]
+✓ New best! Recall@20: 0.0916
+EPOCH[201/1000] loss0.028-|Sample:3.59| Time: 9.7s
+EPOCH[202/1000] loss0.028-|Sample:3.51| Time: 6.3s
+EPOCH[203/1000] loss0.028-|Sample:3.81| Time: 6.7s
+EPOCH[204/1000] loss0.028-|Sample:3.95| Time: 6.6s
+EPOCH[205/1000] loss0.028-|Sample:3.85| Time: 6.7s
+EPOCH[206/1000] loss0.028-|Sample:4.04| Time: 6.8s
+EPOCH[207/1000] loss0.028-|Sample:3.89| Time: 6.2s
+EPOCH[208/1000] loss0.028-|Sample:3.73| Time: 5.8s
+EPOCH[209/1000] loss0.028-|Sample:3.68| Time: 5.7s
+EPOCH[210/1000] loss0.028-|Sample:3.59| Time: 5.8s
+
+[TEST] Epoch 210
+{'precision': array([0.01672387]), 'recall': array([0.09232234]), 'ndcg': array([0.05427544])}
+  Recall@[20]: [0.09232234]
+  Precision@[20]: [0.01672387]
+  NDCG@[20]: [0.05427544]
+✓ New best! Recall@20: 0.0923
+EPOCH[211/1000] loss0.028-|Sample:3.63| Time: 8.9s
+EPOCH[212/1000] loss0.027-|Sample:3.89| Time: 6.5s
+EPOCH[213/1000] loss0.027-|Sample:3.66| Time: 6.5s
+EPOCH[214/1000] loss0.027-|Sample:3.60| Time: 6.5s
+EPOCH[215/1000] loss0.027-|Sample:3.54| Time: 6.4s
+EPOCH[216/1000] loss0.027-|Sample:3.82| Time: 6.7s
+EPOCH[217/1000] loss0.027-|Sample:3.78| Time: 6.7s
+EPOCH[218/1000] loss0.027-|Sample:3.72| Time: 6.6s
+EPOCH[219/1000] loss0.027-|Sample:3.78| Time: 5.7s
+EPOCH[220/1000] loss0.027-|Sample:3.60| Time: 6.5s
+
+[TEST] Epoch 220
+{'precision': array([0.01680816]), 'recall': array([0.09267359]), 'ndcg': array([0.05428363])}
+  Recall@[20]: [0.09267359]
+  Precision@[20]: [0.01680816]
+  NDCG@[20]: [0.05428363]
+✓ New best! Recall@20: 0.0927
+EPOCH[221/1000] loss0.027-|Sample:3.65| Time: 9.1s
+EPOCH[222/1000] loss0.027-|Sample:3.77| Time: 6.7s
+EPOCH[223/1000] loss0.027-|Sample:3.80| Time: 6.7s
+EPOCH[224/1000] loss0.027-|Sample:3.67| Time: 6.5s
+EPOCH[225/1000] loss0.026-|Sample:3.74| Time: 6.6s
+EPOCH[226/1000] loss0.026-|Sample:3.53| Time: 6.4s
+EPOCH[227/1000] loss0.027-|Sample:3.59| Time: 6.5s
+EPOCH[228/1000] loss0.026-|Sample:3.79| Time: 6.7s
+EPOCH[229/1000] loss0.026-|Sample:3.78| Time: 6.7s
+EPOCH[230/1000] loss0.026-|Sample:3.68| Time: 6.6s
+
+[TEST] Epoch 230
+{'precision': array([0.01663054]), 'recall': array([0.09206854]), 'ndcg': array([0.05410631])}
+  Recall@[20]: [0.09206854]
+  Precision@[20]: [0.01663054]
+  NDCG@[20]: [0.05410631]
+EPOCH[231/1000] loss0.026-|Sample:3.62| Time: 9.0s
+EPOCH[232/1000] loss0.026-|Sample:3.89| Time: 6.8s
+EPOCH[233/1000] loss0.026-|Sample:3.66| Time: 6.6s
+EPOCH[234/1000] loss0.026-|Sample:3.60| Time: 6.0s
+EPOCH[235/1000] loss0.026-|Sample:3.77| Time: 6.7s
+EPOCH[236/1000] loss0.026-|Sample:3.82| Time: 6.8s
+EPOCH[237/1000] loss0.026-|Sample:3.78| Time: 6.7s
+EPOCH[238/1000] loss0.026-|Sample:3.79| Time: 6.6s
+EPOCH[239/1000] loss0.026-|Sample:3.60| Time: 6.5s
+EPOCH[240/1000] loss0.026-|Sample:3.75| Time: 6.7s
+
+[TEST] Epoch 240
+{'precision': array([0.01675698]), 'recall': array([0.09270099]), 'ndcg': array([0.05433693])}
+  Recall@[20]: [0.09270099]
+  Precision@[20]: [0.01675698]
+  NDCG@[20]: [0.05433693]
+✓ New best! Recall@20: 0.0927
+EPOCH[241/1000] loss0.026-|Sample:3.59| Time: 9.0s
+EPOCH[242/1000] loss0.026-|Sample:3.77| Time: 6.7s
+EPOCH[243/1000] loss0.026-|Sample:3.63| Time: 6.6s
+EPOCH[244/1000] loss0.025-|Sample:3.60| Time: 6.5s
+EPOCH[245/1000] loss0.026-|Sample:3.43| Time: 6.3s
+EPOCH[246/1000] loss0.025-|Sample:3.64| Time: 6.6s
+EPOCH[247/1000] loss0.025-|Sample:3.71| Time: 6.6s
+EPOCH[248/1000] loss0.025-|Sample:3.82| Time: 5.9s
+EPOCH[249/1000] loss0.025-|Sample:3.61| Time: 6.5s
+EPOCH[250/1000] loss0.025-|Sample:3.78| Time: 6.7s
+
+[TEST] Epoch 250
+{'precision': array([0.01675096]), 'recall': array([0.09242485]), 'ndcg': array([0.05439585])}
+  Recall@[20]: [0.09242485]
+  Precision@[20]: [0.01675096]
+  NDCG@[20]: [0.05439585]
+EPOCH[251/1000] loss0.025-|Sample:3.55| Time: 8.8s
+EPOCH[252/1000] loss0.025-|Sample:3.70| Time: 6.5s
+EPOCH[253/1000] loss0.025-|Sample:3.66| Time: 6.4s
+EPOCH[254/1000] loss0.025-|Sample:3.71| Time: 6.5s
+EPOCH[255/1000] loss0.025-|Sample:3.58| Time: 6.4s
+EPOCH[256/1000] loss0.025-|Sample:3.72| Time: 6.4s
+EPOCH[257/1000] loss0.025-|Sample:3.70| Time: 6.4s
+EPOCH[258/1000] loss0.025-|Sample:3.94| Time: 6.7s
+EPOCH[259/1000] loss0.025-|Sample:3.60| Time: 6.3s
+EPOCH[260/1000] loss0.025-|Sample:3.67| Time: 6.4s
+
+[TEST] Epoch 260
+{'precision': array([0.01685332]), 'recall': array([0.09254595]), 'ndcg': array([0.05438437])}
+  Recall@[20]: [0.09254595]
+  Precision@[20]: [0.01685332]
+  NDCG@[20]: [0.05438437]
+EPOCH[261/1000] loss0.025-|Sample:3.74| Time: 9.0s
+EPOCH[262/1000] loss0.025-|Sample:3.66| Time: 6.3s
+EPOCH[263/1000] loss0.024-|Sample:3.76| Time: 6.6s
+EPOCH[264/1000] loss0.024-|Sample:3.80| Time: 6.7s
+EPOCH[265/1000] loss0.025-|Sample:3.75| Time: 6.6s
+EPOCH[266/1000] loss0.024-|Sample:4.16| Time: 7.1s
+EPOCH[267/1000] loss0.024-|Sample:3.90| Time: 6.8s
+EPOCH[268/1000] loss0.024-|Sample:3.88| Time: 6.8s
+EPOCH[269/1000] loss0.024-|Sample:4.03| Time: 7.0s
+EPOCH[270/1000] loss0.024-|Sample:4.31| Time: 7.4s
+
+[TEST] Epoch 270
+{'precision': array([0.01686236]), 'recall': array([0.09279582]), 'ndcg': array([0.05467369])}
+  Recall@[20]: [0.09279582]
+  Precision@[20]: [0.01686236]
+  NDCG@[20]: [0.05467369]
+✓ New best! Recall@20: 0.0928
+EPOCH[271/1000] loss0.024-|Sample:3.68| Time: 8.6s
+EPOCH[272/1000] loss0.024-|Sample:4.05| Time: 6.3s
+EPOCH[273/1000] loss0.024-|Sample:4.56| Time: 6.9s
+EPOCH[274/1000] loss0.024-|Sample:3.99| Time: 6.3s
+EPOCH[275/1000] loss0.024-|Sample:3.94| Time: 6.2s
+EPOCH[276/1000] loss0.024-|Sample:3.82| Time: 6.0s
+EPOCH[277/1000] loss0.024-|Sample:3.92| Time: 6.3s
+EPOCH[278/1000] loss0.024-|Sample:4.19| Time: 6.6s
+EPOCH[279/1000] loss0.024-|Sample:4.00| Time: 6.3s
+EPOCH[280/1000] loss0.024-|Sample:3.56| Time: 5.9s
+
+[TEST] Epoch 280
+{'precision': array([0.01669978]), 'recall': array([0.09224679]), 'ndcg': array([0.05428415])}
+  Recall@[20]: [0.09224679]
+  Precision@[20]: [0.01669978]
+  NDCG@[20]: [0.05428415]
+EPOCH[281/1000] loss0.024-|Sample:3.79| Time: 8.7s
+EPOCH[282/1000] loss0.024-|Sample:3.77| Time: 6.0s
+EPOCH[283/1000] loss0.024-|Sample:4.07| Time: 6.4s
+EPOCH[284/1000] loss0.024-|Sample:3.87| Time: 6.2s
+EPOCH[285/1000] loss0.024-|Sample:3.85| Time: 5.8s
+EPOCH[286/1000] loss0.024-|Sample:3.75| Time: 6.1s
+EPOCH[287/1000] loss0.023-|Sample:3.78| Time: 6.0s
+EPOCH[288/1000] loss0.023-|Sample:4.01| Time: 6.3s
+EPOCH[289/1000] loss0.024-|Sample:3.79| Time: 6.2s
+EPOCH[290/1000] loss0.023-|Sample:4.15| Time: 6.4s
+
+[TEST] Epoch 290
+{'precision': array([0.01679913]), 'recall': array([0.09261495]), 'ndcg': array([0.05453746])}
+  Recall@[20]: [0.09261495]
+  Precision@[20]: [0.01679913]
+  NDCG@[20]: [0.05453746]
+EPOCH[291/1000] loss0.023-|Sample:4.13| Time: 9.1s
+EPOCH[292/1000] loss0.023-|Sample:3.91| Time: 6.5s
+EPOCH[293/1000] loss0.024-|Sample:3.58| Time: 5.9s
+EPOCH[294/1000] loss0.023-|Sample:3.73| Time: 6.5s
+EPOCH[295/1000] loss0.024-|Sample:3.82| Time: 6.0s
+EPOCH[296/1000] loss0.023-|Sample:3.66| Time: 6.5s
+EPOCH[297/1000] loss0.023-|Sample:3.71| Time: 6.1s
+EPOCH[298/1000] loss0.023-|Sample:4.04| Time: 6.1s
+EPOCH[299/1000] loss0.023-|Sample:3.96| Time: 6.1s
+EPOCH[300/1000] loss0.023-|Sample:3.92| Time: 6.2s
+
+[TEST] Epoch 300
+{'precision': array([0.01671785]), 'recall': array([0.09258666]), 'ndcg': array([0.05458922])}
+  Recall@[20]: [0.09258666]
+  Precision@[20]: [0.01671785]
+  NDCG@[20]: [0.05458922]
+EPOCH[301/1000] loss0.023-|Sample:3.68| Time: 8.7s
+EPOCH[302/1000] loss0.023-|Sample:3.78| Time: 6.0s
+EPOCH[303/1000] loss0.023-|Sample:3.72| Time: 6.1s
+EPOCH[304/1000] loss0.023-|Sample:3.98| Time: 6.4s
+EPOCH[305/1000] loss0.023-|Sample:4.31| Time: 6.6s
+EPOCH[306/1000] loss0.023-|Sample:4.00| Time: 6.5s
+EPOCH[307/1000] loss0.023-|Sample:4.07| Time: 6.4s
+EPOCH[308/1000] loss0.023-|Sample:3.80| Time: 6.2s
+EPOCH[309/1000] loss0.023-|Sample:3.83| Time: 6.3s
+EPOCH[310/1000] loss0.023-|Sample:3.95| Time: 6.5s
+
+[TEST] Epoch 310
+{'precision': array([0.01679913]), 'recall': array([0.09232637]), 'ndcg': array([0.05437442])}
+  Recall@[20]: [0.09232637]
+  Precision@[20]: [0.01679913]
+  NDCG@[20]: [0.05437442]
+EPOCH[311/1000] loss0.023-|Sample:3.71| Time: 8.6s
+EPOCH[312/1000] loss0.023-|Sample:3.50| Time: 6.0s
+EPOCH[313/1000] loss0.023-|Sample:3.61| Time: 5.7s
+EPOCH[314/1000] loss0.023-|Sample:3.66| Time: 6.1s
+EPOCH[315/1000] loss0.023-|Sample:3.48| Time: 5.6s
+EPOCH[316/1000] loss0.023-|Sample:3.58| Time: 6.0s
+EPOCH[317/1000] loss0.022-|Sample:3.59| Time: 6.2s
+EPOCH[318/1000] loss0.022-|Sample:3.46| Time: 5.6s
+EPOCH[319/1000] loss0.023-|Sample:3.49| Time: 5.9s
+EPOCH[320/1000] loss0.023-|Sample:3.73| Time: 6.3s
+
+[TEST] Epoch 320
+{'precision': array([0.01669376]), 'recall': array([0.09223878]), 'ndcg': array([0.0543228])}
+  Recall@[20]: [0.09223878]
+  Precision@[20]: [0.01669376]
+  NDCG@[20]: [0.0543228]
+EPOCH[321/1000] loss0.023-|Sample:3.44| Time: 8.2s
+EPOCH[322/1000] loss0.023-|Sample:3.45| Time: 6.3s
+EPOCH[323/1000] loss0.022-|Sample:3.70| Time: 6.6s
+EPOCH[324/1000] loss0.022-|Sample:3.78| Time: 6.5s
+EPOCH[325/1000] loss0.023-|Sample:3.62| Time: 5.8s
+EPOCH[326/1000] loss0.022-|Sample:3.74| Time: 6.5s
+EPOCH[327/1000] loss0.022-|Sample:3.58| Time: 6.4s
+EPOCH[328/1000] loss0.022-|Sample:3.75| Time: 6.4s
+EPOCH[329/1000] loss0.022-|Sample:3.79| Time: 6.0s
+EPOCH[330/1000] loss0.022-|Sample:3.56| Time: 6.2s
+
+[TEST] Epoch 330
+{'precision': array([0.01664258]), 'recall': array([0.09146682]), 'ndcg': array([0.05379992])}
+  Recall@[20]: [0.09146682]
+  Precision@[20]: [0.01664258]
+  NDCG@[20]: [0.05379992]
+EPOCH[331/1000] loss0.023-|Sample:3.24| Time: 8.3s
+EPOCH[332/1000] loss0.022-|Sample:3.70| Time: 6.6s
+EPOCH[333/1000] loss0.022-|Sample:3.94| Time: 6.8s
+EPOCH[334/1000] loss0.022-|Sample:3.69| Time: 6.6s
+EPOCH[335/1000] loss0.022-|Sample:3.65| Time: 6.2s
+EPOCH[336/1000] loss0.022-|Sample:3.80| Time: 6.1s
+EPOCH[337/1000] loss0.022-|Sample:3.64| Time: 6.5s
+EPOCH[338/1000] loss0.022-|Sample:3.77| Time: 6.1s
+EPOCH[339/1000] loss0.022-|Sample:3.62| Time: 6.3s
+EPOCH[340/1000] loss0.022-|Sample:4.10| Time: 6.9s
+
+[TEST] Epoch 340
+{'precision': array([0.01672688]), 'recall': array([0.09213518]), 'ndcg': array([0.05418092])}
+  Recall@[20]: [0.09213518]
+  Precision@[20]: [0.01672688]
+  NDCG@[20]: [0.05418092]
+EPOCH[341/1000] loss0.022-|Sample:3.40| Time: 8.7s
+EPOCH[342/1000] loss0.022-|Sample:3.55| Time: 6.3s
+EPOCH[343/1000] loss0.022-|Sample:3.73| Time: 6.5s
+EPOCH[344/1000] loss0.022-|Sample:3.63| Time: 6.3s
+EPOCH[345/1000] loss0.022-|Sample:3.79| Time: 6.6s
+EPOCH[346/1000] loss0.022-|Sample:3.72| Time: 6.5s
+EPOCH[347/1000] loss0.022-|Sample:3.59| Time: 6.2s
+EPOCH[348/1000] loss0.022-|Sample:3.72| Time: 6.1s
+EPOCH[349/1000] loss0.022-|Sample:3.68| Time: 6.0s
+EPOCH[350/1000] loss0.022-|Sample:3.66| Time: 6.4s
+
+[TEST] Epoch 350
+{'precision': array([0.01666065]), 'recall': array([0.09176815]), 'ndcg': array([0.05393729])}
+  Recall@[20]: [0.09176815]
+  Precision@[20]: [0.01666065]
+  NDCG@[20]: [0.05393729]
+EPOCH[351/1000] loss0.022-|Sample:3.58| Time: 8.6s
+EPOCH[352/1000] loss0.022-|Sample:3.79| Time: 6.5s
+EPOCH[353/1000] loss0.022-|Sample:3.61| Time: 6.2s
+EPOCH[354/1000] loss0.022-|Sample:3.72| Time: 6.3s
+EPOCH[355/1000] loss0.022-|Sample:3.70| Time: 6.0s
+EPOCH[356/1000] loss0.022-|Sample:3.66| Time: 6.4s
+EPOCH[357/1000] loss0.022-|Sample:4.23| Time: 6.8s
+EPOCH[358/1000] loss0.022-|Sample:4.22| Time: 6.9s
+EPOCH[359/1000] loss0.021-|Sample:3.80| Time: 6.7s
+EPOCH[360/1000] loss0.021-|Sample:3.56| Time: 6.4s
+
+[TEST] Epoch 360
+{'precision': array([0.01663656]), 'recall': array([0.09158314]), 'ndcg': array([0.05387677])}
+  Recall@[20]: [0.09158314]
+  Precision@[20]: [0.01663656]
+  NDCG@[20]: [0.05387677]
+EPOCH[361/1000] loss0.022-|Sample:3.63| Time: 9.2s
+EPOCH[362/1000] loss0.022-|Sample:3.67| Time: 6.7s
+EPOCH[363/1000] loss0.022-|Sample:3.65| Time: 6.5s
+EPOCH[364/1000] loss0.022-|Sample:3.82| Time: 6.7s
+EPOCH[365/1000] loss0.022-|Sample:3.76| Time: 5.8s
+EPOCH[366/1000] loss0.022-|Sample:3.73| Time: 6.2s
+EPOCH[367/1000] loss0.021-|Sample:3.92| Time: 6.2s
+EPOCH[368/1000] loss0.021-|Sample:3.76| Time: 6.2s
+EPOCH[369/1000] loss0.021-|Sample:4.95| Time: 6.9s
+EPOCH[370/1000] loss0.021-|Sample:3.61| Time: 5.6s
+
+[TEST] Epoch 370
+{'precision': array([0.01661248]), 'recall': array([0.0914544]), 'ndcg': array([0.05392703])}
+  Recall@[20]: [0.0914544]
+  Precision@[20]: [0.01661248]
+  NDCG@[20]: [0.05392703]
+EPOCH[371/1000] loss0.021-|Sample:3.62| Time: 8.2s
+EPOCH[372/1000] loss0.022-|Sample:5.08| Time: 7.1s
+EPOCH[373/1000] loss0.021-|Sample:3.90| Time: 5.8s
+EPOCH[374/1000] loss0.021-|Sample:4.33| Time: 6.4s
+EPOCH[375/1000] loss0.021-|Sample:4.15| Time: 6.2s
+EPOCH[376/1000] loss0.021-|Sample:4.86| Time: 6.9s
+EPOCH[377/1000] loss0.021-|Sample:4.11| Time: 6.1s
+EPOCH[378/1000] loss0.021-|Sample:3.69| Time: 5.7s
+EPOCH[379/1000] loss0.021-|Sample:3.36| Time: 5.3s
+EPOCH[380/1000] loss0.021-|Sample:3.77| Time: 5.8s
+
+[TEST] Epoch 380
+{'precision': array([0.01664258]), 'recall': array([0.09175142]), 'ndcg': array([0.0542123])}
+  Recall@[20]: [0.09175142]
+  Precision@[20]: [0.01664258]
+  NDCG@[20]: [0.0542123]
+EPOCH[381/1000] loss0.021-|Sample:4.24| Time: 9.2s
+EPOCH[382/1000] loss0.021-|Sample:3.11| Time: 5.6s
+EPOCH[383/1000] loss0.021-|Sample:3.69| Time: 6.5s
+EPOCH[384/1000] loss0.021-|Sample:3.77| Time: 6.6s
+EPOCH[385/1000] loss0.021-|Sample:3.83| Time: 6.7s
+EPOCH[386/1000] loss0.021-|Sample:3.56| Time: 6.4s
+EPOCH[387/1000] loss0.021-|Sample:3.78| Time: 6.7s
+EPOCH[388/1000] loss0.021-|Sample:3.82| Time: 6.3s
+EPOCH[389/1000] loss0.021-|Sample:3.60| Time: 6.4s
+EPOCH[390/1000] loss0.021-|Sample:3.79| Time: 6.6s
+
+[TEST] Epoch 390
+{'precision': array([0.01653721]), 'recall': array([0.09053713]), 'ndcg': array([0.05363053])}
+  Recall@[20]: [0.09053713]
+  Precision@[20]: [0.01653721]
+  NDCG@[20]: [0.05363053]
+EPOCH[391/1000] loss0.021-|Sample:3.90| Time: 8.5s
+EPOCH[392/1000] loss0.021-|Sample:4.59| Time: 6.7s
+EPOCH[393/1000] loss0.021-|Sample:4.69| Time: 6.9s
+EPOCH[394/1000] loss0.021-|Sample:3.47| Time: 5.7s
+EPOCH[395/1000] loss0.021-|Sample:3.58| Time: 5.8s
+EPOCH[396/1000] loss0.021-|Sample:3.40| Time: 5.5s
+EPOCH[397/1000] loss0.020-|Sample:3.70| Time: 5.8s
+EPOCH[398/1000] loss0.021-|Sample:4.16| Time: 6.4s
+EPOCH[399/1000] loss0.021-|Sample:3.71| Time: 5.8s
+EPOCH[400/1000] loss0.021-|Sample:3.62| Time: 5.7s
+
+[TEST] Epoch 400
+{'precision': array([0.01666667]), 'recall': array([0.09115859]), 'ndcg': array([0.05397469])}
+  Recall@[20]: [0.09115859]
+  Precision@[20]: [0.01666667]
+  NDCG@[20]: [0.05397469]
+EPOCH[401/1000] loss0.020-|Sample:3.69| Time: 8.9s
+EPOCH[402/1000] loss0.021-|Sample:3.83| Time: 5.9s
+EPOCH[403/1000] loss0.021-|Sample:3.26| Time: 5.4s
+EPOCH[404/1000] loss0.021-|Sample:3.16| Time: 5.5s
+EPOCH[405/1000] loss0.021-|Sample:3.73| Time: 6.0s
+EPOCH[406/1000] loss0.021-|Sample:3.84| Time: 5.8s
+EPOCH[407/1000] loss0.021-|Sample:4.77| Time: 7.1s
+EPOCH[408/1000] loss0.020-|Sample:3.29| Time: 6.0s
+EPOCH[409/1000] loss0.021-|Sample:3.70| Time: 6.1s
+EPOCH[410/1000] loss0.021-|Sample:3.78| Time: 6.4s
+
+[TEST] Epoch 410
+{'precision': array([0.01662753]), 'recall': array([0.09120587]), 'ndcg': array([0.05413358])}
+  Recall@[20]: [0.09120587]
+  Precision@[20]: [0.01662753]
+  NDCG@[20]: [0.05413358]
+EPOCH[411/1000] loss0.021-|Sample:3.81| Time: 8.9s
+EPOCH[412/1000] loss0.021-|Sample:3.68| Time: 6.5s
+EPOCH[413/1000] loss0.021-|Sample:3.58| Time: 6.4s
+EPOCH[414/1000] loss0.020-|Sample:3.65| Time: 6.5s
+EPOCH[415/1000] loss0.020-|Sample:3.78| Time: 6.7s
+EPOCH[416/1000] loss0.021-|Sample:3.61| Time: 6.4s
+EPOCH[417/1000] loss0.020-|Sample:3.78| Time: 6.6s
+EPOCH[418/1000] loss0.021-|Sample:3.53| Time: 6.4s
+EPOCH[419/1000] loss0.020-|Sample:3.83| Time: 6.7s
+EPOCH[420/1000] loss0.021-|Sample:3.52| Time: 6.4s
+
+[TEST] Epoch 420
+{'precision': array([0.01668172]), 'recall': array([0.09151932]), 'ndcg': array([0.05387564])}
+  Recall@[20]: [0.09151932]
+  Precision@[20]: [0.01668172]
+  NDCG@[20]: [0.05387564]
+EPOCH[421/1000] loss0.020-|Sample:3.37| Time: 8.6s
+EPOCH[422/1000] loss0.020-|Sample:3.60| Time: 6.4s
+EPOCH[423/1000] loss0.020-|Sample:3.48| Time: 6.3s
+EPOCH[424/1000] loss0.020-|Sample:3.62| Time: 6.5s
+EPOCH[425/1000] loss0.020-|Sample:3.61| Time: 6.4s
+EPOCH[426/1000] loss0.020-|Sample:3.58| Time: 6.4s
+EPOCH[427/1000] loss0.020-|Sample:3.69| Time: 6.5s
+EPOCH[428/1000] loss0.020-|Sample:3.71| Time: 6.4s
+EPOCH[429/1000] loss0.020-|Sample:3.69| Time: 6.5s
+EPOCH[430/1000] loss0.020-|Sample:3.69| Time: 6.4s
+
+[TEST] Epoch 430
+{'precision': array([0.01663355]), 'recall': array([0.09143515]), 'ndcg': array([0.054139])}
+  Recall@[20]: [0.09143515]
+  Precision@[20]: [0.01663355]
+  NDCG@[20]: [0.054139]
+EPOCH[431/1000] loss0.020-|Sample:3.57| Time: 8.7s
+EPOCH[432/1000] loss0.020-|Sample:4.02| Time: 6.1s
+EPOCH[433/1000] loss0.020-|Sample:3.79| Time: 5.8s
+EPOCH[434/1000] loss0.020-|Sample:3.45| Time: 5.6s
+EPOCH[435/1000] loss0.020-|Sample:4.16| Time: 6.1s
+EPOCH[436/1000] loss0.020-|Sample:4.87| Time: 6.9s
+EPOCH[437/1000] loss0.020-|Sample:4.05| Time: 6.1s
+EPOCH[438/1000] loss0.020-|Sample:3.22| Time: 5.2s
+EPOCH[439/1000] loss0.020-|Sample:4.01| Time: 6.0s
+EPOCH[440/1000] loss0.020-|Sample:3.96| Time: 6.0s
+
+[TEST] Epoch 440
+{'precision': array([0.01651915]), 'recall': array([0.09101582]), 'ndcg': array([0.05372277])}
+  Recall@[20]: [0.09101582]
+  Precision@[20]: [0.01651915]
+  NDCG@[20]: [0.05372277]
+EPOCH[441/1000] loss0.020-|Sample:4.46| Time: 9.3s
+EPOCH[442/1000] loss0.020-|Sample:4.58| Time: 6.7s
+EPOCH[443/1000] loss0.020-|Sample:3.78| Time: 5.8s
+EPOCH[444/1000] loss0.020-|Sample:4.13| Time: 6.1s
+EPOCH[445/1000] loss0.020-|Sample:4.03| Time: 6.2s
+EPOCH[446/1000] loss0.020-|Sample:3.94| Time: 6.0s
+EPOCH[447/1000] loss0.020-|Sample:3.71| Time: 5.7s
+EPOCH[448/1000] loss0.020-|Sample:3.73| Time: 5.8s
+EPOCH[449/1000] loss0.020-|Sample:3.73| Time: 6.3s
+EPOCH[450/1000] loss0.020-|Sample:3.57| Time: 6.3s
+
+[TEST] Epoch 450
+{'precision': array([0.01655829]), 'recall': array([0.0908075]), 'ndcg': array([0.05381606])}
+  Recall@[20]: [0.0908075]
+  Precision@[20]: [0.01655829]
+  NDCG@[20]: [0.05381606]
+EPOCH[451/1000] loss0.020-|Sample:3.60| Time: 8.6s
+EPOCH[452/1000] loss0.020-|Sample:3.60| Time: 5.6s
+EPOCH[453/1000] loss0.020-|Sample:4.31| Time: 6.4s
+EPOCH[454/1000] loss0.020-|Sample:4.77| Time: 6.8s
+EPOCH[455/1000] loss0.020-|Sample:3.85| Time: 5.9s
+EPOCH[456/1000] loss0.020-|Sample:4.09| Time: 6.1s
+EPOCH[457/1000] loss0.020-|Sample:3.20| Time: 5.2s
+EPOCH[458/1000] loss0.020-|Sample:4.46| Time: 6.4s
+EPOCH[459/1000] loss0.020-|Sample:4.17| Time: 6.2s
+EPOCH[460/1000] loss0.020-|Sample:4.38| Time: 6.5s
+
+[TEST] Epoch 460
+{'precision': array([0.01659742]), 'recall': array([0.09106251]), 'ndcg': array([0.0537531])}
+  Recall@[20]: [0.09106251]
+  Precision@[20]: [0.01659742]
+  NDCG@[20]: [0.0537531]
+EPOCH[461/1000] loss0.020-|Sample:4.03| Time: 8.6s
+EPOCH[462/1000] loss0.020-|Sample:3.22| Time: 5.2s
+EPOCH[463/1000] loss0.020-|Sample:3.80| Time: 5.8s
+EPOCH[464/1000] loss0.020-|Sample:3.70| Time: 5.7s
+EPOCH[465/1000] loss0.020-|Sample:3.64| Time: 5.7s
+EPOCH[466/1000] loss0.020-|Sample:3.97| Time: 6.1s
+EPOCH[467/1000] loss0.020-|Sample:3.95| Time: 6.0s
+EPOCH[468/1000] loss0.020-|Sample:3.67| Time: 5.8s
+EPOCH[469/1000] loss0.020-|Sample:3.52| Time: 6.2s
+EPOCH[470/1000] loss0.020-|Sample:3.48| Time: 6.3s
+
+[TEST] Epoch 470
+{'precision': array([0.01648001]), 'recall': array([0.09075817]), 'ndcg': array([0.05355521])}
+  Recall@[20]: [0.09075817]
+  Precision@[20]: [0.01648001]
+  NDCG@[20]: [0.05355521]
+EPOCH[471/1000] loss0.020-|Sample:3.59| Time: 8.9s
+EPOCH[472/1000] loss0.020-|Sample:3.63| Time: 5.5s
+EPOCH[473/1000] loss0.020-|Sample:3.04| Time: 4.9s
+EPOCH[474/1000] loss0.020-|Sample:3.10| Time: 5.3s
+EPOCH[475/1000] loss0.020-|Sample:3.65| Time: 6.5s
+EPOCH[476/1000] loss0.020-|Sample:3.63| Time: 5.5s
+EPOCH[477/1000] loss0.020-|Sample:3.65| Time: 5.8s
+EPOCH[478/1000] loss0.020-|Sample:3.93| Time: 6.4s
+EPOCH[479/1000] loss0.020-|Sample:3.72| Time: 6.4s
+EPOCH[480/1000] loss0.020-|Sample:3.77| Time: 6.6s
+
+[TEST] Epoch 480
+{'precision': array([0.01648603]), 'recall': array([0.09084597]), 'ndcg': array([0.05358162])}
+  Recall@[20]: [0.09084597]
+  Precision@[20]: [0.01648603]
+  NDCG@[20]: [0.05358162]
+EPOCH[481/1000] loss0.020-|Sample:3.61| Time: 8.2s
+EPOCH[482/1000] loss0.020-|Sample:3.79| Time: 6.6s
+EPOCH[483/1000] loss0.020-|Sample:3.51| Time: 6.2s
+EPOCH[484/1000] loss0.020-|Sample:3.71| Time: 6.2s
+EPOCH[485/1000] loss0.019-|Sample:3.83| Time: 6.5s
+EPOCH[486/1000] loss0.020-|Sample:3.77| Time: 6.5s
+EPOCH[487/1000] loss0.020-|Sample:3.76| Time: 6.5s
+EPOCH[488/1000] loss0.020-|Sample:3.65| Time: 6.4s
+EPOCH[489/1000] loss0.020-|Sample:3.72| Time: 6.6s
+EPOCH[490/1000] loss0.019-|Sample:3.77| Time: 6.6s
+
+[TEST] Epoch 490
+{'precision': array([0.01640776]), 'recall': array([0.09060474]), 'ndcg': array([0.05345707])}
+  Recall@[20]: [0.09060474]
+  Precision@[20]: [0.01640776]
+  NDCG@[20]: [0.05345707]
+EPOCH[491/1000] loss0.020-|Sample:3.46| Time: 8.7s
+EPOCH[492/1000] loss0.019-|Sample:3.62| Time: 5.5s
+EPOCH[493/1000] loss0.020-|Sample:3.65| Time: 5.5s
+EPOCH[494/1000] loss0.020-|Sample:3.39| Time: 5.4s
+EPOCH[495/1000] loss0.020-|Sample:3.62| Time: 5.5s
+EPOCH[496/1000] loss0.019-|Sample:3.63| Time: 6.4s
+EPOCH[497/1000] loss0.019-|Sample:3.74| Time: 6.5s
+EPOCH[498/1000] loss0.019-|Sample:3.84| Time: 6.6s
+EPOCH[499/1000] loss0.020-|Sample:3.82| Time: 6.6s
+EPOCH[500/1000] loss0.020-|Sample:3.66| Time: 6.5s
+
+[TEST] Epoch 500
+{'precision': array([0.016477]), 'recall': array([0.09087815]), 'ndcg': array([0.05382997])}
+  Recall@[20]: [0.09087815]
+  Precision@[20]: [0.016477]
+  NDCG@[20]: [0.05382997]
+EPOCH[501/1000] loss0.019-|Sample:3.55| Time: 8.8s
+EPOCH[502/1000] loss0.019-|Sample:3.79| Time: 6.4s
+EPOCH[503/1000] loss0.019-|Sample:3.65| Time: 6.4s
+EPOCH[504/1000] loss0.019-|Sample:3.60| Time: 6.3s
+EPOCH[505/1000] loss0.019-|Sample:3.70| Time: 6.5s
+EPOCH[506/1000] loss0.019-|Sample:3.54| Time: 6.4s
+EPOCH[507/1000] loss0.019-|Sample:3.64| Time: 6.4s
+EPOCH[508/1000] loss0.019-|Sample:3.57| Time: 6.3s
+EPOCH[509/1000] loss0.019-|Sample:3.48| Time: 6.3s
+EPOCH[510/1000] loss0.019-|Sample:3.72| Time: 6.5s
+
+[TEST] Epoch 510
+{'precision': array([0.01651012]), 'recall': array([0.09090452]), 'ndcg': array([0.05397874])}
+  Recall@[20]: [0.09090452]
+  Precision@[20]: [0.01651012]
+  NDCG@[20]: [0.05397874]
+EPOCH[511/1000] loss0.019-|Sample:3.70| Time: 9.0s
+EPOCH[512/1000] loss0.019-|Sample:3.84| Time: 6.6s
+EPOCH[513/1000] loss0.019-|Sample:3.84| Time: 6.6s
+EPOCH[514/1000] loss0.020-|Sample:3.81| Time: 6.5s
+EPOCH[515/1000] loss0.019-|Sample:3.70| Time: 6.4s
+EPOCH[516/1000] loss0.020-|Sample:3.93| Time: 6.2s
+EPOCH[517/1000] loss0.019-|Sample:4.02| Time: 6.6s
+EPOCH[518/1000] loss0.019-|Sample:4.15| Time: 6.4s
+EPOCH[519/1000] loss0.020-|Sample:3.92| Time: 6.2s
+EPOCH[520/1000] loss0.019-|Sample:4.06| Time: 6.2s
+
+[TEST] Epoch 520
+{'precision': array([0.0165613]), 'recall': array([0.09116142]), 'ndcg': array([0.05393853])}
+  Recall@[20]: [0.09116142]
+  Precision@[20]: [0.0165613]
+  NDCG@[20]: [0.05393853]
+EPOCH[521/1000] loss0.019-|Sample:3.76| Time: 8.5s
+EPOCH[522/1000] loss0.019-|Sample:4.23| Time: 6.6s
+EPOCH[523/1000] loss0.019-|Sample:4.17| Time: 6.7s
+EPOCH[524/1000] loss0.020-|Sample:3.86| Time: 6.4s
+EPOCH[525/1000] loss0.019-|Sample:4.08| Time: 6.3s
+EPOCH[526/1000] loss0.019-|Sample:3.96| Time: 6.2s
+EPOCH[527/1000] loss0.019-|Sample:3.83| Time: 6.0s
+EPOCH[528/1000] loss0.019-|Sample:4.04| Time: 6.6s
+EPOCH[529/1000] loss0.019-|Sample:4.12| Time: 6.5s
+EPOCH[530/1000] loss0.019-|Sample:3.89| Time: 6.1s
+
+[TEST] Epoch 530
+{'precision': array([0.01657635]), 'recall': array([0.09096954]), 'ndcg': array([0.05379952])}
+  Recall@[20]: [0.09096954]
+  Precision@[20]: [0.01657635]
+  NDCG@[20]: [0.05379952]
+EPOCH[531/1000] loss0.019-|Sample:4.04| Time: 8.8s
+EPOCH[532/1000] loss0.019-|Sample:4.10| Time: 6.4s
+EPOCH[533/1000] loss0.019-|Sample:4.09| Time: 6.2s
+EPOCH[534/1000] loss0.019-|Sample:3.86| Time: 6.4s
+EPOCH[535/1000] loss0.019-|Sample:4.03| Time: 6.6s
+EPOCH[536/1000] loss0.019-|Sample:3.69| Time: 6.0s
+EPOCH[537/1000] loss0.019-|Sample:3.94| Time: 6.2s
+EPOCH[538/1000] loss0.019-|Sample:3.90| Time: 6.0s
+EPOCH[539/1000] loss0.019-|Sample:4.50| Time: 6.8s
+EPOCH[540/1000] loss0.019-|Sample:4.24| Time: 6.5s
+
+[TEST] Epoch 540
+{'precision': array([0.01655829]), 'recall': array([0.09133785]), 'ndcg': array([0.05393588])}
+  Recall@[20]: [0.09133785]
+  Precision@[20]: [0.01655829]
+  NDCG@[20]: [0.05393588]
+EPOCH[541/1000] loss0.019-|Sample:3.81| Time: 8.8s
+EPOCH[542/1000] loss0.019-|Sample:4.15| Time: 6.3s
+EPOCH[543/1000] loss0.019-|Sample:4.02| Time: 6.3s
+EPOCH[544/1000] loss0.019-|Sample:3.87| Time: 6.4s
+EPOCH[545/1000] loss0.019-|Sample:3.91| Time: 6.1s
+EPOCH[546/1000] loss0.019-|Sample:3.94| Time: 6.1s
+EPOCH[547/1000] loss0.019-|Sample:3.98| Time: 6.2s
+EPOCH[548/1000] loss0.019-|Sample:4.48| Time: 6.8s
+EPOCH[549/1000] loss0.019-|Sample:3.81| Time: 6.1s
+EPOCH[550/1000] loss0.019-|Sample:4.01| Time: 6.3s
+
+[TEST] Epoch 550
+{'precision': array([0.01657334]), 'recall': array([0.09170511]), 'ndcg': array([0.05418777])}
+  Recall@[20]: [0.09170511]
+  Precision@[20]: [0.01657334]
+  NDCG@[20]: [0.05418777]
+EPOCH[551/1000] loss0.019-|Sample:3.94| Time: 9.1s
+EPOCH[552/1000] loss0.019-|Sample:3.97| Time: 6.3s
+EPOCH[553/1000] loss0.019-|Sample:4.03| Time: 6.6s
+EPOCH[554/1000] loss0.019-|Sample:3.61| Time: 6.3s
+EPOCH[555/1000] loss0.019-|Sample:3.67| Time: 6.4s
+EPOCH[556/1000] loss0.019-|Sample:3.61| Time: 6.4s
+EPOCH[557/1000] loss0.019-|Sample:3.89| Time: 6.5s
+EPOCH[558/1000] loss0.019-|Sample:3.75| Time: 5.9s
+EPOCH[559/1000] loss0.019-|Sample:3.67| Time: 6.0s
+EPOCH[560/1000] loss0.019-|Sample:3.70| Time: 6.5s
+
+[TEST] Epoch 560
+{'precision': array([0.01648001]), 'recall': array([0.09150619]), 'ndcg': array([0.05397406])}
+  Recall@[20]: [0.09150619]
+  Precision@[20]: [0.01648001]
+  NDCG@[20]: [0.05397406]
+EPOCH[561/1000] loss0.019-|Sample:3.55| Time: 8.8s
+EPOCH[562/1000] loss0.019-|Sample:3.46| Time: 6.3s
+EPOCH[563/1000] loss0.019-|Sample:3.71| Time: 6.6s
+EPOCH[564/1000] loss0.019-|Sample:3.63| Time: 6.5s
+EPOCH[565/1000] loss0.019-|Sample:3.47| Time: 6.3s
+EPOCH[566/1000] loss0.019-|Sample:3.69| Time: 6.4s
+EPOCH[567/1000] loss0.019-|Sample:3.38| Time: 5.5s
+EPOCH[568/1000] loss0.019-|Sample:3.58| Time: 6.3s
+EPOCH[569/1000] loss0.019-|Sample:3.95| Time: 6.7s
+EPOCH[570/1000] loss0.019-|Sample:3.76| Time: 6.6s
+
+[TEST] Epoch 570
+{'precision': array([0.01647399]), 'recall': array([0.09151551]), 'ndcg': array([0.05402907])}
+  Recall@[20]: [0.09151551]
+  Precision@[20]: [0.01647399]
+  NDCG@[20]: [0.05402907]
+EPOCH[571/1000] loss0.019-|Sample:3.80| Time: 8.9s
+EPOCH[572/1000] loss0.019-|Sample:3.65| Time: 6.4s
+EPOCH[573/1000] loss0.019-|Sample:3.80| Time: 6.6s
+EPOCH[574/1000] loss0.019-|Sample:3.70| Time: 6.5s
+EPOCH[575/1000] loss0.019-|Sample:3.62| Time: 6.3s
+EPOCH[576/1000] loss0.019-|Sample:3.82| Time: 6.4s
+EPOCH[577/1000] loss0.019-|Sample:3.60| Time: 5.9s
+EPOCH[578/1000] loss0.019-|Sample:4.28| Time: 6.5s
+EPOCH[579/1000] loss0.019-|Sample:4.01| Time: 6.5s
+EPOCH[580/1000] loss0.019-|Sample:4.14| Time: 6.2s
+
+[TEST] Epoch 580
+{'precision': array([0.01651614]), 'recall': array([0.09165761]), 'ndcg': array([0.05388087])}
+  Recall@[20]: [0.09165761]
+  Precision@[20]: [0.01651614]
+  NDCG@[20]: [0.05388087]
+EPOCH[581/1000] loss0.019-|Sample:3.92| Time: 9.1s
+EPOCH[582/1000] loss0.019-|Sample:3.59| Time: 5.7s
+EPOCH[583/1000] loss0.019-|Sample:4.01| Time: 6.7s
+EPOCH[584/1000] loss0.019-|Sample:3.77| Time: 6.2s
+EPOCH[585/1000] loss0.019-|Sample:4.25| Time: 6.6s
+EPOCH[586/1000] loss0.019-|Sample:3.95| Time: 6.1s
+EPOCH[587/1000] loss0.019-|Sample:4.14| Time: 6.4s
+EPOCH[588/1000] loss0.019-|Sample:3.92| Time: 6.2s
+EPOCH[589/1000] loss0.019-|Sample:3.97| Time: 6.1s
+EPOCH[590/1000] loss0.019-|Sample:4.14| Time: 6.5s
+
+[TEST] Epoch 590
+{'precision': array([0.01650409]), 'recall': array([0.09140514]), 'ndcg': array([0.05397391])}
+  Recall@[20]: [0.09140514]
+  Precision@[20]: [0.01650409]
+  NDCG@[20]: [0.05397391]
+EPOCH[591/1000] loss0.019-|Sample:3.68| Time: 8.5s
+EPOCH[592/1000] loss0.019-|Sample:3.86| Time: 6.1s
+EPOCH[593/1000] loss0.018-|Sample:4.08| Time: 6.3s
+EPOCH[594/1000] loss0.019-|Sample:4.09| Time: 6.3s
+EPOCH[595/1000] loss0.019-|Sample:3.91| Time: 6.2s
+EPOCH[596/1000] loss0.019-|Sample:3.88| Time: 6.1s
+EPOCH[597/1000] loss0.018-|Sample:3.90| Time: 6.0s
+EPOCH[598/1000] loss0.019-|Sample:3.89| Time: 6.3s
+EPOCH[599/1000] loss0.019-|Sample:3.86| Time: 6.1s
+EPOCH[600/1000] loss0.019-|Sample:3.84| Time: 6.0s
+
+[TEST] Epoch 600
+{'precision': array([0.01651012]), 'recall': array([0.09097527]), 'ndcg': array([0.05375537])}
+  Recall@[20]: [0.09097527]
+  Precision@[20]: [0.01651012]
+  NDCG@[20]: [0.05375537]
+EPOCH[601/1000] loss0.019-|Sample:3.91| Time: 9.0s
+EPOCH[602/1000] loss0.019-|Sample:3.99| Time: 6.4s
+EPOCH[603/1000] loss0.019-|Sample:3.82| Time: 6.2s
+EPOCH[604/1000] loss0.019-|Sample:3.98| Time: 6.3s
+EPOCH[605/1000] loss0.019-|Sample:4.01| Time: 6.3s
+EPOCH[606/1000] loss0.019-|Sample:3.86| Time: 6.2s
+EPOCH[607/1000] loss0.019-|Sample:4.00| Time: 6.3s
+EPOCH[608/1000] loss0.019-|Sample:3.75| Time: 6.0s
+EPOCH[609/1000] loss0.019-|Sample:3.83| Time: 5.9s
+EPOCH[610/1000] loss0.019-|Sample:3.78| Time: 6.1s
+
+[TEST] Epoch 610
+{'precision': array([0.01648302]), 'recall': array([0.09124753]), 'ndcg': array([0.05392714])}
+  Recall@[20]: [0.09124753]
+  Precision@[20]: [0.01648302]
+  NDCG@[20]: [0.05392714]
+EPOCH[611/1000] loss0.019-|Sample:4.05| Time: 8.9s
+EPOCH[612/1000] loss0.019-|Sample:4.01| Time: 6.3s
+EPOCH[613/1000] loss0.019-|Sample:3.88| Time: 6.2s
+EPOCH[614/1000] loss0.019-|Sample:3.89| Time: 6.4s
+EPOCH[615/1000] loss0.019-|Sample:4.25| Time: 6.7s
+EPOCH[616/1000] loss0.019-|Sample:3.69| Time: 6.3s
+EPOCH[617/1000] loss0.019-|Sample:3.57| Time: 6.1s
+EPOCH[618/1000] loss0.019-|Sample:3.74| Time: 6.4s
+EPOCH[619/1000] loss0.019-|Sample:3.74| Time: 6.3s
+EPOCH[620/1000] loss0.019-|Sample:3.63| Time: 6.2s
+
+[TEST] Epoch 620
+{'precision': array([0.01661248]), 'recall': array([0.09188801]), 'ndcg': array([0.05427578])}
+  Recall@[20]: [0.09188801]
+  Precision@[20]: [0.01661248]
+  NDCG@[20]: [0.05427578]
+EPOCH[621/1000] loss0.019-|Sample:3.77| Time: 8.8s
+EPOCH[622/1000] loss0.019-|Sample:3.89| Time: 6.7s
+EPOCH[623/1000] loss0.018-|Sample:3.75| Time: 6.6s
+EPOCH[624/1000] loss0.018-|Sample:3.79| Time: 6.5s
+EPOCH[625/1000] loss0.018-|Sample:3.96| Time: 6.6s
+EPOCH[626/1000] loss0.018-|Sample:3.68| Time: 6.4s
+EPOCH[627/1000] loss0.019-|Sample:3.75| Time: 6.3s
+EPOCH[628/1000] loss0.019-|Sample:3.70| Time: 6.3s
+EPOCH[629/1000] loss0.019-|Sample:3.58| Time: 5.7s
+EPOCH[630/1000] loss0.018-|Sample:3.76| Time: 6.5s
+
+[TEST] Epoch 630
+{'precision': array([0.01650409]), 'recall': array([0.09136677]), 'ndcg': array([0.05393962])}
+  Recall@[20]: [0.09136677]
+  Precision@[20]: [0.01650409]
+  NDCG@[20]: [0.05393962]
+EPOCH[631/1000] loss0.019-|Sample:3.51| Time: 8.8s
+EPOCH[632/1000] loss0.019-|Sample:3.67| Time: 6.6s
+EPOCH[633/1000] loss0.018-|Sample:3.67| Time: 6.5s
+EPOCH[634/1000] loss0.018-|Sample:3.58| Time: 6.4s
+EPOCH[635/1000] loss0.018-|Sample:3.54| Time: 6.2s
+EPOCH[636/1000] loss0.019-|Sample:3.79| Time: 6.5s
+EPOCH[637/1000] loss0.018-|Sample:3.59| Time: 6.3s
+EPOCH[638/1000] loss0.018-|Sample:3.55| Time: 6.3s
+EPOCH[639/1000] loss0.018-|Sample:3.71| Time: 6.3s
+EPOCH[640/1000] loss0.019-|Sample:3.80| Time: 6.4s
+
+[TEST] Epoch 640
+{'precision': array([0.01645894]), 'recall': array([0.09124654]), 'ndcg': array([0.05360763])}
+  Recall@[20]: [0.09124654]
+  Precision@[20]: [0.01645894]
+  NDCG@[20]: [0.05360763]
+EPOCH[641/1000] loss0.019-|Sample:3.40| Time: 8.6s
+EPOCH[642/1000] loss0.018-|Sample:3.83| Time: 6.6s
+EPOCH[643/1000] loss0.018-|Sample:3.70| Time: 5.6s
+EPOCH[644/1000] loss0.019-|Sample:3.47| Time: 5.4s
+EPOCH[645/1000] loss0.018-|Sample:3.65| Time: 5.5s
+EPOCH[646/1000] loss0.019-|Sample:3.46| Time: 5.3s
+EPOCH[647/1000] loss0.019-|Sample:3.54| Time: 5.9s
+EPOCH[648/1000] loss0.019-|Sample:3.85| Time: 5.9s
+EPOCH[649/1000] loss0.018-|Sample:4.25| Time: 6.3s
+EPOCH[650/1000] loss0.018-|Sample:3.77| Time: 5.8s
+
+[TEST] Epoch 650
+{'precision': array([0.01644388]), 'recall': array([0.09101039]), 'ndcg': array([0.05341382])}
+  Recall@[20]: [0.09101039]
+  Precision@[20]: [0.01644388]
+  NDCG@[20]: [0.05341382]
+EPOCH[651/1000] loss0.018-|Sample:3.72| Time: 8.6s
+EPOCH[652/1000] loss0.018-|Sample:3.70| Time: 5.6s
+EPOCH[653/1000] loss0.018-|Sample:3.59| Time: 5.6s
+EPOCH[654/1000] loss0.018-|Sample:3.54| Time: 5.6s
+EPOCH[655/1000] loss0.018-|Sample:3.49| Time: 5.5s
+EPOCH[656/1000] loss0.018-|Sample:3.31| Time: 5.3s
+EPOCH[657/1000] loss0.018-|Sample:4.72| Time: 6.7s
+EPOCH[658/1000] loss0.018-|Sample:4.12| Time: 6.1s
+EPOCH[659/1000] loss0.018-|Sample:3.66| Time: 5.7s
+EPOCH[660/1000] loss0.018-|Sample:4.58| Time: 6.5s
+
+[TEST] Epoch 660
+{'precision': array([0.01647098]), 'recall': array([0.09115129]), 'ndcg': array([0.05390353])}
+  Recall@[20]: [0.09115129]
+  Precision@[20]: [0.01647098]
+  NDCG@[20]: [0.05390353]
+EPOCH[661/1000] loss0.018-|Sample:3.16| Time: 7.5s
+EPOCH[662/1000] loss0.018-|Sample:4.28| Time: 6.2s
+EPOCH[663/1000] loss0.018-|Sample:3.17| Time: 5.1s
+EPOCH[664/1000] loss0.018-|Sample:3.35| Time: 5.3s
+EPOCH[665/1000] loss0.019-|Sample:3.77| Time: 5.7s
+EPOCH[666/1000] loss0.019-|Sample:3.83| Time: 5.9s
+EPOCH[667/1000] loss0.018-|Sample:3.34| Time: 5.3s
+EPOCH[668/1000] loss0.018-|Sample:3.27| Time: 5.3s
+EPOCH[669/1000] loss0.018-|Sample:3.16| Time: 5.0s
+EPOCH[670/1000] loss0.018-|Sample:3.22| Time: 5.3s
+
+[TEST] Epoch 670
+{'precision': array([0.0163927]), 'recall': array([0.09080884]), 'ndcg': array([0.05365698])}
+  Recall@[20]: [0.09080884]
+  Precision@[20]: [0.0163927]
+  NDCG@[20]: [0.05365698]
+EPOCH[671/1000] loss0.018-|Sample:3.42| Time: 7.8s
+EPOCH[672/1000] loss0.018-|Sample:3.14| Time: 5.1s
+EPOCH[673/1000] loss0.018-|Sample:3.35| Time: 5.2s
+EPOCH[674/1000] loss0.018-|Sample:3.29| Time: 5.3s
+EPOCH[675/1000] loss0.018-|Sample:3.59| Time: 5.5s
+EPOCH[676/1000] loss0.018-|Sample:3.44| Time: 5.6s
+EPOCH[677/1000] loss0.018-|Sample:3.26| Time: 5.2s
+EPOCH[678/1000] loss0.019-|Sample:3.41| Time: 5.5s
+EPOCH[679/1000] loss0.018-|Sample:3.24| Time: 5.3s
+EPOCH[680/1000] loss0.018-|Sample:3.76| Time: 5.7s
+
+[TEST] Epoch 680
+{'precision': array([0.01648001]), 'recall': array([0.09132354]), 'ndcg': array([0.05370064])}
+  Recall@[20]: [0.09132354]
+  Precision@[20]: [0.01648001]
+  NDCG@[20]: [0.05370064]
+EPOCH[681/1000] loss0.018-|Sample:3.68| Time: 8.4s
+EPOCH[682/1000] loss0.018-|Sample:3.52| Time: 5.6s
+EPOCH[683/1000] loss0.018-|Sample:3.30| Time: 5.3s
+EPOCH[684/1000] loss0.018-|Sample:3.34| Time: 5.4s
+EPOCH[685/1000] loss0.018-|Sample:4.15| Time: 6.1s
+EPOCH[686/1000] loss0.018-|Sample:3.28| Time: 5.2s
+EPOCH[687/1000] loss0.018-|Sample:3.30| Time: 5.3s
+EPOCH[688/1000] loss0.018-|Sample:3.32| Time: 5.3s
+EPOCH[689/1000] loss0.018-|Sample:3.88| Time: 6.0s
+EPOCH[690/1000] loss0.018-|Sample:4.66| Time: 6.7s
+
+[TEST] Epoch 690
+{'precision': array([0.01648001]), 'recall': array([0.09128904]), 'ndcg': array([0.0537154])}
+  Recall@[20]: [0.09128904]
+  Precision@[20]: [0.01648001]
+  NDCG@[20]: [0.0537154]
+EPOCH[691/1000] loss0.018-|Sample:3.96| Time: 8.5s
+EPOCH[692/1000] loss0.018-|Sample:4.39| Time: 6.5s
+EPOCH[693/1000] loss0.018-|Sample:4.37| Time: 6.5s
+EPOCH[694/1000] loss0.018-|Sample:3.95| Time: 5.9s
+EPOCH[695/1000] loss0.018-|Sample:3.65| Time: 5.7s
+EPOCH[696/1000] loss0.018-|Sample:4.27| Time: 6.3s
+EPOCH[697/1000] loss0.018-|Sample:3.40| Time: 5.4s
+EPOCH[698/1000] loss0.018-|Sample:3.29| Time: 5.3s
+EPOCH[699/1000] loss0.018-|Sample:3.37| Time: 5.3s
+EPOCH[700/1000] loss0.018-|Sample:3.47| Time: 5.4s
+
+[TEST] Epoch 700
+{'precision': array([0.01651012]), 'recall': array([0.09155753]), 'ndcg': array([0.0541335])}
+  Recall@[20]: [0.09155753]
+  Precision@[20]: [0.01651012]
+  NDCG@[20]: [0.0541335]
+EPOCH[701/1000] loss0.018-|Sample:3.68| Time: 8.1s
+EPOCH[702/1000] loss0.018-|Sample:3.23| Time: 5.2s
+EPOCH[703/1000] loss0.018-|Sample:3.72| Time: 5.7s
+EPOCH[704/1000] loss0.018-|Sample:3.27| Time: 5.3s
+EPOCH[705/1000] loss0.018-|Sample:3.54| Time: 5.5s
+EPOCH[706/1000] loss0.018-|Sample:3.49| Time: 5.4s
+EPOCH[707/1000] loss0.018-|Sample:3.16| Time: 5.2s
+EPOCH[708/1000] loss0.018-|Sample:3.55| Time: 5.5s
+EPOCH[709/1000] loss0.018-|Sample:3.33| Time: 5.4s
+EPOCH[710/1000] loss0.018-|Sample:3.71| Time: 5.7s
+
+[TEST] Epoch 710
+{'precision': array([0.01639571]), 'recall': array([0.09123691]), 'ndcg': array([0.05409582])}
+  Recall@[20]: [0.09123691]
+  Precision@[20]: [0.01639571]
+  NDCG@[20]: [0.05409582]
+EPOCH[711/1000] loss0.018-|Sample:3.59| Time: 8.2s
+EPOCH[712/1000] loss0.018-|Sample:4.07| Time: 6.2s
+EPOCH[713/1000] loss0.018-|Sample:4.45| Time: 6.5s
+EPOCH[714/1000] loss0.018-|Sample:3.79| Time: 5.8s
+EPOCH[715/1000] loss0.018-|Sample:4.23| Time: 6.2s
+EPOCH[716/1000] loss0.018-|Sample:3.81| Time: 5.8s
+EPOCH[717/1000] loss0.018-|Sample:4.29| Time: 6.2s
+EPOCH[718/1000] loss0.018-|Sample:3.53| Time: 5.5s
+EPOCH[719/1000] loss0.018-|Sample:3.86| Time: 5.9s
+EPOCH[720/1000] loss0.018-|Sample:3.95| Time: 6.0s
+
+[TEST] Epoch 720
+{'precision': array([0.01632647]), 'recall': array([0.0907423]), 'ndcg': array([0.05376685])}
+  Recall@[20]: [0.0907423]
+  Precision@[20]: [0.01632647]
+  NDCG@[20]: [0.05376685]
+EPOCH[721/1000] loss0.018-|Sample:3.45| Time: 7.9s
+EPOCH[722/1000] loss0.018-|Sample:3.69| Time: 5.7s
+EPOCH[723/1000] loss0.018-|Sample:3.37| Time: 5.4s
+EPOCH[724/1000] loss0.018-|Sample:3.34| Time: 5.3s
+EPOCH[725/1000] loss0.018-|Sample:3.82| Time: 5.8s
+EPOCH[726/1000] loss0.018-|Sample:3.38| Time: 5.4s
+EPOCH[727/1000] loss0.018-|Sample:3.91| Time: 5.9s
+EPOCH[728/1000] loss0.018-|Sample:3.45| Time: 5.4s
+EPOCH[729/1000] loss0.018-|Sample:4.20| Time: 6.2s
+EPOCH[730/1000] loss0.018-|Sample:3.90| Time: 5.9s
+
+[TEST] Epoch 730
+{'precision': array([0.0164499]), 'recall': array([0.09102383]), 'ndcg': array([0.05373243])}
+  Recall@[20]: [0.09102383]
+  Precision@[20]: [0.0164499]
+  NDCG@[20]: [0.05373243]
+EPOCH[731/1000] loss0.018-|Sample:3.82| Time: 8.2s
+EPOCH[732/1000] loss0.018-|Sample:4.39| Time: 6.5s
+EPOCH[733/1000] loss0.018-|Sample:4.09| Time: 6.1s
+EPOCH[734/1000] loss0.018-|Sample:3.89| Time: 5.9s
+EPOCH[735/1000] loss0.018-|Sample:3.30| Time: 5.2s
+EPOCH[736/1000] loss0.018-|Sample:4.16| Time: 6.1s
+EPOCH[737/1000] loss0.018-|Sample:4.11| Time: 6.2s
+EPOCH[738/1000] loss0.018-|Sample:3.63| Time: 5.7s
+EPOCH[739/1000] loss0.018-|Sample:4.07| Time: 6.1s
+EPOCH[740/1000] loss0.018-|Sample:3.27| Time: 5.2s
+
+[TEST] Epoch 740
+{'precision': array([0.01654022]), 'recall': array([0.09153105]), 'ndcg': array([0.05404527])}
+  Recall@[20]: [0.09153105]
+  Precision@[20]: [0.01654022]
+  NDCG@[20]: [0.05404527]
+EPOCH[741/1000] loss0.018-|Sample:3.49| Time: 7.8s
+EPOCH[742/1000] loss0.018-|Sample:3.39| Time: 5.4s
+EPOCH[743/1000] loss0.018-|Sample:4.04| Time: 5.9s
+EPOCH[744/1000] loss0.018-|Sample:3.63| Time: 5.6s
+EPOCH[745/1000] loss0.018-|Sample:4.08| Time: 6.2s
+EPOCH[746/1000] loss0.018-|Sample:3.25| Time: 5.9s
+EPOCH[747/1000] loss0.018-|Sample:3.61| Time: 6.3s
+EPOCH[748/1000] loss0.018-|Sample:3.65| Time: 6.4s
+EPOCH[749/1000] loss0.018-|Sample:3.58| Time: 6.3s
+EPOCH[750/1000] loss0.018-|Sample:3.72| Time: 6.4s
+
+[TEST] Epoch 750
+{'precision': array([0.01657334]), 'recall': array([0.09199441]), 'ndcg': array([0.05398687])}
+  Recall@[20]: [0.09199441]
+  Precision@[20]: [0.01657334]
+  NDCG@[20]: [0.05398687]
+EPOCH[751/1000] loss0.018-|Sample:3.58| Time: 8.5s
+EPOCH[752/1000] loss0.018-|Sample:3.86| Time: 6.6s
+EPOCH[753/1000] loss0.018-|Sample:3.74| Time: 6.5s
+EPOCH[754/1000] loss0.018-|Sample:3.55| Time: 6.3s
+EPOCH[755/1000] loss0.018-|Sample:3.57| Time: 6.3s
+EPOCH[756/1000] loss0.018-|Sample:3.64| Time: 6.5s
+EPOCH[757/1000] loss0.018-|Sample:3.57| Time: 6.4s
+EPOCH[758/1000] loss0.018-|Sample:3.59| Time: 6.5s
+EPOCH[759/1000] loss0.018-|Sample:3.69| Time: 6.5s
+EPOCH[760/1000] loss0.018-|Sample:3.46| Time: 6.2s
+
+[TEST] Epoch 760
+{'precision': array([0.01646496]), 'recall': array([0.09100363]), 'ndcg': array([0.05390545])}
+  Recall@[20]: [0.09100363]
+  Precision@[20]: [0.01646496]
+  NDCG@[20]: [0.05390545]
+EPOCH[761/1000] loss0.018-|Sample:3.67| Time: 8.9s
+EPOCH[762/1000] loss0.018-|Sample:3.71| Time: 6.6s
+EPOCH[763/1000] loss0.018-|Sample:3.71| Time: 6.5s
+EPOCH[764/1000] loss0.018-|Sample:3.56| Time: 6.3s
+EPOCH[765/1000] loss0.018-|Sample:3.65| Time: 6.3s
+EPOCH[766/1000] loss0.018-|Sample:3.54| Time: 6.3s
+EPOCH[767/1000] loss0.018-|Sample:3.52| Time: 6.3s
+EPOCH[768/1000] loss0.018-|Sample:3.72| Time: 6.1s
+EPOCH[769/1000] loss0.018-|Sample:3.99| Time: 6.4s
+EPOCH[770/1000] loss0.018-|Sample:3.73| Time: 6.4s
+
+[TEST] Epoch 770
+{'precision': array([0.0165914]), 'recall': array([0.09203625]), 'ndcg': array([0.05428494])}
+  Recall@[20]: [0.09203625]
+  Precision@[20]: [0.0165914]
+  NDCG@[20]: [0.05428494]
+EPOCH[771/1000] loss0.018-|Sample:3.46| Time: 8.6s
+EPOCH[772/1000] loss0.018-|Sample:3.67| Time: 6.3s
+EPOCH[773/1000] loss0.018-|Sample:3.63| Time: 6.4s
+EPOCH[774/1000] loss0.018-|Sample:3.59| Time: 6.4s
+EPOCH[775/1000] loss0.018-|Sample:3.65| Time: 5.6s
+EPOCH[776/1000] loss0.018-|Sample:3.45| Time: 5.5s
+EPOCH[777/1000] loss0.018-|Sample:3.70| Time: 5.6s
+EPOCH[778/1000] loss0.018-|Sample:3.68| Time: 6.3s
+EPOCH[779/1000] loss0.018-|Sample:4.19| Time: 6.5s
+EPOCH[780/1000] loss0.018-|Sample:4.08| Time: 6.5s
+
+[TEST] Epoch 780
+{'precision': array([0.01651915]), 'recall': array([0.09169266]), 'ndcg': array([0.05396301])}
+  Recall@[20]: [0.09169266]
+  Precision@[20]: [0.01651915]
+  NDCG@[20]: [0.05396301]
+EPOCH[781/1000] loss0.018-|Sample:3.83| Time: 8.8s
+EPOCH[782/1000] loss0.018-|Sample:4.09| Time: 6.2s
+EPOCH[783/1000] loss0.018-|Sample:3.63| Time: 5.8s
+EPOCH[784/1000] loss0.018-|Sample:3.79| Time: 6.1s
+EPOCH[785/1000] loss0.018-|Sample:3.83| Time: 6.2s
+EPOCH[786/1000] loss0.018-|Sample:3.89| Time: 6.2s
+EPOCH[787/1000] loss0.018-|Sample:4.25| Time: 6.5s
+EPOCH[788/1000] loss0.018-|Sample:4.31| Time: 6.5s
+EPOCH[789/1000] loss0.018-|Sample:3.74| Time: 6.1s
+EPOCH[790/1000] loss0.018-|Sample:4.07| Time: 6.4s
+
+[TEST] Epoch 790
+{'precision': array([0.01651012]), 'recall': array([0.09126287]), 'ndcg': array([0.05389513])}
+  Recall@[20]: [0.09126287]
+  Precision@[20]: [0.01651012]
+  NDCG@[20]: [0.05389513]
+EPOCH[791/1000] loss0.018-|Sample:4.02| Time: 8.8s
+EPOCH[792/1000] loss0.018-|Sample:3.93| Time: 6.3s
+EPOCH[793/1000] loss0.018-|Sample:4.38| Time: 6.4s
+EPOCH[794/1000] loss0.018-|Sample:4.20| Time: 6.4s
+EPOCH[795/1000] loss0.018-|Sample:3.88| Time: 6.1s
+EPOCH[796/1000] loss0.018-|Sample:4.53| Time: 6.7s
+EPOCH[797/1000] loss0.018-|Sample:4.65| Time: 6.8s
+EPOCH[798/1000] loss0.018-|Sample:4.22| Time: 6.5s
+EPOCH[799/1000] loss0.018-|Sample:3.65| Time: 6.0s
+EPOCH[800/1000] loss0.018-|Sample:4.59| Time: 6.8s
+
+[TEST] Epoch 800
+{'precision': array([0.01649807]), 'recall': array([0.09050927]), 'ndcg': array([0.05380406])}
+  Recall@[20]: [0.09050927]
+  Precision@[20]: [0.01649807]
+  NDCG@[20]: [0.05380406]
+EPOCH[801/1000] loss0.018-|Sample:3.54| Time: 8.2s
+EPOCH[802/1000] loss0.018-|Sample:4.48| Time: 6.7s
+EPOCH[803/1000] loss0.018-|Sample:3.97| Time: 6.2s
+EPOCH[804/1000] loss0.018-|Sample:4.24| Time: 6.4s
+EPOCH[805/1000] loss0.018-|Sample:4.46| Time: 6.6s
+EPOCH[806/1000] loss0.018-|Sample:4.54| Time: 6.8s
+EPOCH[807/1000] loss0.017-|Sample:4.22| Time: 6.5s
+EPOCH[808/1000] loss0.018-|Sample:4.79| Time: 7.1s
+EPOCH[809/1000] loss0.018-|Sample:4.41| Time: 6.5s
+EPOCH[810/1000] loss0.018-|Sample:3.55| Time: 5.8s
+
+[TEST] Epoch 810
+{'precision': array([0.01654925]), 'recall': array([0.09144099]), 'ndcg': array([0.05393652])}
+  Recall@[20]: [0.09144099]
+  Precision@[20]: [0.01654925]
+  NDCG@[20]: [0.05393652]
+EPOCH[811/1000] loss0.018-|Sample:4.12| Time: 9.0s
+EPOCH[812/1000] loss0.018-|Sample:4.31| Time: 6.4s
+EPOCH[813/1000] loss0.018-|Sample:4.06| Time: 6.2s
+EPOCH[814/1000] loss0.018-|Sample:4.04| Time: 6.2s
+EPOCH[815/1000] loss0.018-|Sample:4.19| Time: 6.4s
+EPOCH[816/1000] loss0.018-|Sample:4.45| Time: 6.7s
+EPOCH[817/1000] loss0.018-|Sample:4.20| Time: 6.6s
+EPOCH[818/1000] loss0.018-|Sample:4.14| Time: 6.3s
+EPOCH[819/1000] loss0.018-|Sample:4.53| Time: 6.6s
+EPOCH[820/1000] loss0.018-|Sample:4.18| Time: 6.5s
+
+[TEST] Epoch 820
+{'precision': array([0.01642883]), 'recall': array([0.09070706]), 'ndcg': array([0.05377048])}
+  Recall@[20]: [0.09070706]
+  Precision@[20]: [0.01642883]
+  NDCG@[20]: [0.05377048]
+EPOCH[821/1000] loss0.018-|Sample:4.27| Time: 9.0s
+EPOCH[822/1000] loss0.018-|Sample:4.58| Time: 6.6s
+EPOCH[823/1000] loss0.018-|Sample:4.57| Time: 6.7s
+EPOCH[824/1000] loss0.018-|Sample:4.60| Time: 6.6s
+EPOCH[825/1000] loss0.018-|Sample:4.30| Time: 6.5s
+EPOCH[826/1000] loss0.018-|Sample:4.58| Time: 6.8s
+EPOCH[827/1000] loss0.018-|Sample:4.15| Time: 6.4s
+EPOCH[828/1000] loss0.018-|Sample:4.25| Time: 6.5s
+EPOCH[829/1000] loss0.018-|Sample:4.11| Time: 6.3s
+EPOCH[830/1000] loss0.018-|Sample:4.03| Time: 6.2s
+
+[TEST] Epoch 830
+{'precision': array([0.01648001]), 'recall': array([0.09124141]), 'ndcg': array([0.05371034])}
+  Recall@[20]: [0.09124141]
+  Precision@[20]: [0.01648001]
+  NDCG@[20]: [0.05371034]
+EPOCH[831/1000] loss0.018-|Sample:4.43| Time: 9.5s
+EPOCH[832/1000] loss0.018-|Sample:4.16| Time: 6.4s
+EPOCH[833/1000] loss0.018-|Sample:4.57| Time: 6.7s
+EPOCH[834/1000] loss0.017-|Sample:4.28| Time: 6.4s
+EPOCH[835/1000] loss0.018-|Sample:4.15| Time: 6.5s
+EPOCH[836/1000] loss0.018-|Sample:3.75| Time: 6.0s
+EPOCH[837/1000] loss0.018-|Sample:4.11| Time: 6.4s
+EPOCH[838/1000] loss0.017-|Sample:4.01| Time: 6.4s
+EPOCH[839/1000] loss0.018-|Sample:3.79| Time: 6.0s
+EPOCH[840/1000] loss0.018-|Sample:4.14| Time: 6.3s
+
+[TEST] Epoch 840
+{'precision': array([0.0164499]), 'recall': array([0.09120256]), 'ndcg': array([0.05399583])}
+  Recall@[20]: [0.09120256]
+  Precision@[20]: [0.0164499]
+  NDCG@[20]: [0.05399583]
+EPOCH[841/1000] loss0.018-|Sample:4.18| Time: 9.3s
+EPOCH[842/1000] loss0.017-|Sample:4.06| Time: 6.2s
+EPOCH[843/1000] loss0.018-|Sample:3.60| Time: 5.8s
+EPOCH[844/1000] loss0.018-|Sample:3.81| Time: 6.0s
+EPOCH[845/1000] loss0.018-|Sample:4.50| Time: 6.5s
+EPOCH[846/1000] loss0.017-|Sample:3.98| Time: 6.4s
+EPOCH[847/1000] loss0.018-|Sample:4.57| Time: 6.8s
+EPOCH[848/1000] loss0.018-|Sample:3.85| Time: 6.1s
+EPOCH[849/1000] loss0.018-|Sample:3.80| Time: 6.0s
+EPOCH[850/1000] loss0.018-|Sample:3.91| Time: 6.1s
+
+[TEST] Epoch 850
+{'precision': array([0.01645592]), 'recall': array([0.09095558]), 'ndcg': array([0.05384312])}
+  Recall@[20]: [0.09095558]
+  Precision@[20]: [0.01645592]
+  NDCG@[20]: [0.05384312]
+EPOCH[851/1000] loss0.018-|Sample:3.58| Time: 8.4s
+EPOCH[852/1000] loss0.018-|Sample:4.78| Time: 6.9s
+EPOCH[853/1000] loss0.018-|Sample:4.26| Time: 6.6s
+EPOCH[854/1000] loss0.018-|Sample:3.77| Time: 5.8s
+EPOCH[855/1000] loss0.017-|Sample:4.47| Time: 6.9s
+EPOCH[856/1000] loss0.018-|Sample:4.07| Time: 6.7s
+EPOCH[857/1000] loss0.018-|Sample:3.77| Time: 6.3s
+EPOCH[858/1000] loss0.018-|Sample:3.71| Time: 5.9s
+EPOCH[859/1000] loss0.018-|Sample:4.55| Time: 6.7s
+EPOCH[860/1000] loss0.018-|Sample:3.51| Time: 5.9s
+
+[TEST] Epoch 860
+{'precision': array([0.01651313]), 'recall': array([0.09100142]), 'ndcg': array([0.05405134])}
+  Recall@[20]: [0.09100142]
+  Precision@[20]: [0.01651313]
+  NDCG@[20]: [0.05405134]
+EPOCH[861/1000] loss0.018-|Sample:3.47| Time: 8.4s
+EPOCH[862/1000] loss0.018-|Sample:3.58| Time: 5.9s
+EPOCH[863/1000] loss0.017-|Sample:3.63| Time: 6.0s
+EPOCH[864/1000] loss0.018-|Sample:3.95| Time: 6.3s
+EPOCH[865/1000] loss0.018-|Sample:3.54| Time: 5.5s
+EPOCH[866/1000] loss0.017-|Sample:3.46| Time: 5.4s
+EPOCH[867/1000] loss0.017-|Sample:3.65| Time: 5.7s
+EPOCH[868/1000] loss0.017-|Sample:3.63| Time: 5.8s
+EPOCH[869/1000] loss0.018-|Sample:3.81| Time: 5.9s
+EPOCH[870/1000] loss0.018-|Sample:3.63| Time: 5.5s
+
+[TEST] Epoch 870
+{'precision': array([0.01648603]), 'recall': array([0.09102284]), 'ndcg': array([0.05384276])}
+  Recall@[20]: [0.09102284]
+  Precision@[20]: [0.01648603]
+  NDCG@[20]: [0.05384276]
+EPOCH[871/1000] loss0.017-|Sample:3.45| Time: 7.9s
+EPOCH[872/1000] loss0.017-|Sample:4.39| Time: 6.3s
+EPOCH[873/1000] loss0.017-|Sample:3.61| Time: 5.5s
+EPOCH[874/1000] loss0.017-|Sample:3.56| Time: 5.5s
+EPOCH[875/1000] loss0.018-|Sample:3.74| Time: 6.2s
+EPOCH[876/1000] loss0.018-|Sample:3.64| Time: 6.2s
+EPOCH[877/1000] loss0.017-|Sample:3.66| Time: 5.8s
+EPOCH[878/1000] loss0.018-|Sample:3.62| Time: 6.2s
+EPOCH[879/1000] loss0.018-|Sample:3.57| Time: 5.9s
+EPOCH[880/1000] loss0.017-|Sample:4.35| Time: 6.3s
+
+[TEST] Epoch 880
+{'precision': array([0.01649205]), 'recall': array([0.09094423]), 'ndcg': array([0.05383926])}
+  Recall@[20]: [0.09094423]
+  Precision@[20]: [0.01649205]
+  NDCG@[20]: [0.05383926]
+EPOCH[881/1000] loss0.017-|Sample:3.67| Time: 8.3s
+EPOCH[882/1000] loss0.018-|Sample:3.55| Time: 5.5s
+EPOCH[883/1000] loss0.018-|Sample:3.68| Time: 6.1s
+EPOCH[884/1000] loss0.017-|Sample:3.49| Time: 5.6s
+EPOCH[885/1000] loss0.018-|Sample:3.83| Time: 5.9s
+EPOCH[886/1000] loss0.017-|Sample:4.44| Time: 6.7s
+EPOCH[887/1000] loss0.018-|Sample:4.07| Time: 6.4s
+EPOCH[888/1000] loss0.017-|Sample:4.11| Time: 6.3s
+EPOCH[889/1000] loss0.017-|Sample:3.82| Time: 6.0s
+EPOCH[890/1000] loss0.018-|Sample:4.07| Time: 6.2s
+
+[TEST] Epoch 890
+{'precision': array([0.01650711]), 'recall': array([0.09109075]), 'ndcg': array([0.05379555])}
+  Recall@[20]: [0.09109075]
+  Precision@[20]: [0.01650711]
+  NDCG@[20]: [0.05379555]
+EPOCH[891/1000] loss0.017-|Sample:3.91| Time: 8.5s
+EPOCH[892/1000] loss0.017-|Sample:3.79| Time: 5.7s
+EPOCH[893/1000] loss0.017-|Sample:3.66| Time: 6.0s
+EPOCH[894/1000] loss0.017-|Sample:3.50| Time: 5.6s
+EPOCH[895/1000] loss0.017-|Sample:3.70| Time: 5.9s
+EPOCH[896/1000] loss0.017-|Sample:3.48| Time: 5.5s
+EPOCH[897/1000] loss0.017-|Sample:3.64| Time: 5.7s
+EPOCH[898/1000] loss0.017-|Sample:3.80| Time: 6.0s
+EPOCH[899/1000] loss0.018-|Sample:3.80| Time: 5.9s
+EPOCH[900/1000] loss0.018-|Sample:3.61| Time: 5.8s
+
+[TEST] Epoch 900
+{'precision': array([0.01658538]), 'recall': array([0.09118202]), 'ndcg': array([0.05389674])}
+  Recall@[20]: [0.09118202]
+  Precision@[20]: [0.01658538]
+  NDCG@[20]: [0.05389674]
+EPOCH[901/1000] loss0.017-|Sample:3.92| Time: 9.0s
+EPOCH[902/1000] loss0.017-|Sample:4.47| Time: 6.4s
+EPOCH[903/1000] loss0.018-|Sample:3.88| Time: 5.9s
+EPOCH[904/1000] loss0.018-|Sample:3.84| Time: 6.0s
+EPOCH[905/1000] loss0.018-|Sample:3.74| Time: 5.7s
+EPOCH[906/1000] loss0.018-|Sample:3.50| Time: 6.0s
+EPOCH[907/1000] loss0.017-|Sample:3.71| Time: 5.9s
+EPOCH[908/1000] loss0.017-|Sample:3.55| Time: 5.7s
+EPOCH[909/1000] loss0.017-|Sample:3.48| Time: 6.0s
+EPOCH[910/1000] loss0.018-|Sample:3.63| Time: 5.7s
+
+[TEST] Epoch 910
+{'precision': array([0.01653721]), 'recall': array([0.09109027]), 'ndcg': array([0.0536292])}
+  Recall@[20]: [0.09109027]
+  Precision@[20]: [0.01653721]
+  NDCG@[20]: [0.0536292]
+EPOCH[911/1000] loss0.018-|Sample:4.03| Time: 8.5s
+EPOCH[912/1000] loss0.017-|Sample:3.51| Time: 6.0s
+EPOCH[913/1000] loss0.017-|Sample:3.70| Time: 6.3s
+EPOCH[914/1000] loss0.017-|Sample:4.00| Time: 6.1s
+EPOCH[915/1000] loss0.017-|Sample:4.69| Time: 6.8s
+EPOCH[916/1000] loss0.017-|Sample:4.28| Time: 6.6s
+EPOCH[917/1000] loss0.017-|Sample:4.60| Time: 6.7s
+EPOCH[918/1000] loss0.017-|Sample:4.46| Time: 6.5s
+EPOCH[919/1000] loss0.017-|Sample:3.67| Time: 6.1s
+EPOCH[920/1000] loss0.018-|Sample:3.83| Time: 6.4s
+
+[TEST] Epoch 920
+{'precision': array([0.01650108]), 'recall': array([0.09121652]), 'ndcg': array([0.05360237])}
+  Recall@[20]: [0.09121652]
+  Precision@[20]: [0.01650108]
+  NDCG@[20]: [0.05360237]
+EPOCH[921/1000] loss0.017-|Sample:3.59| Time: 8.1s
+EPOCH[922/1000] loss0.017-|Sample:4.31| Time: 6.4s
+EPOCH[923/1000] loss0.017-|Sample:3.68| Time: 5.8s
+EPOCH[924/1000] loss0.018-|Sample:3.77| Time: 5.7s
+EPOCH[925/1000] loss0.017-|Sample:3.64| Time: 5.7s
+EPOCH[926/1000] loss0.017-|Sample:3.67| Time: 5.7s
+EPOCH[927/1000] loss0.017-|Sample:3.42| Time: 5.6s
+EPOCH[928/1000] loss0.017-|Sample:3.61| Time: 5.8s
+EPOCH[929/1000] loss0.017-|Sample:4.58| Time: 7.0s
+EPOCH[930/1000] loss0.018-|Sample:3.67| Time: 5.6s
+
+[TEST] Epoch 930
+{'precision': array([0.01653721]), 'recall': array([0.09108137]), 'ndcg': array([0.05353372])}
+  Recall@[20]: [0.09108137]
+  Precision@[20]: [0.01653721]
+  NDCG@[20]: [0.05353372]
+EPOCH[931/1000] loss0.017-|Sample:3.69| Time: 8.3s
+EPOCH[932/1000] loss0.017-|Sample:3.50| Time: 5.5s
+EPOCH[933/1000] loss0.018-|Sample:4.73| Time: 6.8s
+EPOCH[934/1000] loss0.018-|Sample:4.04| Time: 6.1s
+EPOCH[935/1000] loss0.017-|Sample:4.36| Time: 6.4s
+EPOCH[936/1000] loss0.017-|Sample:4.32| Time: 6.4s
+EPOCH[937/1000] loss0.017-|Sample:3.84| Time: 5.9s
+EPOCH[938/1000] loss0.017-|Sample:4.61| Time: 7.0s
+EPOCH[939/1000] loss0.017-|Sample:3.57| Time: 5.7s
+EPOCH[940/1000] loss0.017-|Sample:3.86| Time: 5.8s
+
+[TEST] Epoch 940
+{'precision': array([0.01638668]), 'recall': array([0.09077439]), 'ndcg': array([0.05347528])}
+  Recall@[20]: [0.09077439]
+  Precision@[20]: [0.01638668]
+  NDCG@[20]: [0.05347528]
+EPOCH[941/1000] loss0.017-|Sample:3.78| Time: 8.8s
+EPOCH[942/1000] loss0.017-|Sample:3.50| Time: 5.7s
+EPOCH[943/1000] loss0.017-|Sample:3.80| Time: 5.9s
+EPOCH[944/1000] loss0.018-|Sample:3.63| Time: 5.8s
+EPOCH[945/1000] loss0.017-|Sample:3.87| Time: 5.9s
+EPOCH[946/1000] loss0.018-|Sample:4.40| Time: 6.4s
+EPOCH[947/1000] loss0.017-|Sample:3.48| Time: 5.8s
+EPOCH[948/1000] loss0.017-|Sample:4.58| Time: 6.6s
+EPOCH[949/1000] loss0.017-|Sample:3.64| Time: 6.1s
+EPOCH[950/1000] loss0.017-|Sample:3.84| Time: 6.0s
+
+[TEST] Epoch 950
+{'precision': array([0.01651915]), 'recall': array([0.09144712]), 'ndcg': array([0.05404735])}
+  Recall@[20]: [0.09144712]
+  Precision@[20]: [0.01651915]
+  NDCG@[20]: [0.05404735]
+EPOCH[951/1000] loss0.017-|Sample:3.51| Time: 8.2s
+EPOCH[952/1000] loss0.017-|Sample:3.72| Time: 5.7s
+EPOCH[953/1000] loss0.017-|Sample:3.85| Time: 5.9s
+EPOCH[954/1000] loss0.017-|Sample:3.98| Time: 6.1s
+EPOCH[955/1000] loss0.018-|Sample:3.61| Time: 5.6s
+EPOCH[956/1000] loss0.017-|Sample:3.74| Time: 6.0s
+EPOCH[957/1000] loss0.017-|Sample:4.44| Time: 6.7s
+EPOCH[958/1000] loss0.017-|Sample:4.03| Time: 6.1s
+EPOCH[959/1000] loss0.017-|Sample:3.44| Time: 5.5s
+EPOCH[960/1000] loss0.017-|Sample:3.82| Time: 6.2s
+
+[TEST] Epoch 960
+{'precision': array([0.01652818]), 'recall': array([0.09143732]), 'ndcg': array([0.05404932])}
+  Recall@[20]: [0.09143732]
+  Precision@[20]: [0.01652818]
+  NDCG@[20]: [0.05404932]
+EPOCH[961/1000] loss0.017-|Sample:3.64| Time: 8.4s
+EPOCH[962/1000] loss0.017-|Sample:3.99| Time: 6.1s
+EPOCH[963/1000] loss0.018-|Sample:4.34| Time: 6.6s
+EPOCH[964/1000] loss0.017-|Sample:3.62| Time: 6.1s
+EPOCH[965/1000] loss0.017-|Sample:3.68| Time: 5.6s
+EPOCH[966/1000] loss0.017-|Sample:3.55| Time: 5.5s
+EPOCH[967/1000] loss0.017-|Sample:4.29| Time: 6.4s
+EPOCH[968/1000] loss0.017-|Sample:3.87| Time: 6.0s
+EPOCH[969/1000] loss0.017-|Sample:4.54| Time: 6.6s
+EPOCH[970/1000] loss0.017-|Sample:3.63| Time: 5.7s
+
+[TEST] Epoch 970
+{'precision': array([0.01654323]), 'recall': array([0.09146581]), 'ndcg': array([0.05416968])}
+  Recall@[20]: [0.09146581]
+  Precision@[20]: [0.01654323]
+  NDCG@[20]: [0.05416968]
+EPOCH[971/1000] loss0.017-|Sample:3.48| Time: 7.9s
+EPOCH[972/1000] loss0.017-|Sample:3.81| Time: 5.8s
+EPOCH[973/1000] loss0.017-|Sample:3.59| Time: 6.0s
+EPOCH[974/1000] loss0.017-|Sample:3.69| Time: 6.0s
+EPOCH[975/1000] loss0.017-|Sample:3.55| Time: 6.4s
+EPOCH[976/1000] loss0.017-|Sample:4.03| Time: 6.3s
+EPOCH[977/1000] loss0.017-|Sample:3.58| Time: 6.3s
+EPOCH[978/1000] loss0.017-|Sample:3.73| Time: 6.7s
+EPOCH[979/1000] loss0.017-|Sample:3.72| Time: 6.7s
+EPOCH[980/1000] loss0.017-|Sample:3.63| Time: 6.6s
+
+[TEST] Epoch 980
+{'precision': array([0.01660645]), 'recall': array([0.09180823]), 'ndcg': array([0.05419977])}
+  Recall@[20]: [0.09180823]
+  Precision@[20]: [0.01660645]
+  NDCG@[20]: [0.05419977]
+EPOCH[981/1000] loss0.017-|Sample:3.62| Time: 9.0s
+EPOCH[982/1000] loss0.017-|Sample:3.80| Time: 6.7s
+EPOCH[983/1000] loss0.017-|Sample:3.57| Time: 6.5s
+EPOCH[984/1000] loss0.017-|Sample:3.76| Time: 6.7s
+EPOCH[985/1000] loss0.017-|Sample:3.76| Time: 6.7s
+EPOCH[986/1000] loss0.017-|Sample:3.60| Time: 6.5s
+EPOCH[987/1000] loss0.017-|Sample:3.79| Time: 6.7s
+EPOCH[988/1000] loss0.018-|Sample:3.80| Time: 6.7s
+EPOCH[989/1000] loss0.017-|Sample:3.59| Time: 6.5s
+EPOCH[990/1000] loss0.017-|Sample:3.73| Time: 6.6s
+
+[TEST] Epoch 990
+{'precision': array([0.01649506]), 'recall': array([0.09098075]), 'ndcg': array([0.05384016])}
+  Recall@[20]: [0.09098075]
+  Precision@[20]: [0.01649506]
+  NDCG@[20]: [0.05384016]
+EPOCH[991/1000] loss0.017-|Sample:3.48| Time: 8.8s
+EPOCH[992/1000] loss0.017-|Sample:3.80| Time: 6.7s
+EPOCH[993/1000] loss0.017-|Sample:3.79| Time: 6.7s
+EPOCH[994/1000] loss0.017-|Sample:3.69| Time: 6.6s
+EPOCH[995/1000] loss0.017-|Sample:3.75| Time: 6.5s
+EPOCH[996/1000] loss0.017-|Sample:3.75| Time: 6.6s
+EPOCH[997/1000] loss0.017-|Sample:3.74| Time: 6.2s
+EPOCH[998/1000] loss0.017-|Sample:3.81| Time: 6.6s
+EPOCH[999/1000] loss0.017-|Sample:3.74| Time: 6.5s
+EPOCH[1000/1000] loss0.017-|Sample:3.58| Time: 6.5s
+
+============================================================
+Final Evaluation
+============================================================
+{'precision': array([0.01650711]), 'recall': array([0.09184639]), 'ndcg': array([0.05405547])}
+
+Final Results:
+  Recall@[20]: [0.09184639]
+  Precision@[20]: [0.01650711]
+  NDCG@[20]: [0.05405547]
+
+============================================================
+Best Epoch Results
+============================================================
+Best Epoch: 270
+  Recall@[20]: [0.09279582]
+  Precision@[20]: [0.01686236]
+  NDCG@[20]: [0.05467369]
+
+✓ Training completed!
+Log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/dualgraph_hybrid/train_dualgraph_hybrid_amazon-book_subset_10000_20251028_201551.log

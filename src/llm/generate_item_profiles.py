@@ -175,6 +175,12 @@ def main():
         default=None,
         help="Maximum number of items to process (for testing)"
     )
+    parser.add_argument(
+        "--start_from",
+        type=int,
+        default=0,
+        help="Start from this item ID (for resuming)"
+    )
 
     args = parser.parse_args()
 
@@ -188,10 +194,19 @@ def main():
     metadata = load_metadata(metadata_path)
     id_to_isbn = load_item_mapping(item_list_path)
 
+    # Load existing profiles if resuming
+    profiles = {}
+    if args.start_from > 0 and output_path.exists():
+        print(f"Loading existing profiles from {output_path}")
+        with open(output_path, 'r', encoding='utf-8') as f:
+            existing_profiles = json.load(f)
+            # Convert string keys to int
+            profiles = {int(k): v for k, v in existing_profiles.items()}
+        print(f"Loaded {len(profiles)} existing profiles")
+
     # Generate profiles
     total_items = len(id_to_isbn)
     num_items = min(args.max_items, total_items) if args.max_items else total_items
-    profiles = {}
     total_input_tokens = 0
     total_output_tokens = 0
     successful = 0
@@ -199,13 +214,15 @@ def main():
 
     print(f"\n{'='*70}")
     print(f"Generating GPT content profiles for {num_items} items...")
+    if args.start_from > 0:
+        print(f"(Resuming from item {args.start_from})")
     if args.max_items and args.max_items < total_items:
         print(f"(Testing mode: processing first {num_items} of {total_items} items)")
     print(f"Model: {args.model}")
     print(f"Rate limit delay: {args.rate_limit_delay}s")
     print(f"{'='*70}\n")
 
-    for item_id in tqdm(range(num_items), desc="Generating profiles"):
+    for item_id in tqdm(range(args.start_from, num_items), desc="Generating profiles", initial=args.start_from, total=num_items):
         isbn = id_to_isbn.get(item_id)
 
         if isbn and isbn in metadata:

@@ -29,12 +29,12 @@ echo ""
 
 # Check API key
 if [ -z "$OPENAI_API_KEY" ]; then
-    echo "❌ Error: OPENAI_API_KEY not set"
+    echo "Error: OPENAI_API_KEY not set"
     echo "Please run: export OPENAI_API_KEY='your-key'"
     exit 1
 fi
 
-echo "✅ OPENAI_API_KEY is set"
+echo " OPENAI_API_KEY is set"
 echo ""
 
 # Step 1: Generate GPT profiles
@@ -52,7 +52,7 @@ python src/llm/generate_item_profiles.py \
     --output gpt_item_profiles.json
 
 echo ""
-echo "✅ Step 1 completed: GPT profiles generated"
+echo " Step 1 completed: GPT profiles generated"
 echo ""
 
 # Step 2: Extract embeddings
@@ -70,7 +70,7 @@ python src/llm/extract_gpt_embeddings.py \
     --output gpt_embeddings.npy
 
 echo ""
-echo "✅ Step 2 completed: Embeddings extracted"
+echo " Step 2 completed: Embeddings extracted"
 echo ""
 
 # Step 3: Fuse features
@@ -88,7 +88,7 @@ python src/llm/fuse_features.py \
     --output hybrid_features.npy
 
 echo ""
-echo "✅ Step 3 completed: Features fused"
+echo " Step 3 completed: Features fused"
 echo ""
 
 # Step 4: Build semantic graph
@@ -107,12 +107,12 @@ python src/data/semantic_graph/build_semantic_graph.py \
     --output hybrid_semantic_graph.npz
 
 echo ""
-echo "✅ Step 4 completed: Semantic graph built"
+echo "Step 4 completed: Semantic graph built"
 echo ""
 
 # Step 5: Show next steps
 echo "========================================================================"
-echo "✅ Static enhancement pipeline completed!"
+echo " Static enhancement pipeline completed!"
 echo "========================================================================"
 echo ""
 echo "Generated files in $DATA_PATH:"

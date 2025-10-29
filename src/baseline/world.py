@@ -34,7 +34,7 @@ if not os.path.exists(FILE_PATH):
 
 config = {}
 all_dataset = ['lastfm', 'gowalla', 'yelp2018', 'amazon-book', 'amazon-book_subset_1500', 'amazon-book_subset_10000', 'amazon-book-2023']
-all_models  = ['mf', 'lgn']
+all_models  = ['mf', 'lgn', 'lgn_plus', 'lgn_gene']
 # config['batch_size'] = 4096
 config['bpr_batch_size'] = args.bpr_batch
 config['latent_dim_rec'] = args.recdim
@@ -49,6 +49,13 @@ config['decay'] = args.decay
 config['pretrain'] = args.pretrain
 config['A_split'] = False
 config['bigdata'] = False
+
+# RLMRec configurations
+config['kd_weight'] = args.kd_weight
+config['kd_temperature'] = args.kd_temperature
+config['mask_ratio'] = args.mask_ratio
+config['recon_weight'] = args.recon_weight
+config['re_temperature'] = args.re_temperature
 
 GPU = torch.cuda.is_available()
 device = torch.device('cuda' if GPU else "cpu")

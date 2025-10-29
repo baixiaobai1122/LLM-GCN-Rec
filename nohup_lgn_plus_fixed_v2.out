@@ -1,0 +1,1441 @@
+nohup: ignoring input
+[0;30;43mCpp extension not loaded[0m
+[0;30;43mloading [/home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../src/baseline/../../datasets/amazon-book-2023][0m
+120464 interactions for training
+40106 interactions for testing
+amazon-book-2023 Sparsity : 0.0015642169660600865
+amazon-book-2023 is ready to go
+===========config================
+{'A_n_fold': 100,
+ 'A_split': False,
+ 'bigdata': False,
+ 'bpr_batch_size': 4096,
+ 'decay': 0.0,
+ 'dropout': 0,
+ 'kd_temperature': 0.2,
+ 'kd_weight': 0.01,
+ 'keep_prob': 0.6,
+ 'latent_dim_rec': 32,
+ 'lightGCN_n_layers': 3,
+ 'lr': 0.001,
+ 'mask_ratio': 0.1,
+ 'multicore': 0,
+ 'pretrain': 0,
+ 're_temperature': 0.2,
+ 'recon_weight': 0.1,
+ 'test_u_batch_size': 100}
+cores for test: 32
+comment: lgn
+tensorboard: 1
+LOAD: 0
+Weight path: ./checkpoints
+Test Topks: [20]
+using bpr loss
+===========end===================
+Log file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/rlmrec/train_lgn_plus_amazon-book-2023_20251028_201404.log
+
+================================================================================
+RLMRec TRAINING - LGN_PLUS
+================================================================================
+Configuration: {'bpr_batch_size': 4096, 'latent_dim_rec': 32, 'lightGCN_n_layers': 3, 'dropout': 0, 'keep_prob': 0.6, 'A_n_fold': 100, 'test_u_batch_size': 100, 'multicore': 0, 'lr': 0.001, 'decay': 0.0, 'pretrain': 0, 'A_split': False, 'bigdata': False, 'kd_weight': 0.01, 'kd_temperature': 0.2, 'mask_ratio': 0.1, 'recon_weight': 0.1, 're_temperature': 0.2}
+================================================================================
+
+>>SEED: 2023
+>>DEVICE: cuda
+>>DATASET: amazon-book-2023
+>>MODEL: lgn_plus
+
+================================================================================
+Dataset Statistics
+================================================================================
+  - Users: 11000
+  - Items: 9332
+  - Train interactions: 120464
+  - Test interactions: 40106
+  - Sparsity: 0.998826
+
+================================================================================
+Loading LLM Embeddings
+================================================================================
+[0;30;43mLoaded user LLM embeddings from rlmrec/usr_emb_np.pkl: shape=(11000, 1536)[0m
+[0;30;43mLoaded item LLM embeddings from rlmrec/itm_emb_np.pkl: shape=(9332, 1536)[0m
+  - Item LLM embeddings: (9332, 1536)
+  - User LLM embeddings: (11000, 1536)
+  - LLM embedding dimension: 1536
+/home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../src/baseline/dataloader.py:332: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:654.)
+  return torch.sparse.FloatTensor(index, data, torch.Size(coo.shape))
+[0;30;43muse NORMAL distribution initializer[0m
+[0;30;43mLoaded LLM embeddings: users torch.Size([11000, 1536]), items torch.Size([9332, 1536])[0m
+loading adjacency matrix
+successfully loaded...
+don't split the matrix
+LightGCN_plus is ready (kd_weight=0.01, kd_temp=0.2)
+
+================================================================================
+Model Configuration - lgn_plus
+================================================================================
+  - Model: lgn_plus
+  - CF Embedding dim: 32
+  - GCN layers: 3
+  - LLM embedding dim: 1536
+  - KD weight: 0.01
+  - KD temperature: 0.2
+
+Optimization:
+  - Learning rate: 0.001
+  - Weight decay: 0.0
+  - Batch size: 4096
+  - Epochs: 1000
+  - Dropout: False (keep_prob=0.6)
+  - Seed: 2023
+
+Evaluation:
+  - Top-K: [20]
+  - Test batch size: 100
+================================================================================
+
+Weight file: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../src/baseline/../../checkpoints/baseline/lgn_plus-amazon-book-2023-3-32.pth.tar
+
+================================================================================
+Training Started
+================================================================================
+[0;30;43m[TEST at Epoch 0][0m
+
+================================================================================
+Epoch 0 - Testing
+================================================================================
+{'precision': array([0.00041075]), 'recall': array([0.00222402]), 'ndcg': array([0.00108572])}
+  precision: 0.000411
+  recall: 0.002224
+  ndcg: 0.001086
+  >>> New best model saved! Recall@20: 0.002224
+  Best so far: Epoch 0, Recall@20: 0.002224
+  Epochs without improvement: 0/50
+================================================================================
+Epoch   0 [8.78s]: BPR Loss=0.88694 | Reg Loss=0.00078 | KD Loss=0.24564
+Epoch   1 [2.44s]: BPR Loss=0.81580 | Reg Loss=0.00082 | KD Loss=0.21632
+Epoch   2 [2.53s]: BPR Loss=0.71338 | Reg Loss=0.00089 | KD Loss=0.19903
+Epoch   3 [2.62s]: BPR Loss=0.60108 | Reg Loss=0.00099 | KD Loss=0.19046
+Epoch   4 [2.57s]: BPR Loss=0.51343 | Reg Loss=0.00110 | KD Loss=0.18619
+Epoch   5 [2.50s]: BPR Loss=0.45400 | Reg Loss=0.00121 | KD Loss=0.18325
+Epoch   6 [2.65s]: BPR Loss=0.41242 | Reg Loss=0.00132 | KD Loss=0.18104
+Epoch   7 [2.42s]: BPR Loss=0.38171 | Reg Loss=0.00141 | KD Loss=0.17870
+Epoch   8 [2.40s]: BPR Loss=0.35871 | Reg Loss=0.00150 | KD Loss=0.17711
+Epoch   9 [2.57s]: BPR Loss=0.33721 | Reg Loss=0.00159 | KD Loss=0.17528
+[0;30;43m[TEST at Epoch 10][0m
+
+================================================================================
+Epoch 10 - Testing
+================================================================================
+{'precision': array([0.01538032]), 'recall': array([0.08539989]), 'ndcg': array([0.04989006])}
+  precision: 0.015380
+  recall: 0.085400
+  ndcg: 0.049890
+  >>> New best model saved! Recall@20: 0.085400
+  Best so far: Epoch 10, Recall@20: 0.085400
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  10 [3.98s]: BPR Loss=0.32484 | Reg Loss=0.00167 | KD Loss=0.17378
+Epoch  11 [2.47s]: BPR Loss=0.30894 | Reg Loss=0.00174 | KD Loss=0.17221
+Epoch  12 [2.52s]: BPR Loss=0.29792 | Reg Loss=0.00181 | KD Loss=0.17110
+Epoch  13 [2.47s]: BPR Loss=0.29017 | Reg Loss=0.00188 | KD Loss=0.16958
+Epoch  14 [2.46s]: BPR Loss=0.28060 | Reg Loss=0.00195 | KD Loss=0.16840
+Epoch  15 [2.65s]: BPR Loss=0.27254 | Reg Loss=0.00201 | KD Loss=0.16744
+Epoch  16 [2.48s]: BPR Loss=0.26697 | Reg Loss=0.00207 | KD Loss=0.16624
+Epoch  17 [2.56s]: BPR Loss=0.25896 | Reg Loss=0.00213 | KD Loss=0.16530
+Epoch  18 [2.44s]: BPR Loss=0.25595 | Reg Loss=0.00219 | KD Loss=0.16439
+Epoch  19 [2.47s]: BPR Loss=0.24994 | Reg Loss=0.00225 | KD Loss=0.16341
+[0;30;43m[TEST at Epoch 20][0m
+
+================================================================================
+Epoch 20 - Testing
+================================================================================
+{'precision': array([0.01811866]), 'recall': array([0.10071514]), 'ndcg': array([0.05996492])}
+  precision: 0.018119
+  recall: 0.100715
+  ndcg: 0.059965
+  >>> New best model saved! Recall@20: 0.100715
+  Best so far: Epoch 20, Recall@20: 0.100715
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  20 [4.06s]: BPR Loss=0.24575 | Reg Loss=0.00231 | KD Loss=0.16256
+Epoch  21 [2.63s]: BPR Loss=0.24059 | Reg Loss=0.00236 | KD Loss=0.16161
+Epoch  22 [2.52s]: BPR Loss=0.23643 | Reg Loss=0.00241 | KD Loss=0.16104
+Epoch  23 [2.58s]: BPR Loss=0.23329 | Reg Loss=0.00247 | KD Loss=0.16018
+Epoch  24 [2.72s]: BPR Loss=0.22912 | Reg Loss=0.00252 | KD Loss=0.15932
+Epoch  25 [2.34s]: BPR Loss=0.22828 | Reg Loss=0.00257 | KD Loss=0.15887
+Epoch  26 [2.51s]: BPR Loss=0.22339 | Reg Loss=0.00262 | KD Loss=0.15808
+Epoch  27 [2.43s]: BPR Loss=0.22021 | Reg Loss=0.00266 | KD Loss=0.15744
+Epoch  28 [2.56s]: BPR Loss=0.21849 | Reg Loss=0.00271 | KD Loss=0.15676
+Epoch  29 [2.41s]: BPR Loss=0.21501 | Reg Loss=0.00276 | KD Loss=0.15616
+[0;30;43m[TEST at Epoch 30][0m
+
+================================================================================
+Epoch 30 - Testing
+================================================================================
+{'precision': array([0.01969067]), 'recall': array([0.10908468]), 'ndcg': array([0.06594753])}
+  precision: 0.019691
+  recall: 0.109085
+  ndcg: 0.065948
+  >>> New best model saved! Recall@20: 0.109085
+  Best so far: Epoch 30, Recall@20: 0.109085
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  30 [4.48s]: BPR Loss=0.21361 | Reg Loss=0.00280 | KD Loss=0.15569
+Epoch  31 [2.51s]: BPR Loss=0.21059 | Reg Loss=0.00285 | KD Loss=0.15498
+Epoch  32 [2.72s]: BPR Loss=0.20872 | Reg Loss=0.00289 | KD Loss=0.15454
+Epoch  33 [2.54s]: BPR Loss=0.20628 | Reg Loss=0.00294 | KD Loss=0.15401
+Epoch  34 [2.42s]: BPR Loss=0.20523 | Reg Loss=0.00298 | KD Loss=0.15364
+Epoch  35 [2.35s]: BPR Loss=0.20302 | Reg Loss=0.00302 | KD Loss=0.15299
+Epoch  36 [2.37s]: BPR Loss=0.20068 | Reg Loss=0.00307 | KD Loss=0.15247
+Epoch  37 [2.52s]: BPR Loss=0.19967 | Reg Loss=0.00311 | KD Loss=0.15193
+Epoch  38 [2.36s]: BPR Loss=0.19768 | Reg Loss=0.00315 | KD Loss=0.15172
+Epoch  39 [2.43s]: BPR Loss=0.19644 | Reg Loss=0.00319 | KD Loss=0.15119
+[0;30;43m[TEST at Epoch 40][0m
+
+================================================================================
+Epoch 40 - Testing
+================================================================================
+{'precision': array([0.02050203]), 'recall': array([0.11341119]), 'ndcg': array([0.06937729])}
+  precision: 0.020502
+  recall: 0.113411
+  ndcg: 0.069377
+  >>> New best model saved! Recall@20: 0.113411
+  Best so far: Epoch 40, Recall@20: 0.113411
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  40 [4.04s]: BPR Loss=0.19573 | Reg Loss=0.00323 | KD Loss=0.15075
+Epoch  41 [2.65s]: BPR Loss=0.19451 | Reg Loss=0.00327 | KD Loss=0.15040
+Epoch  42 [2.43s]: BPR Loss=0.19139 | Reg Loss=0.00331 | KD Loss=0.14974
+Epoch  43 [2.54s]: BPR Loss=0.19134 | Reg Loss=0.00335 | KD Loss=0.14968
+Epoch  44 [2.49s]: BPR Loss=0.18921 | Reg Loss=0.00338 | KD Loss=0.14914
+Epoch  45 [2.51s]: BPR Loss=0.18813 | Reg Loss=0.00342 | KD Loss=0.14873
+Epoch  46 [2.38s]: BPR Loss=0.18745 | Reg Loss=0.00346 | KD Loss=0.14831
+Epoch  47 [2.42s]: BPR Loss=0.18588 | Reg Loss=0.00349 | KD Loss=0.14818
+Epoch  48 [2.52s]: BPR Loss=0.18615 | Reg Loss=0.00353 | KD Loss=0.14771
+Epoch  49 [2.63s]: BPR Loss=0.18434 | Reg Loss=0.00357 | KD Loss=0.14749
+[0;30;43m[TEST at Epoch 50][0m
+
+================================================================================
+Epoch 50 - Testing
+================================================================================
+{'precision': array([0.02106491]), 'recall': array([0.11574354]), 'ndcg': array([0.07123311])}
+  precision: 0.021065
+  recall: 0.115744
+  ndcg: 0.071233
+  >>> New best model saved! Recall@20: 0.115744
+  Best so far: Epoch 50, Recall@20: 0.115744
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  50 [3.92s]: BPR Loss=0.18222 | Reg Loss=0.00360 | KD Loss=0.14704
+Epoch  51 [2.51s]: BPR Loss=0.18237 | Reg Loss=0.00364 | KD Loss=0.14686
+Epoch  52 [2.49s]: BPR Loss=0.18118 | Reg Loss=0.00367 | KD Loss=0.14635
+Epoch  53 [2.48s]: BPR Loss=0.18071 | Reg Loss=0.00370 | KD Loss=0.14623
+Epoch  54 [2.62s]: BPR Loss=0.17952 | Reg Loss=0.00374 | KD Loss=0.14603
+Epoch  55 [2.49s]: BPR Loss=0.17873 | Reg Loss=0.00377 | KD Loss=0.14560
+Epoch  56 [2.62s]: BPR Loss=0.17838 | Reg Loss=0.00380 | KD Loss=0.14535
+Epoch  57 [2.45s]: BPR Loss=0.17647 | Reg Loss=0.00384 | KD Loss=0.14503
+Epoch  58 [2.66s]: BPR Loss=0.17555 | Reg Loss=0.00387 | KD Loss=0.14467
+Epoch  59 [2.47s]: BPR Loss=0.17652 | Reg Loss=0.00390 | KD Loss=0.14445
+[0;30;43m[TEST at Epoch 60][0m
+
+================================================================================
+Epoch 60 - Testing
+================================================================================
+{'precision': array([0.02158722]), 'recall': array([0.11832915]), 'ndcg': array([0.07301469])}
+  precision: 0.021587
+  recall: 0.118329
+  ndcg: 0.073015
+  >>> New best model saved! Recall@20: 0.118329
+  Best so far: Epoch 60, Recall@20: 0.118329
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  60 [4.10s]: BPR Loss=0.17539 | Reg Loss=0.00393 | KD Loss=0.14411
+Epoch  61 [2.89s]: BPR Loss=0.17429 | Reg Loss=0.00397 | KD Loss=0.14394
+Epoch  62 [2.51s]: BPR Loss=0.17370 | Reg Loss=0.00400 | KD Loss=0.14374
+Epoch  63 [2.82s]: BPR Loss=0.17392 | Reg Loss=0.00403 | KD Loss=0.14369
+Epoch  64 [2.53s]: BPR Loss=0.17258 | Reg Loss=0.00406 | KD Loss=0.14324
+Epoch  65 [2.53s]: BPR Loss=0.17133 | Reg Loss=0.00409 | KD Loss=0.14301
+Epoch  66 [2.67s]: BPR Loss=0.17117 | Reg Loss=0.00412 | KD Loss=0.14290
+Epoch  67 [2.43s]: BPR Loss=0.17080 | Reg Loss=0.00415 | KD Loss=0.14266
+Epoch  68 [2.45s]: BPR Loss=0.17023 | Reg Loss=0.00418 | KD Loss=0.14246
+Epoch  69 [3.00s]: BPR Loss=0.16935 | Reg Loss=0.00421 | KD Loss=0.14225
+[0;30;43m[TEST at Epoch 70][0m
+
+================================================================================
+Epoch 70 - Testing
+================================================================================
+{'precision': array([0.02175963]), 'recall': array([0.1190163]), 'ndcg': array([0.07383176])}
+  precision: 0.021760
+  recall: 0.119016
+  ndcg: 0.073832
+  >>> New best model saved! Recall@20: 0.119016
+  Best so far: Epoch 70, Recall@20: 0.119016
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  70 [3.90s]: BPR Loss=0.17026 | Reg Loss=0.00424 | KD Loss=0.14187
+Epoch  71 [2.74s]: BPR Loss=0.16822 | Reg Loss=0.00426 | KD Loss=0.14170
+Epoch  72 [2.37s]: BPR Loss=0.16875 | Reg Loss=0.00429 | KD Loss=0.14160
+Epoch  73 [2.92s]: BPR Loss=0.16776 | Reg Loss=0.00432 | KD Loss=0.14142
+Epoch  74 [2.89s]: BPR Loss=0.16763 | Reg Loss=0.00435 | KD Loss=0.14135
+Epoch  75 [2.59s]: BPR Loss=0.16685 | Reg Loss=0.00437 | KD Loss=0.14102
+Epoch  76 [2.84s]: BPR Loss=0.16609 | Reg Loss=0.00440 | KD Loss=0.14069
+Epoch  77 [2.46s]: BPR Loss=0.16592 | Reg Loss=0.00443 | KD Loss=0.14070
+Epoch  78 [2.50s]: BPR Loss=0.16536 | Reg Loss=0.00446 | KD Loss=0.14055
+Epoch  79 [2.72s]: BPR Loss=0.16512 | Reg Loss=0.00448 | KD Loss=0.14031
+[0;30;43m[TEST at Epoch 80][0m
+
+================================================================================
+Epoch 80 - Testing
+================================================================================
+{'precision': array([0.02196755]), 'recall': array([0.11997001]), 'ndcg': array([0.07455319])}
+  precision: 0.021968
+  recall: 0.119970
+  ndcg: 0.074553
+  >>> New best model saved! Recall@20: 0.119970
+  Best so far: Epoch 80, Recall@20: 0.119970
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  80 [4.34s]: BPR Loss=0.16466 | Reg Loss=0.00451 | KD Loss=0.14041
+Epoch  81 [2.74s]: BPR Loss=0.16394 | Reg Loss=0.00454 | KD Loss=0.13986
+Epoch  82 [2.43s]: BPR Loss=0.16421 | Reg Loss=0.00456 | KD Loss=0.13966
+Epoch  83 [2.88s]: BPR Loss=0.16292 | Reg Loss=0.00459 | KD Loss=0.13934
+Epoch  84 [2.59s]: BPR Loss=0.16256 | Reg Loss=0.00461 | KD Loss=0.13939
+Epoch  85 [2.66s]: BPR Loss=0.16250 | Reg Loss=0.00464 | KD Loss=0.13923
+Epoch  86 [2.69s]: BPR Loss=0.16289 | Reg Loss=0.00467 | KD Loss=0.13920
+Epoch  87 [2.89s]: BPR Loss=0.16230 | Reg Loss=0.00469 | KD Loss=0.13907
+Epoch  88 [2.60s]: BPR Loss=0.16157 | Reg Loss=0.00471 | KD Loss=0.13868
+Epoch  89 [2.45s]: BPR Loss=0.16176 | Reg Loss=0.00474 | KD Loss=0.13870
+[0;30;43m[TEST at Epoch 90][0m
+
+================================================================================
+Epoch 90 - Testing
+================================================================================
+{'precision': array([0.02204361]), 'recall': array([0.12104629]), 'ndcg': array([0.07500135])}
+  precision: 0.022044
+  recall: 0.121046
+  ndcg: 0.075001
+  >>> New best model saved! Recall@20: 0.121046
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 0/50
+================================================================================
+Epoch  90 [4.55s]: BPR Loss=0.16160 | Reg Loss=0.00476 | KD Loss=0.13847
+Epoch  91 [2.63s]: BPR Loss=0.16099 | Reg Loss=0.00479 | KD Loss=0.13838
+Epoch  92 [2.95s]: BPR Loss=0.15997 | Reg Loss=0.00481 | KD Loss=0.13824
+Epoch  93 [2.47s]: BPR Loss=0.16062 | Reg Loss=0.00484 | KD Loss=0.13797
+Epoch  94 [2.49s]: BPR Loss=0.16036 | Reg Loss=0.00486 | KD Loss=0.13803
+Epoch  95 [3.12s]: BPR Loss=0.15928 | Reg Loss=0.00488 | KD Loss=0.13785
+Epoch  96 [2.53s]: BPR Loss=0.15857 | Reg Loss=0.00491 | KD Loss=0.13768
+Epoch  97 [2.96s]: BPR Loss=0.15899 | Reg Loss=0.00493 | KD Loss=0.13764
+Epoch  98 [2.64s]: BPR Loss=0.15883 | Reg Loss=0.00495 | KD Loss=0.13742
+Epoch  99 [2.70s]: BPR Loss=0.15824 | Reg Loss=0.00497 | KD Loss=0.13727
+[0;30;43m[TEST at Epoch 100][0m
+
+================================================================================
+Epoch 100 - Testing
+================================================================================
+{'precision': array([0.02211968]), 'recall': array([0.12096569]), 'ndcg': array([0.07501888])}
+  precision: 0.022120
+  recall: 0.120966
+  ndcg: 0.075019
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 1/50
+================================================================================
+Epoch 100 [4.01s]: BPR Loss=0.15839 | Reg Loss=0.00500 | KD Loss=0.13739
+Epoch 101 [2.48s]: BPR Loss=0.15833 | Reg Loss=0.00502 | KD Loss=0.13711
+Epoch 102 [2.97s]: BPR Loss=0.15788 | Reg Loss=0.00504 | KD Loss=0.13672
+Epoch 103 [2.63s]: BPR Loss=0.15763 | Reg Loss=0.00506 | KD Loss=0.13684
+Epoch 104 [2.59s]: BPR Loss=0.15724 | Reg Loss=0.00508 | KD Loss=0.13654
+Epoch 105 [2.85s]: BPR Loss=0.15683 | Reg Loss=0.00511 | KD Loss=0.13660
+Epoch 106 [2.47s]: BPR Loss=0.15758 | Reg Loss=0.00513 | KD Loss=0.13628
+Epoch 107 [2.80s]: BPR Loss=0.15670 | Reg Loss=0.00515 | KD Loss=0.13615
+Epoch 108 [3.02s]: BPR Loss=0.15629 | Reg Loss=0.00517 | KD Loss=0.13608
+Epoch 109 [2.54s]: BPR Loss=0.15668 | Reg Loss=0.00519 | KD Loss=0.13614
+[0;30;43m[TEST at Epoch 110][0m
+
+================================================================================
+Epoch 110 - Testing
+================================================================================
+{'precision': array([0.02191684]), 'recall': array([0.11950663]), 'ndcg': array([0.07448571])}
+  precision: 0.021917
+  recall: 0.119507
+  ndcg: 0.074486
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 2/50
+================================================================================
+Epoch 110 [4.27s]: BPR Loss=0.15574 | Reg Loss=0.00521 | KD Loss=0.13599
+Epoch 111 [2.49s]: BPR Loss=0.15608 | Reg Loss=0.00523 | KD Loss=0.13583
+Epoch 112 [2.38s]: BPR Loss=0.15539 | Reg Loss=0.00525 | KD Loss=0.13576
+Epoch 113 [2.74s]: BPR Loss=0.15578 | Reg Loss=0.00527 | KD Loss=0.13570
+Epoch 114 [2.38s]: BPR Loss=0.15463 | Reg Loss=0.00529 | KD Loss=0.13544
+Epoch 115 [2.59s]: BPR Loss=0.15438 | Reg Loss=0.00531 | KD Loss=0.13538
+Epoch 116 [2.73s]: BPR Loss=0.15473 | Reg Loss=0.00533 | KD Loss=0.13529
+Epoch 117 [2.43s]: BPR Loss=0.15483 | Reg Loss=0.00535 | KD Loss=0.13538
+Epoch 118 [2.96s]: BPR Loss=0.15475 | Reg Loss=0.00537 | KD Loss=0.13516
+Epoch 119 [2.75s]: BPR Loss=0.15369 | Reg Loss=0.00539 | KD Loss=0.13489
+[0;30;43m[TEST at Epoch 120][0m
+
+================================================================================
+Epoch 120 - Testing
+================================================================================
+{'precision': array([0.0218002]), 'recall': array([0.11855241]), 'ndcg': array([0.07413904])}
+  precision: 0.021800
+  recall: 0.118552
+  ndcg: 0.074139
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 3/50
+================================================================================
+Epoch 120 [3.89s]: BPR Loss=0.15407 | Reg Loss=0.00541 | KD Loss=0.13509
+Epoch 121 [3.04s]: BPR Loss=0.15339 | Reg Loss=0.00543 | KD Loss=0.13484
+Epoch 122 [2.55s]: BPR Loss=0.15348 | Reg Loss=0.00545 | KD Loss=0.13465
+Epoch 123 [2.80s]: BPR Loss=0.15328 | Reg Loss=0.00547 | KD Loss=0.13462
+Epoch 124 [2.72s]: BPR Loss=0.15365 | Reg Loss=0.00548 | KD Loss=0.13469
+Epoch 125 [2.36s]: BPR Loss=0.15288 | Reg Loss=0.00550 | KD Loss=0.13437
+Epoch 126 [2.72s]: BPR Loss=0.15318 | Reg Loss=0.00552 | KD Loss=0.13454
+Epoch 127 [2.79s]: BPR Loss=0.15221 | Reg Loss=0.00554 | KD Loss=0.13423
+Epoch 128 [2.53s]: BPR Loss=0.15204 | Reg Loss=0.00556 | KD Loss=0.13409
+Epoch 129 [3.04s]: BPR Loss=0.15215 | Reg Loss=0.00558 | KD Loss=0.13423
+[0;30;43m[TEST at Epoch 130][0m
+
+================================================================================
+Epoch 130 - Testing
+================================================================================
+{'precision': array([0.02184584]), 'recall': array([0.11880602]), 'ndcg': array([0.07404599])}
+  precision: 0.021846
+  recall: 0.118806
+  ndcg: 0.074046
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 4/50
+================================================================================
+Epoch 130 [4.01s]: BPR Loss=0.15279 | Reg Loss=0.00560 | KD Loss=0.13407
+Epoch 131 [2.73s]: BPR Loss=0.15193 | Reg Loss=0.00561 | KD Loss=0.13418
+Epoch 132 [2.80s]: BPR Loss=0.15236 | Reg Loss=0.00563 | KD Loss=0.13400
+Epoch 133 [2.48s]: BPR Loss=0.15138 | Reg Loss=0.00565 | KD Loss=0.13357
+Epoch 134 [3.01s]: BPR Loss=0.15129 | Reg Loss=0.00567 | KD Loss=0.13341
+Epoch 135 [2.53s]: BPR Loss=0.15145 | Reg Loss=0.00569 | KD Loss=0.13363
+Epoch 136 [2.84s]: BPR Loss=0.15127 | Reg Loss=0.00570 | KD Loss=0.13344
+Epoch 137 [2.66s]: BPR Loss=0.15109 | Reg Loss=0.00572 | KD Loss=0.13347
+Epoch 138 [2.42s]: BPR Loss=0.15106 | Reg Loss=0.00574 | KD Loss=0.13360
+Epoch 139 [2.44s]: BPR Loss=0.15084 | Reg Loss=0.00575 | KD Loss=0.13331
+[0;30;43m[TEST at Epoch 140][0m
+
+================================================================================
+Epoch 140 - Testing
+================================================================================
+{'precision': array([0.021714]), 'recall': array([0.11802721]), 'ndcg': array([0.0736922])}
+  precision: 0.021714
+  recall: 0.118027
+  ndcg: 0.073692
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 5/50
+================================================================================
+Epoch 140 [4.00s]: BPR Loss=0.14981 | Reg Loss=0.00577 | KD Loss=0.13306
+Epoch 141 [2.26s]: BPR Loss=0.15038 | Reg Loss=0.00579 | KD Loss=0.13315
+Epoch 142 [2.80s]: BPR Loss=0.15051 | Reg Loss=0.00580 | KD Loss=0.13322
+Epoch 143 [2.47s]: BPR Loss=0.14992 | Reg Loss=0.00582 | KD Loss=0.13303
+Epoch 144 [2.49s]: BPR Loss=0.15074 | Reg Loss=0.00584 | KD Loss=0.13290
+Epoch 145 [2.89s]: BPR Loss=0.15010 | Reg Loss=0.00585 | KD Loss=0.13280
+Epoch 146 [2.53s]: BPR Loss=0.15003 | Reg Loss=0.00587 | KD Loss=0.13264
+Epoch 147 [2.65s]: BPR Loss=0.14995 | Reg Loss=0.00589 | KD Loss=0.13276
+Epoch 148 [2.52s]: BPR Loss=0.14914 | Reg Loss=0.00590 | KD Loss=0.13260
+Epoch 149 [2.41s]: BPR Loss=0.15013 | Reg Loss=0.00592 | KD Loss=0.13264
+[0;30;43m[TEST at Epoch 150][0m
+
+================================================================================
+Epoch 150 - Testing
+================================================================================
+{'precision': array([0.02155172]), 'recall': array([0.11632896]), 'ndcg': array([0.07299402])}
+  precision: 0.021552
+  recall: 0.116329
+  ndcg: 0.072994
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 6/50
+================================================================================
+Epoch 150 [4.09s]: BPR Loss=0.14887 | Reg Loss=0.00593 | KD Loss=0.13227
+Epoch 151 [2.36s]: BPR Loss=0.14915 | Reg Loss=0.00595 | KD Loss=0.13235
+Epoch 152 [2.94s]: BPR Loss=0.14903 | Reg Loss=0.00596 | KD Loss=0.13247
+Epoch 153 [2.47s]: BPR Loss=0.14923 | Reg Loss=0.00598 | KD Loss=0.13226
+Epoch 154 [2.60s]: BPR Loss=0.14898 | Reg Loss=0.00599 | KD Loss=0.13217
+Epoch 155 [2.96s]: BPR Loss=0.14902 | Reg Loss=0.00601 | KD Loss=0.13222
+Epoch 156 [2.40s]: BPR Loss=0.14823 | Reg Loss=0.00602 | KD Loss=0.13196
+Epoch 157 [2.73s]: BPR Loss=0.14878 | Reg Loss=0.00604 | KD Loss=0.13206
+Epoch 158 [2.67s]: BPR Loss=0.14803 | Reg Loss=0.00605 | KD Loss=0.13189
+Epoch 159 [2.46s]: BPR Loss=0.14856 | Reg Loss=0.00607 | KD Loss=0.13185
+[0;30;43m[TEST at Epoch 160][0m
+
+================================================================================
+Epoch 160 - Testing
+================================================================================
+{'precision': array([0.02140467]), 'recall': array([0.11634312]), 'ndcg': array([0.07281305])}
+  precision: 0.021405
+  recall: 0.116343
+  ndcg: 0.072813
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 7/50
+================================================================================
+Epoch 160 [4.16s]: BPR Loss=0.14759 | Reg Loss=0.00608 | KD Loss=0.13193
+Epoch 161 [2.45s]: BPR Loss=0.14849 | Reg Loss=0.00610 | KD Loss=0.13169
+Epoch 162 [2.81s]: BPR Loss=0.14863 | Reg Loss=0.00611 | KD Loss=0.13193
+Epoch 163 [2.70s]: BPR Loss=0.14805 | Reg Loss=0.00613 | KD Loss=0.13160
+Epoch 164 [2.61s]: BPR Loss=0.14821 | Reg Loss=0.00614 | KD Loss=0.13161
+Epoch 165 [2.44s]: BPR Loss=0.14757 | Reg Loss=0.00615 | KD Loss=0.13167
+Epoch 166 [2.89s]: BPR Loss=0.14774 | Reg Loss=0.00617 | KD Loss=0.13153
+Epoch 167 [2.45s]: BPR Loss=0.14740 | Reg Loss=0.00618 | KD Loss=0.13135
+Epoch 168 [2.76s]: BPR Loss=0.14782 | Reg Loss=0.00620 | KD Loss=0.13128
+Epoch 169 [2.67s]: BPR Loss=0.14750 | Reg Loss=0.00621 | KD Loss=0.13127
+[0;30;43m[TEST at Epoch 170][0m
+
+================================================================================
+Epoch 170 - Testing
+================================================================================
+{'precision': array([0.02133874]), 'recall': array([0.11550843]), 'ndcg': array([0.07255053])}
+  precision: 0.021339
+  recall: 0.115508
+  ndcg: 0.072551
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 8/50
+================================================================================
+Epoch 170 [3.95s]: BPR Loss=0.14693 | Reg Loss=0.00622 | KD Loss=0.13119
+Epoch 171 [2.80s]: BPR Loss=0.14737 | Reg Loss=0.00624 | KD Loss=0.13125
+Epoch 172 [2.54s]: BPR Loss=0.14724 | Reg Loss=0.00625 | KD Loss=0.13100
+Epoch 173 [2.99s]: BPR Loss=0.14688 | Reg Loss=0.00627 | KD Loss=0.13120
+Epoch 174 [2.42s]: BPR Loss=0.14657 | Reg Loss=0.00628 | KD Loss=0.13092
+Epoch 175 [2.34s]: BPR Loss=0.14710 | Reg Loss=0.00629 | KD Loss=0.13090
+Epoch 176 [2.79s]: BPR Loss=0.14699 | Reg Loss=0.00630 | KD Loss=0.13103
+Epoch 177 [2.43s]: BPR Loss=0.14690 | Reg Loss=0.00632 | KD Loss=0.13083
+Epoch 178 [2.47s]: BPR Loss=0.14664 | Reg Loss=0.00633 | KD Loss=0.13073
+Epoch 179 [2.90s]: BPR Loss=0.14685 | Reg Loss=0.00634 | KD Loss=0.13057
+[0;30;43m[TEST at Epoch 180][0m
+
+================================================================================
+Epoch 180 - Testing
+================================================================================
+{'precision': array([0.02112069]), 'recall': array([0.114986]), 'ndcg': array([0.07195504])}
+  precision: 0.021121
+  recall: 0.114986
+  ndcg: 0.071955
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 9/50
+================================================================================
+Epoch 180 [3.87s]: BPR Loss=0.14648 | Reg Loss=0.00635 | KD Loss=0.13079
+Epoch 181 [3.00s]: BPR Loss=0.14642 | Reg Loss=0.00637 | KD Loss=0.13057
+Epoch 182 [2.55s]: BPR Loss=0.14644 | Reg Loss=0.00638 | KD Loss=0.13066
+Epoch 183 [2.72s]: BPR Loss=0.14647 | Reg Loss=0.00639 | KD Loss=0.13062
+Epoch 184 [2.74s]: BPR Loss=0.14629 | Reg Loss=0.00640 | KD Loss=0.13048
+Epoch 185 [2.48s]: BPR Loss=0.14611 | Reg Loss=0.00642 | KD Loss=0.13049
+Epoch 186 [3.06s]: BPR Loss=0.14645 | Reg Loss=0.00643 | KD Loss=0.13064
+Epoch 187 [2.54s]: BPR Loss=0.14559 | Reg Loss=0.00644 | KD Loss=0.13029
+Epoch 188 [2.50s]: BPR Loss=0.14553 | Reg Loss=0.00645 | KD Loss=0.13030
+Epoch 189 [2.74s]: BPR Loss=0.14627 | Reg Loss=0.00647 | KD Loss=0.13048
+[0;30;43m[TEST at Epoch 190][0m
+
+================================================================================
+Epoch 190 - Testing
+================================================================================
+{'precision': array([0.02112576]), 'recall': array([0.11487407]), 'ndcg': array([0.07173627])}
+  precision: 0.021126
+  recall: 0.114874
+  ndcg: 0.071736
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 10/50
+================================================================================
+Epoch 190 [3.67s]: BPR Loss=0.14598 | Reg Loss=0.00648 | KD Loss=0.13028
+Epoch 191 [2.34s]: BPR Loss=0.14581 | Reg Loss=0.00649 | KD Loss=0.13018
+Epoch 192 [2.72s]: BPR Loss=0.14548 | Reg Loss=0.00650 | KD Loss=0.13015
+Epoch 193 [2.47s]: BPR Loss=0.14582 | Reg Loss=0.00651 | KD Loss=0.13011
+Epoch 194 [2.72s]: BPR Loss=0.14572 | Reg Loss=0.00652 | KD Loss=0.13009
+Epoch 195 [2.76s]: BPR Loss=0.14568 | Reg Loss=0.00653 | KD Loss=0.13004
+Epoch 196 [2.60s]: BPR Loss=0.14528 | Reg Loss=0.00654 | KD Loss=0.13000
+Epoch 197 [2.86s]: BPR Loss=0.14529 | Reg Loss=0.00656 | KD Loss=0.12999
+Epoch 198 [2.44s]: BPR Loss=0.14501 | Reg Loss=0.00657 | KD Loss=0.12962
+Epoch 199 [2.77s]: BPR Loss=0.14482 | Reg Loss=0.00658 | KD Loss=0.12998
+[0;30;43m[TEST at Epoch 200][0m
+
+================================================================================
+Epoch 200 - Testing
+================================================================================
+{'precision': array([0.02114097]), 'recall': array([0.11515201]), 'ndcg': array([0.07158667])}
+  precision: 0.021141
+  recall: 0.115152
+  ndcg: 0.071587
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 11/50
+================================================================================
+Epoch 200 [3.95s]: BPR Loss=0.14546 | Reg Loss=0.00659 | KD Loss=0.12985
+Epoch 201 [2.60s]: BPR Loss=0.14492 | Reg Loss=0.00660 | KD Loss=0.12984
+Epoch 202 [2.98s]: BPR Loss=0.14493 | Reg Loss=0.00661 | KD Loss=0.12972
+Epoch 203 [2.57s]: BPR Loss=0.14435 | Reg Loss=0.00662 | KD Loss=0.12952
+Epoch 204 [3.21s]: BPR Loss=0.14494 | Reg Loss=0.00663 | KD Loss=0.12968
+Epoch 205 [2.59s]: BPR Loss=0.14445 | Reg Loss=0.00664 | KD Loss=0.12954
+Epoch 206 [2.46s]: BPR Loss=0.14434 | Reg Loss=0.00665 | KD Loss=0.12951
+Epoch 207 [2.92s]: BPR Loss=0.14479 | Reg Loss=0.00666 | KD Loss=0.12943
+Epoch 208 [2.42s]: BPR Loss=0.14469 | Reg Loss=0.00667 | KD Loss=0.12950
+Epoch 209 [2.42s]: BPR Loss=0.14444 | Reg Loss=0.00668 | KD Loss=0.12942
+[0;30;43m[TEST at Epoch 210][0m
+
+================================================================================
+Epoch 210 - Testing
+================================================================================
+{'precision': array([0.02094828]), 'recall': array([0.11443899]), 'ndcg': array([0.07128406])}
+  precision: 0.020948
+  recall: 0.114439
+  ndcg: 0.071284
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 12/50
+================================================================================
+Epoch 210 [3.94s]: BPR Loss=0.14482 | Reg Loss=0.00669 | KD Loss=0.12945
+Epoch 211 [2.44s]: BPR Loss=0.14433 | Reg Loss=0.00670 | KD Loss=0.12937
+Epoch 212 [2.93s]: BPR Loss=0.14409 | Reg Loss=0.00671 | KD Loss=0.12929
+Epoch 213 [2.48s]: BPR Loss=0.14403 | Reg Loss=0.00672 | KD Loss=0.12924
+Epoch 214 [3.01s]: BPR Loss=0.14435 | Reg Loss=0.00673 | KD Loss=0.12931
+Epoch 215 [2.56s]: BPR Loss=0.14440 | Reg Loss=0.00674 | KD Loss=0.12904
+Epoch 216 [2.66s]: BPR Loss=0.14437 | Reg Loss=0.00675 | KD Loss=0.12928
+Epoch 217 [2.39s]: BPR Loss=0.14433 | Reg Loss=0.00676 | KD Loss=0.12915
+Epoch 218 [2.73s]: BPR Loss=0.14412 | Reg Loss=0.00677 | KD Loss=0.12922
+Epoch 219 [2.46s]: BPR Loss=0.14432 | Reg Loss=0.00678 | KD Loss=0.12917
+[0;30;43m[TEST at Epoch 220][0m
+
+================================================================================
+Epoch 220 - Testing
+================================================================================
+{'precision': array([0.02077586]), 'recall': array([0.11325771]), 'ndcg': array([0.07054793])}
+  precision: 0.020776
+  recall: 0.113258
+  ndcg: 0.070548
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 13/50
+================================================================================
+Epoch 220 [4.28s]: BPR Loss=0.14387 | Reg Loss=0.00679 | KD Loss=0.12904
+Epoch 221 [2.43s]: BPR Loss=0.14363 | Reg Loss=0.00680 | KD Loss=0.12911
+Epoch 222 [2.69s]: BPR Loss=0.14366 | Reg Loss=0.00681 | KD Loss=0.12902
+Epoch 223 [2.90s]: BPR Loss=0.14414 | Reg Loss=0.00682 | KD Loss=0.12899
+Epoch 224 [2.52s]: BPR Loss=0.14398 | Reg Loss=0.00682 | KD Loss=0.12888
+Epoch 225 [2.79s]: BPR Loss=0.14416 | Reg Loss=0.00683 | KD Loss=0.12881
+Epoch 226 [2.74s]: BPR Loss=0.14378 | Reg Loss=0.00684 | KD Loss=0.12892
+Epoch 227 [2.44s]: BPR Loss=0.14380 | Reg Loss=0.00685 | KD Loss=0.12891
+Epoch 228 [2.92s]: BPR Loss=0.14381 | Reg Loss=0.00686 | KD Loss=0.12885
+Epoch 229 [2.63s]: BPR Loss=0.14374 | Reg Loss=0.00687 | KD Loss=0.12867
+[0;30;43m[TEST at Epoch 230][0m
+
+================================================================================
+Epoch 230 - Testing
+================================================================================
+{'precision': array([0.020786]), 'recall': array([0.11330098]), 'ndcg': array([0.0700532])}
+  precision: 0.020786
+  recall: 0.113301
+  ndcg: 0.070053
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 14/50
+================================================================================
+Epoch 230 [4.37s]: BPR Loss=0.14368 | Reg Loss=0.00688 | KD Loss=0.12879
+Epoch 231 [2.65s]: BPR Loss=0.14303 | Reg Loss=0.00688 | KD Loss=0.12859
+Epoch 232 [2.49s]: BPR Loss=0.14381 | Reg Loss=0.00689 | KD Loss=0.12875
+Epoch 233 [2.82s]: BPR Loss=0.14314 | Reg Loss=0.00690 | KD Loss=0.12866
+Epoch 234 [2.38s]: BPR Loss=0.14323 | Reg Loss=0.00691 | KD Loss=0.12854
+Epoch 235 [2.70s]: BPR Loss=0.14328 | Reg Loss=0.00692 | KD Loss=0.12855
+Epoch 236 [2.75s]: BPR Loss=0.14331 | Reg Loss=0.00693 | KD Loss=0.12858
+Epoch 237 [2.60s]: BPR Loss=0.14333 | Reg Loss=0.00694 | KD Loss=0.12863
+Epoch 238 [3.00s]: BPR Loss=0.14290 | Reg Loss=0.00694 | KD Loss=0.12851
+Epoch 239 [2.42s]: BPR Loss=0.14302 | Reg Loss=0.00695 | KD Loss=0.12845
+[0;30;43m[TEST at Epoch 240][0m
+
+================================================================================
+Epoch 240 - Testing
+================================================================================
+{'precision': array([0.02062373]), 'recall': array([0.11285973]), 'ndcg': array([0.0699606])}
+  precision: 0.020624
+  recall: 0.112860
+  ndcg: 0.069961
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 15/50
+================================================================================
+Epoch 240 [4.38s]: BPR Loss=0.14303 | Reg Loss=0.00696 | KD Loss=0.12842
+Epoch 241 [2.68s]: BPR Loss=0.14283 | Reg Loss=0.00697 | KD Loss=0.12830
+Epoch 242 [2.55s]: BPR Loss=0.14321 | Reg Loss=0.00698 | KD Loss=0.12850
+Epoch 243 [2.48s]: BPR Loss=0.14305 | Reg Loss=0.00698 | KD Loss=0.12827
+Epoch 244 [2.80s]: BPR Loss=0.14281 | Reg Loss=0.00699 | KD Loss=0.12816
+Epoch 245 [2.42s]: BPR Loss=0.14288 | Reg Loss=0.00700 | KD Loss=0.12836
+Epoch 246 [2.85s]: BPR Loss=0.14329 | Reg Loss=0.00701 | KD Loss=0.12832
+Epoch 247 [2.53s]: BPR Loss=0.14295 | Reg Loss=0.00701 | KD Loss=0.12837
+Epoch 248 [2.57s]: BPR Loss=0.14290 | Reg Loss=0.00702 | KD Loss=0.12811
+Epoch 249 [2.94s]: BPR Loss=0.14304 | Reg Loss=0.00703 | KD Loss=0.12821
+[0;30;43m[TEST at Epoch 250][0m
+
+================================================================================
+Epoch 250 - Testing
+================================================================================
+{'precision': array([0.02054767]), 'recall': array([0.11213444]), 'ndcg': array([0.06946896])}
+  precision: 0.020548
+  recall: 0.112134
+  ndcg: 0.069469
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 16/50
+================================================================================
+Epoch 250 [3.93s]: BPR Loss=0.14286 | Reg Loss=0.00704 | KD Loss=0.12809
+Epoch 251 [2.93s]: BPR Loss=0.14277 | Reg Loss=0.00704 | KD Loss=0.12821
+Epoch 252 [2.49s]: BPR Loss=0.14216 | Reg Loss=0.00705 | KD Loss=0.12806
+Epoch 253 [2.61s]: BPR Loss=0.14257 | Reg Loss=0.00706 | KD Loss=0.12800
+Epoch 254 [2.81s]: BPR Loss=0.14264 | Reg Loss=0.00706 | KD Loss=0.12797
+Epoch 255 [2.52s]: BPR Loss=0.14220 | Reg Loss=0.00707 | KD Loss=0.12788
+Epoch 256 [3.04s]: BPR Loss=0.14258 | Reg Loss=0.00708 | KD Loss=0.12817
+Epoch 257 [2.43s]: BPR Loss=0.14243 | Reg Loss=0.00709 | KD Loss=0.12794
+Epoch 258 [2.46s]: BPR Loss=0.14216 | Reg Loss=0.00709 | KD Loss=0.12787
+Epoch 259 [2.84s]: BPR Loss=0.14235 | Reg Loss=0.00710 | KD Loss=0.12818
+[0;30;43m[TEST at Epoch 260][0m
+
+================================================================================
+Epoch 260 - Testing
+================================================================================
+{'precision': array([0.02048174]), 'recall': array([0.11249636]), 'ndcg': array([0.06972533])}
+  precision: 0.020482
+  recall: 0.112496
+  ndcg: 0.069725
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 17/50
+================================================================================
+Epoch 260 [3.95s]: BPR Loss=0.14246 | Reg Loss=0.00711 | KD Loss=0.12789
+Epoch 261 [2.96s]: BPR Loss=0.14208 | Reg Loss=0.00711 | KD Loss=0.12766
+Epoch 262 [2.41s]: BPR Loss=0.14208 | Reg Loss=0.00712 | KD Loss=0.12797
+Epoch 263 [2.79s]: BPR Loss=0.14229 | Reg Loss=0.00713 | KD Loss=0.12782
+Epoch 264 [2.71s]: BPR Loss=0.14241 | Reg Loss=0.00713 | KD Loss=0.12770
+Epoch 265 [2.52s]: BPR Loss=0.14178 | Reg Loss=0.00714 | KD Loss=0.12759
+Epoch 266 [2.95s]: BPR Loss=0.14183 | Reg Loss=0.00715 | KD Loss=0.12789
+Epoch 267 [2.66s]: BPR Loss=0.14221 | Reg Loss=0.00716 | KD Loss=0.12760
+Epoch 268 [2.56s]: BPR Loss=0.14161 | Reg Loss=0.00716 | KD Loss=0.12769
+Epoch 269 [2.70s]: BPR Loss=0.14168 | Reg Loss=0.00717 | KD Loss=0.12758
+[0;30;43m[TEST at Epoch 270][0m
+
+================================================================================
+Epoch 270 - Testing
+================================================================================
+{'precision': array([0.02029919]), 'recall': array([0.11104085]), 'ndcg': array([0.06878035])}
+  precision: 0.020299
+  recall: 0.111041
+  ndcg: 0.068780
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 18/50
+================================================================================
+Epoch 270 [4.57s]: BPR Loss=0.14232 | Reg Loss=0.00717 | KD Loss=0.12779
+Epoch 271 [2.89s]: BPR Loss=0.14153 | Reg Loss=0.00718 | KD Loss=0.12757
+Epoch 272 [2.79s]: BPR Loss=0.14139 | Reg Loss=0.00719 | KD Loss=0.12759
+Epoch 273 [2.60s]: BPR Loss=0.14165 | Reg Loss=0.00719 | KD Loss=0.12763
+Epoch 274 [2.98s]: BPR Loss=0.14192 | Reg Loss=0.00720 | KD Loss=0.12769
+Epoch 275 [2.44s]: BPR Loss=0.14190 | Reg Loss=0.00721 | KD Loss=0.12748
+Epoch 276 [2.42s]: BPR Loss=0.14164 | Reg Loss=0.00721 | KD Loss=0.12739
+Epoch 277 [3.01s]: BPR Loss=0.14153 | Reg Loss=0.00722 | KD Loss=0.12752
+Epoch 278 [2.48s]: BPR Loss=0.14180 | Reg Loss=0.00723 | KD Loss=0.12745
+Epoch 279 [2.95s]: BPR Loss=0.14186 | Reg Loss=0.00723 | KD Loss=0.12749
+[0;30;43m[TEST at Epoch 280][0m
+
+================================================================================
+Epoch 280 - Testing
+================================================================================
+{'precision': array([0.0201217]), 'recall': array([0.10939219]), 'ndcg': array([0.06832611])}
+  precision: 0.020122
+  recall: 0.109392
+  ndcg: 0.068326
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 19/50
+================================================================================
+Epoch 280 [3.97s]: BPR Loss=0.14143 | Reg Loss=0.00724 | KD Loss=0.12747
+Epoch 281 [2.73s]: BPR Loss=0.14164 | Reg Loss=0.00724 | KD Loss=0.12745
+Epoch 282 [2.76s]: BPR Loss=0.14158 | Reg Loss=0.00725 | KD Loss=0.12740
+Epoch 283 [2.53s]: BPR Loss=0.14175 | Reg Loss=0.00725 | KD Loss=0.12739
+Epoch 284 [3.15s]: BPR Loss=0.14151 | Reg Loss=0.00726 | KD Loss=0.12743
+Epoch 285 [3.11s]: BPR Loss=0.14128 | Reg Loss=0.00727 | KD Loss=0.12735
+Epoch 286 [2.90s]: BPR Loss=0.14152 | Reg Loss=0.00727 | KD Loss=0.12723
+Epoch 287 [2.97s]: BPR Loss=0.14129 | Reg Loss=0.00728 | KD Loss=0.12720
+Epoch 288 [3.14s]: BPR Loss=0.14129 | Reg Loss=0.00728 | KD Loss=0.12737
+Epoch 289 [3.09s]: BPR Loss=0.14146 | Reg Loss=0.00729 | KD Loss=0.12731
+[0;30;43m[TEST at Epoch 290][0m
+
+================================================================================
+Epoch 290 - Testing
+================================================================================
+{'precision': array([0.02008114]), 'recall': array([0.10887007]), 'ndcg': array([0.06819681])}
+  precision: 0.020081
+  recall: 0.108870
+  ndcg: 0.068197
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 20/50
+================================================================================
+Epoch 290 [4.60s]: BPR Loss=0.14105 | Reg Loss=0.00729 | KD Loss=0.12731
+Epoch 291 [3.13s]: BPR Loss=0.14105 | Reg Loss=0.00730 | KD Loss=0.12703
+Epoch 292 [3.36s]: BPR Loss=0.14145 | Reg Loss=0.00730 | KD Loss=0.12741
+Epoch 293 [3.22s]: BPR Loss=0.14146 | Reg Loss=0.00731 | KD Loss=0.12735
+Epoch 294 [2.69s]: BPR Loss=0.14098 | Reg Loss=0.00732 | KD Loss=0.12705
+Epoch 295 [3.42s]: BPR Loss=0.14108 | Reg Loss=0.00732 | KD Loss=0.12719
+Epoch 296 [2.77s]: BPR Loss=0.14111 | Reg Loss=0.00733 | KD Loss=0.12716
+Epoch 297 [2.97s]: BPR Loss=0.14125 | Reg Loss=0.00733 | KD Loss=0.12715
+Epoch 298 [3.32s]: BPR Loss=0.14118 | Reg Loss=0.00734 | KD Loss=0.12697
+Epoch 299 [2.47s]: BPR Loss=0.14092 | Reg Loss=0.00734 | KD Loss=0.12700
+[0;30;43m[TEST at Epoch 300][0m
+
+================================================================================
+Epoch 300 - Testing
+================================================================================
+{'precision': array([0.02014199]), 'recall': array([0.10988877]), 'ndcg': array([0.06823463])}
+  precision: 0.020142
+  recall: 0.109889
+  ndcg: 0.068235
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 21/50
+================================================================================
+Epoch 300 [4.79s]: BPR Loss=0.14128 | Reg Loss=0.00735 | KD Loss=0.12704
+Epoch 301 [2.64s]: BPR Loss=0.14082 | Reg Loss=0.00735 | KD Loss=0.12699
+Epoch 302 [3.05s]: BPR Loss=0.14131 | Reg Loss=0.00736 | KD Loss=0.12718
+Epoch 303 [3.47s]: BPR Loss=0.14125 | Reg Loss=0.00737 | KD Loss=0.12705
+Epoch 304 [3.08s]: BPR Loss=0.14064 | Reg Loss=0.00737 | KD Loss=0.12698
+Epoch 305 [3.35s]: BPR Loss=0.14083 | Reg Loss=0.00738 | KD Loss=0.12725
+Epoch 306 [2.60s]: BPR Loss=0.14067 | Reg Loss=0.00738 | KD Loss=0.12699
+Epoch 307 [2.96s]: BPR Loss=0.14104 | Reg Loss=0.00739 | KD Loss=0.12686
+Epoch 308 [3.30s]: BPR Loss=0.14069 | Reg Loss=0.00739 | KD Loss=0.12689
+Epoch 309 [2.61s]: BPR Loss=0.14065 | Reg Loss=0.00739 | KD Loss=0.12684
+[0;30;43m[TEST at Epoch 310][0m
+
+================================================================================
+Epoch 310 - Testing
+================================================================================
+{'precision': array([0.01982252]), 'recall': array([0.1085908]), 'ndcg': array([0.06773154])}
+  precision: 0.019823
+  recall: 0.108591
+  ndcg: 0.067732
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 22/50
+================================================================================
+Epoch 310 [5.05s]: BPR Loss=0.14081 | Reg Loss=0.00740 | KD Loss=0.12681
+Epoch 311 [2.73s]: BPR Loss=0.14071 | Reg Loss=0.00740 | KD Loss=0.12699
+Epoch 312 [2.82s]: BPR Loss=0.14059 | Reg Loss=0.00741 | KD Loss=0.12683
+Epoch 313 [2.93s]: BPR Loss=0.14095 | Reg Loss=0.00741 | KD Loss=0.12678
+Epoch 314 [2.83s]: BPR Loss=0.14047 | Reg Loss=0.00742 | KD Loss=0.12680
+Epoch 315 [3.08s]: BPR Loss=0.14085 | Reg Loss=0.00742 | KD Loss=0.12689
+Epoch 316 [3.42s]: BPR Loss=0.14080 | Reg Loss=0.00743 | KD Loss=0.12687
+Epoch 317 [2.94s]: BPR Loss=0.14080 | Reg Loss=0.00743 | KD Loss=0.12680
+Epoch 318 [3.13s]: BPR Loss=0.14040 | Reg Loss=0.00744 | KD Loss=0.12668
+Epoch 319 [3.20s]: BPR Loss=0.14026 | Reg Loss=0.00744 | KD Loss=0.12656
+[0;30;43m[TEST at Epoch 320][0m
+
+================================================================================
+Epoch 320 - Testing
+================================================================================
+{'precision': array([0.01997465]), 'recall': array([0.10908697]), 'ndcg': array([0.06823234])}
+  precision: 0.019975
+  recall: 0.109087
+  ndcg: 0.068232
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 23/50
+================================================================================
+Epoch 320 [4.55s]: BPR Loss=0.14083 | Reg Loss=0.00744 | KD Loss=0.12681
+Epoch 321 [3.15s]: BPR Loss=0.14018 | Reg Loss=0.00745 | KD Loss=0.12662
+Epoch 322 [2.66s]: BPR Loss=0.14132 | Reg Loss=0.00745 | KD Loss=0.12676
+Epoch 323 [2.73s]: BPR Loss=0.14074 | Reg Loss=0.00746 | KD Loss=0.12684
+Epoch 324 [3.06s]: BPR Loss=0.14089 | Reg Loss=0.00746 | KD Loss=0.12656
+Epoch 325 [2.41s]: BPR Loss=0.14054 | Reg Loss=0.00747 | KD Loss=0.12649
+Epoch 326 [3.20s]: BPR Loss=0.14091 | Reg Loss=0.00747 | KD Loss=0.12666
+Epoch 327 [3.37s]: BPR Loss=0.14061 | Reg Loss=0.00747 | KD Loss=0.12684
+Epoch 328 [2.81s]: BPR Loss=0.14036 | Reg Loss=0.00748 | KD Loss=0.12642
+Epoch 329 [3.55s]: BPR Loss=0.14019 | Reg Loss=0.00748 | KD Loss=0.12648
+[0;30;43m[TEST at Epoch 330][0m
+
+================================================================================
+Epoch 330 - Testing
+================================================================================
+{'precision': array([0.01985801]), 'recall': array([0.10871669]), 'ndcg': array([0.06770143])}
+  precision: 0.019858
+  recall: 0.108717
+  ndcg: 0.067701
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 24/50
+================================================================================
+Epoch 330 [4.51s]: BPR Loss=0.14020 | Reg Loss=0.00749 | KD Loss=0.12645
+Epoch 331 [3.52s]: BPR Loss=0.14018 | Reg Loss=0.00749 | KD Loss=0.12654
+Epoch 332 [2.94s]: BPR Loss=0.14014 | Reg Loss=0.00750 | KD Loss=0.12676
+Epoch 333 [3.04s]: BPR Loss=0.14063 | Reg Loss=0.00750 | KD Loss=0.12664
+Epoch 334 [3.30s]: BPR Loss=0.14032 | Reg Loss=0.00750 | KD Loss=0.12635
+Epoch 335 [2.58s]: BPR Loss=0.14038 | Reg Loss=0.00751 | KD Loss=0.12659
+Epoch 336 [3.11s]: BPR Loss=0.14010 | Reg Loss=0.00751 | KD Loss=0.12657
+Epoch 337 [3.31s]: BPR Loss=0.14048 | Reg Loss=0.00751 | KD Loss=0.12655
+Epoch 338 [3.13s]: BPR Loss=0.14021 | Reg Loss=0.00752 | KD Loss=0.12636
+Epoch 339 [3.34s]: BPR Loss=0.14027 | Reg Loss=0.00752 | KD Loss=0.12659
+[0;30;43m[TEST at Epoch 340][0m
+
+================================================================================
+Epoch 340 - Testing
+================================================================================
+{'precision': array([0.01974645]), 'recall': array([0.10852174]), 'ndcg': array([0.06759717])}
+  precision: 0.019746
+  recall: 0.108522
+  ndcg: 0.067597
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 25/50
+================================================================================
+Epoch 340 [4.69s]: BPR Loss=0.14027 | Reg Loss=0.00753 | KD Loss=0.12642
+Epoch 341 [3.30s]: BPR Loss=0.14060 | Reg Loss=0.00753 | KD Loss=0.12653
+Epoch 342 [2.50s]: BPR Loss=0.14019 | Reg Loss=0.00753 | KD Loss=0.12644
+Epoch 343 [2.92s]: BPR Loss=0.14045 | Reg Loss=0.00754 | KD Loss=0.12643
+Epoch 344 [3.57s]: BPR Loss=0.13997 | Reg Loss=0.00754 | KD Loss=0.12638
+Epoch 345 [2.86s]: BPR Loss=0.14016 | Reg Loss=0.00755 | KD Loss=0.12654
+Epoch 346 [2.86s]: BPR Loss=0.13988 | Reg Loss=0.00755 | KD Loss=0.12630
+Epoch 347 [2.53s]: BPR Loss=0.14050 | Reg Loss=0.00755 | KD Loss=0.12645
+Epoch 348 [3.42s]: BPR Loss=0.13979 | Reg Loss=0.00756 | KD Loss=0.12626
+Epoch 349 [3.05s]: BPR Loss=0.13999 | Reg Loss=0.00756 | KD Loss=0.12636
+[0;30;43m[TEST at Epoch 350][0m
+
+================================================================================
+Epoch 350 - Testing
+================================================================================
+{'precision': array([0.01953347]), 'recall': array([0.10773145]), 'ndcg': array([0.06699341])}
+  precision: 0.019533
+  recall: 0.107731
+  ndcg: 0.066993
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 26/50
+================================================================================
+Epoch 350 [4.87s]: BPR Loss=0.14000 | Reg Loss=0.00756 | KD Loss=0.12627
+Epoch 351 [3.22s]: BPR Loss=0.13976 | Reg Loss=0.00757 | KD Loss=0.12630
+Epoch 352 [2.60s]: BPR Loss=0.14014 | Reg Loss=0.00757 | KD Loss=0.12626
+Epoch 353 [3.38s]: BPR Loss=0.13988 | Reg Loss=0.00757 | KD Loss=0.12613
+Epoch 354 [2.77s]: BPR Loss=0.14021 | Reg Loss=0.00758 | KD Loss=0.12640
+Epoch 355 [3.14s]: BPR Loss=0.14004 | Reg Loss=0.00758 | KD Loss=0.12630
+Epoch 356 [3.33s]: BPR Loss=0.14001 | Reg Loss=0.00758 | KD Loss=0.12632
+Epoch 357 [2.51s]: BPR Loss=0.13949 | Reg Loss=0.00759 | KD Loss=0.12618
+Epoch 358 [3.03s]: BPR Loss=0.14029 | Reg Loss=0.00759 | KD Loss=0.12631
+Epoch 359 [3.33s]: BPR Loss=0.13993 | Reg Loss=0.00759 | KD Loss=0.12619
+[0;30;43m[TEST at Epoch 360][0m
+
+================================================================================
+Epoch 360 - Testing
+================================================================================
+{'precision': array([0.01950304]), 'recall': array([0.10787975]), 'ndcg': array([0.06697757])}
+  precision: 0.019503
+  recall: 0.107880
+  ndcg: 0.066978
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 27/50
+================================================================================
+Epoch 360 [4.04s]: BPR Loss=0.14021 | Reg Loss=0.00760 | KD Loss=0.12614
+Epoch 361 [3.26s]: BPR Loss=0.13975 | Reg Loss=0.00760 | KD Loss=0.12620
+Epoch 362 [2.45s]: BPR Loss=0.13989 | Reg Loss=0.00760 | KD Loss=0.12630
+Epoch 363 [2.72s]: BPR Loss=0.13981 | Reg Loss=0.00761 | KD Loss=0.12606
+Epoch 364 [3.42s]: BPR Loss=0.13968 | Reg Loss=0.00761 | KD Loss=0.12601
+Epoch 365 [2.66s]: BPR Loss=0.13956 | Reg Loss=0.00761 | KD Loss=0.12605
+Epoch 366 [3.42s]: BPR Loss=0.13957 | Reg Loss=0.00762 | KD Loss=0.12605
+Epoch 367 [3.34s]: BPR Loss=0.13973 | Reg Loss=0.00762 | KD Loss=0.12623
+Epoch 368 [2.89s]: BPR Loss=0.13988 | Reg Loss=0.00762 | KD Loss=0.12616
+Epoch 369 [3.42s]: BPR Loss=0.13978 | Reg Loss=0.00763 | KD Loss=0.12604
+[0;30;43m[TEST at Epoch 370][0m
+
+================================================================================
+Epoch 370 - Testing
+================================================================================
+{'precision': array([0.01946247]), 'recall': array([0.10730844]), 'ndcg': array([0.06702336])}
+  precision: 0.019462
+  recall: 0.107308
+  ndcg: 0.067023
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 28/50
+================================================================================
+Epoch 370 [4.42s]: BPR Loss=0.13937 | Reg Loss=0.00763 | KD Loss=0.12619
+Epoch 371 [3.30s]: BPR Loss=0.13952 | Reg Loss=0.00763 | KD Loss=0.12611
+Epoch 372 [3.01s]: BPR Loss=0.13968 | Reg Loss=0.00764 | KD Loss=0.12603
+Epoch 373 [2.89s]: BPR Loss=0.13976 | Reg Loss=0.00764 | KD Loss=0.12595
+Epoch 374 [3.04s]: BPR Loss=0.13929 | Reg Loss=0.00764 | KD Loss=0.12590
+Epoch 375 [3.19s]: BPR Loss=0.14005 | Reg Loss=0.00764 | KD Loss=0.12607
+Epoch 376 [2.99s]: BPR Loss=0.14009 | Reg Loss=0.00765 | KD Loss=0.12629
+Epoch 377 [3.34s]: BPR Loss=0.14002 | Reg Loss=0.00765 | KD Loss=0.12618
+Epoch 378 [3.08s]: BPR Loss=0.13978 | Reg Loss=0.00765 | KD Loss=0.12584
+Epoch 379 [3.09s]: BPR Loss=0.13953 | Reg Loss=0.00766 | KD Loss=0.12597
+[0;30;43m[TEST at Epoch 380][0m
+
+================================================================================
+Epoch 380 - Testing
+================================================================================
+{'precision': array([0.01937627]), 'recall': array([0.10725195]), 'ndcg': array([0.06670973])}
+  precision: 0.019376
+  recall: 0.107252
+  ndcg: 0.066710
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 29/50
+================================================================================
+Epoch 380 [4.83s]: BPR Loss=0.13912 | Reg Loss=0.00766 | KD Loss=0.12593
+Epoch 381 [2.96s]: BPR Loss=0.13990 | Reg Loss=0.00766 | KD Loss=0.12619
+Epoch 382 [3.01s]: BPR Loss=0.13926 | Reg Loss=0.00766 | KD Loss=0.12591
+Epoch 383 [2.94s]: BPR Loss=0.13908 | Reg Loss=0.00767 | KD Loss=0.12581
+Epoch 384 [3.09s]: BPR Loss=0.13965 | Reg Loss=0.00767 | KD Loss=0.12588
+Epoch 385 [3.10s]: BPR Loss=0.13959 | Reg Loss=0.00767 | KD Loss=0.12592
+Epoch 386 [3.00s]: BPR Loss=0.13922 | Reg Loss=0.00768 | KD Loss=0.12574
+Epoch 387 [3.09s]: BPR Loss=0.13966 | Reg Loss=0.00768 | KD Loss=0.12593
+Epoch 388 [3.16s]: BPR Loss=0.13959 | Reg Loss=0.00768 | KD Loss=0.12601
+Epoch 389 [2.91s]: BPR Loss=0.13948 | Reg Loss=0.00768 | KD Loss=0.12611
+[0;30;43m[TEST at Epoch 390][0m
+
+================================================================================
+Epoch 390 - Testing
+================================================================================
+{'precision': array([0.01946755]), 'recall': array([0.10726003]), 'ndcg': array([0.06680618])}
+  precision: 0.019468
+  recall: 0.107260
+  ndcg: 0.066806
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 30/50
+================================================================================
+Epoch 390 [4.72s]: BPR Loss=0.13946 | Reg Loss=0.00769 | KD Loss=0.12589
+Epoch 391 [3.22s]: BPR Loss=0.13946 | Reg Loss=0.00769 | KD Loss=0.12590
+Epoch 392 [3.08s]: BPR Loss=0.13976 | Reg Loss=0.00769 | KD Loss=0.12574
+Epoch 393 [2.97s]: BPR Loss=0.13968 | Reg Loss=0.00769 | KD Loss=0.12586
+Epoch 394 [3.20s]: BPR Loss=0.13922 | Reg Loss=0.00770 | KD Loss=0.12601
+Epoch 395 [3.07s]: BPR Loss=0.13935 | Reg Loss=0.00770 | KD Loss=0.12566
+Epoch 396 [2.89s]: BPR Loss=0.13925 | Reg Loss=0.00770 | KD Loss=0.12587
+Epoch 397 [2.99s]: BPR Loss=0.13924 | Reg Loss=0.00770 | KD Loss=0.12582
+Epoch 398 [3.20s]: BPR Loss=0.13913 | Reg Loss=0.00771 | KD Loss=0.12555
+Epoch 399 [2.90s]: BPR Loss=0.13915 | Reg Loss=0.00771 | KD Loss=0.12588
+[0;30;43m[TEST at Epoch 400][0m
+
+================================================================================
+Epoch 400 - Testing
+================================================================================
+{'precision': array([0.01926978]), 'recall': array([0.10615321]), 'ndcg': array([0.06635966])}
+  precision: 0.019270
+  recall: 0.106153
+  ndcg: 0.066360
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 31/50
+================================================================================
+Epoch 400 [4.83s]: BPR Loss=0.13943 | Reg Loss=0.00771 | KD Loss=0.12601
+Epoch 401 [3.04s]: BPR Loss=0.13942 | Reg Loss=0.00772 | KD Loss=0.12579
+Epoch 402 [2.92s]: BPR Loss=0.13899 | Reg Loss=0.00772 | KD Loss=0.12571
+Epoch 403 [3.38s]: BPR Loss=0.13948 | Reg Loss=0.00772 | KD Loss=0.12574
+Epoch 404 [2.78s]: BPR Loss=0.13969 | Reg Loss=0.00772 | KD Loss=0.12584
+Epoch 405 [3.30s]: BPR Loss=0.13961 | Reg Loss=0.00772 | KD Loss=0.12585
+Epoch 406 [3.16s]: BPR Loss=0.13919 | Reg Loss=0.00773 | KD Loss=0.12573
+Epoch 407 [2.60s]: BPR Loss=0.13912 | Reg Loss=0.00773 | KD Loss=0.12577
+Epoch 408 [3.35s]: BPR Loss=0.13899 | Reg Loss=0.00773 | KD Loss=0.12554
+Epoch 409 [3.15s]: BPR Loss=0.13909 | Reg Loss=0.00773 | KD Loss=0.12573
+[0;30;43m[TEST at Epoch 410][0m
+
+================================================================================
+Epoch 410 - Testing
+================================================================================
+{'precision': array([0.01927992]), 'recall': array([0.106259]), 'ndcg': array([0.06629736])}
+  precision: 0.019280
+  recall: 0.106259
+  ndcg: 0.066297
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 32/50
+================================================================================
+Epoch 410 [4.42s]: BPR Loss=0.13899 | Reg Loss=0.00774 | KD Loss=0.12567
+Epoch 411 [2.99s]: BPR Loss=0.13902 | Reg Loss=0.00774 | KD Loss=0.12564
+Epoch 412 [2.51s]: BPR Loss=0.13875 | Reg Loss=0.00774 | KD Loss=0.12574
+Epoch 413 [3.07s]: BPR Loss=0.13881 | Reg Loss=0.00774 | KD Loss=0.12570
+Epoch 414 [2.73s]: BPR Loss=0.13897 | Reg Loss=0.00775 | KD Loss=0.12557
+Epoch 415 [2.49s]: BPR Loss=0.13861 | Reg Loss=0.00775 | KD Loss=0.12564
+Epoch 416 [2.75s]: BPR Loss=0.13899 | Reg Loss=0.00775 | KD Loss=0.12583
+Epoch 417 [2.59s]: BPR Loss=0.13887 | Reg Loss=0.00775 | KD Loss=0.12560
+Epoch 418 [2.77s]: BPR Loss=0.13878 | Reg Loss=0.00776 | KD Loss=0.12552
+Epoch 419 [2.92s]: BPR Loss=0.13895 | Reg Loss=0.00776 | KD Loss=0.12581
+[0;30;43m[TEST at Epoch 420][0m
+
+================================================================================
+Epoch 420 - Testing
+================================================================================
+{'precision': array([0.01926471]), 'recall': array([0.10602291]), 'ndcg': array([0.06616346])}
+  precision: 0.019265
+  recall: 0.106023
+  ndcg: 0.066163
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 33/50
+================================================================================
+Epoch 420 [4.11s]: BPR Loss=0.13908 | Reg Loss=0.00776 | KD Loss=0.12560
+Epoch 421 [3.11s]: BPR Loss=0.13909 | Reg Loss=0.00776 | KD Loss=0.12561
+Epoch 422 [2.60s]: BPR Loss=0.13859 | Reg Loss=0.00776 | KD Loss=0.12542
+Epoch 423 [3.18s]: BPR Loss=0.13925 | Reg Loss=0.00777 | KD Loss=0.12549
+Epoch 424 [2.85s]: BPR Loss=0.13892 | Reg Loss=0.00777 | KD Loss=0.12565
+Epoch 425 [2.71s]: BPR Loss=0.13889 | Reg Loss=0.00777 | KD Loss=0.12566
+Epoch 426 [2.59s]: BPR Loss=0.13904 | Reg Loss=0.00777 | KD Loss=0.12547
+Epoch 427 [2.62s]: BPR Loss=0.13889 | Reg Loss=0.00777 | KD Loss=0.12537
+Epoch 428 [2.77s]: BPR Loss=0.13906 | Reg Loss=0.00777 | KD Loss=0.12573
+Epoch 429 [3.13s]: BPR Loss=0.13900 | Reg Loss=0.00778 | KD Loss=0.12574
+[0;30;43m[TEST at Epoch 430][0m
+
+================================================================================
+Epoch 430 - Testing
+================================================================================
+{'precision': array([0.01922414]), 'recall': array([0.1055831]), 'ndcg': array([0.06572269])}
+  precision: 0.019224
+  recall: 0.105583
+  ndcg: 0.065723
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 34/50
+================================================================================
+Epoch 430 [4.00s]: BPR Loss=0.13898 | Reg Loss=0.00778 | KD Loss=0.12553
+Epoch 431 [2.97s]: BPR Loss=0.13908 | Reg Loss=0.00778 | KD Loss=0.12563
+Epoch 432 [2.53s]: BPR Loss=0.13881 | Reg Loss=0.00778 | KD Loss=0.12555
+Epoch 433 [2.71s]: BPR Loss=0.13870 | Reg Loss=0.00778 | KD Loss=0.12553
+Epoch 434 [3.05s]: BPR Loss=0.13885 | Reg Loss=0.00779 | KD Loss=0.12549
+Epoch 435 [2.54s]: BPR Loss=0.13869 | Reg Loss=0.00779 | KD Loss=0.12552
+Epoch 436 [3.18s]: BPR Loss=0.13896 | Reg Loss=0.00779 | KD Loss=0.12547
+Epoch 437 [2.47s]: BPR Loss=0.13884 | Reg Loss=0.00779 | KD Loss=0.12555
+Epoch 438 [2.85s]: BPR Loss=0.13881 | Reg Loss=0.00780 | KD Loss=0.12545
+Epoch 439 [2.95s]: BPR Loss=0.13902 | Reg Loss=0.00780 | KD Loss=0.12546
+[0;30;43m[TEST at Epoch 440][0m
+
+================================================================================
+Epoch 440 - Testing
+================================================================================
+{'precision': array([0.0193712]), 'recall': array([0.10640912]), 'ndcg': array([0.06599373])}
+  precision: 0.019371
+  recall: 0.106409
+  ndcg: 0.065994
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 35/50
+================================================================================
+Epoch 440 [3.83s]: BPR Loss=0.13866 | Reg Loss=0.00780 | KD Loss=0.12549
+Epoch 441 [2.96s]: BPR Loss=0.13875 | Reg Loss=0.00780 | KD Loss=0.12540
+Epoch 442 [2.47s]: BPR Loss=0.13840 | Reg Loss=0.00780 | KD Loss=0.12532
+Epoch 443 [2.88s]: BPR Loss=0.13870 | Reg Loss=0.00780 | KD Loss=0.12544
+Epoch 444 [2.67s]: BPR Loss=0.13859 | Reg Loss=0.00781 | KD Loss=0.12541
+Epoch 445 [2.72s]: BPR Loss=0.13867 | Reg Loss=0.00781 | KD Loss=0.12563
+Epoch 446 [3.05s]: BPR Loss=0.13892 | Reg Loss=0.00781 | KD Loss=0.12542
+Epoch 447 [2.64s]: BPR Loss=0.13866 | Reg Loss=0.00781 | KD Loss=0.12538
+Epoch 448 [2.97s]: BPR Loss=0.13844 | Reg Loss=0.00781 | KD Loss=0.12535
+Epoch 449 [2.86s]: BPR Loss=0.13883 | Reg Loss=0.00781 | KD Loss=0.12545
+[0;30;43m[TEST at Epoch 450][0m
+
+================================================================================
+Epoch 450 - Testing
+================================================================================
+{'precision': array([0.0193712]), 'recall': array([0.10612149]), 'ndcg': array([0.06589157])}
+  precision: 0.019371
+  recall: 0.106121
+  ndcg: 0.065892
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 36/50
+================================================================================
+Epoch 450 [4.21s]: BPR Loss=0.13916 | Reg Loss=0.00782 | KD Loss=0.12548
+Epoch 451 [2.83s]: BPR Loss=0.13870 | Reg Loss=0.00782 | KD Loss=0.12534
+Epoch 452 [2.57s]: BPR Loss=0.13853 | Reg Loss=0.00782 | KD Loss=0.12537
+Epoch 453 [2.30s]: BPR Loss=0.13877 | Reg Loss=0.00782 | KD Loss=0.12537
+Epoch 454 [2.94s]: BPR Loss=0.13825 | Reg Loss=0.00782 | KD Loss=0.12533
+Epoch 455 [2.43s]: BPR Loss=0.13846 | Reg Loss=0.00782 | KD Loss=0.12524
+Epoch 456 [2.81s]: BPR Loss=0.13911 | Reg Loss=0.00783 | KD Loss=0.12554
+Epoch 457 [2.78s]: BPR Loss=0.13880 | Reg Loss=0.00783 | KD Loss=0.12549
+Epoch 458 [2.41s]: BPR Loss=0.13831 | Reg Loss=0.00783 | KD Loss=0.12522
+Epoch 459 [2.93s]: BPR Loss=0.13844 | Reg Loss=0.00783 | KD Loss=0.12528
+[0;30;43m[TEST at Epoch 460][0m
+
+================================================================================
+Epoch 460 - Testing
+================================================================================
+{'precision': array([0.019214]), 'recall': array([0.10448937]), 'ndcg': array([0.06561819])}
+  precision: 0.019214
+  recall: 0.104489
+  ndcg: 0.065618
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 37/50
+================================================================================
+Epoch 460 [3.94s]: BPR Loss=0.13921 | Reg Loss=0.00783 | KD Loss=0.12536
+Epoch 461 [3.00s]: BPR Loss=0.13869 | Reg Loss=0.00783 | KD Loss=0.12534
+Epoch 462 [2.46s]: BPR Loss=0.13873 | Reg Loss=0.00783 | KD Loss=0.12544
+Epoch 463 [2.53s]: BPR Loss=0.13859 | Reg Loss=0.00784 | KD Loss=0.12526
+Epoch 464 [3.00s]: BPR Loss=0.13875 | Reg Loss=0.00784 | KD Loss=0.12550
+Epoch 465 [2.54s]: BPR Loss=0.13882 | Reg Loss=0.00784 | KD Loss=0.12514
+Epoch 466 [2.78s]: BPR Loss=0.13849 | Reg Loss=0.00784 | KD Loss=0.12528
+Epoch 467 [2.60s]: BPR Loss=0.13895 | Reg Loss=0.00784 | KD Loss=0.12536
+Epoch 468 [2.54s]: BPR Loss=0.13875 | Reg Loss=0.00784 | KD Loss=0.12539
+Epoch 469 [2.96s]: BPR Loss=0.13841 | Reg Loss=0.00784 | KD Loss=0.12525
+[0;30;43m[TEST at Epoch 470][0m
+
+================================================================================
+Epoch 470 - Testing
+================================================================================
+{'precision': array([0.01918864]), 'recall': array([0.10489091]), 'ndcg': array([0.06576676])}
+  precision: 0.019189
+  recall: 0.104891
+  ndcg: 0.065767
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 38/50
+================================================================================
+Epoch 470 [3.96s]: BPR Loss=0.13848 | Reg Loss=0.00784 | KD Loss=0.12526
+Epoch 471 [2.96s]: BPR Loss=0.13812 | Reg Loss=0.00785 | KD Loss=0.12523
+Epoch 472 [2.44s]: BPR Loss=0.13832 | Reg Loss=0.00785 | KD Loss=0.12525
+Epoch 473 [2.44s]: BPR Loss=0.13896 | Reg Loss=0.00785 | KD Loss=0.12534
+Epoch 474 [2.98s]: BPR Loss=0.13819 | Reg Loss=0.00785 | KD Loss=0.12527
+Epoch 475 [2.72s]: BPR Loss=0.13815 | Reg Loss=0.00785 | KD Loss=0.12519
+Epoch 476 [2.49s]: BPR Loss=0.13782 | Reg Loss=0.00785 | KD Loss=0.12502
+Epoch 477 [2.46s]: BPR Loss=0.13853 | Reg Loss=0.00786 | KD Loss=0.12520
+Epoch 478 [2.85s]: BPR Loss=0.13866 | Reg Loss=0.00786 | KD Loss=0.12524
+Epoch 479 [2.47s]: BPR Loss=0.13826 | Reg Loss=0.00786 | KD Loss=0.12527
+[0;30;43m[TEST at Epoch 480][0m
+
+================================================================================
+Epoch 480 - Testing
+================================================================================
+{'precision': array([0.01943712]), 'recall': array([0.1069183]), 'ndcg': array([0.066665])}
+  precision: 0.019437
+  recall: 0.106918
+  ndcg: 0.066665
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 39/50
+================================================================================
+Epoch 480 [4.27s]: BPR Loss=0.13798 | Reg Loss=0.00786 | KD Loss=0.12538
+Epoch 481 [2.54s]: BPR Loss=0.13828 | Reg Loss=0.00786 | KD Loss=0.12513
+Epoch 482 [2.84s]: BPR Loss=0.13857 | Reg Loss=0.00786 | KD Loss=0.12527
+Epoch 483 [2.38s]: BPR Loss=0.13878 | Reg Loss=0.00786 | KD Loss=0.12527
+Epoch 484 [2.29s]: BPR Loss=0.13820 | Reg Loss=0.00786 | KD Loss=0.12513
+Epoch 485 [3.04s]: BPR Loss=0.13859 | Reg Loss=0.00787 | KD Loss=0.12523
+Epoch 486 [2.36s]: BPR Loss=0.13806 | Reg Loss=0.00787 | KD Loss=0.12515
+Epoch 487 [2.75s]: BPR Loss=0.13842 | Reg Loss=0.00787 | KD Loss=0.12509
+Epoch 488 [2.81s]: BPR Loss=0.13809 | Reg Loss=0.00787 | KD Loss=0.12511
+Epoch 489 [2.48s]: BPR Loss=0.13834 | Reg Loss=0.00787 | KD Loss=0.12520
+[0;30;43m[TEST at Epoch 490][0m
+
+================================================================================
+Epoch 490 - Testing
+================================================================================
+{'precision': array([0.01931034]), 'recall': array([0.10589973]), 'ndcg': array([0.0662058])}
+  precision: 0.019310
+  recall: 0.105900
+  ndcg: 0.066206
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 40/50
+================================================================================
+Epoch 490 [4.26s]: BPR Loss=0.13778 | Reg Loss=0.00787 | KD Loss=0.12497
+Epoch 491 [2.48s]: BPR Loss=0.13857 | Reg Loss=0.00787 | KD Loss=0.12532
+Epoch 492 [3.03s]: BPR Loss=0.13857 | Reg Loss=0.00787 | KD Loss=0.12515
+Epoch 493 [2.47s]: BPR Loss=0.13853 | Reg Loss=0.00787 | KD Loss=0.12515
+Epoch 494 [2.69s]: BPR Loss=0.13819 | Reg Loss=0.00787 | KD Loss=0.12501
+Epoch 495 [2.96s]: BPR Loss=0.13839 | Reg Loss=0.00788 | KD Loss=0.12537
+Epoch 496 [2.56s]: BPR Loss=0.13790 | Reg Loss=0.00788 | KD Loss=0.12506
+Epoch 497 [2.96s]: BPR Loss=0.13806 | Reg Loss=0.00788 | KD Loss=0.12497
+Epoch 498 [2.64s]: BPR Loss=0.13789 | Reg Loss=0.00788 | KD Loss=0.12513
+Epoch 499 [2.57s]: BPR Loss=0.13807 | Reg Loss=0.00788 | KD Loss=0.12517
+[0;30;43m[TEST at Epoch 500][0m
+
+================================================================================
+Epoch 500 - Testing
+================================================================================
+{'precision': array([0.01925963]), 'recall': array([0.10521373]), 'ndcg': array([0.0660488])}
+  precision: 0.019260
+  recall: 0.105214
+  ndcg: 0.066049
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 41/50
+================================================================================
+Epoch 500 [4.17s]: BPR Loss=0.13832 | Reg Loss=0.00788 | KD Loss=0.12504
+Epoch 501 [2.58s]: BPR Loss=0.13825 | Reg Loss=0.00788 | KD Loss=0.12513
+Epoch 502 [2.41s]: BPR Loss=0.13859 | Reg Loss=0.00788 | KD Loss=0.12503
+Epoch 503 [2.87s]: BPR Loss=0.13811 | Reg Loss=0.00788 | KD Loss=0.12509
+Epoch 504 [2.43s]: BPR Loss=0.13835 | Reg Loss=0.00789 | KD Loss=0.12506
+Epoch 505 [2.70s]: BPR Loss=0.13804 | Reg Loss=0.00789 | KD Loss=0.12503
+Epoch 506 [2.83s]: BPR Loss=0.13817 | Reg Loss=0.00789 | KD Loss=0.12514
+Epoch 507 [2.47s]: BPR Loss=0.13823 | Reg Loss=0.00789 | KD Loss=0.12501
+Epoch 508 [2.82s]: BPR Loss=0.13812 | Reg Loss=0.00789 | KD Loss=0.12500
+Epoch 509 [2.50s]: BPR Loss=0.13794 | Reg Loss=0.00789 | KD Loss=0.12515
+[0;30;43m[TEST at Epoch 510][0m
+
+================================================================================
+Epoch 510 - Testing
+================================================================================
+{'precision': array([0.01920892]), 'recall': array([0.10506144]), 'ndcg': array([0.06588305])}
+  precision: 0.019209
+  recall: 0.105061
+  ndcg: 0.065883
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 42/50
+================================================================================
+Epoch 510 [4.18s]: BPR Loss=0.13800 | Reg Loss=0.00789 | KD Loss=0.12494
+Epoch 511 [2.40s]: BPR Loss=0.13838 | Reg Loss=0.00789 | KD Loss=0.12489
+Epoch 512 [2.46s]: BPR Loss=0.13832 | Reg Loss=0.00789 | KD Loss=0.12502
+Epoch 513 [2.72s]: BPR Loss=0.13838 | Reg Loss=0.00789 | KD Loss=0.12530
+Epoch 514 [2.51s]: BPR Loss=0.13828 | Reg Loss=0.00790 | KD Loss=0.12506
+Epoch 515 [2.72s]: BPR Loss=0.13818 | Reg Loss=0.00790 | KD Loss=0.12500
+Epoch 516 [2.67s]: BPR Loss=0.13789 | Reg Loss=0.00790 | KD Loss=0.12495
+Epoch 517 [2.45s]: BPR Loss=0.13804 | Reg Loss=0.00790 | KD Loss=0.12499
+Epoch 518 [2.99s]: BPR Loss=0.13813 | Reg Loss=0.00790 | KD Loss=0.12501
+Epoch 519 [2.76s]: BPR Loss=0.13806 | Reg Loss=0.00790 | KD Loss=0.12516
+[0;30;43m[TEST at Epoch 520][0m
+
+================================================================================
+Epoch 520 - Testing
+================================================================================
+{'precision': array([0.01907201]), 'recall': array([0.10463266]), 'ndcg': array([0.06546111])}
+  precision: 0.019072
+  recall: 0.104633
+  ndcg: 0.065461
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 43/50
+================================================================================
+Epoch 520 [4.60s]: BPR Loss=0.13790 | Reg Loss=0.00790 | KD Loss=0.12482
+Epoch 521 [2.87s]: BPR Loss=0.13812 | Reg Loss=0.00790 | KD Loss=0.12481
+Epoch 522 [3.25s]: BPR Loss=0.13862 | Reg Loss=0.00790 | KD Loss=0.12510
+Epoch 523 [2.51s]: BPR Loss=0.13761 | Reg Loss=0.00791 | KD Loss=0.12488
+Epoch 524 [2.85s]: BPR Loss=0.13829 | Reg Loss=0.00791 | KD Loss=0.12500
+Epoch 525 [2.87s]: BPR Loss=0.13815 | Reg Loss=0.00791 | KD Loss=0.12506
+Epoch 526 [2.62s]: BPR Loss=0.13798 | Reg Loss=0.00791 | KD Loss=0.12498
+Epoch 527 [2.36s]: BPR Loss=0.13831 | Reg Loss=0.00791 | KD Loss=0.12502
+Epoch 528 [2.87s]: BPR Loss=0.13804 | Reg Loss=0.00791 | KD Loss=0.12502
+Epoch 529 [2.31s]: BPR Loss=0.13786 | Reg Loss=0.00791 | KD Loss=0.12505
+[0;30;43m[TEST at Epoch 530][0m
+
+================================================================================
+Epoch 530 - Testing
+================================================================================
+{'precision': array([0.01894016]), 'recall': array([0.10380912]), 'ndcg': array([0.06507364])}
+  precision: 0.018940
+  recall: 0.103809
+  ndcg: 0.065074
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 44/50
+================================================================================
+Epoch 530 [4.32s]: BPR Loss=0.13742 | Reg Loss=0.00791 | KD Loss=0.12470
+Epoch 531 [2.56s]: BPR Loss=0.13786 | Reg Loss=0.00791 | KD Loss=0.12497
+Epoch 532 [2.84s]: BPR Loss=0.13871 | Reg Loss=0.00792 | KD Loss=0.12510
+Epoch 533 [2.88s]: BPR Loss=0.13789 | Reg Loss=0.00792 | KD Loss=0.12489
+Epoch 534 [2.63s]: BPR Loss=0.13812 | Reg Loss=0.00792 | KD Loss=0.12502
+Epoch 535 [3.28s]: BPR Loss=0.13755 | Reg Loss=0.00792 | KD Loss=0.12485
+Epoch 536 [2.45s]: BPR Loss=0.13788 | Reg Loss=0.00792 | KD Loss=0.12489
+Epoch 537 [2.33s]: BPR Loss=0.13800 | Reg Loss=0.00792 | KD Loss=0.12489
+Epoch 538 [2.77s]: BPR Loss=0.13779 | Reg Loss=0.00792 | KD Loss=0.12497
+Epoch 539 [2.39s]: BPR Loss=0.13777 | Reg Loss=0.00792 | KD Loss=0.12482
+[0;30;43m[TEST at Epoch 540][0m
+
+================================================================================
+Epoch 540 - Testing
+================================================================================
+{'precision': array([0.01906694]), 'recall': array([0.10419323]), 'ndcg': array([0.06525347])}
+  precision: 0.019067
+  recall: 0.104193
+  ndcg: 0.065253
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 45/50
+================================================================================
+Epoch 540 [4.82s]: BPR Loss=0.13787 | Reg Loss=0.00792 | KD Loss=0.12488
+Epoch 541 [2.79s]: BPR Loss=0.13787 | Reg Loss=0.00792 | KD Loss=0.12461
+Epoch 542 [2.99s]: BPR Loss=0.13778 | Reg Loss=0.00793 | KD Loss=0.12494
+Epoch 543 [2.61s]: BPR Loss=0.13800 | Reg Loss=0.00793 | KD Loss=0.12512
+Epoch 544 [2.51s]: BPR Loss=0.13801 | Reg Loss=0.00793 | KD Loss=0.12504
+Epoch 545 [3.26s]: BPR Loss=0.13782 | Reg Loss=0.00793 | KD Loss=0.12486
+Epoch 546 [2.60s]: BPR Loss=0.13782 | Reg Loss=0.00793 | KD Loss=0.12489
+Epoch 547 [3.12s]: BPR Loss=0.13795 | Reg Loss=0.00793 | KD Loss=0.12490
+Epoch 548 [2.58s]: BPR Loss=0.13771 | Reg Loss=0.00793 | KD Loss=0.12494
+Epoch 549 [2.68s]: BPR Loss=0.13786 | Reg Loss=0.00793 | KD Loss=0.12490
+[0;30;43m[TEST at Epoch 550][0m
+
+================================================================================
+Epoch 550 - Testing
+================================================================================
+{'precision': array([0.01904158]), 'recall': array([0.10384675]), 'ndcg': array([0.06536076])}
+  precision: 0.019042
+  recall: 0.103847
+  ndcg: 0.065361
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 46/50
+================================================================================
+Epoch 550 [4.37s]: BPR Loss=0.13843 | Reg Loss=0.00793 | KD Loss=0.12492
+Epoch 551 [2.44s]: BPR Loss=0.13778 | Reg Loss=0.00793 | KD Loss=0.12479
+Epoch 552 [2.78s]: BPR Loss=0.13759 | Reg Loss=0.00793 | KD Loss=0.12465
+Epoch 553 [2.80s]: BPR Loss=0.13749 | Reg Loss=0.00793 | KD Loss=0.12490
+Epoch 554 [2.46s]: BPR Loss=0.13757 | Reg Loss=0.00794 | KD Loss=0.12474
+Epoch 555 [2.96s]: BPR Loss=0.13772 | Reg Loss=0.00794 | KD Loss=0.12468
+Epoch 556 [2.72s]: BPR Loss=0.13811 | Reg Loss=0.00794 | KD Loss=0.12497
+Epoch 557 [2.78s]: BPR Loss=0.13778 | Reg Loss=0.00794 | KD Loss=0.12483
+Epoch 558 [3.21s]: BPR Loss=0.13787 | Reg Loss=0.00794 | KD Loss=0.12474
+Epoch 559 [2.70s]: BPR Loss=0.13746 | Reg Loss=0.00794 | KD Loss=0.12488
+[0;30;43m[TEST at Epoch 560][0m
+
+================================================================================
+Epoch 560 - Testing
+================================================================================
+{'precision': array([0.01919371]), 'recall': array([0.10489242]), 'ndcg': array([0.06515313])}
+  precision: 0.019194
+  recall: 0.104892
+  ndcg: 0.065153
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 47/50
+================================================================================
+Epoch 560 [4.37s]: BPR Loss=0.13738 | Reg Loss=0.00794 | KD Loss=0.12469
+Epoch 561 [2.58s]: BPR Loss=0.13816 | Reg Loss=0.00794 | KD Loss=0.12490
+Epoch 562 [3.22s]: BPR Loss=0.13782 | Reg Loss=0.00794 | KD Loss=0.12485
+Epoch 563 [2.80s]: BPR Loss=0.13790 | Reg Loss=0.00794 | KD Loss=0.12489
+Epoch 564 [3.01s]: BPR Loss=0.13774 | Reg Loss=0.00795 | KD Loss=0.12493
+Epoch 565 [2.53s]: BPR Loss=0.13781 | Reg Loss=0.00795 | KD Loss=0.12485
+Epoch 566 [2.59s]: BPR Loss=0.13733 | Reg Loss=0.00795 | KD Loss=0.12461
+Epoch 567 [3.14s]: BPR Loss=0.13745 | Reg Loss=0.00795 | KD Loss=0.12480
+Epoch 568 [2.66s]: BPR Loss=0.13780 | Reg Loss=0.00795 | KD Loss=0.12487
+Epoch 569 [2.84s]: BPR Loss=0.13759 | Reg Loss=0.00795 | KD Loss=0.12464
+[0;30;43m[TEST at Epoch 570][0m
+
+================================================================================
+Epoch 570 - Testing
+================================================================================
+{'precision': array([0.01918864]), 'recall': array([0.10525087]), 'ndcg': array([0.06552852])}
+  precision: 0.019189
+  recall: 0.105251
+  ndcg: 0.065529
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 48/50
+================================================================================
+Epoch 570 [3.93s]: BPR Loss=0.13779 | Reg Loss=0.00795 | KD Loss=0.12494
+Epoch 571 [2.48s]: BPR Loss=0.13760 | Reg Loss=0.00795 | KD Loss=0.12463
+Epoch 572 [2.91s]: BPR Loss=0.13751 | Reg Loss=0.00795 | KD Loss=0.12473
+Epoch 573 [2.76s]: BPR Loss=0.13750 | Reg Loss=0.00795 | KD Loss=0.12456
+Epoch 574 [3.10s]: BPR Loss=0.13743 | Reg Loss=0.00795 | KD Loss=0.12463
+Epoch 575 [2.60s]: BPR Loss=0.13803 | Reg Loss=0.00795 | KD Loss=0.12462
+Epoch 576 [2.65s]: BPR Loss=0.13815 | Reg Loss=0.00795 | KD Loss=0.12496
+Epoch 577 [2.67s]: BPR Loss=0.13785 | Reg Loss=0.00795 | KD Loss=0.12460
+Epoch 578 [2.67s]: BPR Loss=0.13781 | Reg Loss=0.00795 | KD Loss=0.12497
+Epoch 579 [2.56s]: BPR Loss=0.13791 | Reg Loss=0.00795 | KD Loss=0.12487
+[0;30;43m[TEST at Epoch 580][0m
+
+================================================================================
+Epoch 580 - Testing
+================================================================================
+{'precision': array([0.01901116]), 'recall': array([0.10353598]), 'ndcg': array([0.06493704])}
+  precision: 0.019011
+  recall: 0.103536
+  ndcg: 0.064937
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 49/50
+================================================================================
+Epoch 580 [4.21s]: BPR Loss=0.13742 | Reg Loss=0.00795 | KD Loss=0.12465
+Epoch 581 [2.58s]: BPR Loss=0.13775 | Reg Loss=0.00796 | KD Loss=0.12484
+Epoch 582 [3.03s]: BPR Loss=0.13740 | Reg Loss=0.00796 | KD Loss=0.12447
+Epoch 583 [2.71s]: BPR Loss=0.13744 | Reg Loss=0.00796 | KD Loss=0.12474
+Epoch 584 [3.10s]: BPR Loss=0.13749 | Reg Loss=0.00796 | KD Loss=0.12471
+Epoch 585 [2.64s]: BPR Loss=0.13752 | Reg Loss=0.00796 | KD Loss=0.12480
+Epoch 586 [2.56s]: BPR Loss=0.13754 | Reg Loss=0.00796 | KD Loss=0.12461
+Epoch 587 [3.07s]: BPR Loss=0.13734 | Reg Loss=0.00796 | KD Loss=0.12466
+Epoch 588 [2.63s]: BPR Loss=0.13772 | Reg Loss=0.00796 | KD Loss=0.12478
+Epoch 589 [3.04s]: BPR Loss=0.13802 | Reg Loss=0.00796 | KD Loss=0.12459
+[0;30;43m[TEST at Epoch 590][0m
+
+================================================================================
+Epoch 590 - Testing
+================================================================================
+{'precision': array([0.01897059]), 'recall': array([0.10385113]), 'ndcg': array([0.06488467])}
+  precision: 0.018971
+  recall: 0.103851
+  ndcg: 0.064885
+  Best so far: Epoch 90, Recall@20: 0.121046
+  Epochs without improvement: 50/50
+================================================================================
+
+Early stopping triggered after 50 epochs without improvement
+
+================================================================================
+Training Completed - Final Evaluation
+================================================================================
+Loaded best model from epoch 90
+{'precision': array([0.02204361]), 'recall': array([0.12104629]), 'ndcg': array([0.07500135])}
+
+Final Results:
+  precision: 0.022044
+  recall: 0.121046
+  ndcg: 0.075001
+
+Best epoch: 90
+Best Recall@20: 0.121046
+================================================================================
+
+Training log saved to: /home/chuc0007/reccase/LLM-GCN-Rec/src/training/../../logs/rlmrec/train_lgn_plus_amazon-book-2023_20251028_201404.log
+================================================================================

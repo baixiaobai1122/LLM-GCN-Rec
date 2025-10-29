@@ -2,6 +2,7 @@ from pprint import pprint
 
 # Use relative imports
 from . import world, dataloader, model, utils
+from . import rlmrec_models
 
 import os
 # Get datasets path relative to project root
@@ -28,5 +29,7 @@ print('===========end===================')
 
 MODELS = {
     'mf': model.PureMF,
-    'lgn': model.LightGCN
+    'lgn': model.LightGCN,
+    'lgn_plus': rlmrec_models.LightGCN_plus,
+    'lgn_gene': rlmrec_models.LightGCN_gene
 }

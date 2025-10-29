@@ -303,7 +303,11 @@ def main():
     # Paths
     data_path = Path(args.data_path)
     features_path = data_path / args.features_file
-    output_path = data_path / args.output_name
+
+    # Create semantic_graph directory
+    graph_dir = data_path / "semantic_graph"
+    graph_dir.mkdir(exist_ok=True)
+    output_path = graph_dir / args.output_name
 
     # Load features
     features = load_features(features_path)

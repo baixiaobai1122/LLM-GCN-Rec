@@ -1,5 +1,7 @@
 *.xml
 *.log
+!logs/*.log
+!logs/**/*.log
 *.apk
 *.iml
 **/.vscode/
@@ -25,9 +27,11 @@ __pycache__/
 *.tar.gz
 *.rar
 *.7z
-
+/logs
 # Model checkpoints
 *.pth
 *.pkl
 *.h5
 *.ckpt
+/src
+

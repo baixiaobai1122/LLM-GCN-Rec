@@ -102,10 +102,28 @@ def set_seed(seed):
 def main():
     args = parse_args()
 
-    # Detect if using hybrid features
-    is_hybrid = 'hybrid' in args.semantic_graph_file.lower()
-    dir_suffix = '_hybrid' if is_hybrid else ''
-    log_suffix = 'hybrid' if is_hybrid else ''
+    # Detect feature type
+    filename_lower = args.semantic_graph_file.lower()
+    has_multimodal = 'multimodal' in filename_lower
+    has_hybrid = 'hybrid' in filename_lower
+    has_gpt = 'gpt' in filename_lower
+
+    # Priority: hybrid_multimodal > multimodal > hybrid > gpt > clip_only
+    if has_hybrid and has_multimodal:
+        dir_suffix = '_hybrid_multimodal'
+        log_suffix = 'hybrid_multimodal'
+    elif has_multimodal:
+        dir_suffix = '_multimodal'
+        log_suffix = 'multimodal'
+    elif has_hybrid:
+        dir_suffix = '_hybrid'
+        log_suffix = 'hybrid'
+    elif has_gpt:
+        dir_suffix = '_gpt'
+        log_suffix = 'gpt'
+    else:
+        dir_suffix = ''
+        log_suffix = ''
 
     # Setup logger
     PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '../..')
@@ -114,10 +132,16 @@ def main():
 
     # Log feature type
     logger.info("\n" + "="*60)
-    if is_hybrid:
+    if has_hybrid and has_multimodal:
+        logger.info(" HYBRID MULTIMODAL MODE: CLIP (Text+Image) + GPT")
+    elif has_multimodal:
+        logger.info(" MULTIMODAL FEATURES MODE: CLIP (Text + Image)")
+    elif has_hybrid:
         logger.info(" HYBRID FEATURES MODE: CLIP + GPT")
+    elif has_gpt:
+        logger.info(" GPT FEATURES MODE: GPT Only")
     else:
-        logger.info(" SINGLE FEATURES MODE: CLIP Only")
+        logger.info(" CLIP FEATURES MODE: CLIP Text Only")
     logger.info(f"Semantic graph file: {args.semantic_graph_file}")
     logger.info("="*60 + "\n")
 
@@ -218,8 +242,21 @@ def main():
 
     model_name = f"dualgraph{dir_suffix}-{args.dataset}-{args.recdim}.pth.tar"
     weight_file = join(FILE_PATH, model_name)
+
+    # Determine feature type name
+    if has_hybrid and has_multimodal:
+        feature_type = 'Hybrid Multimodal (CLIP Text+Image + GPT)'
+    elif has_multimodal:
+        feature_type = 'CLIP Multimodal (Text+Image)'
+    elif has_hybrid:
+        feature_type = 'CLIP+GPT Hybrid'
+    elif has_gpt:
+        feature_type = 'GPT Only'
+    else:
+        feature_type = 'CLIP Text Only'
+
     logger.info(f"\nModel checkpoint: {weight_file}")
-    logger.info(f"Feature type: {'CLIP+GPT Hybrid' if is_hybrid else 'CLIP Only'}")
+    logger.info(f"Feature type: {feature_type}")
 
     # Load pretrained if requested
     if args.load:

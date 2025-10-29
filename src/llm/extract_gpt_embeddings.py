@@ -74,9 +74,9 @@ def main():
     parser.add_argument(
         "--model",
         type=str,
-        default="all-MiniLM-L6-v2",
+        default="all-mpnet-base-v2",
         help="Sentence-transformer model name"
-    )
+    )   #可以考虑模型换成model  all-mpnet-base-v2/all-MiniLM-L6-v2
     parser.add_argument(
         "--batch_size",
         type=int,

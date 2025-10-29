@@ -1,7 +1,0 @@
-2025-10-21 13:54:36 - INFO - Log file: /home/chuc0007/reccase/LightGCN-PyTorch/log/train_dualgraph_amazon-book_subset_1500_20251021_135435.log
-2025-10-21 13:54:36 - INFO - >>SEED: 2020
-2025-10-21 13:54:37 - INFO - >>DEVICE: cuda
-2025-10-21 13:54:37 - INFO - 
-============================================================
-2025-10-21 13:54:37 - INFO - Loading dataset: amazon-book_subset_1500
-2025-10-21 13:54:37 - INFO - ============================================================

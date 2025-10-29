@@ -42,12 +42,20 @@ def parse_args():
     parser.add_argument('--multicore', type=int, default=0, help='whether we use multiprocessing or not in test')
     parser.add_argument('--pretrain', type=int, default=0, help='whether we use pretrained weight or not')
     parser.add_argument('--seed', type=int, default=2020, help='random seed')
-    parser.add_argument('--model', type=str, default='lgn', help='rec-model, support [mf, lgn]')
+    parser.add_argument('--model', type=str, default='lgn', help='rec-model, support [mf, lgn, lgn_plus, lgn_gene]')
 
     # Dual-graph specific arguments (for compatibility)
     parser.add_argument('--use_semantic_graph', type=int, default=1, help='whether to use semantic graph')
     parser.add_argument('--semantic_weight', type=float, default=0.5, help='weight for semantic graph')
     parser.add_argument('--semantic_layers', type=int, default=2, help='number of semantic graph layers')
     parser.add_argument('--semantic_graph_file', type=str, default='semantic_graph.npz', help='semantic graph file name')
+
+    # RLMRec specific arguments
+    parser.add_argument('--llm_emb_file', type=str, default='gpt_embeddings_mpnet.npy', help='LLM embeddings file for items')
+    parser.add_argument('--kd_weight', type=float, default=0.01, help='knowledge distillation weight for lgn_plus')
+    parser.add_argument('--kd_temperature', type=float, default=0.2, help='temperature for InfoNCE loss in lgn_plus')
+    parser.add_argument('--mask_ratio', type=float, default=0.1, help='mask ratio for lgn_gene')
+    parser.add_argument('--recon_weight', type=float, default=0.1, help='reconstruction loss weight for lgn_gene')
+    parser.add_argument('--re_temperature', type=float, default=0.2, help='temperature for reconstruction loss in lgn_gene')
 
     return parser.parse_args()
