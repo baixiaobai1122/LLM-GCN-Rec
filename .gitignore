@@ -27,11 +27,11 @@ __pycache__/
 *.tar.gz
 *.rar
 *.7z
-/logs
+
 # Model checkpoints
 *.pth
 *.pkl
 *.h5
 *.ckpt
-/src
+
 
